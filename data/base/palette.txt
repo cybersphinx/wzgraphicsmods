@@ -50,13 +50,13 @@ a0,a0,0,ff	// health medium shadow
 a0,0,0,ff	// health low shadow
 80,c0,ff,ff	// health resistance
 00,60,00,ff	// team1 - green
-A0,70,00,ff	// team2 - orange
+8f,59,18,ff	// team2 - orange
 80,80,80,ff	// team3 - gray
 20,20,20,ff	// team4 - black
-80,00,00,ff	// team5 - red
-20,30,60,ff	// team6 - blue
-90,00,70,ff	// team7 - purple
-00,80,80,ff	// team8 - teal
+77,03,02,ff	// team5 - red
+23,2d,7f,ff	// team6 - blue
+bf,2f,d0,ff	// team7 - purple
+39,a5,a6,ff	// team8 - teal
 7f,7f,7f,ff	// default form background
 ff,ff,ff,ff	// default form text
 ff,ff,ff,ff	// default form light
