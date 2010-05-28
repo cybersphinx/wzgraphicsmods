@@ -41,6 +41,8 @@
 #include "lib/ivis_common/tex.h"
 #include "piematrix.h"
 #include "screen.h"
+#include <physfs.h>
+
 
 /***************************************************************************/
 /*
@@ -319,6 +321,52 @@ void pie_RenderRadar(int x, int y, int width, int height)
 	glEnd();
 }
 
+
+/**
+  chooseFile(  char name[], const char * basename )
+
+  Choose a file for the backdrop or credits.
+  Finds all the .pngs in texpages/bdrops that match basename.png or basenameN.png
+  and chooses one randomly.  N ranges from 0,NUM_BACKDROPS-1 (in pieblitfunc.h)
+*/
+
+void chooseFile( char name[], const char * basename )
+{			
+	char filenames [NUM_BACKDROPS][30];
+	char buffer[30];
+	int file_count = 0;  //  will end up as the total number of files we found
+	int i = 0;
+
+	/* check for basename.png */
+
+	sprintf( buffer, "texpages/bdrops/%s.png", basename);
+	if (PHYSFS_exists(buffer))
+	{
+		//debug: printf("file exists:"); printf( buffer); printf("\n");
+		sstrcpy( filenames[file_count], buffer);
+		file_count++;
+	}
+
+	/* check for basenameN.png where N = 0,  NUM_BACKDROPS-1.
+	   note that first slot in filenames[] *may* have been filled with basename.png */
+	for( i = 0; i < NUM_BACKDROPS; i++)
+	{
+		sprintf( buffer, "texpages/bdrops/%s%d.png", basename, i);
+		if (PHYSFS_exists(buffer))
+		{
+			//debug: printf("%d file exists:", i); printf( buffer); printf("\n");
+			sstrcpy( filenames[file_count], buffer);
+			file_count ++;
+			if(file_count >= NUM_BACKDROPS)
+				break;
+		}
+	}
+
+	//debug: printf("file count is %d\n", file_count);
+	strcpy( name, filenames[ rand() % file_count ]);
+	//debug: printf( "chosen name is %s\n\n", name);
+}
+
 void pie_LoadBackDrop(SCREENTYPE screenType)
 {
 	char backd[128];
@@ -328,18 +376,18 @@ void pie_LoadBackDrop(SCREENTYPE screenType)
 
 	switch (screenType)
 	{
-		case SCREEN_RANDOMBDROP:
-			snprintf(backd, sizeof(backd), "texpages/bdrops/backdrop%i.png", rand() % NUM_BACKDROPS); // Range: 0 to (NUM_BACKDROPS-1)
+	    case SCREEN_RANDOMBDROP:
+			chooseFile( backd, "backdrop");
 			break;
-		case SCREEN_MISSIONEND:
+	    case SCREEN_MISSIONEND:
 			sstrcpy(backd, "texpages/bdrops/missionend.png");
 			break;
 
-		case SCREEN_CREDITS:
-		default:
-			sstrcpy(backd, "texpages/bdrops/credits.png");
+	    case SCREEN_CREDITS:
+	    default:
+			chooseFile( backd, "credits");
 			break;
 	}
-
+	
 	screen_SetBackDropFromFile(backd);
 }
