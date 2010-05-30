@@ -289,7 +289,8 @@ static void pie_Draw3DShape2(iIMDShape *shape, int frame, PIELIGHT colour, PIELI
 		polyCount++;
 
 		// Run TextureAnimation (exluding the new teamcoloured models)
-		if (frame && pPolys->flags & iV_IMD_TEXANIM && !(shape->flags & iV_IMD_TCMASK))
+		//if (frame && pPolys->flags & iV_IMD_TEXANIM && !(shape->flags & iV_IMD_TCMASK))
+		if (frame && pPolys->flags & iV_IMD_TEXANIM && !(shape->flags & iV_IMD_TCMASK && shape->numFrames == 8))
 		{
 			frame %= shape->numFrames;
 
