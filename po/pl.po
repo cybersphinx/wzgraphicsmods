@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Warzone2100\n"
 "Report-Msgid-Bugs-To: warzone-dev@gna.org\n"
-"POT-Creation-Date: 2010-05-21 06:08+1000\n"
+"POT-Creation-Date: 2010-05-31 21:32-0400\n"
 "PO-Revision-Date: 2010-04-11 08:24+0100\n"
 "Last-Translator: Michał D. aka Emdek <emdeck@gmail.com>\n"
 "Language-Team: Polish <kde-i18n-doc@kde.org>\n"
@@ -12794,7 +12794,7 @@ msgstr "Jednostka utracona!"
 msgid "Structure Restored"
 msgstr "Struktura odbudowana"
 
-#: src/droid.c:2954
+#: src/droid.c:2956
 #, c-format
 msgid "Group %u selected - %u Unit"
 msgid_plural "Group %u selected - %u Units"
@@ -12802,7 +12802,7 @@ msgstr[0] "Wybrana grupa %u -  %u jednostka"
 msgstr[1] "Wybrana grupa %u -  %u jednostki"
 msgstr[2] "Wybrana grupa %u -  %u jednostek"
 
-#: src/droid.c:2967
+#: src/droid.c:2969
 #, c-format
 msgid "%u unit assigned to Group %u"
 msgid_plural "%u units assigned to Group %u"
@@ -12810,7 +12810,7 @@ msgstr[0] "%u jednostka przypisana do Grupy %u"
 msgstr[1] "%u jednostki przypisane do Grupy %u"
 msgstr[2] "%u jednostek przypisano do Grupy %u"
 
-#: src/droid.c:2980
+#: src/droid.c:2982
 #, c-format
 msgid "Centered on Group %u - %u Unit"
 msgid_plural "Centered on Group %u - %u Units"
@@ -12818,7 +12818,7 @@ msgstr[0] "Wyśrodkowano na grupie %u - %u jednostka"
 msgstr[1] "Wyśrodkowano na grupie %u - %u jednostki"
 msgstr[2] "Wyśrodkowano na grupie %u - %u jednostek"
 
-#: src/droid.c:2984
+#: src/droid.c:2986
 #, c-format
 msgid "Aligning with Group %u - %u Unit"
 msgid_plural "Aligning with Group %u - %u Units"
@@ -12827,40 +12827,40 @@ msgstr[1] "Wyrównanie z grupą %u - %u jednostki"
 msgstr[2] "Wyrównanie z grupą %u - %u jednostek"
 
 # I had really trouble with this one. This word has no meaning in Polish so I decided to translate it as 'Newbe'
-#: src/droid.c:3268
+#: src/droid.c:3270
 msgid "Rookie"
 msgstr "Nowicjusz"
 
-#: src/droid.c:3269
+#: src/droid.c:3271
 msgctxt "rank"
 msgid "Green"
 msgstr "Zielony"
 
-#: src/droid.c:3270
+#: src/droid.c:3272
 msgid "Trained"
 msgstr "Wyszkolony"
 
-#: src/droid.c:3271
+#: src/droid.c:3273
 msgid "Regular"
 msgstr "Zawodowy"
 
-#: src/droid.c:3272
+#: src/droid.c:3274
 msgid "Professional"
 msgstr "Profesjonalny"
 
-#: src/droid.c:3273
+#: src/droid.c:3275
 msgid "Veteran"
 msgstr "Weteran"
 
-#: src/droid.c:3274
+#: src/droid.c:3276
 msgid "Elite"
 msgstr "Elita"
 
-#: src/droid.c:3275
+#: src/droid.c:3277
 msgid "Special"
 msgstr "Specjalny"
 
-#: src/droid.c:3276
+#: src/droid.c:3278
 msgid "Hero"
 msgstr "Bohater"
 
@@ -12938,8 +12938,8 @@ msgstr "JEDEN GRACZ"
 
 #: src/frontend.c:474
 #: src/ingameop.c:519
-#: src/mission.c:2526
-#: src/mission.c:2631
+#: src/mission.c:2534
+#: src/mission.c:2639
 msgid "Load Saved Game"
 msgstr "Załaduj zapisany stan gry"
 
@@ -13353,8 +13353,8 @@ msgstr ""
 
 #: src/ingameop.c:295
 #: src/ingameop.c:523
-#: src/mission.c:2513
-#: src/mission.c:2634
+#: src/mission.c:2521
+#: src/mission.c:2642
 msgid "Save Game"
 msgstr "Zapisz grę"
 
@@ -14188,42 +14188,42 @@ msgstr "Przełącz otwieranie menu budowania"
 msgid "Could not save game!"
 msgstr "Niemożna zapisać gry!"
 
-#: src/mission.c:2066
+#: src/mission.c:2074
 msgid "Load Transport"
 msgstr "Ładuj transport"
 
-#: src/mission.c:2460
+#: src/mission.c:2468
 msgid "OBJECTIVE ACHIEVED by cheating!"
 msgstr "CEL OSIĄGNIĘTY przez oszukiwanie!"
 
-#: src/mission.c:2460
+#: src/mission.c:2468
 msgid "OBJECTIVE ACHIEVED"
 msgstr "CEL OSIĄGNIĘTY"
 
-#: src/mission.c:2466
+#: src/mission.c:2474
 msgid "OBJECTIVE FAILED--and you cheated!"
 msgstr "CEL NIE OSIĄGNIĘTY--chociaż oszukiwałeś!"
 
-#: src/mission.c:2466
+#: src/mission.c:2474
 msgid "OBJECTIVE FAILED"
 msgstr "CEL NIE OSIĄGNIĘTY"
 
-#: src/mission.c:2492
-#: src/mission.c:2532
-#: src/mission.c:2650
+#: src/mission.c:2500
+#: src/mission.c:2540
+#: src/mission.c:2658
 msgid "Quit To Main Menu"
 msgstr "Wyjdź do menu głównego"
 
-#: src/mission.c:2500
+#: src/mission.c:2508
 msgid "Continue Game"
 msgstr "Kontynuuj grę"
 
-#: src/mission.c:2597
+#: src/mission.c:2605
 msgid "GAME SAVED :"
 msgstr "GRA ZAPISANA :"
 
-#: src/move.c:2654
-#: src/move.c:2670
+#: src/move.c:2634
+#: src/move.c:2650
 #, c-format
 msgid "You found %u power in an oil drum."
 msgstr "Znalazłeś %u energii w beczce z ropą."

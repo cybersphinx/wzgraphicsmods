@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: warzone2100\n"
 "Report-Msgid-Bugs-To: warzone-dev@gna.org\n"
-"POT-Creation-Date: 2010-05-21 06:08+1000\n"
+"POT-Creation-Date: 2010-05-31 21:32-0400\n"
 "PO-Revision-Date: 2009-10-31 12:10+0100\n"
 "Last-Translator: \n"
 "Language-Team: Dutch <vertaling@vrijschrift.org>\n"
@@ -12968,68 +12968,68 @@ msgstr "Eenheid verloren!"
 msgid "Structure Restored"
 msgstr "Gebouw hersteld"
 
-#: src/droid.c:2954
+#: src/droid.c:2956
 #, c-format
 msgid "Group %u selected - %u Unit"
 msgid_plural "Group %u selected - %u Units"
 msgstr[0] "Groep %u geselecteerd - %u eenheid"
 msgstr[1] "Groep %u geselecteerd - %u eenheden"
 
-#: src/droid.c:2967
+#: src/droid.c:2969
 #, c-format
 msgid "%u unit assigned to Group %u"
 msgid_plural "%u units assigned to Group %u"
 msgstr[0] "%u eenheid aan groep %u toegewezen"
 msgstr[1] "%u eenheden aan groep %u toegewezen"
 
-#: src/droid.c:2980
+#: src/droid.c:2982
 #, c-format
 msgid "Centered on Group %u - %u Unit"
 msgid_plural "Centered on Group %u - %u Units"
 msgstr[0] "Gecentreerd op groep %u - %u eenheid"
 msgstr[1] "Gecentreerd op groep %u - %u eenheden"
 
-#: src/droid.c:2984
+#: src/droid.c:2986
 #, c-format
 msgid "Aligning with Group %u - %u Unit"
 msgid_plural "Aligning with Group %u - %u Units"
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/droid.c:3268
+#: src/droid.c:3270
 msgid "Rookie"
 msgstr "Rekruut"
 
-#: src/droid.c:3269
+#: src/droid.c:3271
 msgctxt "rank"
 msgid "Green"
 msgstr "Groen"
 
-#: src/droid.c:3270
+#: src/droid.c:3272
 msgid "Trained"
 msgstr "Geoefend"
 
-#: src/droid.c:3271
+#: src/droid.c:3273
 msgid "Regular"
 msgstr "Beroeps"
 
-#: src/droid.c:3272
+#: src/droid.c:3274
 msgid "Professional"
 msgstr "Professioneel"
 
-#: src/droid.c:3273
+#: src/droid.c:3275
 msgid "Veteran"
 msgstr "Veteraan"
 
-#: src/droid.c:3274
+#: src/droid.c:3276
 msgid "Elite"
 msgstr "Elite"
 
-#: src/droid.c:3275
+#: src/droid.c:3277
 msgid "Special"
 msgstr "Speciaal"
 
-#: src/droid.c:3276
+#: src/droid.c:3278
 msgid "Hero"
 msgstr "Held"
 
@@ -13107,8 +13107,8 @@ msgstr "EEN SPELER"
 
 #: src/frontend.c:474
 #: src/ingameop.c:519
-#: src/mission.c:2526
-#: src/mission.c:2631
+#: src/mission.c:2534
+#: src/mission.c:2639
 msgid "Load Saved Game"
 msgstr "Opgeslagen spel laden"
 
@@ -13527,8 +13527,8 @@ msgstr ""
 
 #: src/ingameop.c:295
 #: src/ingameop.c:523
-#: src/mission.c:2513
-#: src/mission.c:2634
+#: src/mission.c:2521
+#: src/mission.c:2642
 msgid "Save Game"
 msgstr "Spel opslaan"
 
@@ -14366,43 +14366,43 @@ msgstr "Bouwmenu heropenen"
 msgid "Could not save game!"
 msgstr "Kon het spel NIET opslaan!"
 
-#: src/mission.c:2066
+#: src/mission.c:2074
 msgid "Load Transport"
 msgstr "Vervoer inladen"
 
-#: src/mission.c:2460
+#: src/mission.c:2468
 msgid "OBJECTIVE ACHIEVED by cheating!"
 msgstr "DOEL BEHAALD door vals spelen!"
 
-#: src/mission.c:2460
+#: src/mission.c:2468
 msgid "OBJECTIVE ACHIEVED"
 msgstr "DOEL BEHAALD"
 
-#: src/mission.c:2466
+#: src/mission.c:2474
 msgid "OBJECTIVE FAILED--and you cheated!"
 msgstr "DOEL MISLUKT-- en je hebt valsgespeeld!"
 
-#: src/mission.c:2466
+#: src/mission.c:2474
 msgid "OBJECTIVE FAILED"
 msgstr "DOEL MISLUKT"
 
-#: src/mission.c:2492
-#: src/mission.c:2532
-#: src/mission.c:2650
+#: src/mission.c:2500
+#: src/mission.c:2540
+#: src/mission.c:2658
 msgid "Quit To Main Menu"
 msgstr "Afsluiten naar hoofdmenu"
 
-#: src/mission.c:2500
+#: src/mission.c:2508
 msgid "Continue Game"
 msgstr "Spel vervolgen"
 
-#: src/mission.c:2597
+#: src/mission.c:2605
 #, fuzzy
 msgid "GAME SAVED :"
 msgstr "SPEL OPGESLAGEN!"
 
-#: src/move.c:2654
-#: src/move.c:2670
+#: src/move.c:2634
+#: src/move.c:2650
 #, fuzzy, c-format
 msgid "You found %u power in an oil drum."
 msgstr "jij hebt %u energie gevonden in een olie ton"

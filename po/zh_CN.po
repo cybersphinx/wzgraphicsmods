@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: warzone2100\n"
 "Report-Msgid-Bugs-To: warzone-dev@gna.org\n"
-"POT-Creation-Date: 2010-05-21 06:08+1000\n"
+"POT-Creation-Date: 2010-05-31 21:32-0400\n"
 "PO-Revision-Date: 2009-05-13 16:12+0800\n"
 "Last-Translator: Terra <wz2100cn@gmail.com>\n"
 "Language-Team: Simplified Chinese <zh_CN@li.org>\n"
@@ -12901,69 +12901,69 @@ msgstr "单位被摧毁! "
 msgid "Structure Restored"
 msgstr "重建建筑物"
 
-#: src/droid.c:2954
+#: src/droid.c:2956
 #, c-format
 msgid "Group %u selected - %u Unit"
 msgid_plural "Group %u selected - %u Units"
 msgstr[0] "已选择 %u 号编队 - %u 单位"
 
-#: src/droid.c:2967
+#: src/droid.c:2969
 #, c-format
 msgid "%u unit assigned to Group %u"
 msgid_plural "%u units assigned to Group %u"
 msgstr[0] "%u 单位已指派为 %u 号编队"
 
-#: src/droid.c:2980
+#: src/droid.c:2982
 #, c-format
 msgid "Centered on Group %u - %u Unit"
 msgid_plural "Centered on Group %u - %u Units"
 msgstr[0] "移动视野中心到 %u 号编队 - %u 单位"
 
-#: src/droid.c:2984
+#: src/droid.c:2986
 #, c-format
 msgid "Aligning with Group %u - %u Unit"
 msgid_plural "Aligning with Group %u - %u Units"
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/droid.c:3268
+#: src/droid.c:3270
 #, fuzzy
 msgid "Rookie"
 msgstr "新兵部队: %u"
 
-#: src/droid.c:3269
+#: src/droid.c:3271
 #, fuzzy
 msgctxt "rank"
 msgid "Green"
 msgstr "绿色"
 
-#: src/droid.c:3270
+#: src/droid.c:3272
 #, fuzzy
 msgid "Trained"
 msgstr "作训部队: %u"
 
-#: src/droid.c:3271
+#: src/droid.c:3273
 #, fuzzy
 msgid "Regular"
 msgstr "标准部队: %u"
 
-#: src/droid.c:3272
+#: src/droid.c:3274
 msgid "Professional"
 msgstr "专业部队"
 
-#: src/droid.c:3273
+#: src/droid.c:3275
 msgid "Veteran"
 msgstr "老兵部队"
 
-#: src/droid.c:3274
+#: src/droid.c:3276
 msgid "Elite"
 msgstr "精锐部队"
 
-#: src/droid.c:3275
+#: src/droid.c:3277
 msgid "Special"
 msgstr "特种部队"
 
-#: src/droid.c:3276
+#: src/droid.c:3278
 msgid "Hero"
 msgstr "英雄部队"
 
@@ -13042,8 +13042,8 @@ msgstr "单人游戏"
 
 #: src/frontend.c:474
 #: src/ingameop.c:519
-#: src/mission.c:2526
-#: src/mission.c:2631
+#: src/mission.c:2534
+#: src/mission.c:2639
 msgid "Load Saved Game"
 msgstr "载入游戏"
 
@@ -13464,8 +13464,8 @@ msgstr ""
 
 #: src/ingameop.c:295
 #: src/ingameop.c:523
-#: src/mission.c:2513
-#: src/mission.c:2634
+#: src/mission.c:2521
+#: src/mission.c:2642
 msgid "Save Game"
 msgstr "保存游戏"
 
@@ -14301,45 +14301,45 @@ msgstr ""
 msgid "Could not save game!"
 msgstr "载入游戏"
 
-#: src/mission.c:2066
+#: src/mission.c:2074
 msgid "Load Transport"
 msgstr "登陆运输飞船"
 
-#: src/mission.c:2460
+#: src/mission.c:2468
 #, fuzzy
 msgid "OBJECTIVE ACHIEVED by cheating!"
 msgstr "任务目标完成"
 
-#: src/mission.c:2460
+#: src/mission.c:2468
 msgid "OBJECTIVE ACHIEVED"
 msgstr "任务目标完成"
 
-#: src/mission.c:2466
+#: src/mission.c:2474
 #, fuzzy
 msgid "OBJECTIVE FAILED--and you cheated!"
 msgstr "任务目标失败"
 
-#: src/mission.c:2466
+#: src/mission.c:2474
 msgid "OBJECTIVE FAILED"
 msgstr "任务目标失败"
 
-#: src/mission.c:2492
-#: src/mission.c:2532
-#: src/mission.c:2650
+#: src/mission.c:2500
+#: src/mission.c:2540
+#: src/mission.c:2658
 msgid "Quit To Main Menu"
 msgstr "退回到主菜单"
 
-#: src/mission.c:2500
+#: src/mission.c:2508
 msgid "Continue Game"
 msgstr "继续游戏"
 
-#: src/mission.c:2597
+#: src/mission.c:2605
 #, fuzzy
 msgid "GAME SAVED :"
 msgstr "游戏已保存! "
 
-#: src/move.c:2654
-#: src/move.c:2670
+#: src/move.c:2634
+#: src/move.c:2650
 #, c-format
 msgid "You found %u power in an oil drum."
 msgstr ""

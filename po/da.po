@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: warzone2100\n"
 "Report-Msgid-Bugs-To: warzone-dev@gna.org\n"
-"POT-Creation-Date: 2010-05-21 06:08+1000\n"
+"POT-Creation-Date: 2010-05-31 21:32-0400\n"
 "PO-Revision-Date: 2008-05-09 16:08+0000\n"
 "Last-Translator: carson <Unknown>\n"
 "Language-Team: Dansk <da@li.org>\n"
@@ -13097,68 +13097,68 @@ msgstr "Enhed tabt!"
 msgid "Structure Restored"
 msgstr "Bygning restoreret"
 
-#: src/droid.c:2954
+#: src/droid.c:2956
 #, c-format
 msgid "Group %u selected - %u Unit"
 msgid_plural "Group %u selected - %u Units"
 msgstr[0] "Gruppe %u valgt - %u Enheder"
 msgstr[1] "Gruppe %u valgt - %u Enheder"
 
-#: src/droid.c:2967
+#: src/droid.c:2969
 #, c-format
 msgid "%u unit assigned to Group %u"
 msgid_plural "%u units assigned to Group %u"
 msgstr[0] "%u Enheder tildelt gruppe %u"
 msgstr[1] "%u Enheder tildelt gruppe %u"
 
-#: src/droid.c:2980
+#: src/droid.c:2982
 #, c-format
 msgid "Centered on Group %u - %u Unit"
 msgid_plural "Centered on Group %u - %u Units"
 msgstr[0] "Fokuseret på gruppe %u - %u Enheder"
 msgstr[1] "Fokuseret på gruppe %u - %u Enheder"
 
-#: src/droid.c:2984
+#: src/droid.c:2986
 #, c-format
 msgid "Aligning with Group %u - %u Unit"
 msgid_plural "Aligning with Group %u - %u Units"
 msgstr[0] "Korigerede med gruppe %u - %u Enheder"
 msgstr[1] "Korigerede med gruppe %u - %u Enheder"
 
-#: src/droid.c:3268
+#: src/droid.c:3270
 msgid "Rookie"
 msgstr "Utrænet"
 
-#: src/droid.c:3269
+#: src/droid.c:3271
 msgctxt "rank"
 msgid "Green"
 msgstr "Grøn"
 
-#: src/droid.c:3270
+#: src/droid.c:3272
 msgid "Trained"
 msgstr "Trænet"
 
-#: src/droid.c:3271
+#: src/droid.c:3273
 msgid "Regular"
 msgstr "Regulær"
 
-#: src/droid.c:3272
+#: src/droid.c:3274
 msgid "Professional"
 msgstr "Professionel"
 
-#: src/droid.c:3273
+#: src/droid.c:3275
 msgid "Veteran"
 msgstr "Veteran"
 
-#: src/droid.c:3274
+#: src/droid.c:3276
 msgid "Elite"
 msgstr "Elite"
 
-#: src/droid.c:3275
+#: src/droid.c:3277
 msgid "Special"
 msgstr "Speciel"
 
-#: src/droid.c:3276
+#: src/droid.c:3278
 msgid "Hero"
 msgstr "Helt"
 
@@ -13241,8 +13241,8 @@ msgstr "SOLO SPILLER"
 
 #: src/frontend.c:474
 #: src/ingameop.c:519
-#: src/mission.c:2526
-#: src/mission.c:2631
+#: src/mission.c:2534
+#: src/mission.c:2639
 msgid "Load Saved Game"
 msgstr "Indlæs gemt spil"
 
@@ -13674,8 +13674,8 @@ msgstr ""
 
 #: src/ingameop.c:295
 #: src/ingameop.c:523
-#: src/mission.c:2513
-#: src/mission.c:2634
+#: src/mission.c:2521
+#: src/mission.c:2642
 msgid "Save Game"
 msgstr "Gem spil"
 
@@ -14519,45 +14519,45 @@ msgstr "Slå genåbning af konstruktionsmenuen til/fra"
 msgid "Could not save game!"
 msgstr "Hent et gemt spil"
 
-#: src/mission.c:2066
+#: src/mission.c:2074
 msgid "Load Transport"
 msgstr "Fyld transportskib"
 
-#: src/mission.c:2460
+#: src/mission.c:2468
 #, fuzzy
 msgid "OBJECTIVE ACHIEVED by cheating!"
 msgstr "MISSIONEN LYKKEDES"
 
-#: src/mission.c:2460
+#: src/mission.c:2468
 msgid "OBJECTIVE ACHIEVED"
 msgstr "MISSIONEN LYKKEDES"
 
-#: src/mission.c:2466
+#: src/mission.c:2474
 #, fuzzy
 msgid "OBJECTIVE FAILED--and you cheated!"
 msgstr "MISSIONEN FEJLEDE"
 
-#: src/mission.c:2466
+#: src/mission.c:2474
 msgid "OBJECTIVE FAILED"
 msgstr "MISSIONEN FEJLEDE"
 
-#: src/mission.c:2492
-#: src/mission.c:2532
-#: src/mission.c:2650
+#: src/mission.c:2500
+#: src/mission.c:2540
+#: src/mission.c:2658
 msgid "Quit To Main Menu"
 msgstr "Tilbage til hovedmenu"
 
-#: src/mission.c:2500
+#: src/mission.c:2508
 msgid "Continue Game"
 msgstr "Fortsæt spil"
 
-#: src/mission.c:2597
+#: src/mission.c:2605
 #, fuzzy
 msgid "GAME SAVED :"
 msgstr "SPIL GEMT!"
 
-#: src/move.c:2654
-#: src/move.c:2670
+#: src/move.c:2634
+#: src/move.c:2650
 #, c-format
 msgid "You found %u power in an oil drum."
 msgstr ""

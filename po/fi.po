@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: warzone2100\n"
 "Report-Msgid-Bugs-To: warzone-dev@gna.org\n"
-"POT-Creation-Date: 2010-05-21 06:08+1000\n"
+"POT-Creation-Date: 2010-05-31 21:32-0400\n"
 "PO-Revision-Date: 2008-05-09 10:33+0000\n"
 "Last-Translator: Lartza <lartza@wippies.com>\n"
 "Language-Team: Finnish <fi@li.org>\n"
@@ -12769,71 +12769,71 @@ msgstr ""
 msgid "Structure Restored"
 msgstr ""
 
-#: src/droid.c:2954
+#: src/droid.c:2956
 #, c-format
 msgid "Group %u selected - %u Unit"
 msgid_plural "Group %u selected - %u Units"
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/droid.c:2967
+#: src/droid.c:2969
 #, c-format
 msgid "%u unit assigned to Group %u"
 msgid_plural "%u units assigned to Group %u"
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/droid.c:2980
+#: src/droid.c:2982
 #, c-format
 msgid "Centered on Group %u - %u Unit"
 msgid_plural "Centered on Group %u - %u Units"
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/droid.c:2984
+#: src/droid.c:2986
 #, c-format
 msgid "Aligning with Group %u - %u Unit"
 msgid_plural "Aligning with Group %u - %u Units"
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/droid.c:3268
+#: src/droid.c:3270
 msgid "Rookie"
 msgstr ""
 
-#: src/droid.c:3269
+#: src/droid.c:3271
 msgctxt "rank"
 msgid "Green"
 msgstr ""
 
-#: src/droid.c:3270
+#: src/droid.c:3272
 msgid "Trained"
 msgstr ""
 
-#: src/droid.c:3271
+#: src/droid.c:3273
 msgid "Regular"
 msgstr ""
 
-#: src/droid.c:3272
+#: src/droid.c:3274
 #, fuzzy
 msgid "Professional"
 msgstr "Ammattilainen"
 
-#: src/droid.c:3273
+#: src/droid.c:3275
 #, fuzzy
 msgid "Veteran"
 msgstr "Veteraani"
 
-#: src/droid.c:3274
+#: src/droid.c:3276
 #, fuzzy
 msgid "Elite"
 msgstr "Eliitti"
 
-#: src/droid.c:3275
+#: src/droid.c:3277
 msgid "Special"
 msgstr ""
 
-#: src/droid.c:3276
+#: src/droid.c:3278
 msgid "Hero"
 msgstr "Sankari"
 
@@ -12913,8 +12913,8 @@ msgstr "YKSINPELI"
 
 #: src/frontend.c:474
 #: src/ingameop.c:519
-#: src/mission.c:2526
-#: src/mission.c:2631
+#: src/mission.c:2534
+#: src/mission.c:2639
 msgid "Load Saved Game"
 msgstr "Lataa tallennettu peli"
 
@@ -13337,8 +13337,8 @@ msgstr ""
 
 #: src/ingameop.c:295
 #: src/ingameop.c:523
-#: src/mission.c:2513
-#: src/mission.c:2634
+#: src/mission.c:2521
+#: src/mission.c:2642
 msgid "Save Game"
 msgstr "Tallenna peli"
 
@@ -14170,43 +14170,43 @@ msgstr ""
 msgid "Could not save game!"
 msgstr "Lataa tallennettu peli"
 
-#: src/mission.c:2066
+#: src/mission.c:2074
 msgid "Load Transport"
 msgstr "Lastaa kuljetus"
 
-#: src/mission.c:2460
+#: src/mission.c:2468
 msgid "OBJECTIVE ACHIEVED by cheating!"
 msgstr ""
 
-#: src/mission.c:2460
+#: src/mission.c:2468
 msgid "OBJECTIVE ACHIEVED"
 msgstr ""
 
-#: src/mission.c:2466
+#: src/mission.c:2474
 msgid "OBJECTIVE FAILED--and you cheated!"
 msgstr ""
 
-#: src/mission.c:2466
+#: src/mission.c:2474
 msgid "OBJECTIVE FAILED"
 msgstr ""
 
-#: src/mission.c:2492
-#: src/mission.c:2532
-#: src/mission.c:2650
+#: src/mission.c:2500
+#: src/mission.c:2540
+#: src/mission.c:2658
 msgid "Quit To Main Menu"
 msgstr "Poistu päävalikkoon"
 
-#: src/mission.c:2500
+#: src/mission.c:2508
 msgid "Continue Game"
 msgstr "Jatka peliä"
 
-#: src/mission.c:2597
+#: src/mission.c:2605
 #, fuzzy
 msgid "GAME SAVED :"
 msgstr "Peli tallennettu"
 
-#: src/move.c:2654
-#: src/move.c:2670
+#: src/move.c:2634
+#: src/move.c:2650
 #, c-format
 msgid "You found %u power in an oil drum."
 msgstr ""
