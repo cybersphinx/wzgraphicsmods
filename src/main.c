@@ -506,6 +506,9 @@ static void initialize_ConfigDir(void)
 
 	// User's home dir first so we allways see what we write
 	PHYSFS_addToSearchPath( PHYSFS_getWriteDir(), PHYSFS_PREPEND );
+#if defined(WZ_OS_MAC)
+	PHYSFS_addToSearchPath( "/Library/Application Support/Warzone 2100/", PHYSFS_APPEND );
+#endif
 
 	PHYSFS_permitSymbolicLinks(1);
 
@@ -1204,6 +1207,8 @@ int main(int argc, char *argv[])
 	{
 		return -1;
 	}
+	war_SetWidth(pie_GetVideoBufferWidth());
+	war_SetHeight(pie_GetVideoBufferHeight());
 
 	pie_SetFogStatus(false);
 	pie_ScreenFlip(CLEAR_BLACK);
