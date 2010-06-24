@@ -2510,36 +2510,27 @@ static void effectStructureUpdates(void)
 						*/
 						if (psStructure->pStructureType->type == REF_FACTORY)
 						{
-							if (psStructure->sDisplay.imd->nconnectors == 1)
+							int j;
+							for (j = 0; j < psStructure->sDisplay.imd->nconnectors; j++)
 							{
 								Vector3i eventPos = {
-									psStructure->pos.x + psStructure->sDisplay.imd->connectors->x,
-									psStructure->pos.z + psStructure->sDisplay.imd->connectors->z,
-									psStructure->pos.y - psStructure->sDisplay.imd->connectors->y
+									psStructure->pos.x + psStructure->sDisplay.imd->connectors[j].x,
+									psStructure->pos.z + psStructure->sDisplay.imd->connectors[j].z,
+									psStructure->pos.y + psStructure->sDisplay.imd->connectors[j].y
 								};
 
 								addEffect(&eventPos, EFFECT_SMOKE, SMOKE_TYPE_STEAM, false, NULL, 0);
-
-								if (selectedPlayer == psStructure->player)
-								{
-									audio_PlayObjStaticTrack(psStructure, ID_SOUND_STEAM);
-								}
+							}
+							if (j != 0 && selectedPlayer == psStructure->player)
+							{
+								audio_PlayObjStaticTrack(psStructure, ID_SOUND_STEAM);
 							}
 						}
 						else if (psStructure->pStructureType->type == REF_POWER_GEN)
 						{
 							bool active = false;
 							POWER_GEN *psPowerGen = &psStructure->pFunctionality->powerGenerator;
-							Vector3i eventPos = {
-								psStructure->pos.x,
-								psStructure->pos.z,
-								psStructure->pos.y
-							};
-
-							if (psStructure->sDisplay.imd->nconnectors > 0)
-							{
-								eventPos.y = psStructure->pos.z+psStructure->sDisplay.imd->connectors->z;
-							}
+							Vector3i eventPos;
 
 							/* Add an effect over the central spire - if
 							connected to Res Extractor and it is active*/
@@ -2553,8 +2544,18 @@ static void effectStructureUpdates(void)
 								}
 							}
 
+							if (active)
 							{
-								eventPos.y = psStructure->pos.z + 48;
+								if (psStructure->sDisplay.imd->nconnectors > 0)
+								{
+									eventPos.x = psStructure->pos.x + psStructure->sDisplay.imd->connectors->x;
+									eventPos.z = psStructure->pos.y + psStructure->sDisplay.imd->connectors->y;
+									eventPos.y = psStructure->pos.z + psStructure->sDisplay.imd->connectors->z;
+								}
+								else
+								{
+									eventPos.y = psStructure->pos.z + 48;
+								}
 
 								addEffect(&eventPos, EFFECT_EXPLOSION, EXPLOSION_TYPE_TESLA, false, NULL, 0);
 

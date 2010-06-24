@@ -2349,21 +2349,6 @@ void	renderStructure(STRUCTURE *psStructure)
 						}
 					}
 				}
-				// if there is an unused connector, but not the first connector, add a light to it
-				else if (psStructure->sDisplay.imd->nconnectors > 1)
-				{
-					for (i = 0; i < psStructure->sDisplay.imd->nconnectors; i++)
-					{
-						iIMDShape *lImd;
-
-						iV_MatrixBegin();
-						iV_TRANSLATE(psStructure->sDisplay.imd->connectors->x, psStructure->sDisplay.imd->connectors->z,
-						             psStructure->sDisplay.imd->connectors->y);
-						lImd = getImdFromIndex(MI_LANDING);
-						pie_Draw3DShape(lImd, getModularScaledGraphicsTime(1024, lImd->numFrames), colour, buildingBrightness, WZCOL_BLACK, 0, 0);
-						iV_MatrixEnd();
-					}
-				}
 			}
 		}
 	}
@@ -3907,15 +3892,27 @@ static void structureEffectsPlayer( UDWORD player )
 					xDif = iSinSR(graphicsTime, gameDiv, radius);
 					yDif = iCosSR(graphicsTime, gameDiv, radius);
 
-					pos.x = psStructure->pos.x + xDif;
-					pos.z = psStructure->pos.y + yDif;
-					pos.y = map_Height(pos.x,pos.z) + 64 + (i*20);	// 64 up to get to base of spire
+					// Base position of animation
+ 					pos.x = psStructure->pos.x + xDif;
+ 					pos.z = psStructure->pos.y + yDif;
+					pos.y = map_Height(psStructure->pos.x, psStructure->pos.y);
+
+					// FIXME: Magic numbers for p.gen. connectors, 1st connector is spark/puff
+					if( psStructure->pStructureType->pIMD->nconnectors >= i+2)
+					{
+						pos.x += psStructure->sDisplay.imd->connectors[i+1].x;
+						pos.z += psStructure->sDisplay.imd->connectors[i+1].y;
+						pos.y += psStructure->sDisplay.imd->connectors[i+1].z;
+					}
+					else
+					{
+						pos.y += 64 + (i*20);	// 64 up to get to base of spire
+					}
 					effectGiveAuxVar(50);	// half normal plasma size...
 					addEffect(&pos,EFFECT_EXPLOSION,EXPLOSION_TYPE_LASER,false,NULL,0);
 
-					pos.x = psStructure->pos.x - xDif;
-					pos.z = psStructure->pos.y - yDif;
-//					pos.y = map_Height(pos.x,pos.z) + 64 + (i*20);	// 64 up to get to base of spire
+					pos.x = pos.x - xDif*2;
+					pos.z = pos.z - yDif*2;
 					effectGiveAuxVar(50);	// half normal plasma size...
 
 					addEffect(&pos,EFFECT_EXPLOSION,EXPLOSION_TYPE_LASER,false,NULL,0);
