@@ -258,7 +258,6 @@ static UDWORD	destTileX=0,destTileY=0;
 
 #define	TARGET_TO_SENSOR_TIME	((4*(GAME_TICKS_PER_SEC))/5)
 #define	DEST_TARGET_TIME	(GAME_TICKS_PER_SEC/4)
-#define STRUCTURE_ANIM_RATE 4
 
 /// The distance the selection box will pulse
 #define BOX_PULSE_SIZE  10
@@ -2007,7 +2006,7 @@ void	renderStructure(STRUCTURE *psStructure)
 	if (!defensive && psStructure->sDisplay.imd->numFrames > 0 && !(bMultiPlayer && psStructure->pStructureType->type == REF_BLASTDOOR))
 	{
 		// Calculate an animation frame
-		animFrame = getModularScaledGraphicsTime(STRUCTURE_ANIM_RATE*GAME_TICKS_PER_SEC, STRUCTURE_ANIM_RATE);
+		animFrame = getModularScaledGraphicsTime(psStructure->sDisplay.imd->animInterval, psStructure->sDisplay.imd->numFrames);
 	}
 
 	// -------------------------------------------------------------------------------
@@ -2248,7 +2247,7 @@ void	renderStructure(STRUCTURE *psStructure)
 
 									iV_MatrixRotateY(-player.r.y);
 									iV_MatrixRotateX(-player.r.x);
-									pie_Draw3DShape(pRepImd, getModularScaledGraphicsTime(100, pRepImd->numFrames), colour, buildingBrightness, WZCOL_BLACK, pie_ADDITIVE, 192);
+									pie_Draw3DShape(pRepImd, getModularScaledGraphicsTime(pRepImd->animInterval, pRepImd->numFrames), colour, buildingBrightness, WZCOL_BLACK, pie_ADDITIVE, 192);
 
 									iV_MatrixRotateX(player.r.x);
 									iV_MatrixRotateY(player.r.y);
