@@ -2683,6 +2683,7 @@ static void drawWeaponReloadBar(BASE_OBJECT *psObj, WEAPON *psWeap, int weapon_s
 	STRUCTURE		*psStruct;
 	float			mulH;	// display unit resistance instead of reload!
 	DROID			*psDroid;
+	int				compIndex;
 
 	if (ctrlShiftDown() && (psObj->type == OBJ_DROID))
 	{
@@ -2721,7 +2722,9 @@ static void drawWeaponReloadBar(BASE_OBJECT *psObj, WEAPON *psWeap, int weapon_s
 		return;
 	}
 
-	psStats = asWeaponStats + psWeap->nStat;
+	compIndex = psWeap->nStat;
+	ASSERT_OR_RETURN( , compIndex < numWeaponStats, "Invalid range referenced for numWeaponStats, %d > %d", compIndex, numWeaponStats);
+	psStats = asWeaponStats + compIndex;
 
 	/* Justifiable only when greater than a one second reload or intra salvo time  */
 	bSalvo = false;
@@ -4031,11 +4034,15 @@ static void showEffectCircle(Position centre, int32_t radius, uint32_t auxVar, E
 static void showWeaponRange(BASE_OBJECT *psObj)
 {
 	uint32_t weaponRange;
+	int compIndex;
 
 	if (psObj->type == OBJ_DROID)
 	{
+		WEAPON_STATS *psStats = NULL;
 		DROID *psDroid = (DROID*)psObj;
-		WEAPON_STATS *psStats = asWeaponStats + psDroid->asWeaps[0].nStat;//weapon_slot
+		compIndex = psDroid->asWeaps[0].nStat;	//weapon_slot
+		ASSERT_OR_RETURN( , compIndex < numWeaponStats, "Invalid range referenced for numWeaponStats, %d > %d", compIndex, numWeaponStats);
+		psStats = asWeaponStats + compIndex;
 		weaponRange = psStats->longRange;
 	}
 	else

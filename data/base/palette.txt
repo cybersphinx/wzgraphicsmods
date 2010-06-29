@@ -49,14 +49,14 @@ ff,50,50,ff	// blueprint invalid
 a0,a0,0,ff	// health medium shadow
 a0,0,0,ff	// health low shadow
 80,c0,ff,ff	// health resistance
-00,60,00,ff	// team1 - green
-8f,59,18,ff	// team2 - orange
+1d,ff,00,ff	// team1 - green
+ff,89,00,ff	// team2 - orange
 80,80,80,ff	// team3 - gray
 20,20,20,ff	// team4 - black
-77,03,02,ff	// team5 - red
-23,2d,7f,ff	// team6 - blue
-bf,2f,d0,ff	// team7 - purple
-39,a5,a6,ff	// team8 - teal
+ff,00,09,ff	// team5 - red
+00,11,ff,ff	// team6 - blue
+ff,00,c1,ff	// team7 - purple
+00,ff,fd,ff	// team8 - teal
 7f,7f,7f,ff	// default form background
 ff,ff,ff,ff	// default form text
 ff,ff,ff,ff	// default form light

@@ -120,7 +120,7 @@ void clearPlayer(UDWORD player,BOOL quietly)
 	UDWORD			i;
 	STRUCTURE		*psStruct,*psNext;
 
-	debug(LOG_INFO, "R.I.P. %s (%u). quietly is %s", getPlayerName(player), player, quietly ? "true":"false");
+	debug(LOG_NET, "R.I.P. %s (%u). quietly is %s", getPlayerName(player), player, quietly ? "true":"false");
 
 	ingame.JoiningInProgress[player] = false;	// if they never joined, reset the flag
 	ingame.DataIntegrity[player] = false;
@@ -209,7 +209,7 @@ BOOL MultiPlayerLeave(UDWORD playerIndex)
 	}
 
 	NETlogEntry("Player leaving game", SYNC_FLAG, playerIndex);
-	debug(LOG_INFO,"** Player %u [%s], has left the game.", playerIndex, getPlayerName(playerIndex));
+	debug(LOG_NET,"** Player %u [%s], has left the game.", playerIndex, getPlayerName(playerIndex));
 
 	ssprintf(buf, _("%s has Left the Game"), getPlayerName(playerIndex));
 
@@ -289,7 +289,7 @@ BOOL MultiPlayerJoin(UDWORD playerIndex)
 			{
 				if (NetPlay.players[i].allocated)
 				{
-					setMultiStats(i, getMultiStats(i, false), false);
+					setMultiStats(i, getMultiStats(i), false);
 				}
 			}
 		}
@@ -383,7 +383,7 @@ void setupNewPlayer(UDWORD player)
 
 	resetMultiVisibility(player);						// set visibility flags.
 
-	setMultiStats(player, getMultiStats(player, false), true);  // get the players score from the ether.
+	setMultiStats(player, getMultiStats(player), true);  // get the players score
 
 	ssprintf(buf, _("%s is Joining the Game"), getPlayerName(player));
 	addConsoleMessage(buf, DEFAULT_JUSTIFY, SYSTEM_MESSAGE);
