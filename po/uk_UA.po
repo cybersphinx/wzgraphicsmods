@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Warzone 2100 version 2.2.3\n"
 "Report-Msgid-Bugs-To: warzone-dev@gna.org\n"
-"POT-Creation-Date: 2010-05-21 06:08+1000\n"
+"POT-Creation-Date: 2010-06-17 20:45-0400\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Меденцій Олександр <olexandr1986@i.ua>\n"
 "Language-Team: \n"
@@ -12581,8 +12581,8 @@ msgstr "хост"
 msgid "go directly to host screen"
 msgstr "перейти безпосередньо до екрану хосту"
 
-#: src/configuration.c:445
 #: src/configuration.c:446
+#: src/configuration.c:447
 #: src/multistat.c:124
 msgid "Player"
 msgstr "Гравець"
@@ -12773,68 +12773,68 @@ msgstr "Втрачено Бойову Одиницю!"
 msgid "Structure Restored"
 msgstr "Будівлю Відновлено"
 
-#: src/droid.c:2954
+#: src/droid.c:2956
 #, c-format
 msgid "Group %u selected - %u Unit"
 msgid_plural "Group %u selected - %u Units"
 msgstr[0] "Групу %u обрано - %u Підрозділ"
 msgstr[1] "Групу %u обрано - %u Підрозділів"
 
-#: src/droid.c:2967
+#: src/droid.c:2969
 #, c-format
 msgid "%u unit assigned to Group %u"
 msgid_plural "%u units assigned to Group %u"
 msgstr[0] "%u підрозділ призначено у Групу %u"
 msgstr[1] "%u підрозділів призначено у Групу %u"
 
-#: src/droid.c:2980
+#: src/droid.c:2982
 #, c-format
 msgid "Centered on Group %u - %u Unit"
 msgid_plural "Centered on Group %u - %u Units"
 msgstr[0] "Центр екрану на Групі %u - %u Підрозділ"
 msgstr[1] "Центр екрану на Групі %u - %u Підрозділів"
 
-#: src/droid.c:2984
+#: src/droid.c:2986
 #, c-format
 msgid "Aligning with Group %u - %u Unit"
 msgid_plural "Aligning with Group %u - %u Units"
 msgstr[0] "Вирівнювання з Групою %u - %u Підрозділ"
 msgstr[1] "Вирівнювання з Групою %u - %u Підрозділів"
 
-#: src/droid.c:3268
+#: src/droid.c:3270
 msgid "Rookie"
 msgstr "Новобранець"
 
-#: src/droid.c:3269
+#: src/droid.c:3271
 msgctxt "rank"
 msgid "Green"
 msgstr "Зелений"
 
-#: src/droid.c:3270
+#: src/droid.c:3272
 msgid "Trained"
 msgstr "Рекрут"
 
-#: src/droid.c:3271
+#: src/droid.c:3273
 msgid "Regular"
 msgstr "Досвідчений"
 
-#: src/droid.c:3272
+#: src/droid.c:3274
 msgid "Professional"
 msgstr "Професіонал"
 
-#: src/droid.c:3273
+#: src/droid.c:3275
 msgid "Veteran"
 msgstr "Ветеран"
 
-#: src/droid.c:3274
+#: src/droid.c:3276
 msgid "Elite"
 msgstr "Елітний"
 
-#: src/droid.c:3275
+#: src/droid.c:3277
 msgid "Special"
 msgstr "Особливий"
 
-#: src/droid.c:3276
+#: src/droid.c:3278
 msgid "Hero"
 msgstr "Герой"
 
@@ -12912,8 +12912,8 @@ msgstr "РЕЖИМ ОДНОГО ГРАВЦЯ"
 
 #: src/frontend.c:474
 #: src/ingameop.c:519
-#: src/mission.c:2526
-#: src/mission.c:2631
+#: src/mission.c:2534
+#: src/mission.c:2639
 msgid "Load Saved Game"
 msgstr "Завантажити Збережену Гру"
 
@@ -12930,7 +12930,7 @@ msgid "Join Game"
 msgstr "Приєднатись до Гри"
 
 #: src/frontend.c:585
-#: src/multiint.c:1254
+#: src/multiint.c:1144
 msgid "OPTIONS"
 msgstr "ОПЦІЇ"
 
@@ -13025,7 +13025,7 @@ msgid "Off"
 msgstr "Вимкнено"
 
 #: src/frontend.c:687
-#: src/multiint.c:1323
+#: src/multiint.c:1213
 msgid "Fog"
 msgstr "Туман"
 
@@ -13036,7 +13036,7 @@ msgstr "Імла"
 
 #: src/frontend.c:694
 #: src/frontend.c:761
-#: src/multiint.c:1325
+#: src/multiint.c:1215
 msgid "Fog Of War"
 msgstr "Туман Війни"
 
@@ -13168,7 +13168,7 @@ msgid "GAME OPTIONS"
 msgstr "ІГРОВІ ОПЦІЇ"
 
 #: src/frontend.c:1706
-#: src/multiint.c:2235
+#: src/multiint.c:2125
 msgid "Mod: "
 msgstr ", моди: "
 
@@ -13226,7 +13226,7 @@ msgid "Build (F3)"
 msgstr "Будівництво (F3)"
 
 #: src/hci.c:3876
-#: src/multiint.c:1370
+#: src/multiint.c:1260
 #: src/multimenu.c:763
 msgid "Power"
 msgstr "Енергія"
@@ -13327,8 +13327,8 @@ msgstr "Тактична UI (Іконка Походження Цілі): При
 
 #: src/ingameop.c:295
 #: src/ingameop.c:523
-#: src/mission.c:2513
-#: src/mission.c:2634
+#: src/mission.c:2521
+#: src/mission.c:2642
 msgid "Save Game"
 msgstr "Зберегти Гру"
 
@@ -13786,10 +13786,10 @@ msgid "KEY MAPPING"
 msgstr "ПРИЗНАЧЕННЯ КЛАВІШ"
 
 #: src/keyedit.c:369
-#: src/multiint.c:638
-#: src/multiint.c:681
-#: src/multiint.c:1072
-#: src/multiint.c:1456
+#: src/multiint.c:528
+#: src/multiint.c:571
+#: src/multiint.c:962
+#: src/multiint.c:1346
 msgid "Return To Previous Screen"
 msgstr "Повернутися До Попереднього Екрану"
 
@@ -14162,42 +14162,42 @@ msgstr "Задіяти повторне відкривання будівель�
 msgid "Could not save game!"
 msgstr "Не вдалося зберегти гру!"
 
-#: src/mission.c:2066
+#: src/mission.c:2074
 msgid "Load Transport"
 msgstr "Завантажити Транспорт"
 
-#: src/mission.c:2460
+#: src/mission.c:2468
 msgid "OBJECTIVE ACHIEVED by cheating!"
 msgstr "ЗАВДАННЯ ВИКОНАНО за допомогою шахрайства!"
 
-#: src/mission.c:2460
+#: src/mission.c:2468
 msgid "OBJECTIVE ACHIEVED"
 msgstr "ЗАВДАННЯ ВИКОНАНО"
 
-#: src/mission.c:2466
+#: src/mission.c:2474
 msgid "OBJECTIVE FAILED--and you cheated!"
 msgstr "ЗАВДАННЯ ПРОВАЛЕНЕ--шахрайство вам не допомогло!"
 
-#: src/mission.c:2466
+#: src/mission.c:2474
 msgid "OBJECTIVE FAILED"
 msgstr "ЗАВДАННЯ ПРОВАЛЕНЕ"
 
-#: src/mission.c:2492
-#: src/mission.c:2532
-#: src/mission.c:2650
+#: src/mission.c:2500
+#: src/mission.c:2540
+#: src/mission.c:2658
 msgid "Quit To Main Menu"
 msgstr "Вийти В Головне Меню"
 
-#: src/mission.c:2500
+#: src/mission.c:2508
 msgid "Continue Game"
 msgstr "Продовжити Гру"
 
-#: src/mission.c:2597
+#: src/mission.c:2605
 msgid "GAME SAVED :"
 msgstr "ГРУ ЗБЕРЕЖЕНО:"
 
-#: src/move.c:2654
-#: src/move.c:2670
+#: src/move.c:2634
+#: src/move.c:2650
 #, c-format
 msgid "You found %u power in an oil drum."
 msgstr "Ви знайшли %u енергії в бочці нафти."
@@ -14252,268 +14252,268 @@ msgstr "%s Сформував Союз З %s"
 msgid "You Discover Blueprints For %s"
 msgstr "Ви Знайшли Креслення Для %s"
 
-#: src/multiint.c:572
+#: src/multiint.c:462
 #: src/multilimit.c:192
 msgid "Accept Settings"
 msgstr "Прийняти Налаштування"
 
-#: src/multiint.c:574
-#: src/multiint.c:1120
+#: src/multiint.c:464
+#: src/multiint.c:1010
 msgid "Cancel"
 msgstr "Відмінити"
 
-#: src/multiint.c:585
+#: src/multiint.c:475
 msgid "IP Address or Machine Name"
 msgstr "IP Адреса або Ім’я Машини"
 
-#: src/multiint.c:635
+#: src/multiint.c:525
 msgid "CONNECTION"
 msgstr "З’ЄДНАННЯ"
 
-#: src/multiint.c:648
+#: src/multiint.c:538
 msgid "Lobby"
 msgstr "Лоббі"
 
-#: src/multiint.c:649
+#: src/multiint.c:539
 msgid "IP"
 msgstr "IP"
 
-#: src/multiint.c:841
+#: src/multiint.c:731
 msgid "No games are available"
 msgstr "Немає доступних ігор"
 
-#: src/multiint.c:844
+#: src/multiint.c:734
 msgid "Game is full"
 msgstr "Гра повна"
 
-#: src/multiint.c:848
+#: src/multiint.c:738
 msgid "You were kicked!"
 msgstr "Вас викинуто!"
 
-#: src/multiint.c:851
+#: src/multiint.c:741
 msgid "Wrong Game Version!"
 msgstr "Невірна Версія Гри!"
 
-#: src/multiint.c:854
+#: src/multiint.c:744
 msgid "You have an incompatible mod."
 msgstr "У вас несумісний мод."
 
-#: src/multiint.c:858
+#: src/multiint.c:748
 msgid "Host couldn't send file?"
 msgstr "Хост не зміг відправити файл?"
 
-#: src/multiint.c:862
+#: src/multiint.c:752
 msgid "Incorrect Password!"
 msgstr "Невірний Пароль!"
 
-#: src/multiint.c:865
+#: src/multiint.c:755
 msgid "Host has dropped connection!"
 msgstr "Хост обірвав з'єднання!"
 
-#: src/multiint.c:869
+#: src/multiint.c:759
 msgid "Connection Error"
 msgstr "Помилка З’єднання"
 
-#: src/multiint.c:1013
+#: src/multiint.c:903
 msgid "Searching"
 msgstr "Пошук"
 
-#: src/multiint.c:1069
+#: src/multiint.c:959
 msgid "GAMES"
 msgstr "ІГРИ"
 
-#: src/multiint.c:1077
+#: src/multiint.c:967
 msgid "Refresh Games List"
 msgstr "Оновити Список Ігор"
 
-#: src/multiint.c:1097
+#: src/multiint.c:987
 msgid "Enter Password:"
 msgstr "Введіть Пароль"
 
-#: src/multiint.c:1118
+#: src/multiint.c:1008
 msgid "OK"
 msgstr "ОК"
 
-#: src/multiint.c:1259
-#: src/multiint.c:1266
+#: src/multiint.c:1149
+#: src/multiint.c:1156
 msgid "Select Game Name"
 msgstr "Виберіть Ім’я Гри"
 
-#: src/multiint.c:1259
+#: src/multiint.c:1149
 msgid "One-Player Skirmish"
 msgstr "Сутичка для Одного Гравця"
 
-#: src/multiint.c:1269
+#: src/multiint.c:1159
 msgid "Select Map"
 msgstr "Оберіть Мапу"
 
-#: src/multiint.c:1277
+#: src/multiint.c:1167
 msgid "Click to set Password"
 msgstr "Натисніть аби встановити Пароль"
 
-#: src/multiint.c:1287
-#: src/multiint.c:1288
+#: src/multiint.c:1177
+#: src/multiint.c:1178
 msgid "Scavengers"
 msgstr "Звалищники"
 
-#: src/multiint.c:1290
+#: src/multiint.c:1180
 msgid "No Scavengers"
 msgstr "Без Звалищників"
 
-#: src/multiint.c:1320
+#: src/multiint.c:1210
 msgid "Select Player Name"
 msgstr "Виберіть Ім’я Гравця"
 
-#: src/multiint.c:1326
+#: src/multiint.c:1216
 msgid "Distance Fog"
 msgstr "Дальній Туман"
 
-#: src/multiint.c:1337
+#: src/multiint.c:1227
 #: src/multimenu.c:756
 msgid "Alliances"
 msgstr "Союзи"
 
-#: src/multiint.c:1340
+#: src/multiint.c:1230
 msgid "No Alliances"
 msgstr "Без Союзів"
 
-#: src/multiint.c:1342
+#: src/multiint.c:1232
 msgid "Allow Alliances"
 msgstr "Союзи Дозволені"
 
-#: src/multiint.c:1346
+#: src/multiint.c:1236
 msgid "Locked Teams"
 msgstr "Закріплені Команди"
 
-#: src/multiint.c:1372
+#: src/multiint.c:1262
 msgid "Low Power Levels"
 msgstr "Низькі Рівні Енергії"
 
-#: src/multiint.c:1374
+#: src/multiint.c:1264
 msgid "Medium Power Levels"
 msgstr "Середні Рівні Енергії"
 
-#: src/multiint.c:1376
+#: src/multiint.c:1266
 msgid "High Power Levels"
 msgstr "Високі Рівні Енергії"
 
-#: src/multiint.c:1408
+#: src/multiint.c:1298
 msgid "Base"
 msgstr "База"
 
-#: src/multiint.c:1410
+#: src/multiint.c:1300
 msgid "Start with No Bases"
 msgstr "Старт без Баз"
 
-#: src/multiint.c:1412
+#: src/multiint.c:1302
 msgid "Start with Bases"
 msgstr "Старт з Базами"
 
-#: src/multiint.c:1414
+#: src/multiint.c:1304
 msgid "Start with Advanced Bases"
 msgstr "Старт з Розвиненими Базами"
 
-#: src/multiint.c:1446
+#: src/multiint.c:1336
 msgid "Map Preview"
 msgstr "Вигляд Мапи"
 
-#: src/multiint.c:1448
+#: src/multiint.c:1338
 msgid "Click to see Map"
 msgstr "Натисни, щоб побачити Мапу"
 
-#: src/multiint.c:1462
+#: src/multiint.c:1352
 msgid "Start Hosting Game"
 msgstr "Створити Гру"
 
-#: src/multiint.c:1470
+#: src/multiint.c:1360
 msgid "Show Structure Limits"
 msgstr "Показати Межу Кількості Будівель"
 
-#: src/multiint.c:1470
+#: src/multiint.c:1360
 msgid "Set Structure Limits"
 msgstr "Встановити Межу Кількості Будівель"
 
-#: src/multiint.c:1533
+#: src/multiint.c:1423
 msgid "Player colour"
 msgstr "Колір гравця"
 
-#: src/multiint.c:1549
+#: src/multiint.c:1439
 msgid "Kick player"
 msgstr "Викинути гравця"
 
-#: src/multiint.c:1560
+#: src/multiint.c:1450
 msgid "Player number"
 msgstr "Номер гравця"
 
-#: src/multiint.c:1922
+#: src/multiint.c:1812
 msgid "Team"
 msgstr "Команда"
 
-#: src/multiint.c:1955
+#: src/multiint.c:1845
 msgid "Waiting for other players"
 msgstr "Чекаємо інших гравців"
 
-#: src/multiint.c:1961
+#: src/multiint.c:1851
 msgid "Click when ready"
 msgstr "Натисни, коли готовий"
 
-#: src/multiint.c:1965
+#: src/multiint.c:1855
 msgid "READY?"
 msgstr "ГОТОВІ?"
 
-#: src/multiint.c:2002
+#: src/multiint.c:1892
 msgid "PLAYERS"
 msgstr "ГРАВЦІ"
 
-#: src/multiint.c:2206
+#: src/multiint.c:2096
 msgid "CHAT"
 msgstr "ЧАТ"
 
-#: src/multiint.c:2240
+#: src/multiint.c:2130
 msgid "All players need to have the same mods to join your game."
 msgstr "Всі гравці повинні мати однакові моди щоб приєднатись до гри."
 
-#: src/multiint.c:2400
+#: src/multiint.c:2290
 msgid "*** password is now required! ***"
 msgstr "*** зараз потрібен пароль! ***"
 
-#: src/multiint.c:2407
+#: src/multiint.c:2297
 msgid "*** password is NOT required! ***"
 msgstr "*** пароль НЕ потрібен! ***"
 
-#: src/multiint.c:2650
+#: src/multiint.c:2540
 msgid "Sorry! Failed to host the game."
 msgstr "Вибачте! Не далося створити гру."
 
-#: src/multiint.c:2735
+#: src/multiint.c:2625
 msgid "'Locked Teams' mode enabled"
 msgstr "'Закріплені Команди' режим активовано"
 
-#: src/multiint.c:2774
-#: src/multiint.c:2824
+#: src/multiint.c:2664
+#: src/multiint.c:2714
 #, c-format
 msgid "The host has kicked %s from the game!"
 msgstr "Хост викинув %s з гри!"
 
-#: src/multiint.c:2899
+#: src/multiint.c:2789
 msgid "Host is Starting Game"
 msgstr "Хост Починає Гру"
 
-#: src/multiint.c:3459
+#: src/multiint.c:3349
 msgid "Players"
 msgstr "Гравці"
 
-#: src/multiint.c:3576
+#: src/multiint.c:3466
 #, c-format
 msgid "Sending Map: %d%% "
 msgstr "Відправляється Карта: %d%% "
 
-#: src/multiint.c:3584
+#: src/multiint.c:3474
 #, c-format
 msgid "Map: %d%% downloaded"
 msgstr "Мапа: %d%% завантажена"
 
-#: src/multiint.c:3610
+#: src/multiint.c:3500
 msgid "HOST"
 msgstr "ХОСТ"
 
