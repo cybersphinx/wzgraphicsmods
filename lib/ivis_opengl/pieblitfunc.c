@@ -56,8 +56,8 @@
 #define pie_FILLTRANS	128
 
 static GLuint radarTexture;
-static GLuint radarSizeX, radarSizeY;
-static GLfloat radarTexX, radarTexY;
+static GLuint radarTexW, radarTexH;
+static GLfloat radarTexU, radarTexV;
 
 /***************************************************************************/
 /*
@@ -274,6 +274,7 @@ BOOL pie_InitRadar(void)
 	radarTexture = _TEX_INDEX;
 	glGenTextures(1, &_TEX_PAGE[_TEX_INDEX].id);
 	_TEX_INDEX++;
+	radarTexW = radarTexH = 0;
 	return true;
 }
 
@@ -294,19 +295,23 @@ void pie_DownLoadRadar(UDWORD *buffer, int width, int height)
 	while (height > (h *= 2));
 
 	pie_SetTexturePage(radarTexture);
-	black = calloc(1, w * h * 4);
-	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, w, h, 0, GL_RGBA, GL_UNSIGNED_BYTE, black);
-	free(black);
+	if (w > radarTexW || h > radarTexH)
+	{
+		black = calloc(1, w * h * 4);
+		glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, w, h, 0, GL_RGBA, GL_UNSIGNED_BYTE, black);
+		free(black);
+		radarTexW = w;
+		radarTexH = h;
+	}
 	glTexSubImage2D(GL_TEXTURE_2D, 0, 0, 0, width, height, GL_RGBA, GL_UNSIGNED_BYTE, buffer);
 	glTexEnvf(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_MODULATE);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP);
-	radarSizeX = width;
-	radarSizeY = height;
-	radarTexX = ((GLfloat)width / (GLfloat)w);
-	radarTexY = ((GLfloat)height / (GLfloat)h);
+
+	radarTexU = ((GLfloat)width / (GLfloat)radarTexW);
+	radarTexV = ((GLfloat)height / (GLfloat)radarTexH);
 }
 
 /** Display radar texture using the given height and width, depending on zoom level. */
@@ -318,9 +323,9 @@ void pie_RenderRadar(int x, int y, int width, int height)
 	glColor4ubv(WZCOL_WHITE.vector);
 	glBegin(GL_TRIANGLE_STRIP);
 		glTexCoord2f(0, 0);			glVertex2f(x, y);
-		glTexCoord2f(radarTexX, 0);		glVertex2f(x + width, y);
-		glTexCoord2f(0, radarTexY);		glVertex2f(x, y + height);
-		glTexCoord2f(radarTexX, radarTexY);	glVertex2f(x + width, y + height);
+		glTexCoord2f(radarTexU, 0);		glVertex2f(x + width, y);
+		glTexCoord2f(0, radarTexV);		glVertex2f(x, y + height);
+		glTexCoord2f(radarTexU, radarTexV);	glVertex2f(x + width, y + height);
 	glEnd();
 }
 
