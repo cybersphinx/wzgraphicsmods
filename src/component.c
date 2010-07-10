@@ -605,15 +605,19 @@ static void displayCompObj(DROID *psDroid, BOOL bButton)
 	psShapeTemp = BODY_IMD(psDroid,psDroid->player);
 	if(psShapeTemp!=NULL)
 	{
+		frame = 0;
+		if(psShapeTemp->numFrames > 0 && psShapeTemp->numFrames != 8)
+			frame = getModularScaledGraphicsTime(psShapeTemp->animInterval, psShapeTemp->numFrames);
 		// FIXME
 		if ( psDroid->droidType == DROID_PERSON)
 		{
 			/* draw body if not animating */
 			if ( psDroid->psCurAnim == NULL  || psDroid->psCurAnim->bVisible == false )
 			{
+				
 				// FIXME - hideous....!!!!
 				pie_MatScale(75);
-				pie_Draw3DShape(psShapeTemp, 0, psDroid->player-6, brightness, specular, pieFlag, iPieData);
+				pie_Draw3DShape(psShapeTemp, frame, psDroid->player-6, brightness, specular, pieFlag, iPieData);
 			}
 		}
 		else if (cyborgDroid(psDroid))
@@ -621,12 +625,12 @@ static void displayCompObj(DROID *psDroid, BOOL bButton)
 			/* draw body if cyborg not animating */
 			if ( psDroid->psCurAnim == NULL || psDroid->psCurAnim->bVisible == false )
 			{
-				pie_Draw3DShape(psShapeTemp, 0, colour, brightness, specular, pieFlag, iPieData);
+				pie_Draw3DShape(psShapeTemp, frame, colour, brightness, specular, pieFlag, iPieData);
 			}
 		}
 		else
 		{
-			pie_Draw3DShape(psShapeTemp, 0, colour, brightness, specular, pieFlag, iPieData);
+			pie_Draw3DShape(psShapeTemp, frame, colour, brightness, specular, pieFlag, iPieData);
 		}
 	}
 
