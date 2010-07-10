@@ -585,6 +585,7 @@ static void displayCompObj(DROID *psDroid, BOOL bButton)
 	psShapeTemp = (leftFirst ? getLeftPropulsionIMD(psDroid) : getRightPropulsionIMD(psDroid));
 	if(psShapeTemp!=NULL)
 	{
+
 		pie_Draw3DShape(psShapeTemp, 0, colour, brightness, specular, pieFlag, iPieData);
 	}
 
@@ -966,7 +967,16 @@ static void displayCompObj(DROID *psDroid, BOOL bButton)
 	psShape = (leftFirst ? getRightPropulsionIMD(psDroid) : getLeftPropulsionIMD(psDroid));
 	if(psShape!=NULL)
 	{
-		pie_Draw3DShape(psShape, 0, colour, brightness, specular, pieFlag, iPieData);
+		frame = 0;
+		if(psShape->numFrames > 0 && psShape->numFrames != 8)
+	        {
+				
+		if(!(psDroid->sMove.Status == MOVEINACTIVE || psDroid->sMove.Status == MOVEHOVER || psDroid->sMove.Status == MOVESHUFFLE))
+				frame = getModularScaledGraphicsTime(psShape->animInterval, psShape->numFrames);
+		
+		
+		}
+		pie_Draw3DShape(psShape, frame, colour, brightness, specular, pieFlag, iPieData);
 	}
 }
 
