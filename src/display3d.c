@@ -1974,6 +1974,7 @@ static PIELIGHT getBlueprintColour(STRUCT_STATES state)
 }
 
 /// Draw the structures
+
 void	renderStructure(STRUCTURE *psStructure)
 {
 	int			i, structX, structY, rx, rz, colour, rotation, frame, animFrame, pieFlag, pieFlagData;
@@ -1984,9 +1985,13 @@ void	renderStructure(STRUCTURE *psStructure)
 	BOOL			defensive = false;
 	iIMDShape		*strImd = psStructure->sDisplay.imd;
 
+
+	
+
 	if (psStructure->pStructureType->type == REF_WALL || psStructure->pStructureType->type == REF_WALLCORNER
 	    || psStructure->pStructureType->type == REF_GATE)
 	{
+		
 		renderWallSection(psStructure);
 		return;
 	}
@@ -2439,12 +2444,13 @@ static BOOL	renderWallSection(STRUCTURE *psStructure)
 	SDWORD			structX, structY, rx, rz, height;
 	PIELIGHT		brightness, specular = WZCOL_BLACK;
 	iIMDShape		*imd;
-	SDWORD			rotation;
+	SDWORD			rotation, animFrame;
 	Vector3i			dv;
 	UDWORD			i;
 	Vector3f			*temp;
 	int				pieFlag, pieFlagData;
 
+	animFrame = 0;
 	if(psStructure->visible[selectedPlayer] || demoGetStatus())
 	{
 		height = psStructure->sDisplay.imd->max.y;
@@ -2525,6 +2531,8 @@ static BOOL	renderWallSection(STRUCTURE *psStructure)
 
 		imd = psStructure->sDisplay.imd;
 		temp = imd->points;
+		if(psStructure->sDisplay.imd->numFrames != 8)
+		animFrame = getModularScaledGraphicsTime(psStructure->sDisplay.imd->animInterval, psStructure->sDisplay.imd->numFrames);
 
 		flattenImd(imd, structX, structY, UNDEG(psStructure->rot.direction));
 
@@ -2533,7 +2541,7 @@ static BOOL	renderWallSection(STRUCTURE *psStructure)
 			(psStructure->status == SS_BEING_DEMOLISHED ) ||
 			(psStructure->status == SS_BEING_BUILT && psStructure->pStructureType->type == REF_RESOURCE_EXTRACTOR) )
 		{
-			pie_Draw3DShape(psStructure->sDisplay.imd, 0, getPlayerColour(psStructure->player),
+			pie_Draw3DShape(psStructure->sDisplay.imd, animFrame, getPlayerColour(psStructure->player),
 							brightness, specular, pie_HEIGHT_SCALED|pie_SHADOW,
 							(SDWORD)(structHeightScale(psStructure) * pie_RAISE_SCALE) );
 		}
@@ -2557,7 +2565,7 @@ static BOOL	renderWallSection(STRUCTURE *psStructure)
 				}
 				pieFlagData = 0;
 			}
-			pie_Draw3DShape(imd, 0, getPlayerColour(psStructure->player), brightness, specular, pieFlag, pieFlagData);
+			pie_Draw3DShape(imd, animFrame, getPlayerColour(psStructure->player), brightness, specular, pieFlag, pieFlagData);
 		}
 		imd->points = temp;
 
