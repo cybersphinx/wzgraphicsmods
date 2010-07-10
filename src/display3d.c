@@ -2531,7 +2531,7 @@ static BOOL	renderWallSection(STRUCTURE *psStructure)
 
 		imd = psStructure->sDisplay.imd;
 		temp = imd->points;
-		if(psStructure->sDisplay.imd->numFrames != 8)
+		if(psStructure->sDisplay.imd->numFrames != 8 && psStructure->sDisplay.imd->numFrames != 0)
 		animFrame = getModularScaledGraphicsTime(psStructure->sDisplay.imd->animInterval, psStructure->sDisplay.imd->numFrames);
 
 		flattenImd(imd, structX, structY, UNDEG(psStructure->rot.direction));
