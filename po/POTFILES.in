@@ -192,6 +192,7 @@ lib/exceptionhandler/dumpinfo.cpp
 lib/exceptionhandler/exceptionhandler.c
 lib/exceptionhandler/exchndl.c
 lib/framework/configfile.c
+lib/framework/crc.cpp
 lib/framework/cursors16.c
 lib/framework/cursors32.c
 lib/framework/cursors.c
