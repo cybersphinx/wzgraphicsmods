@@ -581,21 +581,21 @@ static void displayCompObj(DROID *psDroid, BOOL bButton)
 		pie_TRANSLATE(0, -world_coord(1)/2.3f, 0);
 	}
 
-	//uses psShapeTemp to separate it from turret's psShape
+	//uses psShapeTemp too separate it from turret's psShape
 	psShapeTemp = (leftFirst ? getLeftPropulsionIMD(psDroid) : getRightPropulsionIMD(psDroid));
 	if(psShapeTemp!=NULL)
 	{
 
 		frame = 0;
-		if(psShape->numFrames > 0 && psShape->numFrames != 8)
+		if(psShapeTemp->numFrames > 0 && psShapeTemp->numFrames != 8)
 	        {
 				
 		if(!(psDroid->sMove.Status == MOVEINACTIVE || psDroid->sMove.Status == MOVEHOVER || psDroid->sMove.Status == MOVESHUFFLE))
-				frame = getModularScaledGraphicsTime(psShape->animInterval, psShape->numFrames);
+				frame = getModularScaledGraphicsTime(psShapeTemp->animInterval, psShapeTemp->numFrames);
 		
 		
 		}
-		pie_Draw3DShape(psShape, frame, colour, brightness, specular, pieFlag, iPieData);
+		pie_Draw3DShape(psShapeTemp, frame, colour, brightness, specular, pieFlag, iPieData);
 	}
 
 	/* set default components transparent */
