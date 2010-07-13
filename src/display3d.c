@@ -2573,7 +2573,7 @@ static BOOL	renderWallSection(STRUCTURE *psStructure)
 			}
 			// Ignores shadows if animation exists for the model (to cope with transparencies)
 			pie_Draw3DShape(imd, animFrame, getPlayerColour(psStructure->player), brightness, specular, (imd->numFrames > 0 ? 0 : pieFlag), pieFlagData);
-			if(gameTime-psStructure->timeLastHit < 1000) 
+			if(gameTime-psStructure->timeLastHit < 10) 
 				{
 				effectGiveAuxVar(500);	
 				addEffect(&pos,EFFECT_EXPLOSION,EXPLOSION_TYPE_LASER,true,NULL,1);
