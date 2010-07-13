@@ -587,11 +587,11 @@ static void displayCompObj(DROID *psDroid, BOOL bButton)
 	{
 
 		frame = 0;
-		if(psShape->numFrames > 0 && psShape->numFrames != 8)
+		if(psTempShape->numFrames > 0 && psTempShape->numFrames != 8)
 	        {
 				
 		if(!(psDroid->sMove.Status == MOVEINACTIVE || psDroid->sMove.Status == MOVEHOVER || psDroid->sMove.Status == MOVESHUFFLE))
-				frame = getModularScaledGraphicsTime(psShape->animInterval, psShape->numFrames);
+				frame = getModularScaledGraphicsTime(psTempShape->animInterval, psTempShape->numFrames);
 		
 		
 		}
