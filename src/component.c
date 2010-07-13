@@ -587,15 +587,15 @@ static void displayCompObj(DROID *psDroid, BOOL bButton)
 	{
 
 		frame = 0;
-		if(psTempShape->numFrames > 0 && psTempShape->numFrames != 8)
+		if(psShapeTemp->numFrames > 0 && psShapeTemp->numFrames != 8)
 	        {
 				
 		if(!(psDroid->sMove.Status == MOVEINACTIVE || psDroid->sMove.Status == MOVEHOVER || psDroid->sMove.Status == MOVESHUFFLE))
-				frame = getModularScaledGraphicsTime(psTempShape->animInterval, psTempShape->numFrames);
+				frame = getModularScaledGraphicsTime(psShapeTemp->animInterval, psShapeTemp->numFrames);
 		
 		
 		}
-		pie_Draw3DShape(psShape, frame, colour, brightness, specular, pieFlag, iPieData);
+		pie_Draw3DShape(psShapeTemp, frame, colour, brightness, specular, pieFlag, iPieData);
 	}
 
 	/* set default components transparent */
