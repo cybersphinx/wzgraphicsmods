@@ -581,7 +581,7 @@ static void displayCompObj(DROID *psDroid, BOOL bButton)
 		pie_TRANSLATE(0, -world_coord(1)/2.3f, 0);
 	}
 
-	//uses psShapeTemp too separate it from turret's psShape
+	//uses psShapeTemp to separate it from turret's psShape
 	psShapeTemp = (leftFirst ? getLeftPropulsionIMD(psDroid) : getRightPropulsionIMD(psDroid));
 	if(psShapeTemp!=NULL)
 	{
