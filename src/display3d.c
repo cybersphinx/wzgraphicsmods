@@ -2142,7 +2142,7 @@ void	renderStructure(STRUCTURE *psStructure)
 			pieFlag = pie_STATIC_SHADOW;
 			pieFlagData = 0;
 		}
-		pie_Draw3DShape(strImd, (psStructure->status == SS_BEING_BUILT ? 0 : animFrame), colour, buildingBrightness, WZCOL_BLACK, pieFlag, pieFlagData);
+		pie_Draw3DShape(strImd, (psStructure->status == SS_BEING_BUILT ? 0 : (structureIsBlueprint(psStructure) ? 0 : animFrame)), colour, buildingBrightness, WZCOL_BLACK, pieFlag, pieFlagData);
 		if (defensive)
 		{
 			strImd->points = temp;
@@ -2544,8 +2544,8 @@ static BOOL	renderWallSection(STRUCTURE *psStructure)
 								// Ignores shadows if animation exists for the model (to cope with transparencies)
 								// Turn off structure animation if the structure is getting built.
 								pie_Draw3DShape(psStructure->sDisplay.imd, 
-								(psStructure->status == SS_BEING_BUILT ? 0 : animFrame), getPlayerColour(psStructure->player),
-								brightness, specular, (imd->numFrames > 0 ? 0 : pie_HEIGHT_SCALED|pie_SHADOW),
+								(psStructure->status == SS_BEING_BUILT ? 0 : (structureIsBlueprint(psStructure) ? 0 :animFrame)), getPlayerColour(psStructure->player),
+								brightness, specular, (imd->numFrames > 0 ? pie_HEIGHT_SCALED|0 : pie_HEIGHT_SCALED|pie_SHADOW),
 								(SDWORD)(structHeightScale(psStructure) * pie_RAISE_SCALE) );
 							
 		}
@@ -2570,7 +2570,7 @@ static BOOL	renderWallSection(STRUCTURE *psStructure)
 				pieFlagData = 0;
 			}
 			// Ignores shadows if animation exists for the model (to cope with transparencies)
-			pie_Draw3DShape(imd, animFrame, getPlayerColour(psStructure->player), brightness, specular, (imd->numFrames > 0 ? 0 : pieFlag), pieFlagData);
+			pie_Draw3DShape(imd, (structureIsBlueprint(psStructure) ? 0 :animFrame), getPlayerColour(psStructure->player), brightness, specular, (imd->numFrames > 0 ? 0 : pieFlag), pieFlagData);
 		}
 		imd->points = temp;
 
