@@ -2081,8 +2081,6 @@ void	renderStructure(STRUCTURE *psStructure)
 	{
 		bHitByElectronic = true;
 	}
-	if(gameTime2-psStructure->timeLastHit < ELEC_DAMAGE_DURATION)
-		bHitByElectronic = true;
 
 	buildingBrightness = structureBrightness(psStructure);
 
@@ -2447,7 +2445,7 @@ static BOOL	renderWallSection(STRUCTURE *psStructure)
 	PIELIGHT		brightness, specular = WZCOL_BLACK;
 	iIMDShape		*imd;
 	SDWORD			rotation, animFrame;
-	Vector3i			dv;
+	Vector3i			dv, pos;
 	UDWORD			i;
 	Vector3f			*temp;
 	int				pieFlag, pieFlagData;
@@ -2460,9 +2458,11 @@ static BOOL	renderWallSection(STRUCTURE *psStructure)
 		/* Get it's x and y coordinates so we don't have to deref. struct later */
 		structX = psStructure->pos.x;
 		structY = psStructure->pos.y;
-
+		pos.x = structX;
+		pos.z = structY;
+		pos.y = map_Height(structX, structY);
 		brightness = structureBrightness(psStructure);
-
+		
 		/*
 		Right, now the tricky bit, we need to bugger about with the coordinates of the imd to make it
 		fit tightly to the ground and to neighbours.
@@ -2572,7 +2572,12 @@ static BOOL	renderWallSection(STRUCTURE *psStructure)
 				pieFlagData = 0;
 			}
 			// Ignores shadows if animation exists for the model (to cope with transparencies)
-			pie_Draw3DShape(imd, (structureIsBlueprint(psStructure) ? 0 :animFrame), getPlayerColour(psStructure->player), brightness, specular, (imd->numFrames > 0 ? 0 : pieFlag), pieFlagData);
+			pie_Draw3DShape(imd, animFrame, getPlayerColour(psStructure->player), brightness, specular, (imd->numFrames > 0 ? 0 : pieFlag), pieFlagData);
+			if(gameTime-psStructure->timeLastHit < 1000) 
+				{
+				effectGiveAuxVar(500);	
+				addEffect(&pos,EFFECT_EXPLOSION,EXPLOSION_TYPE_LASER,true,NULL,1);
+				}
 		}
 		imd->points = temp;
 
