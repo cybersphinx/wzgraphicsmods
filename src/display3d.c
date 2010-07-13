@@ -2541,9 +2541,17 @@ static BOOL	renderWallSection(STRUCTURE *psStructure)
 			(psStructure->status == SS_BEING_DEMOLISHED ) ||
 			(psStructure->status == SS_BEING_BUILT && psStructure->pStructureType->type == REF_RESOURCE_EXTRACTOR) )
 		{
-			pie_Draw3DShape(psStructure->sDisplay.imd, animFrame, getPlayerColour(psStructure->player),
-							brightness, specular, pie_HEIGHT_SCALED|pie_SHADOW,
-							(SDWORD)(structHeightScale(psStructure) * pie_RAISE_SCALE) );
+							if(psStructure->status != SS_BEING_BUILT)
+							{			
+								pie_Draw3DShape(psStructure->sDisplay.imd, 0, getPlayerColour(psStructure->player),
+								brightness, specular, pie_HEIGHT_SCALED|pie_SHADOW,
+								(SDWORD)(structHeightScale(psStructure) * pie_RAISE_SCALE) );
+							} else
+							{
+								pie_Draw3DShape(psStructure->sDisplay.imd, animFrame, getPlayerColour(psStructure->player),
+								brightness, specular, pie_HEIGHT_SCALED|pie_SHADOW,
+								(SDWORD)(structHeightScale(psStructure) * pie_RAISE_SCALE) );
+							}
 		}
 		else
 		{
