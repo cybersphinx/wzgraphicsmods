@@ -2076,7 +2076,7 @@ void	renderStructure(STRUCTURE *psStructure)
 	rotation = psStructure->rot.direction;
 	iV_MatrixRotateY(-rotation);
 	if (!defensive
-	    && gameTime2-psStructure->timeLastHit < ELEC_DAMAGE_DURATION
+	    && gameTime-psStructure->timeLastHit < ELEC_DAMAGE_DURATION
 	    && psStructure->lastHitWeapon == WSC_ELECTRONIC )
 	{
 		bHitByElectronic = true;
