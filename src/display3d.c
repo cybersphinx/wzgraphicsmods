@@ -2544,12 +2544,12 @@ static BOOL	renderWallSection(STRUCTURE *psStructure)
 							if(psStructure->status != SS_BEING_BUILT)
 							{			
 								pie_Draw3DShape(psStructure->sDisplay.imd, 0, getPlayerColour(psStructure->player),
-								brightness, specular, pie_HEIGHT_SCALED|pie_SHADOW,
+								brightness, specular, (imd->numFrames > 0 ? 0 : pie_HEIGHT_SCALED|pie_SHADOW),
 								(SDWORD)(structHeightScale(psStructure) * pie_RAISE_SCALE) );
 							} else
 							{
 								pie_Draw3DShape(psStructure->sDisplay.imd, animFrame, getPlayerColour(psStructure->player),
-								brightness, specular, pie_HEIGHT_SCALED|pie_SHADOW,
+								brightness, specular, (imd->numFrames > 0 ? 0 : pie_HEIGHT_SCALED|pie_SHADOW),
 								(SDWORD)(structHeightScale(psStructure) * pie_RAISE_SCALE) );
 							}
 		}
@@ -2573,7 +2573,7 @@ static BOOL	renderWallSection(STRUCTURE *psStructure)
 				}
 				pieFlagData = 0;
 			}
-			pie_Draw3DShape(imd, animFrame, getPlayerColour(psStructure->player), brightness, specular, pieFlag, pieFlagData);
+			pie_Draw3DShape(imd, animFrame, getPlayerColour(psStructure->player), brightness, specular, (imd->numFrames > 0 ? 0 : pieFlag), pieFlagData);
 		}
 		imd->points = temp;
 
