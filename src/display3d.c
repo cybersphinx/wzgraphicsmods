@@ -2081,6 +2081,8 @@ void	renderStructure(STRUCTURE *psStructure)
 	{
 		bHitByElectronic = true;
 	}
+	if(gameTime2-psStructure->timeLastHit < ELEC_DAMAGE_DURATION)
+		bHitByElectronic = true;
 
 	buildingBrightness = structureBrightness(psStructure);
 
