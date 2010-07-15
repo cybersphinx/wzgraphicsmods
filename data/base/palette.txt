@@ -72,4 +72,4 @@ cc,eb,13,ff	// action progress bar major
 ff,ff,0,ff	// production run text
 0,20,40,ff	// production run background
 0,0,0,18	// game loading bar background
-ff,00,00,ff     // Wall impacts
+ff,ff,ff,ff     // Wall impacts
