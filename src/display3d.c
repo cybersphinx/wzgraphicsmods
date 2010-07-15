@@ -2575,7 +2575,7 @@ static BOOL	renderWallSection(STRUCTURE *psStructure)
 			
 			if(gameTime-psStructure->timeLastHit < 500 && imd->numFrames > 0) 
 				{
-				pie_Draw3DShape(imd, animFrame, getPlayerColour(8), brightness, specular, (imd->numFrames > 0 ? 0 : pieFlag), pieFlagData);
+				pie_Draw3DShape(imd, animFrame, 8, brightness, specular, (imd->numFrames > 0 ? 0 : pieFlag), pieFlagData);
 				effectGiveAuxVar(500);	
 				//addEffect(&pos,EFFECT_EXPLOSION,EXPLOSION_TYPE_TESLA,true,NULL,1);
 
