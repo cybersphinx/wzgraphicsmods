@@ -610,7 +610,6 @@ static iIMDShape *_imd_load_level(const char **ppFileData, const char *FileDataE
 		}
 		else
 		{
-			printf(pFileData);
 			debug(LOG_ERROR, "(_load_level) unexpected directive %s %d", buffer, n);
 			break;
 		}
