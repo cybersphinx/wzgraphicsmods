@@ -2577,7 +2577,7 @@ static BOOL	renderWallSection(STRUCTURE *psStructure)
 				{
 				pie_Draw3DShape(imd, animFrame, 9, brightness, specular, (imd->numFrames > 0 ? 0 : pieFlag), pieFlagData);
 				effectGiveAuxVar(500);	
-				addEffect(&pos,EFFECT_EXPLOSION,EXPLOSION_TYPE_TESLA,true,NULL,1);
+				//addEffect(&pos,EFFECT_EXPLOSION,EXPLOSION_TYPE_TESLA,true,NULL,1);
 
 				} else
 				{
