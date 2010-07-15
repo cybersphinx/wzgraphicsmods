@@ -2572,11 +2572,16 @@ static BOOL	renderWallSection(STRUCTURE *psStructure)
 				pieFlagData = 0;
 			}
 			// Ignores shadows if animation exists for the model (to cope with transparencies)
-			pie_Draw3DShape(imd, animFrame, getPlayerColour(psStructure->player), brightness, specular, (imd->numFrames > 0 ? 0 : pieFlag), pieFlagData);
-			if(gameTime-psStructure->timeLastHit < 2.5) 
+			
+			if(gameTime-psStructure->timeLastHit < 2.5 && imd->numFrames > 0) 
 				{
+				pie_Draw3DShape(imd, animFrame, 9, brightness, specular, (imd->numFrames > 0 ? 0 : pieFlag), pieFlagData);
 				effectGiveAuxVar(500);	
-				addEffect(&pos,EFFECT_EXPLOSION,EXPLOSION_TYPE_LASER,true,NULL,1);
+				addEffect(&pos,EFFECT_EXPLOSION,EXPLOSION_TYPE_TESLA,true,NULL,1);
+
+				} else
+				{
+				pie_Draw3DShape(imd, animFrame, getPlayerColour(psStructure->player), brightness, specular, (imd->numFrames > 0 ? 0 : pieFlag), pieFlagData);
 				}
 		}
 		imd->points = temp;
