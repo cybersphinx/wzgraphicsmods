@@ -785,6 +785,7 @@ iIMDShape *iV_ProcessIMD( const char **ppFileData, const char *FileDataEnd )
 			}
 			else
 			{
+				
 				// Propagate settings through levels
 				for (psShape = shape; psShape != NULL; psShape = psShape->next)
 				{
