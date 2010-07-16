@@ -179,7 +179,7 @@ void pie_InitSkybox(SDWORD pageNum)
 {
 	pie_SetTexturePage(pageNum);
 
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+	glTexParameteri(GL_TEXTURE_1D, GL_TEXTURE_WRAP_S, GL_REPEAT);
 }
 
 
