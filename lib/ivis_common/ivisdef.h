@@ -98,6 +98,8 @@ typedef struct _iIMDShape {
 
 	unsigned int nconnectors;
 	Vector3f *connectors;
+	BOOL shadows;
+	BOOL hitEffects;
 
 	unsigned int nShadowEdges;
 	EDGE *shadowEdgeList;

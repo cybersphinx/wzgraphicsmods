@@ -74,6 +74,8 @@ static bool _imd_load_polys( const char **ppFileData, iIMDShape *s, int pieVersi
 
 	s->numFrames = 0;
 	s->animInterval = 0;
+	s->shadows = true;
+	s->hitEffects = false;
 
 	s->polys = (iIMDPoly*)malloc(sizeof(iIMDPoly) * s->npolys);
 	if (s->polys == NULL)
@@ -138,7 +140,11 @@ static bool _imd_load_polys( const char **ppFileData, iIMDShape *s, int pieVersi
 			poly->normal = pie_SurfaceNormal3fv(p0, p1, p2);
 		}
 
-		// PIE2 only
+		if(poly->flags & iV_IMD_SHADOWS)
+			s->shadows = false;
+
+		if(poly->flags & iV_IMD_ADDEFFECT)
+			s->hitEffects = true;
 		if (poly->flags & iV_IMD_TEXANIM)
 		{
 			float tWidth, tHeight;
