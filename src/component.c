@@ -226,6 +226,7 @@ void displayStructureButton(STRUCTURE *psStructure, Vector3i *rotation, Vector3i
 	if(baseImd!=NULL) {
 		pie_Draw3DShape(baseImd, 0, getPlayerColour(selectedPlayer), WZCOL_WHITE, WZCOL_BLACK, pie_BUTTON, 0);
 	}
+	
 	pie_Draw3DShape(psStructure->sDisplay.imd, 0, getPlayerColour(selectedPlayer), WZCOL_WHITE, WZCOL_BLACK, pie_BUTTON, 0);
 	//and draw the turret
 	if(psStructure->sDisplay.imd->nconnectors)
@@ -911,7 +912,10 @@ static void displayCompObj(DROID *psDroid, BOOL bButton)
 				/* Draw it */
 				if(psShape)
 				{
-					pie_Draw3DShape(psShape, 0, colour, brightness, specular, pieFlag, iPieData);
+					frame = 0;
+					if(psDroid->droidType == DROID_CONSTRUCT && psDroid->action == DACTION_BUILD)
+						frame = getModularScaledGraphicsTime(psShapeTemp->animInterval, psShapeTemp->numFrames);
+					pie_Draw3DShape(psShape, frame, colour, brightness, specular, pieFlag, iPieData);
 
 					// In repair droid case only:
 					if ((psDroid->droidType == DROID_REPAIR || psDroid->droidType == DROID_CYBORG_REPAIR) &&
