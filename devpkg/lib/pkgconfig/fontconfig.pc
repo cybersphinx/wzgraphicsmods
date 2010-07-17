@@ -1,0 +1,11 @@
+prefix=${DEVPKGDIR}
+exec_prefix=${prefix}
+libdir=${exec_prefix}/lib
+includedir=${prefix}/include
+
+Name: Fontconfig
+Description: Font configuration and customization library
+Version: 2.7.3
+Libs: -L${libdir} -lfontconfig
+Libs.private:  -lexpat -L${libdir} -lfreetype -liconv
+Cflags: -I${includedir}
