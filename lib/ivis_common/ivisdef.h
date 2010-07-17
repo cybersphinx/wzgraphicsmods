@@ -76,6 +76,7 @@ typedef struct {
 	VERTEXID *pindex;
 	Vector2f *texCoord;
 	Vector2f texAnim;
+	unsigned short piever;
 } iIMDPoly;
 
 typedef struct _iIMDShape {

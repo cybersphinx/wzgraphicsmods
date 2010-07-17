@@ -294,15 +294,32 @@ static void pie_Draw3DShape2(iIMDShape *shape, int frame, PIELIGHT colour, PIELI
 			frame %= shape->numFrames;
 
 			if (frame > 0)
-			{
-				const int framesPerLine = OLD_TEXTURE_SIZE_FIX / (pPolys->texAnim.x * OLD_TEXTURE_SIZE_FIX);
-				const int uFrame = (frame % framesPerLine) * (pPolys->texAnim.x * OLD_TEXTURE_SIZE_FIX);
-				const int vFrame = (frame / framesPerLine) * (pPolys->texAnim.y * OLD_TEXTURE_SIZE_FIX);
-
+			{	
+				int framesPerLine, uFrame, vFrame;
+				if(pPolys->piever == 3)
+				{
+					framesPerLine = pPolys->texAnim.x;
+					uFrame = (frame % framesPerLine) * pPolys->texAnim.x;
+					vFrame = (frame / framesPerLine) * pPolys->texAnim.y;
+				}
+				else
+				{
+ 					framesPerLine = OLD_TEXTURE_SIZE_FIX / (pPolys->texAnim.x * OLD_TEXTURE_SIZE_FIX);
+					uFrame = (frame % framesPerLine) * (pPolys->texAnim.x * OLD_TEXTURE_SIZE_FIX);
+					vFrame = (frame / framesPerLine) * (pPolys->texAnim.y * OLD_TEXTURE_SIZE_FIX);
+				}
 				for (n = 0; n < pPolys->npnts; n++)
 				{
-					texCoords[n].x += uFrame / OLD_TEXTURE_SIZE_FIX;
-					texCoords[n].y += vFrame / OLD_TEXTURE_SIZE_FIX;
+					if(pPolys->piever == 3)
+					{
+						texCoords[n].x +=uFrame;
+						texCoords[n].y +=vFrame;
+					}					
+					else
+					{					
+						texCoords[n].x += uFrame / OLD_TEXTURE_SIZE_FIX;
+						texCoords[n].y += vFrame / OLD_TEXTURE_SIZE_FIX;
+					}				
 				}
 			}
 		}

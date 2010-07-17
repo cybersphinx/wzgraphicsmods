@@ -141,24 +141,25 @@ static bool _imd_load_polys( const char **ppFileData, iIMDShape *s, int pieVersi
 		// PIE2 only
 		if (poly->flags & iV_IMD_TEXANIM)
 		{
-			unsigned int nFrames, pbRate, tWidth, tHeight;
+			float tWidth, tHeight;
+			unsigned int nFrames, pbRate;
 
-			if (pieVersion == PIE_FLOAT_VER)
-			{
-				debug(LOG_ERROR, "PIE version %d doesn't support texanim data! Use PIE2 instead.", pieVersion);
-				return false;
-			}
+			//if (pieVersion == PIE_FLOAT_VER)
+			//{
+			//	debug(LOG_ERROR, "PIE version %d doesn't support texanim data! Use PIE2 instead.", pieVersion);
+			//	return false;
+			//}
 
 			// even the psx needs to skip the data
-			if (sscanf(pFileData, "%d %d %d %d%n", &nFrames, &pbRate, &tWidth, &tHeight, &cnt) != 4)
+			if (sscanf(pFileData, "%d %d %f %f%n", &nFrames, &pbRate, &tWidth, &tHeight, &cnt) != 4)
 			{
 				debug(LOG_ERROR, "(_load_polys) [poly %u] error reading texanim data", i);
 				return false;
 			}
 			pFileData += cnt;
 
-			ASSERT(tWidth > 0, "%s: texture width = %d", GetLastResourceFilename(), tWidth);
-			ASSERT(tHeight > 0, "%s: texture height = %d (width=%d)", GetLastResourceFilename(), tHeight, tWidth);
+			ASSERT(tWidth > 0, "%s: texture width = %f", GetLastResourceFilename(), tWidth);
+			ASSERT(tHeight > 0, "%s: texture height = %f (width=%f)", GetLastResourceFilename(), tHeight, tWidth);
 
 			/* Must have same number of frames and same playback rate for all polygons */
 			s->numFrames = nFrames;
@@ -166,6 +167,25 @@ static bool _imd_load_polys( const char **ppFileData, iIMDShape *s, int pieVersi
 
 			poly->texAnim.x = tWidth / OLD_TEXTURE_SIZE_FIX;
 			poly->texAnim.y = tHeight / OLD_TEXTURE_SIZE_FIX;
+
+			if (pieVersion == PIE_FLOAT_VER)
+				{
+					poly->texAnim.x = tWidth;
+					poly->texAnim.y = tHeight;
+				}
+				else
+				{
+					poly->texAnim.x = tWidth / OLD_TEXTURE_SIZE_FIX;
+					poly->texAnim.y = tHeight / OLD_TEXTURE_SIZE_FIX;
+				}
+				if(pieVersion == PIE_FLOAT_VER)
+				{
+					poly->piever = 3;
+				}
+				else
+				{
+					poly->piever = 2;
+				}
 		}
 		else
 		{

@@ -43,7 +43,8 @@
 
 
 #define iV_IMD_TEX 0x00000200
-#define iV_IMD_TEXANIM 0x00004000 // iV_IMD_TEX must be set also
+#define iV_IMD_TEXANIM  0x00004000// iV_IMD_TEX must be set also
+#define iV_IMD_ADDEFFECT 0x00017000 // Add effect to object when hit.
 
 //*************************************************************************
 
