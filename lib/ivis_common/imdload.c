@@ -117,9 +117,8 @@ static bool _imd_load_polys( const char **ppFileData, iIMDShape *s, int pieVersi
 			pFileData += cnt;
 			poly->pindex[j] = newID;
 		}
-
-		assert(poly->npnts > 2);
-
+		ASSERT(poly->npnts > 2, "%s", GetLastResourceFilename());
+		
 		// calc poly normal
 		{
 			Vector3f p0, p1, p2;
@@ -140,12 +139,12 @@ static bool _imd_load_polys( const char **ppFileData, iIMDShape *s, int pieVersi
 			poly->normal = pie_SurfaceNormal3fv(p0, p1, p2);
 		}
 
-		if(poly->flags & iV_IMD_SHADOWS)
+		if((poly->flags & iV_IMD_SHADOWS) == iV_IMD_SHADOWS)
 			s->shadows = false;
 
-		if(poly->flags & iV_IMD_ADDEFFECT)
+		if((poly->flags |= iV_IMD_ADDEFFECT) && s->hitEffects != true)
 			s->hitEffects = true;
-		if (poly->flags & iV_IMD_TEXANIM)
+		if ((poly->flags & iV_IMD_TEXANIM) == iV_IMD_TEXANIM)
 		{
 			float tWidth, tHeight;
 			unsigned int nFrames, pbRate;
@@ -200,7 +199,7 @@ static bool _imd_load_polys( const char **ppFileData, iIMDShape *s, int pieVersi
 		}
 
 		// PC texture coord routine
-		if (poly->flags & iV_IMD_TEX)
+		if ((poly->flags & iV_IMD_TEX) == iV_IMD_TEX)
 		{
 			poly->texCoord = malloc(sizeof(Vector2f) * poly->npnts);
 			if (poly->texCoord == NULL)
