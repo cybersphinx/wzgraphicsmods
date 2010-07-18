@@ -125,8 +125,7 @@ void pie_DrawSkybox(float scale, int u, int v, int w, int h, BOOL isBackGround)
 		glDepthMask(GL_FALSE);
 
 	// fog should not affect the sky
-	if(isBackGround)
-		glDisable(GL_FOG);
+	glDisable(GL_FOG);
 
 	// So we have realistic colors
 	//glColor4ub(0xFF,0xFF,0xFF,0xFF);
