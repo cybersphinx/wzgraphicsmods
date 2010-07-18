@@ -3615,6 +3615,7 @@ static void renderSurroundings(void)
 
 	pie_DrawSkybox(skybox_scale, 0, 0, 1, 1, true);
 	
+	
 	// Load Saved State
 	pie_MatEnd();
 
