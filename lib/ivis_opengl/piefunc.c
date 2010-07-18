@@ -115,22 +115,25 @@ void pie_TransColouredTriangle(Vector3f *vrt, PIELIGHT c)
 	glEnd();
 }
 
-void pie_DrawSkybox(float scale, int u, int v, int w, int h)
+void pie_DrawSkybox(float scale, int u, int v, int w, int h, BOOL isBackGround)
 {
 	const float r = 1.0f; // just because it is shorter than 1.0f
 
 	glPushAttrib(GL_DEPTH_BUFFER_BIT | GL_COLOR_BUFFER_BIT | GL_ENABLE_BIT | GL_FOG_BIT | pie_TRANSLUCENT);
 	// no use in updating the depth buffer
-	glDepthMask(GL_FALSE);
+	if(isBackGround)
+		glDepthMask(GL_FALSE);
 
 	// fog should not affect the sky
-	glDisable(GL_FOG);
+	if(isBackGround)
+		glDisable(GL_FOG);
 
 	// So we have realistic colors
-	glColor4ub(0xFF,0xFF,0xFF,0xFF);
+	//glColor4ub(0xFF,0xFF,0xFF,0xFF);
 
 	// enable alpha
-	pie_SetRendMode(REND_ALPHA);
+	if(isBackGround)	
+		pie_SetRendMode(REND_ALPHA);
 
 	// for the nice blend of the sky with the fog
 	glDisable(GL_ALPHA_TEST);
@@ -140,22 +143,23 @@ void pie_DrawSkybox(float scale, int u, int v, int w, int h)
 
 	glBegin(GL_QUAD_STRIP);
 		// Front
+		
 		glTexCoord2f(u + w * 0, v + h);	glVertex3f(-r, 0, r); // bottom left
 		glTexCoord2f(u + w * 0, v);		glVertex3f(-r, r, r); // top left
-		glTexCoord2f(u + w * 0.25, v + h);	glVertex3f( r, 0, r); // bottom right
-		glTexCoord2f(u + w * 0.25, v); 	glVertex3f( r, r, r); // top right
+		glTexCoord2f(u + w * (!isBackGround ? 0.5 : 0.25), v + h);	glVertex3f( r, 0, r); // bottom right
+		glTexCoord2f(u + w * (!isBackGround ? 0.5 : 0.25), v); 	glVertex3f( r, r, r); // top right
 
 		// Right
-		glTexCoord2f(u + w * 0.5, v + h);	glVertex3f( r, 0,-r); // bottom r
-		glTexCoord2f(u + w * 0.5, v); 	glVertex3f( r, r,-r); // top r
+		glTexCoord2f(u + w * (!isBackGround ? 1 : 0.5), v + h);	glVertex3f( r, 0,-r); // bottom r
+		glTexCoord2f(u + w * (!isBackGround ? 1 : 0.5), v); 	glVertex3f( r, r,-r); // top r
 
 		// Back
-		glTexCoord2f(u + w * 0.75, v + h);	glVertex3f(-r, 0, -r); // bottom right
-		glTexCoord2f(u + w * 0.75, v); 	glVertex3f(-r, r, -r); // top right
+		glTexCoord2f(u + w * (!isBackGround ? 1.5 : 0.75), v + h);	glVertex3f(-r, 0, -r); // bottom right
+		glTexCoord2f(u + w * (!isBackGround ? 1.5 : 0.75), v); 	glVertex3f(-r, r, -r); // top right
 
 		// Left
-		glTexCoord2f(u + w * 1, v + h);	glVertex3f(-r, 0, r); // bottom r
-		glTexCoord2f(u + w * 1, v); 	glVertex3f(-r, r, r); // top r
+		glTexCoord2f(u + w * (!isBackGround ? 2 : 1), v + h);	glVertex3f(-r, 0, r); // bottom r
+		glTexCoord2f(u + w * (!isBackGround ? 2 : 1), v); 	glVertex3f(-r, r, r); // top r
 	glEnd();
 
 	glPopAttrib();

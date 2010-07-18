@@ -74,7 +74,9 @@ static bool _imd_load_polys( const char **ppFileData, iIMDShape *s, int pieVersi
 
 	s->numFrames = 0;
 	s->animInterval = 0;
+	if(!s->shadows)
 	s->shadows = true;
+	if(s->hitEffects)
 	s->hitEffects = false;
 
 	s->polys = (iIMDPoly*)malloc(sizeof(iIMDPoly) * s->npolys);
@@ -142,7 +144,7 @@ static bool _imd_load_polys( const char **ppFileData, iIMDShape *s, int pieVersi
 		if((poly->flags & iV_IMD_SHADOWS) == iV_IMD_SHADOWS)
 			s->shadows = false;
 
-		if((poly->flags |= iV_IMD_ADDEFFECT) && s->hitEffects != true)
+		if((poly->flags & iV_IMD_ADDEFFECT))
 			s->hitEffects = true;
 		if ((poly->flags & iV_IMD_TEXANIM) == iV_IMD_TEXANIM)
 		{
