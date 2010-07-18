@@ -913,7 +913,7 @@ static void displayCompObj(DROID *psDroid, BOOL bButton)
 				if(psShape)
 				{
 					frame = 0;
-					if(psDroid->droidType == DROID_CONSTRUCT && psDroid->action == DACTION_BUILD)
+					if(psDroid->droidType == DROID_CONSTRUCT && psDroid->action == DACTION_BUILD && psShape->numFrames > 0 && psShape->numFrames != 8)
 						frame = getModularScaledGraphicsTime(psShape->animInterval, psShape->numFrames);
 					pie_Draw3DShape(psShape, frame, colour, brightness, specular, pieFlag, iPieData);
 
