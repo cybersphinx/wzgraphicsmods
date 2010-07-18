@@ -145,20 +145,20 @@ void pie_DrawSkybox(float scale, int u, int v, int w, int h, BOOL isBackGround)
 		
 		glTexCoord2f(u + w * 0, v + h);	glVertex3f(-r, 0, r); // bottom left
 		glTexCoord2f(u + w * 0, v);		glVertex3f(-r, r, r); // top left
-		glTexCoord2f(u + w * (!isBackGround ? 0.5 : 0.25), v + h);	glVertex3f( r, 0, r); // bottom right
-		glTexCoord2f(u + w * (!isBackGround ? 0.5 : 0.25), v); 	glVertex3f( r, r, r); // top right
+		glTexCoord2f(u + w * (isBackGround != true ? 0.5 : 0.25), v + h);	glVertex3f( r, 0, r); // bottom right
+		glTexCoord2f(u + w * (isBackGround != true ? 0.5 : 0.25), v); 	glVertex3f( r, r, r); // top right
 
 		// Right
-		glTexCoord2f(u + w * (!isBackGround ? 1 : 0.5), v + h);	glVertex3f( r, 0,-r); // bottom r
-		glTexCoord2f(u + w * (!isBackGround ? 1 : 0.5), v); 	glVertex3f( r, r,-r); // top r
+		glTexCoord2f(u + w * (isBackGround != true ? 1 : 0.5), v + h);	glVertex3f( r, 0,-r); // bottom r
+		glTexCoord2f(u + w * (isBackGround != true ? 1 : 0.5), v); 	glVertex3f( r, r,-r); // top r
 
 		// Back
-		glTexCoord2f(u + w * (!isBackGround ? 1.5 : 0.75), v + h);	glVertex3f(-r, 0, -r); // bottom right
-		glTexCoord2f(u + w * (!isBackGround ? 1.5 : 0.75), v); 	glVertex3f(-r, r, -r); // top right
+		glTexCoord2f(u + w * (isBackGround != true ? 1.5 : 0.75), v + h);	glVertex3f(-r, 0, -r); // bottom right
+		glTexCoord2f(u + w * (isBackGround != true ? 1.5 : 0.75), v); 	glVertex3f(-r, r, -r); // top right
 
 		// Left
-		glTexCoord2f(u + w * (!isBackGround ? 2 : 1), v + h);	glVertex3f(-r, 0, r); // bottom r
-		glTexCoord2f(u + w * (!isBackGround ? 2 : 1), v); 	glVertex3f(-r, r, r); // top r
+		glTexCoord2f(u + w * (isBackGround != true ? 2 : 1), v + h);	glVertex3f(-r, 0, r); // bottom r
+		glTexCoord2f(u + w * (isBackGround != true? 2 : 1), v); 	glVertex3f(-r, r, r); // top r
 	glEnd();
 
 	glPopAttrib();
