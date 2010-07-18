@@ -121,8 +121,8 @@ void pie_DrawSkybox(float scale, int u, int v, int w, int h, BOOL isBackGround)
 
 	glPushAttrib(GL_DEPTH_BUFFER_BIT | GL_COLOR_BUFFER_BIT | GL_ENABLE_BIT | GL_FOG_BIT | pie_TRANSLUCENT);
 	// no use in updating the depth buffer
-	if(isBackGround)
-		glDepthMask(GL_FALSE);
+	
+	glDepthMask(GL_FALSE);
 
 	// fog should not affect the sky
 	glDisable(GL_FOG);
@@ -131,8 +131,8 @@ void pie_DrawSkybox(float scale, int u, int v, int w, int h, BOOL isBackGround)
 	//glColor4ub(0xFF,0xFF,0xFF,0xFF);
 
 	// enable alpha
-	if(isBackGround)	
-		pie_SetRendMode(REND_ALPHA);
+	
+	pie_SetRendMode(REND_ALPHA);
 
 	// for the nice blend of the sky with the fog
 	glDisable(GL_ALPHA_TEST);
