@@ -157,8 +157,8 @@ void pie_DrawSkybox(float scale, int u, int v, int w, int h, int isBackGround)
 		glTexCoord2f(u + w * (isBackGround != 1 ? 1.5 : 0.75), v); 	glVertex3f(-r, r, -r); // top right
 
 		// Left
-		glTexCoord2f(u + w * (!isBackGround != 1 ? 2 : 1), v + h);	glVertex3f(-r, 0, r); // bottom r
-		glTexCoord2f(u + w * (!isBackGround != 1? 2 : 1), v); 	glVertex3f(-r, r, r); // top r
+		glTexCoord2f(u + w * (isBackGround != 1 ? 2 : 1), v + h);	glVertex3f(-r, 0, r); // bottom r
+		glTexCoord2f(u + w * (isBackGround != 1 ? 2 : 1), v); 	glVertex3f(-r, r, r); // top r
 	glEnd();
 
 	glPopAttrib();
