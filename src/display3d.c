@@ -3618,7 +3618,7 @@ static void renderSurroundings(void)
 	
 	// Load Saved State
 	pie_MatEnd();
-
+	/*
 		// Push identity matrix onto stack for sunbox
 	pie_MatBegin();
 	
@@ -3642,7 +3642,7 @@ static void renderSurroundings(void)
 	}
 	pie_DrawSkybox(skybox_scale, 0, 0, 1, 1, 0);
 	// Load Saved State
-	pie_MatEnd();
+	pie_MatEnd();*/
 }
 
 /// Flattens an imd to the landscape and handles 4 different rotations
