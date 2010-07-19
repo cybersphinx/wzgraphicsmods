@@ -172,9 +172,6 @@ static bool _imd_load_polys( const char **ppFileData, iIMDShape *s, int pieVersi
 			s->numFrames = nFrames;
 			s->animInterval = pbRate;
 
-			poly->texAnim.x = tWidth / OLD_TEXTURE_SIZE_FIX;
-			poly->texAnim.y = tHeight / OLD_TEXTURE_SIZE_FIX;
-
 			if (pieVersion == PIE_FLOAT_VER)
 				{
 					poly->texAnim.x = tWidth;
