@@ -1,0 +1,21 @@
+What is here?  Stuff for making videos.
+
+WZGM has a video dump function ( hotkey F11 toggles on/off ) that
+dumps video frames in-game to the $(configdir)/videodumps directory.
+
+The frames are dumped as raw PPM files for speed reasons.  You can
+convert them to AVI using the ppm2avi utility here.
+
+For ease of use, you can symlink ppm2avi into your bin dir with
+something like this:
+
+		  ln -s `pwd`/ppm2avi ~/bin
+
+Notes:  the `` marks around pwd are back-ticks, not quotes.  I have a bin dir
+in my home dir where I keep personal utilites, but you can link the utility into anywhere in your PATH.
+
+The video dumper writes frames in the format wz2100_SCENE#_FRAME#.ppm
+where the numbers range from 000-999.
+
+
+

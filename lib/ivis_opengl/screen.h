@@ -52,6 +52,7 @@ extern void screen_Upload(const char *newBackDropBmp, BOOL preview);
 
 /* screendump */
 extern void screenDumpToDisk(const char* path);
+extern void videoDumpToDisk(const char* path);
 
 /* Toggle the display between full screen or windowed */
 extern void	screenToggleMode(void);
@@ -59,6 +60,7 @@ extern void	screenToggleMode(void);
 extern int wz_texture_compression;
 
 extern void screenDoDumpToDiskIfRequired(void);
+extern void videoDoDumpToDiskIfRequired(void);
 
 void screen_enableMapPreview(char *name, int width, int height, Vector2i *playerpositions);
 void screen_disableMapPreview(void);

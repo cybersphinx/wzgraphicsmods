@@ -1,0 +1,8 @@
+#!/bin/sh
+
+# convert a set of ppm files to avi
+# usage is ppm2avi scene_number
+# example:  ppm2avi 001
+
+RATE=20
+ffmpeg  -r $RATE   -i wz2100_${1}_%03d.ppm  test.avi

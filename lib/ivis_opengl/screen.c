@@ -62,6 +62,14 @@ static char		screendump_filename[PATH_MAX];
 static BOOL		screendump_required = false;
 static GLuint		backDropTexture = ~0;
 
+/* video dump stuff */
+extern char VideoDumpPath[];
+// no audio capture: extern void sound_Capture();
+static unsigned int videodump_scene_num = 0;
+static unsigned int videodump_frame_num = 0;
+static char            videodump_filename[PATH_MAX];
+static BOOL            videodump_required = false;
+
 static int preview_width = 0, preview_height = 0;
 static Vector2i player_pos[MAX_PLAYERS];
 static BOOL mappreview = false;
@@ -569,6 +577,129 @@ void screenDoDumpToDiskIfRequired(void)
 	screendump_required = false;
 }
 
+
+/***
+* Dump the current screen to disk as a video frame.
+* The videodump_required flag is controlled by videoDumpToDisk()
+* Bytes from glReadPixels are written as a PPM file.  This is postprocessed
+* into a movie format like AVI with something like ffmpeg or mencoder.
+*/
+void videoDoDumpToDiskIfRequired(void)
+{
+	PHYSFS_File* fileHandle;
+	char buffer[80];
+	const char* fileName = videodump_filename;
+	unsigned int videodump_max_frames = 999;
+	static iV_Image image = { 0, 0, 0, NULL };
+
+
+	if (!videodump_required) return;
+	debug( LOG_3D, "Saving video frame %s\n", fileName );
+
+	// build file name for this screenshot
+
+	++videodump_frame_num;
+	if( videodump_frame_num > videodump_max_frames )
+	{
+		videodump_required = false;
+		// fixme: msg here
+		return;
+	}
+	// filename is   dir/wz2100_scene_frame.ppm
+	ssprintf( videodump_filename, "%s/wz2100_%03d_%03d.ppm", 
+			  VideoDumpPath, 
+			  videodump_scene_num, 
+			  videodump_frame_num);
+#if 0
+//fixme: replace with check for scene:  wz2100_001_001.png
+
+	if( PHYSFS_exists( videodump_filename))
+	{ // oops! file exists.  don't overwrite
+		videodump_required = false;
+		// fixme: msg here
+		return;
+	}
+#endif
+
+	// Dump the currently displayed screen in a buffer
+
+	ASSERT(screen->w >= 0 && screen->h >= 0, "Somehow our screen has negative dimensions! Width = %d; Height = %d", screen->w, screen->h);
+
+	if (image.width != (unsigned int)screen->w 
+		|| image.height != (unsigned int)screen->h)
+	{
+		if (image.bmp != NULL)
+		{
+			free(image.bmp);
+		}
+
+		image.width = screen->w;
+		image.height = screen->h;
+		image.bmp = malloc(channelsPerPixel * image.width * image.height);
+		if (image.bmp == NULL)
+		{
+			image.width = 0; image.height = 0;
+			debug(LOG_ERROR, "Couldn't allocate memory");
+			return;
+		}
+	}
+	glReadPixels(0, 0, image.width, image.height, GL_RGB, GL_UNSIGNED_BYTE, image.bmp);
+
+	/* writing a png takes too long so let's dump a binary PPM
+	   PPM format is an ASCII header followed by raw bytes from top to bottom.
+	   Since glReadPixels reads bottom up, we need to flip the image.
+	*/
+
+
+	{ // flip image vertically by exchanging rows
+		unsigned char  *tmp_buf = (unsigned char*) malloc( image.width * image.height * channelsPerPixel );
+		if(tmp_buf) {
+			int row;
+			unsigned char *top;
+			unsigned char *bottom;
+			int row_stride = image.width * channelsPerPixel;
+
+			top = image.bmp;
+			bottom = tmp_buf + row_stride * (image.height - 1);
+
+			for( row = 0; row < image.height; row ++, top += row_stride, bottom -= row_stride) {
+
+				memcpy( bottom, top, row_stride);  // copy top to bottom
+			}
+			free( image.bmp);
+			image.bmp = tmp_buf;
+			 
+		} else {
+			printf( "error: malloc failed in video dump\n");  // half-hearted error msg
+			return;
+		}
+	}
+
+
+	// open
+	if((fileHandle = PHYSFS_openWrite(fileName)) == NULL)
+	{
+		debug(LOG_ERROR, "videodump: PHYSFS_openWrite failed. file %s error: %s\n", 
+			  fileName, PHYSFS_getLastError());
+		return;
+	}
+
+	// write ppm header: magic number width height, max value
+	sprintf( buffer, "P6\n%d %d\n255\n", image.width, image.height );
+	PHYSFS_write( fileHandle,  buffer, strlen( buffer ), 1 );
+
+
+	// write data
+	PHYSFS_write( fileHandle, image.bmp, image.width * image.height * 3, 1);
+
+	PHYSFS_close( fileHandle);
+	
+/* 	free( image.bmp); // the memory we malloced earlier */
+/* 	image.bmp = NULL; */
+}
+
+
+
 /** Registers the currently displayed frame for making a screen shot.
  *
  *  The filename will be suffixed with a number, such that no files are
@@ -592,5 +723,68 @@ void screenDumpToDisk(const char* path)
 		ssprintf(screendump_filename, "%s/wz2100-%04d%02d%02d_%02d%02d%02d-%s-%d.png", path, t->tm_year + 1900, t->tm_mon + 1, t->tm_mday, t->tm_hour, t->tm_min, t->tm_sec, getLevelName(), ++screendump_num);
 	}
 	screendump_required = true;
+}
+
+
+
+/** videoDumpToDisk
+ *  Controls dumping screens to video frames.
+ *  Each dump gets a new sequence number
+ *  
+ *  toggles flag for videoDumpIfRequired
+ *  increments scene number
+ *  resets frame counter
+ *
+ *  \param path The directory path to save the screenshot in.
+ */
+void videoDumpToDisk(const char* path)
+{
+	/* 
+	   Toggle video dump state
+	   if we are starting a new dump:
+	       increment the scene number.
+		     scene numbers run from 1..N
+		     frame numbers run from 1..N
+		   turn on audio capture
+	*/
+	
+	if(videodump_required){  // turn off
+		videodump_required = false;
+#if 0
+no audio capture right now
+        // stop audio capture
+		sound_Capture( false );
+#endif
+	} 
+	else {  // turn on
+		/* increment the scene number and check for overflow so we don't overwrite files */
+		++videodump_scene_num;
+
+		if( videodump_scene_num == 0){  // overflow!
+			videodump_required = false;
+			CONPRINTF( ConsoleString, 
+					   (ConsoleString, "Oops! Scene Number overflow"));
+
+		}
+		videodump_required=true;
+		videodump_frame_num=0;
+
+#if 0 
+no audio capture  
+		sound_Capture( true );
+#endif
+
+
+	}
+
+	// tell the user what is going on
+	if( videodump_required){
+		CONPRINTF( ConsoleString, 
+				   (ConsoleString, "Starting Video Dump to dir %s",
+					path));
+	}
+	else{
+		CONPRINTF( ConsoleString, (ConsoleString, "Video Dump Canceled"));
+	}
 }
 
