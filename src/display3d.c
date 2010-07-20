@@ -3585,9 +3585,6 @@ static void renderSurroundings(void)
 	// Set the camera position
 	pie_MATTRANS(0, 0, distance);
 
-	// rotate it
-	pie_MatRotY(DEG(1) * wind);
-
 	// move it somewhat below ground level for the blending effect
 	pie_TRANSLATE(0, -skybox_scale/8, 0);
 
