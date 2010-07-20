@@ -219,8 +219,8 @@ static bool _imd_load_polys( const char **ppFileData, iIMDShape *s, int pieVersi
 
 				if (pieVersion == PIE_FLOAT_VER)
 				{
-					poly->texCoord[j].x = VertexU * OLD_TEXTURE_SIZE_FIX;
-					poly->texCoord[j].y = VertexV * OLD_TEXTURE_SIZE_FIX;
+					poly->texCoord[j].x = VertexU;
+					poly->texCoord[j].y = VertexV;
 				}
 				else
 				{
