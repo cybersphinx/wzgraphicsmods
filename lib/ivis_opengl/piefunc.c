@@ -142,7 +142,8 @@ void pie_DrawSkybox(float scale, int u, int v, int w, int h, BOOL isSun)
 		// Front
 		if(isSun)
 		{
-					// Back
+			//Render right to left rather than left to right (so we can position the sun in line with shadows)
+			// Back
 		glTexCoord2f(u + w * 2, v + h);	glVertex3f( r, 0,-r); // bottom l
 		glTexCoord2f(u + w * 2, v); 	glVertex3f( r, r,-r); // top l
 		// Back
