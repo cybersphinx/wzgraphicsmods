@@ -115,7 +115,7 @@ void pie_TransColouredTriangle(Vector3f *vrt, PIELIGHT c)
 	glEnd();
 }
 
-void pie_DrawSkybox(float scale, int u, int v, int w, int h, BOOL isSun)
+void pie_DrawSkybox(float scale, int u, int v, int w, int h)
 {
 	const float r = 1.0f; // just because it is shorter than 1.0f
 
@@ -142,20 +142,20 @@ void pie_DrawSkybox(float scale, int u, int v, int w, int h, BOOL isSun)
 		// Front
 		glTexCoord2f(u + w * 0, v + h);	glVertex3f(-r, 0, r); // bottom left
 		glTexCoord2f(u + w * 0, v);		glVertex3f(-r, r, r); // top left
-		glTexCoord2f(u + w * (isSun ? 0.25 : 2), v + h);	glVertex3f( r, 0, r); // bottom right
-		glTexCoord2f(u + w * (isSun ? 0.25 : 2), v); 	glVertex3f( r, r, r); // top right
+		glTexCoord2f(u + w * 2, v + h);	glVertex3f( r, 0, r); // bottom right
+		glTexCoord2f(u + w * 2, v); 	glVertex3f( r, r, r); // top right
 
 		// Right
-		glTexCoord2f(u + w * (isSun ? 0.5 : 4), v + h);	glVertex3f( r, 0,-r); // bottom r
-		glTexCoord2f(u + w * (isSun ? 0.75 : 4), v); 	glVertex3f( r, r,-r); // top r
+		glTexCoord2f(u + w * 4, v + h);	glVertex3f( r, 0,-r); // bottom r
+		glTexCoord2f(u + w * 4, v); 	glVertex3f( r, r,-r); // top r
 
 		// Back
-		glTexCoord2f(u + w *(isSun ? 0.75 : 6), v + h);	glVertex3f(-r, 0, -r); // bottom right
-		glTexCoord2f(u + w * (isSun ? 0.75 : 6), v); 	glVertex3f(-r, r, -r); // top right
+		glTexCoord2f(u + w * 6, v + h);	glVertex3f(-r, 0, -r); // bottom right
+		glTexCoord2f(u + w * 6, v); 	glVertex3f(-r, r, -r); // top right
 
 		// Left
-		glTexCoord2f(u + w * (isSun ? 1 : 8), v + h);	glVertex3f(-r, 0, r); // bottom r
-		glTexCoord2f(u + w * (isSun ? 1 : 8), v); 	glVertex3f(-r, r, r); // top r
+		glTexCoord2f(u + w * 8, v + h);	glVertex3f(-r, 0, r); // bottom r
+		glTexCoord2f(u + w * 8, v); 	glVertex3f(-r, r, r); // top r
 	glEnd();
 
 	glPopAttrib();

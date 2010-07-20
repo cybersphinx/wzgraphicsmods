@@ -954,6 +954,7 @@ BOOL init3DView(void)
 
 	pie_InitSkybox(iV_GetTexture(skyboxPageName));
 	pie_InitSkybox(iV_GetTexture("page-260"));
+	pie_InitSkybox(iV_GetTexture("page-261"));
 
 	// distance is not saved, so initialise it now
 	distance = START_DISTANCE; // distance
@@ -3594,6 +3595,24 @@ static void renderSurroundings(void)
 {
 	static float wind = 0.0f;
 	const float skybox_scale = 10000.0f;
+	pie_MatBegin();
+
+	// Now, scale the world according to what resolution we're running in
+	pie_MatScale(pie_GetResScalingFactor());
+
+	// Set the camera position
+	pie_MATTRANS(0, 0, distance);
+
+	// move it somewhat below ground level for the blending effect
+	pie_TRANSLATE(0, -skybox_scale/8, 0);
+
+	// Set the texture page
+	pie_SetTexturePage(iV_GetTexture("page-261"));
+
+	pie_DrawSkybox(skybox_scale, 0, 0, 1, 1);
+
+	// Load Saved State
+	pie_MatEnd();
 
 	// Push identity matrix onto stack
 	pie_MatBegin();
@@ -3610,7 +3629,7 @@ static void renderSurroundings(void)
 	// Set the texture page
 	pie_SetTexturePage(iV_GetTexture("page-260"));
 
-	pie_DrawSkybox(skybox_scale, 0, 0, 1, 1,true);
+	pie_DrawSkybox(skybox_scale, 0, 0, 1, 1);
 
 	// Load Saved State
 	pie_MatEnd();
@@ -3635,7 +3654,7 @@ static void renderSurroundings(void)
 	{
 		wind = wrapf(wind + graphicsTimeAdjustedIncrement(0.5f), 360.0f);
 	}
-	pie_DrawSkybox(skybox_scale, 0, 0, 1, 1,false);
+	pie_DrawSkybox(skybox_scale, 0, 0, 1, 1);
 
 	// Load Saved State
 	pie_MatEnd();
