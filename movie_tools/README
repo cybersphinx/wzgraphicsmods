@@ -11,11 +11,37 @@ something like this:
 
 		  ln -s `pwd`/ppm2avi ~/bin
 
-Notes:  the `` marks around pwd are back-ticks, not quotes.  I have a bin dir
-in my home dir where I keep personal utilites, but you can link the utility into anywhere in your PATH.
+Notes: the `` marks around pwd are back-ticks, not quotes.  I have a
+bin dir in my home dir where I keep personal utilites, but you can
+link the utility into anywhere in your PATH.
 
 The video dumper writes frames in the format wz2100_SCENE#_FRAME#.ppm
-where the numbers range from 000-999.
+where the numbers range from 001-999.
+
+
+wzencode.py
+
+requires  ffmpeg, python
+
+converts WZ videodump files (ppm format) to video.
+output format depends on output file extension
+video dump filenames are wz2100_SCENE_FRAME.ppm where
+SCENE and FRAME are 3 digit numbers with leading zeros.
+example:  wz2100_001_001.ppm  for scene 1, frame 1.
+
+run   wzencode --help  for info
+
+options that are the same as ffmpeg
+-b bitrate		 default: 200k bits/second
+-s size wxh		 default: same as WZ resolution
+-r output framerate		default: 25 fps
+
+encode specific options
+--ifr input frame rate.  default: 10
+--basename wz2100_
+--scene NNN		scene number.  default: 001
+
+encode scene output_file
 
 
 
