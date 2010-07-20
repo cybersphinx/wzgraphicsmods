@@ -3613,7 +3613,7 @@ static void renderSurroundings(void)
 	pie_SetTexturePage(iV_GetTexture("page-260"));
 
 
-	pie_DrawSkybox(skybox_scale, 0, 0, 1, 1, 1);
+	pie_DrawSkybox(skybox_scale, 0, 0, 1, 1);
 	
 	// Load Saved State
 	pie_MatEnd();
@@ -3639,7 +3639,7 @@ static void renderSurroundings(void)
 	{
 		wind = wrapf(wind + graphicsTimeAdjustedIncrement(0.5f), 360.0f);
 	}
-	pie_DrawSkyboxOverlay(skybox_scale, 0, 0, 1, 1, 0);
+	pie_DrawSkyboxOverlay(skybox_scale, 0, 0, 1, 1);
 	// Load Saved State
 	pie_MatEnd();
 }

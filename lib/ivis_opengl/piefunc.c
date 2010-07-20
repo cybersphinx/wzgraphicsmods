@@ -115,7 +115,7 @@ void pie_TransColouredTriangle(Vector3f *vrt, PIELIGHT c)
 	glEnd();
 }
 
-void pie_DrawSkybox(float scale, int u, int v, int w, int h, int isBackGround)
+void pie_DrawSkybox(float scale, int u, int v, int w, int h)
 {
 	const float r = 1.0f; // just because it is shorter than 1.0f
 
