@@ -3592,7 +3592,28 @@ static void renderSurroundings(void)
 	pie_TRANSLATE(0, -skybox_scale/8, 0);
 
 	// Set the texture page
-	pie_SetTexturePage(iV_GetTexture(skyboxPageName));
+	pie_SetTexturePage(iV_GetTexture("page-260"));
+
+	pie_DrawSkybox(skybox_scale, 0, 0, 1, 1);
+
+	// Load Saved State
+	pie_MatEnd();
+		pie_MatBegin();
+
+	// Now, scale the world according to what resolution we're running in
+	pie_MatScale(pie_GetResScalingFactor());
+
+	// Set the camera position
+	pie_MATTRANS(0, 0, distance);
+
+	// rotate it
+	pie_MatRotY(DEG(1) * wind);
+
+	// move it somewhat below ground level for the blending effect
+	pie_TRANSLATE(0, -skybox_scale/8, 0);
+
+	// Set the texture page
+	pie_SetTexturePage(iV_GetTexture("page-25"));
 
 	if(!gamePaused())
 	{
