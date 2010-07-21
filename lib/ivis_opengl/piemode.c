@@ -106,6 +106,7 @@ void pie_ScreenFlip(int clearMode)
 	GLbitfield clearFlags = 0;
 
 	screenDoDumpToDiskIfRequired();
+	videoDoDumpToDiskIfRequired();
 	SDL_GL_SwapBuffers();
 	if (!(clearMode & CLEAR_OFF_AND_NO_BUFFER_DOWNLOAD))
 	{

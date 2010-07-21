@@ -953,6 +953,8 @@ BOOL init3DView(void)
 	bRender3DOnly = false;
 
 	pie_InitSkybox(iV_GetTexture(skyboxPageName));
+	pie_InitSkybox(iV_GetTexture("page-260"));
+	pie_InitSkybox(iV_GetTexture("page-261"));
 
 	// distance is not saved, so initialise it now
 	distance = START_DISTANCE; // distance
@@ -2076,7 +2078,7 @@ void	renderStructure(STRUCTURE *psStructure)
 	rotation = psStructure->rot.direction;
 	iV_MatrixRotateY(-rotation);
 	if (!defensive
-	    && gameTime2-psStructure->timeLastHit < ELEC_DAMAGE_DURATION
+	    && gameTime-psStructure->timeLastHit < ELEC_DAMAGE_DURATION
 	    && psStructure->lastHitWeapon == WSC_ELECTRONIC )
 	{
 		bHitByElectronic = true;
@@ -2142,7 +2144,7 @@ void	renderStructure(STRUCTURE *psStructure)
 			pieFlag = pie_STATIC_SHADOW;
 			pieFlagData = 0;
 		}
-		pie_Draw3DShape(strImd, animFrame, colour, buildingBrightness, WZCOL_BLACK, pieFlag, pieFlagData);
+		pie_Draw3DShape(strImd, (psStructure->status == SS_BEING_BUILT ? 0 : (structureIsBlueprint(psStructure) ? 0 : animFrame)), colour, buildingBrightness, WZCOL_BLACK, pieFlag, pieFlagData);
 		if (defensive)
 		{
 			strImd->points = temp;
@@ -2445,7 +2447,7 @@ static BOOL	renderWallSection(STRUCTURE *psStructure)
 	PIELIGHT		brightness, specular = WZCOL_BLACK;
 	iIMDShape		*imd;
 	SDWORD			rotation, animFrame;
-	Vector3i			dv;
+	Vector3i			dv, pos;
 	UDWORD			i;
 	Vector3f			*temp;
 	int				pieFlag, pieFlagData;
@@ -2458,9 +2460,11 @@ static BOOL	renderWallSection(STRUCTURE *psStructure)
 		/* Get it's x and y coordinates so we don't have to deref. struct later */
 		structX = psStructure->pos.x;
 		structY = psStructure->pos.y;
-
+		pos.x = structX;
+		pos.z = structY;
+		pos.y = map_Height(structX, structY);
 		brightness = structureBrightness(psStructure);
-
+		
 		/*
 		Right, now the tricky bit, we need to bugger about with the coordinates of the imd to make it
 		fit tightly to the ground and to neighbours.
@@ -2541,9 +2545,13 @@ static BOOL	renderWallSection(STRUCTURE *psStructure)
 			(psStructure->status == SS_BEING_DEMOLISHED ) ||
 			(psStructure->status == SS_BEING_BUILT && psStructure->pStructureType->type == REF_RESOURCE_EXTRACTOR) )
 		{
-			pie_Draw3DShape(psStructure->sDisplay.imd, animFrame, getPlayerColour(psStructure->player),
-							brightness, specular, pie_HEIGHT_SCALED|pie_SHADOW,
-							(SDWORD)(structHeightScale(psStructure) * pie_RAISE_SCALE) );
+								// Ignores shadows if animation exists for the model (to cope with transparencies)
+								// Turn off structure animation if the structure is getting built.
+								pie_Draw3DShape(psStructure->sDisplay.imd, 
+								(psStructure->status == SS_BEING_BUILT ? 0 : (structureIsBlueprint(psStructure) ? 0 :animFrame)), getPlayerColour(psStructure->player),
+								brightness, specular, (imd->numFrames > 0 ? pie_HEIGHT_SCALED|0 : pie_HEIGHT_SCALED|pie_SHADOW),
+								(SDWORD)(structHeightScale(psStructure) * pie_RAISE_SCALE) );
+							
 		}
 		else
 		{
@@ -2565,7 +2573,19 @@ static BOOL	renderWallSection(STRUCTURE *psStructure)
 				}
 				pieFlagData = 0;
 			}
-			pie_Draw3DShape(imd, animFrame, getPlayerColour(psStructure->player), brightness, specular, pieFlag, pieFlagData);
+			// Ignores shadows if animation exists for the model (to cope with transparencies)
+			
+			if(gameTime-psStructure->timeLastHit < 250 && imd->numFrames > 0) 
+				{
+				pie_Draw3DShape(imd, animFrame, 8, brightness, specular, (imd->numFrames > 0 ? 0 : pieFlag), pieFlagData);
+				effectGiveAuxVar(500);
+				if(gameTime-psStructure->timeLastHit < 2.5)	
+					addEffect(&pos,EFFECT_EXPLOSION,EXPLOSION_TYPE_LASER,true,NULL,1);
+
+				} else
+				{
+				pie_Draw3DShape(imd, animFrame, getPlayerColour(psStructure->player), brightness, specular, (imd->numFrames > 0 ? 0 : pieFlag), pieFlagData);
+				}
 		}
 		imd->points = temp;
 
@@ -3575,6 +3595,24 @@ static void renderSurroundings(void)
 {
 	static float wind = 0.0f;
 	const float skybox_scale = 10000.0f;
+	pie_MatBegin();
+
+	// Now, scale the world according to what resolution we're running in
+	pie_MatScale(pie_GetResScalingFactor());
+
+	// Set the camera position
+	pie_MATTRANS(0, 0, distance);
+
+	// move it somewhat below ground level for the blending effect
+	pie_TRANSLATE(0, -skybox_scale/8, 0);
+
+	// Set the texture page
+	pie_SetTexturePage(iV_GetTexture("page-261"));
+
+	pie_DrawSkybox(skybox_scale, 0, 0, 1, 1,false);
+
+	// Load Saved State
+	pie_MatEnd();
 
 	// Push identity matrix onto stack
 	pie_MatBegin();
@@ -3591,7 +3629,7 @@ static void renderSurroundings(void)
 	// Set the texture page
 	pie_SetTexturePage(iV_GetTexture("page-260"));
 
-	pie_DrawSkybox(skybox_scale, 0, 0, 1, 1);
+	pie_DrawSkybox(skybox_scale, 0, 0, 1, 1,true);
 
 	// Load Saved State
 	pie_MatEnd();
@@ -3616,7 +3654,7 @@ static void renderSurroundings(void)
 	{
 		wind = wrapf(wind + graphicsTimeAdjustedIncrement(0.5f), 360.0f);
 	}
-	pie_DrawSkybox(skybox_scale, 0, 0, 1, 1);
+	pie_DrawSkybox(skybox_scale, 0, 0, 1, 1,false);
 
 	// Load Saved State
 	pie_MatEnd();

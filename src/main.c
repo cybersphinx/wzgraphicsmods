@@ -125,6 +125,7 @@ int num_loaded_mods = 0;
 BOOL	gameInitialised = false;
 char	SaveGamePath[PATH_MAX];
 char	ScreenDumpPath[PATH_MAX];
+char    VideoDumpPath[PATH_MAX];
 char	MultiForcesPath[PATH_MAX];
 char	MultiCustomMapsPath[PATH_MAX];
 char	MultiPlayersPath[PATH_MAX];
@@ -1069,6 +1070,7 @@ int main(int argc, char *argv[])
 
 	/*** Initialize directory structure ***/
 	make_dir(ScreenDumpPath, "screenshots", NULL);
+	make_dir(VideoDumpPath, "videodumps", NULL);
 	make_dir(SaveGamePath, "savegame", NULL);
 	PHYSFS_mkdir("maps");		// MUST have this to prevent crashes when getting map
 	PHYSFS_mkdir("music");

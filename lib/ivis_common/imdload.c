@@ -74,6 +74,10 @@ static bool _imd_load_polys( const char **ppFileData, iIMDShape *s, int pieVersi
 
 	s->numFrames = 0;
 	s->animInterval = 0;
+	if(!s->shadows)
+	s->shadows = true;
+	if(s->hitEffects)
+	s->hitEffects = false;
 
 	s->polys = (iIMDPoly*)malloc(sizeof(iIMDPoly) * s->npolys);
 	if (s->polys == NULL)
@@ -115,9 +119,8 @@ static bool _imd_load_polys( const char **ppFileData, iIMDShape *s, int pieVersi
 			pFileData += cnt;
 			poly->pindex[j] = newID;
 		}
-
-		assert(poly->npnts > 2);
-
+		ASSERT(poly->npnts > 2, "%s", GetLastResourceFilename());
+		
 		// calc poly normal
 		{
 			Vector3f p0, p1, p2;
@@ -138,34 +141,55 @@ static bool _imd_load_polys( const char **ppFileData, iIMDShape *s, int pieVersi
 			poly->normal = pie_SurfaceNormal3fv(p0, p1, p2);
 		}
 
-		// PIE2 only
-		if (poly->flags & iV_IMD_TEXANIM)
-		{
-			unsigned int nFrames, pbRate, tWidth, tHeight;
+		if((poly->flags & iV_IMD_SHADOWS) == iV_IMD_SHADOWS)
+			s->shadows = false;
 
-			if (pieVersion == PIE_FLOAT_VER)
-			{
-				debug(LOG_ERROR, "PIE version %d doesn't support texanim data! Use PIE2 instead.", pieVersion);
-				return false;
-			}
+		if((poly->flags & iV_IMD_ADDEFFECT))
+			s->hitEffects = true;
+		if ((poly->flags & iV_IMD_TEXANIM) == iV_IMD_TEXANIM)
+		{
+			float tWidth, tHeight;
+			unsigned int nFrames, pbRate;
+
+			//if (pieVersion == PIE_FLOAT_VER)
+			//{
+			//	debug(LOG_ERROR, "PIE version %d doesn't support texanim data! Use PIE2 instead.", pieVersion);
+			//	return false;
+			//}
 
 			// even the psx needs to skip the data
-			if (sscanf(pFileData, "%d %d %d %d%n", &nFrames, &pbRate, &tWidth, &tHeight, &cnt) != 4)
+			if (sscanf(pFileData, "%d %d %f %f%n", &nFrames, &pbRate, &tWidth, &tHeight, &cnt) != 4)
 			{
 				debug(LOG_ERROR, "(_load_polys) [poly %u] error reading texanim data", i);
 				return false;
 			}
 			pFileData += cnt;
 
-			ASSERT(tWidth > 0, "%s: texture width = %d", GetLastResourceFilename(), tWidth);
-			ASSERT(tHeight > 0, "%s: texture height = %d (width=%d)", GetLastResourceFilename(), tHeight, tWidth);
+			ASSERT(tWidth > 0, "%s: texture width = %f", GetLastResourceFilename(), tWidth);
+			ASSERT(tHeight > 0, "%s: texture height = %f (width=%f)", GetLastResourceFilename(), tHeight, tWidth);
 
 			/* Must have same number of frames and same playback rate for all polygons */
 			s->numFrames = nFrames;
 			s->animInterval = pbRate;
 
-			poly->texAnim.x = tWidth / OLD_TEXTURE_SIZE_FIX;
-			poly->texAnim.y = tHeight / OLD_TEXTURE_SIZE_FIX;
+			if (pieVersion == PIE_FLOAT_VER)
+				{
+					poly->texAnim.x = tWidth;
+					poly->texAnim.y = tHeight;
+				}
+				else
+				{
+					poly->texAnim.x = tWidth / OLD_TEXTURE_SIZE_FIX;
+					poly->texAnim.y = tHeight / OLD_TEXTURE_SIZE_FIX;
+				}
+				if(pieVersion == PIE_FLOAT_VER)
+				{
+					poly->piever = 3;
+				}
+				else
+				{
+					poly->piever = 2;
+				}
 		}
 		else
 		{
@@ -174,7 +198,7 @@ static bool _imd_load_polys( const char **ppFileData, iIMDShape *s, int pieVersi
 		}
 
 		// PC texture coord routine
-		if (poly->flags & iV_IMD_TEX)
+		if ((poly->flags & iV_IMD_TEX) == iV_IMD_TEX)
 		{
 			poly->texCoord = malloc(sizeof(Vector2f) * poly->npnts);
 			if (poly->texCoord == NULL)
@@ -610,7 +634,7 @@ static iIMDShape *_imd_load_level(const char **ppFileData, const char *FileDataE
 		}
 		else
 		{
-			debug(LOG_ERROR, "(_load_level) unexpected directive %s %d", buffer, n);
+			debug(LOG_ERROR, "(_load_level) unexpected directive %s %d %s", buffer, n, GetLastResourceFilename());
 			break;
 		}
 	}
@@ -785,6 +809,7 @@ iIMDShape *iV_ProcessIMD( const char **ppFileData, const char *FileDataEnd )
 			}
 			else
 			{
+				
 				// Propagate settings through levels
 				for (psShape = shape; psShape != NULL; psShape = psShape->next)
 				{

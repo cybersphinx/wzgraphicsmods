@@ -90,6 +90,9 @@ PIELIGHT pal_GetTeamColour(int team)
 		case 7:
 			tcolour = WZCOL_TEAM8; //teal
 			break;
+		case 8:
+			tcolour = WZCOL_WALLHITCOLOUR; // wall effects
+			break;
 		default:
 			ASSERT(false, "Attempting to get colour for non-existing team %u", (unsigned int)team);
 			tcolour = WZCOL_WHITE; //default is white
