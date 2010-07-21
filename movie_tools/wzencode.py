@@ -20,7 +20,7 @@ parser.add_option("-t", "--time", dest="time",
 				  help="encode for TIME seconds")
 
 parser.add_option("-b", "--bitrate", dest="bitrate",
-				  default="200",
+				  default="1200k",
 				  help="bitrate for video file.  default:%default kbps. k and m suffixes ok.")
 parser.add_option("-r", "--ofr", dest="frame_rate",
 				  default="25", type="int",
