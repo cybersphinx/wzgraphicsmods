@@ -109,7 +109,8 @@ _keymapsave keyMapSaveTable[] =
 	kf_ToggleConsole,
 	kf_ToggleEnergyBars,
 	kf_NOOP,
-	kf_ScreenDump ,
+	kf_ScreenDump,
+	kf_VideoDump,
 	kf_MoveToLastMessagePos,
 	kf_AssignGrouping_1,
 	kf_AssignGrouping_2,
@@ -158,7 +159,7 @@ _keymapsave keyMapSaveTable[] =
 	kf_SetDroidAttackAtWill ,
 	kf_SetDroidReturnToBase ,
 	kf_SetDroidRangeDefault,
-	kf_ToggleFormationSpeedLimiting,
+//	kf_ToggleFormationSpeedLimiting,
 	kf_SetDroidRangeShort,
 	kf_SetDroidMovePursue ,
 	kf_SetDroidMovePatrol ,
@@ -301,8 +302,15 @@ void	keyInitMappings( BOOL bForceDefaults )
 	keyAddMapping(KEYMAP_ASSIGNABLE,KEY_IGNORE,KEY_F7,KEYMAP_PRESSED,kf_ToggleRadar,			_("Toggle Radar"));
   	keyAddMapping(KEYMAP_ASSIGNABLE,KEY_IGNORE,KEY_F8,KEYMAP_PRESSED,kf_ToggleConsole,			_("Toggle Console Display"));
   	keyAddMapping(KEYMAP_ASSIGNABLE,KEY_IGNORE,KEY_F9,KEYMAP_PRESSED,kf_ToggleEnergyBars,			_("Toggle Damage Bars On/Off"));
+
 	keyAddMapping(KEYMAP_ALWAYS,KEY_IGNORE,KEY_F10,KEYMAP_PRESSED,kf_ScreenDump,				_("Take Screen Shot"));
+
+	keyAddMapping(KEYMAP_ASSIGNABLE,KEY_IGNORE,KEY_F11,KEYMAP_PRESSED,kf_VideoDump,          
+   _("Dump Vido Sequence"));
+
+#if 0
 	keyAddMapping(KEYMAP_ASSIGNABLE,KEY_IGNORE,KEY_F11,KEYMAP_PRESSED,kf_ToggleFormationSpeedLimiting,			_("Toggle Formation Speed Limiting"));
+#endif
 	keyAddMapping(KEYMAP_ASSIGNABLE,KEY_IGNORE,KEY_F12,KEYMAP_PRESSED,kf_MoveToLastMessagePos, _("View Location of Previous Message"));
 	keyAddMapping(KEYMAP_ASSIGNABLE,KEY_LSHIFT,KEY_F12,KEYMAP_PRESSED,kf_ToggleSensorDisplay,"Toggle Sensor display"); //Which key should we use? --Re enabled see below! -Q 5-10-05
 	//                                **********************************

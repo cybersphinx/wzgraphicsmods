@@ -104,6 +104,7 @@
 #define MAP_PITCH_RATE	(SPIN_SCALING/SECS_PER_SPIN)
 
 extern char	ScreenDumpPath[];
+extern char	VideoDumpPath[];
 
 BOOL	bMovePause = false;
 BOOL		bAllowOtherKeyPresses = true;
@@ -616,6 +617,15 @@ void	kf_ScreenDump( void )
 {
 	//CONPRINTF(ConsoleString,(ConsoleString,"Screen dump written to working directory : %s", screenDumpToDisk()));
 	screenDumpToDisk(ScreenDumpPath);
+}
+
+// --------------------------------------------------------------------------
+
+/* Dumps video to disk.  Sends the screen buffer to disk as video frames */
+void	kf_VideoDump( void )
+{
+	CONPRINTF(ConsoleString,(ConsoleString, "Toggle Video dump to working directory : %s", VideoDumpPath));
+	videoDumpToDisk(VideoDumpPath);
 }
 
 // --------------------------------------------------------------------------

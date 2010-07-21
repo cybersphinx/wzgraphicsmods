@@ -76,6 +76,7 @@ typedef struct {
 	VERTEXID *pindex;
 	Vector2f *texCoord;
 	Vector2f texAnim;
+	unsigned short piever;
 } iIMDPoly;
 
 typedef struct _iIMDShape {
@@ -97,6 +98,8 @@ typedef struct _iIMDShape {
 
 	unsigned int nconnectors;
 	Vector3f *connectors;
+	BOOL shadows;
+	BOOL hitEffects;
 
 	unsigned int nShadowEdges;
 	EDGE *shadowEdgeList;

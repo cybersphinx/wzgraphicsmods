@@ -36,6 +36,7 @@
 #include "lib/ivis_common/pieclip.h"
 #include "piematrix.h"
 #include "screen.h"
+#include <math.h>
 
 #define SHADOW_END_DISTANCE (8000*8000) // Keep in sync with lighting.c:FOG_END
 
@@ -294,15 +295,37 @@ static void pie_Draw3DShape2(iIMDShape *shape, int frame, PIELIGHT colour, PIELI
 			frame %= shape->numFrames;
 
 			if (frame > 0)
-			{
-				const int framesPerLine = OLD_TEXTURE_SIZE_FIX / (pPolys->texAnim.x * OLD_TEXTURE_SIZE_FIX);
-				const int uFrame = (frame % framesPerLine) * (pPolys->texAnim.x * OLD_TEXTURE_SIZE_FIX);
-				const int vFrame = (frame / framesPerLine) * (pPolys->texAnim.y * OLD_TEXTURE_SIZE_FIX);
-
+			{	
+				
+				float uFrame, vFrame;
+				int fpl, framesPerLine;
+				
+				if(pPolys->piever == 3)
+				{	
+					framesPerLine = 1.0/pPolys->texAnim.x;
+					
+					uFrame = fmod(frame, framesPerLine) * pPolys->texAnim.x;
+					vFrame = (frame / framesPerLine) * pPolys->texAnim.y;
+					
+				}
+				else
+				{
+ 					fpl = OLD_TEXTURE_SIZE_FIX / (pPolys->texAnim.x * OLD_TEXTURE_SIZE_FIX);
+					uFrame = (frame % fpl) * (pPolys->texAnim.x * OLD_TEXTURE_SIZE_FIX);
+					vFrame = (frame / fpl) * (pPolys->texAnim.y * OLD_TEXTURE_SIZE_FIX);
+				}
 				for (n = 0; n < pPolys->npnts; n++)
 				{
-					texCoords[n].x += uFrame / OLD_TEXTURE_SIZE_FIX;
-					texCoords[n].y += vFrame / OLD_TEXTURE_SIZE_FIX;
+					if(pPolys->piever == 3)
+					{
+						texCoords[n].x +=uFrame;
+						texCoords[n].y +=vFrame;
+					}					
+					else
+					{					
+						texCoords[n].x += uFrame / OLD_TEXTURE_SIZE_FIX;
+						texCoords[n].y += vFrame / OLD_TEXTURE_SIZE_FIX;
+					}				
 				}
 			}
 		}
