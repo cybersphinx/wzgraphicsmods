@@ -69,6 +69,11 @@ static unsigned int videodump_scene_num = 0;
 static unsigned int videodump_frame_num = 0;
 static char            videodump_filename[PATH_MAX];
 static BOOL            videodump_required = false;
+static unsigned char *vid_tmp_buf = 0;
+static iV_Image vid_image = { 0, 0, 0, NULL };
+
+
+
 
 static int preview_width = 0, preview_height = 0;
 static Vector2i player_pos[MAX_PLAYERS];
@@ -584,13 +589,13 @@ void screenDoDumpToDiskIfRequired(void)
 * Bytes from glReadPixels are written as a PPM file.  This is postprocessed
 * into a movie format like AVI with something like ffmpeg or mencoder.
 */
+
 void videoDoDumpToDiskIfRequired(void)
 {
 	PHYSFS_File* fileHandle;
 	char buffer[80];
 	const char* fileName = videodump_filename;
 	unsigned int videodump_max_frames = 999;
-	static iV_Image image = { 0, 0, 0, NULL };
 
 
 	if (!videodump_required) return;
@@ -623,54 +628,39 @@ void videoDoDumpToDiskIfRequired(void)
 
 	// Dump the currently displayed screen in a buffer
 
-	ASSERT(screen->w >= 0 && screen->h >= 0, "Somehow our screen has negative dimensions! Width = %d; Height = %d", screen->w, screen->h);
 
-	if (image.width != (unsigned int)screen->w 
-		|| image.height != (unsigned int)screen->h)
-	{
-		if (image.bmp != NULL)
-		{
-			free(image.bmp);
-		}
-
-		image.width = screen->w;
-		image.height = screen->h;
-		image.bmp = malloc(channelsPerPixel * image.width * image.height);
-		if (image.bmp == NULL)
-		{
-			image.width = 0; image.height = 0;
-			debug(LOG_ERROR, "Couldn't allocate memory");
-			return;
-		}
-	}
-	glReadPixels(0, 0, image.width, image.height, GL_RGB, GL_UNSIGNED_BYTE, image.bmp);
+	glReadPixels(0, 0, vid_image.width, vid_image.height, 
+				 GL_RGB, GL_UNSIGNED_BYTE, vid_image.bmp);
 
 	/* writing a png takes too long so let's dump a binary PPM
 	   PPM format is an ASCII header followed by raw bytes from top to bottom.
 	   Since glReadPixels reads bottom up, we need to flip the image.
 	*/
 
+	{
+		/* flip image vertically by copying rows from top of vid_image 
+		   to bottom of tmp_buf
+		*/
 
-	{ // flip image vertically by exchanging rows
-		unsigned char  *tmp_buf = (unsigned char*) malloc( image.width * image.height * channelsPerPixel );
-		if(tmp_buf) {
+		// image buffers are alloced and freed in videoDumpToDisk()
+		if( vid_image.bmp && vid_tmp_buf) {
 			int row;
 			unsigned char *top;
 			unsigned char *bottom;
-			int row_stride = image.width * channelsPerPixel;
+			int row_stride = vid_image.width * channelsPerPixel;
 
-			top = image.bmp;
-			bottom = tmp_buf + row_stride * (image.height - 1);
+			top = vid_image.bmp;
+			bottom = vid_tmp_buf + row_stride * (vid_image.height - 1);
 
-			for( row = 0; row < image.height; row ++, top += row_stride, bottom -= row_stride) {
+			for( row = 0; row < vid_image.height; 
+				 row ++, top += row_stride, bottom -= row_stride) {
 
 				memcpy( bottom, top, row_stride);  // copy top to bottom
 			}
-			free( image.bmp);
-			image.bmp = tmp_buf;
 			 
 		} else {
-			printf( "error: malloc failed in video dump\n");  // half-hearted error msg
+			// half-hearted error msg
+			printf( "error: malloc failed in video dump\n");  
 			return;
 		}
 	}
@@ -685,17 +675,15 @@ void videoDoDumpToDiskIfRequired(void)
 	}
 
 	// write ppm header: magic number width height, max value
-	sprintf( buffer, "P6\n%d %d\n255\n", image.width, image.height );
+	sprintf( buffer, "P6\n%d %d\n255\n", vid_image.width, vid_image.height );
 	PHYSFS_write( fileHandle,  buffer, strlen( buffer ), 1 );
 
 
 	// write data
-	PHYSFS_write( fileHandle, image.bmp, image.width * image.height * 3, 1);
+	PHYSFS_write( fileHandle, vid_tmp_buf, 
+				  vid_image.width * vid_image.height * channelsPerPixel , 1);
 
 	PHYSFS_close( fileHandle);
-	
-/* 	free( image.bmp); // the memory we malloced earlier */
-/* 	image.bmp = NULL; */
 }
 
 
@@ -750,11 +738,25 @@ void videoDumpToDisk(const char* path)
 	
 	if(videodump_required){  // turn off
 		videodump_required = false;
+		// do cleanup
+		if(vid_image.bmp){
+			free( vid_image.bmp );
+			vid_image.bmp=NULL;
+			vid_image.width = 0; 
+			vid_image.height = 0;
+		}
+		if(vid_tmp_buf){
+			free( vid_tmp_buf);
+			vid_tmp_buf = NULL;
+		}
+
+
 #if 0
 no audio capture right now
         // stop audio capture
 		sound_Capture( false );
 #endif
+
 	} 
 	else {  // turn on
 		/* increment the scene number and check for overflow so we don't overwrite files */
@@ -764,16 +766,33 @@ no audio capture right now
 			videodump_required = false;
 			CONPRINTF( ConsoleString, 
 					   (ConsoleString, "Oops! Scene Number overflow"));
-
+			return;
 		}
 		videodump_required=true;
 		videodump_frame_num=0;
+		// do setup
+		ASSERT(screen->w >= 0 && screen->h >= 0, 
+			   "Screen has negative dimensions! Width = %d; Height = %d", 
+			   screen->w, screen->h);
 
+		vid_image.width = screen->w;
+		vid_image.height = screen->h;
+		vid_image.bmp = malloc(channelsPerPixel * vid_image.width * vid_image.height);
+		if (vid_image.bmp == NULL)
+		{
+			vid_image.width = 0; vid_image.height = 0;
+			debug(LOG_ERROR, "Couldn't allocate memory");
+			return;
+		}
+		vid_tmp_buf = (unsigned char*) malloc( vid_image.width * vid_image.height * channelsPerPixel );
+		if( !vid_tmp_buf){
+			debug(LOG_ERROR, "could not allocate memory for tmp buf");
+			return;
+		}
 #if 0 
-no audio capture  
+no audio capture  atm
 		sound_Capture( true );
 #endif
-
 
 	}
 

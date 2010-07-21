@@ -6,15 +6,6 @@ dumps video frames in-game to the $(configdir)/videodumps directory.
 The frames are dumped as raw PPM files for speed reasons.  You can
 convert them to AVI using the ppm2avi utility here.
 
-For ease of use, you can symlink ppm2avi into your bin dir with
-something like this:
-
-		  ln -s `pwd`/ppm2avi ~/bin
-
-Notes: the `` marks around pwd are back-ticks, not quotes.  I have a
-bin dir in my home dir where I keep personal utilites, but you can
-link the utility into anywhere in your PATH.
-
 The video dumper writes frames in the format wz2100_SCENE#_FRAME#.ppm
 where the numbers range from 001-999.
 
@@ -29,19 +20,49 @@ video dump filenames are wz2100_SCENE_FRAME.ppm where
 SCENE and FRAME are 3 digit numbers with leading zeros.
 example:  wz2100_001_001.ppm  for scene 1, frame 1.
 
-run   wzencode --help  for info
+examples:
+
+		wzencode.py test.avi
+
+This is a minimal example.  It converts the scene 1 video dump (wz2100_001_*.ppm) to an AVI file using the default arguments.  The bitrate is fairly low (200 kbps)
+
+	 wzencode.py -s 2 -b 1.0M test2.avi
+
+This example encodes scene 2 (wz2100_002_*.ppm) into a AVI file with a bitrate of 1.0 Mbps.
+
+	 wzencode.py --help
+
+This prints out the usage and help message.
+
+
+More details:
 
 options that are the same as ffmpeg
 -b bitrate		 default: 200k bits/second
--s size wxh		 default: same as WZ resolution
 -r output framerate		default: 25 fps
 
 encode specific options
+-s NNN		scene number.  default: 001
 --ifr input frame rate.  default: 10
 --basename wz2100_
---scene NNN		scene number.  default: 001
 
-encode scene output_file
+-s size wxh		 default: same as WZ resolution
+
+
+Hints:
+
+For ease of use, you can symlink wzencode.py into your bin dir with
+something like this:
+
+		  ln -s `pwd`/wzencode.py ~/bin
+
+Notes: the `` marks around pwd are back-ticks, not quotes.  I have a
+bin dir in my home dir where I keep personal utilites, but you can
+link the utility into anywhere in your PATH.
+
+
+
+
 
 
 
