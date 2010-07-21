@@ -145,7 +145,7 @@ BOOL	showGateways = false;
 BOOL	showPath = false;
 
 /// The name of the texture page used to draw the skybox
-static char skyboxPageName[PATH_MAX] = "page-25";
+static char skyboxPageName[PATH_MAX] = "page-302";
 
 /// When to display HP bars
 UWORD barMode;
@@ -953,8 +953,8 @@ BOOL init3DView(void)
 	bRender3DOnly = false;
 
 	pie_InitSkybox(iV_GetTexture(skyboxPageName));
-	pie_InitSkybox(iV_GetTexture("page-260"));
-	pie_InitSkybox(iV_GetTexture("page-261"));
+	pie_InitSkybox(iV_GetTexture("page-301"));
+	pie_InitSkybox(iV_GetTexture("page-302"));
 
 	// distance is not saved, so initialise it now
 	distance = START_DISTANCE; // distance
@@ -3607,7 +3607,7 @@ static void renderSurroundings(void)
 	pie_TRANSLATE(0, -skybox_scale/8, 0);
 
 	// Set the texture page
-	pie_SetTexturePage(iV_GetTexture("page-261"));
+	pie_SetTexturePage(iV_GetTexture("page-300"));
 
 	pie_DrawSkybox(skybox_scale, 0, 0, 1, 1,false);
 
@@ -3627,7 +3627,7 @@ static void renderSurroundings(void)
 	pie_TRANSLATE(0, -skybox_scale/8, 0);
 
 	// Set the texture page
-	pie_SetTexturePage(iV_GetTexture("page-260"));
+	pie_SetTexturePage(iV_GetTexture("page-301"));
 
 	pie_DrawSkybox(skybox_scale, 0, 0, 1, 1,true);
 
