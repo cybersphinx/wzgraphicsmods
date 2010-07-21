@@ -3631,6 +3631,8 @@ static void renderSurroundings(void)
 
 	pie_DrawSkybox(skybox_scale, 0, 0, 1, 1,true);
 
+	pie_DrawSkybox(skybox_scale, 0, 0, 1, 1, 1);
+	
 	// Load Saved State
 	pie_MatEnd();
 		pie_MatBegin();
@@ -3648,14 +3650,13 @@ static void renderSurroundings(void)
 	pie_TRANSLATE(0, -skybox_scale/8, 0);
 
 	// Set the texture page
-	pie_SetTexturePage(iV_GetTexture("page-25"));
+	pie_SetTexturePage(iV_GetTexture("page-302"));
 
 	if(!gamePaused())
 	{
 		wind = wrapf(wind + graphicsTimeAdjustedIncrement(0.5f), 360.0f);
 	}
-	pie_DrawSkybox(skybox_scale, 0, 0, 1, 1,false);
-
+	pie_DrawSkybox(skybox_scale, 0, 0, 1, 1, 0);
 	// Load Saved State
 	pie_MatEnd();
 }
