@@ -130,7 +130,7 @@ void pie_Box(int x0,int y0, int x1, int y1, PIELIGHT colour)
 
 void pie_BoxFill(int x0,int y0, int x1, int y1, PIELIGHT colour)
 {
-	pie_SetRendMode(GL_ALPHA);
+	pie_SetRendMode(REND_ALPHA);
 	pie_SetTexturePage(TEXPAGE_NONE);
 	pie_DrawRect(x0, y0, x1, y1, colour);
 }
