@@ -3631,8 +3631,6 @@ static void renderSurroundings(void)
 
 	pie_DrawSkybox(skybox_scale, 0, 0, 1, 1,true);
 
-	pie_DrawSkybox(skybox_scale, 0, 0, 1, 1, 1);
-	
 	// Load Saved State
 	pie_MatEnd();
 		pie_MatBegin();
@@ -3656,7 +3654,7 @@ static void renderSurroundings(void)
 	{
 		wind = wrapf(wind + graphicsTimeAdjustedIncrement(0.5f), 360.0f);
 	}
-	pie_DrawSkybox(skybox_scale, 0, 0, 1, 1, 0);
+	pie_DrawSkybox(skybox_scale, 0, 0, 1, 1, false);
 	// Load Saved State
 	pie_MatEnd();
 }

@@ -180,7 +180,7 @@ void pie_InitSkybox(SDWORD pageNum)
 	pie_SetTexturePage(pageNum);
 	if(pageNum == iV_GetTexture("page-301"))
 		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP);
-	else
+	else if (pageNum == iV_GetTexture("page-300") || pageNum == iV_GetTexture("page-302"))
 		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
 }
 

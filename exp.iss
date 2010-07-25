@@ -14,7 +14,7 @@ AppPublisherURL=http://www.wzgm.net
 AppSupportURL=http://www.wzgm.net
 AppUpdatesURL=http://www.wzgm.net
 DefaultDirName={pf}\data
-DefaultGroupName=dad
+DefaultGroupName=WZGM-EXP
 AllowNoIcons=yes
 OutputDir=data\installer
 OutputBaseFilename=setup
@@ -53,3 +53,4 @@ Name: "{commondesktop}\Warzone2100GraphicsMods-BergExpTrunkBuild"; Filename: "{a
 
 [Run]
 Filename: "{app}\Warzone2100-Dbg.exe"; Description: "{cm:LaunchProgram,Warzone2100GraphicsMods-BergExpTrunkBuild}"; Flags: nowait postinstall skipifsilent
+
