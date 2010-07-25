@@ -952,8 +952,9 @@ BOOL init3DView(void)
 
 	bRender3DOnly = false;
 
-	pie_InitSkybox(iV_GetTexture(skyboxPageName));
+	
 	pie_InitSkybox(iV_GetTexture("page-301"));
+	pie_InitSkybox(iV_GetTexture("page-300"));
 	pie_InitSkybox(iV_GetTexture("page-302"));
 
 	// distance is not saved, so initialise it now
