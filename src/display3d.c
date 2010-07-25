@@ -2584,7 +2584,7 @@ static BOOL	renderWallSection(STRUCTURE *psStructure)
 
 				} else
 				{
-				pie_Draw3DShape(imd, animFrame, getPlayerColour(psStructure->player), brightness, specular, (imd->shadow > 0 ? 0 : pieFlag), pieFlagData);
+				pie_Draw3DShape(imd, animFrame, getPlayerColour(psStructure->player), brightness, specular, (imd->shadow != true ? 0 : pieFlag), pieFlagData);
 				}
 		}
 		imd->points = temp;
