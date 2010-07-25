@@ -2549,7 +2549,7 @@ static BOOL	renderWallSection(STRUCTURE *psStructure)
 								// Turn off structure animation if the structure is getting built.
 								pie_Draw3DShape(psStructure->sDisplay.imd, 
 								(psStructure->status == SS_BEING_BUILT ? 0 : (structureIsBlueprint(psStructure) ? 0 :animFrame)), getPlayerColour(psStructure->player),
-								brightness, specular, (imd->numFrames > 0 ? pie_HEIGHT_SCALED|0 : pie_HEIGHT_SCALED|pie_SHADOW),
+								brightness, specular, (imd->shadows == false ? pie_HEIGHT_SCALED|0 : pie_HEIGHT_SCALED|pie_SHADOW),
 								(SDWORD)(structHeightScale(psStructure) * pie_RAISE_SCALE) );
 							
 		}
@@ -2577,7 +2577,7 @@ static BOOL	renderWallSection(STRUCTURE *psStructure)
 			
 			if(gameTime-psStructure->timeLastHit < 250 && imd->numFrames > 0) 
 				{
-				pie_Draw3DShape(imd, animFrame, 8, brightness, specular, (imd->numFrames > 0 ? 0 : pieFlag), pieFlagData);
+				pie_Draw3DShape(imd, animFrame, 8, brightness, specular, (imd->shadow != true ? 0 : pieFlag), pieFlagData);
 				effectGiveAuxVar(500);
 				if(gameTime-psStructure->timeLastHit < 2.5)	
 					addEffect(&pos,EFFECT_EXPLOSION,EXPLOSION_TYPE_LASER,true,NULL,1);
