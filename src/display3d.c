@@ -144,9 +144,6 @@ BOOL	godMode;
 BOOL	showGateways = false;
 BOOL	showPath = false;
 
-/// The name of the texture page used to draw the skybox
-static char skyboxPageName[PATH_MAX] = "page-300";
-
 /// When to display HP bars
 UWORD barMode;
 
