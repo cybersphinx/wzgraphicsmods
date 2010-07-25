@@ -2101,7 +2101,7 @@ void	renderStructure(STRUCTURE *psStructure)
 				pieFlag = pie_TRANSLUCENT | pie_FORCE_FOG;
 				pieFlagData = 255;
 			}
-			pie_Draw3DShape(psStructure->pStructureType->pBaseIMD, 0, colour, buildingBrightness, WZCOL_BLACK, pieFlag, pieFlagData);
+			pie_Draw3DShape(psStructure->pStructureType->pBaseIMD, animFrame, colour, buildingBrightness, WZCOL_BLACK, pieFlag, pieFlagData);
 		}
 
 		// override
@@ -2125,7 +2125,7 @@ void	renderStructure(STRUCTURE *psStructure)
 	//first check if partially built - ANOTHER HACK!
 	if (psStructure->status == SS_BEING_BUILT || psStructure->status == SS_BEING_DEMOLISHED)
 	{
-		pie_Draw3DShape(strImd, 0, colour, buildingBrightness, WZCOL_BLACK, pie_HEIGHT_SCALED | pie_SHADOW,
+		pie_Draw3DShape(strImd, 0, colour, buildingBrightness, WZCOL_BLACK, (strImd->shadows != true ? pie_HEIGHT_SCALED|0 :pie_HEIGHT_SCALED | pie_SHADOW),
 		                (SDWORD)(structHeightScale(psStructure) * pie_RAISE_SCALE));
 		if (defensive)
 		{
@@ -2144,7 +2144,7 @@ void	renderStructure(STRUCTURE *psStructure)
 			pieFlag = pie_STATIC_SHADOW;
 			pieFlagData = 0;
 		}
-		pie_Draw3DShape(strImd, (psStructure->status == SS_BEING_BUILT ? 0 : (structureIsBlueprint(psStructure) ? 0 : animFrame)), colour, buildingBrightness, WZCOL_BLACK, pieFlag, pieFlagData);
+		pie_Draw3DShape(strImd, (psStructure->status == SS_BEING_BUILT ? 0 : (structureIsBlueprint(psStructure) ? 0 : animFrame)), colour, buildingBrightness, WZCOL_BLACK, (strImd->shadows != true ? 0 : pieFlag), pieFlagData);
 		if (defensive)
 		{
 			strImd->points = temp;
@@ -2577,14 +2577,14 @@ static BOOL	renderWallSection(STRUCTURE *psStructure)
 			
 			if(gameTime-psStructure->timeLastHit < 250 && imd->numFrames > 0) 
 				{
-				pie_Draw3DShape(imd, animFrame, 8, brightness, specular, (imd->shadow != true ? 0 : pieFlag), pieFlagData);
+				pie_Draw3DShape(imd, animFrame, 8, brightness, specular, (imd->shadows != true ? 0 : pieFlag), pieFlagData);
 				effectGiveAuxVar(500);
 				if(gameTime-psStructure->timeLastHit < 2.5)	
 					addEffect(&pos,EFFECT_EXPLOSION,EXPLOSION_TYPE_LASER,true,NULL,1);
 
 				} else
 				{
-				pie_Draw3DShape(imd, animFrame, getPlayerColour(psStructure->player), brightness, specular, (imd->shadow != true ? 0 : pieFlag), pieFlagData);
+				pie_Draw3DShape(imd, animFrame, getPlayerColour(psStructure->player), brightness, specular, (imd->shadows != true ? 0 : pieFlag), pieFlagData);
 				}
 		}
 		imd->points = temp;
