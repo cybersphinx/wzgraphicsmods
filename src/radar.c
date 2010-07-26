@@ -57,19 +57,6 @@ static PIELIGHT		colRadarAlly, colRadarMe, colRadarEnemy;
 static PIELIGHT		tileColours[MAX_TILES];
 static UDWORD		*radarBuffer = NULL;
 
-PIELIGHT clanColours[MAX_PLAYERS]=
-{	// see frontend2.png for team color order.
-	// [r,g,b,a]
-	{{0,255,0,255}},		// green  Player 0
-	{{255,210,40,255}},		// orange Player 1
-	{{255,255,255,255}},	// grey   Player 2
-	{{0,0,0,255}},			// black  Player 3
-	{{255,0,0,255}},		// red    Player 4
-	{{20,20,255,255}},		// blue   Player 5
-	{{255,0,255,255}},		// pink   Player 6
-	{{0,255,255,255}},		// cyan   Player 7
-};
-
 static PIELIGHT flashColours[MAX_PLAYERS]=
 {	//right now the flash color is all bright red
 	{{254,37,37,200}},	// Player 0
@@ -416,10 +403,10 @@ static void DrawRadarObjects(void)
 		else
 		{
 			//original 8-color mode
-			playerCol = clanColours[getPlayerColour(clan)];
+			playerCol = pal_GetTeamColour(clan);
 		}
 
-		flashCol = flashColours[getPlayerColour(clan)];
+		flashCol = pal_GetTeamColour(clan);
 
    		/* Go through all droids */
    		for(psDroid = apsDroidLists[clan]; psDroid != NULL; psDroid = psDroid->psNext)
@@ -482,9 +469,9 @@ static void DrawRadarObjects(void)
 			else 
 			{
 				//original 8-color mode
-				playerCol = clanColours[getPlayerColour(clan)];
+				playerCol = pal_GetTeamColour(clan);
 			}
-			flashCol = flashColours[getPlayerColour(clan)];
+			flashCol = pal_GetTeamColour(clan);
 
 			if (psStruct->visible[selectedPlayer]
 			    || (bMultiPlayer && game.alliance == ALLIANCES_TEAMS

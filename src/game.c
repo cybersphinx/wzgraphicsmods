@@ -11649,7 +11649,7 @@ BOOL plotStructurePreview16(char *backDropSprite, Vector2i playeridpos[])
 		}
 		else
 		{
-			color.rgba = clanColours[playerid].rgba;
+			color.rgba = pal_GetTeamColour(playerid).rgba;
 		}
 		
 		if (HQ)

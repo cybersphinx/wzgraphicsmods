@@ -2190,7 +2190,7 @@ static void moveUpdateVtolModel(DROID *psDroid, SDWORD speed, uint16_t direction
 	/* do vertical movement */
 	iMapZ = map_Height(psDroid->pos.x, psDroid->pos.y);
 	psDroid->pos.z = MAX(iMapZ, psDroid->pos.z + timeAdjustedIncrement(psDroid->sMove.iVertSpeed, true));
-
+	
 	moveAdjustVtolHeight(psDroid, iMapZ);
 }
 
