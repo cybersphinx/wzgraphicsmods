@@ -57,18 +57,6 @@ static PIELIGHT		colRadarAlly, colRadarMe, colRadarEnemy;
 static PIELIGHT		tileColours[MAX_TILES];
 static UDWORD		*radarBuffer = NULL;
 
-static PIELIGHT flashColours[MAX_PLAYERS]=
-{	//right now the flash color is all bright red
-	{{254,37,37,200}},	// Player 0
-	{{254,37,37,200}},	// Player 1
-	{{254,37,37,200}},	// Player 2
-	{{254,37,37,200}},	// Player 3
-	{{254,37,37,200}},	// Player 4  (notice, brighter red)
-	{{254,37,37,200}},	// Player 5
-	{{254,37,37,200}},	// Player 6
-	{{254,37,37,200}}		// Player 7
-};
-
 static SDWORD radarWidth, radarHeight, radarCenterX, radarCenterY, radarTexWidth, radarTexHeight;
 static uint8_t RadarZoom;
 static float RadarZoomMultiplier = 1.0f;
