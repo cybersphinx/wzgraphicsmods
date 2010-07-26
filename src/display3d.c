@@ -2087,7 +2087,12 @@ void	renderStructure(STRUCTURE *psStructure)
 	}
 
 	buildingBrightness = structureBrightness(psStructure);
-
+	if(gameTime-psStructure->timeLastHit < 2.5 && psStructure->pStructureType->pBaseIMD->hitEffects == true)	
+	{
+					effectGiveAuxVar(500*psStructure->pos.y);
+					addEffect(&pos,EFFECT_EXPLOSION,EXPLOSION_TYPE_LASER,true,NULL,1);
+	}
+	
 	if (!defensive)
 	{
 		/* Draw the building's base first */
@@ -2105,8 +2110,7 @@ void	renderStructure(STRUCTURE *psStructure)
 			}
 			pie_Draw3DShape(psStructure->pStructureType->pBaseIMD, animFrame, colour, buildingBrightness, WZCOL_BLACK, pieFlag, pieFlagData);
 		}
-		if(gameTime-psStructure->timeLastHit < 2.5 && psStructure->pStructureType->pBaseIMD->hitEffects == true)	
-					addEffect(&pos,EFFECT_EXPLOSION,EXPLOSION_TYPE_LASER,true,NULL,1);
+
 
 		// override
 		if(bHitByElectronic)

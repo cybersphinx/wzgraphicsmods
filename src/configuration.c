@@ -257,10 +257,6 @@ BOOL loadConfig(void)
 	if (getWarzoneKeyString("masterserver_name", sBuf))
 	{
 		NETsetMasterserverName(sBuf);
-		if (strcasecmp(sBuf, "lobby.wz2100.net") != 0)
-		{
-			debug(LOG_ERROR, "We are not using lobby.wz2100.net, for the master server name, we are using %s instead?", sBuf);
-		}
 	}
 	else
 	{
