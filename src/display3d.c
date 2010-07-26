@@ -1979,7 +1979,7 @@ void	renderStructure(STRUCTURE *psStructure)
 {
 	int			i, structX, structY, rx, rz, colour, rotation, frame, animFrame, pieFlag, pieFlagData;
 	PIELIGHT		buildingBrightness;
-	Vector3i		dv, pos;
+	Vector3i		dv, pos, scatter;
 	Vector3f		*temp = NULL;
 	BOOL			bHitByElectronic = false;
 	BOOL			defensive = false;
@@ -2026,6 +2026,9 @@ void	renderStructure(STRUCTURE *psStructure)
 		pos.x = structX;
 		pos.z = structY;
 		pos.y = map_Height(structX, structY);
+		scatter.x = 1500;
+		scatter.z = 1500;
+		scatter.y = 1500;
 
 	if (defensive && strImd != NULL)
 	{
@@ -2108,8 +2111,9 @@ void	renderStructure(STRUCTURE *psStructure)
 			//
 							if(gameTime-psStructure->timeLastHit < 2.5 && strImd->hitEffects)	
 	{
-					effectGiveAuxVar(35000);
-					addEffect(&pos,EFFECT_EXPLOSION,EXPLOSION_TYPE_SHOCKWAVE,false,strImd,100);
+					effectGiveAuxVar(600);
+					addMultiEffect(&pos, &scatter,EFFECT_EXPLOSION,EXPLOSION_TYPE_LASER,false,NULL,50,1,10);
+					
 	}
 
 		}
