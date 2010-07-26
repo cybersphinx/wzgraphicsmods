@@ -2087,11 +2087,7 @@ void	renderStructure(STRUCTURE *psStructure)
 	}
 
 	buildingBrightness = structureBrightness(psStructure);
-	if(gameTime-psStructure->timeLastHit < 2.5 && psStructure->pStructureType->pBaseIMD->hitEffects == true)	
-	{
-					effectGiveAuxVar(500*psStructure->pos.y);
-					addEffect(&pos,EFFECT_EXPLOSION,EXPLOSION_TYPE_LASER,true,NULL,1);
-	}
+
 	
 	if (!defensive)
 	{
@@ -2109,7 +2105,15 @@ void	renderStructure(STRUCTURE *psStructure)
 				pieFlagData = 255;
 			}
 			pie_Draw3DShape(psStructure->pStructureType->pBaseIMD, animFrame, colour, buildingBrightness, WZCOL_BLACK, pieFlag, pieFlagData);
+			//
+							if(gameTime-psStructure->timeLastHit < 2.5 && strImd->hitEffects)	
+	{
+					effectGiveAuxVar(35000);
+					addEffect(&pos,EFFECT_EXPLOSION,EXPLOSION_TYPE_SHOCKWAVE,false,strImd,100);
+	}
+
 		}
+
 
 
 		// override
