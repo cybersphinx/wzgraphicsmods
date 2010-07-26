@@ -1979,7 +1979,7 @@ void	renderStructure(STRUCTURE *psStructure)
 {
 	int			i, structX, structY, rx, rz, colour, rotation, frame, animFrame, pieFlag, pieFlagData;
 	PIELIGHT		buildingBrightness;
-	Vector3i		dv;
+	Vector3i		dv, pos;
 	Vector3f		*temp = NULL;
 	BOOL			bHitByElectronic = false;
 	BOOL			defensive = false;
@@ -2022,6 +2022,10 @@ void	renderStructure(STRUCTURE *psStructure)
 	/* Get it's x and y coordinates so we don't have to deref. struct later */
 	structX = psStructure->pos.x;
 	structY = psStructure->pos.y;
+
+		pos.x = structX;
+		pos.z = structY;
+		pos.y = map_Height(structX, structY);
 
 	if (defensive && strImd != NULL)
 	{
@@ -2101,6 +2105,8 @@ void	renderStructure(STRUCTURE *psStructure)
 			}
 			pie_Draw3DShape(psStructure->pStructureType->pBaseIMD, animFrame, colour, buildingBrightness, WZCOL_BLACK, pieFlag, pieFlagData);
 		}
+		if(gameTime-psStructure->timeLastHit < 2.5 && psStructure->pStructureType->pBaseIMD->hitEffects == true)	
+					addEffect(&pos,EFFECT_EXPLOSION,EXPLOSION_TYPE_LASER,true,NULL,1);
 
 		// override
 		if(bHitByElectronic)
@@ -2366,7 +2372,7 @@ void	renderStructure(STRUCTURE *psStructure)
 		psStructure->sDisplay.screenX = s.x;
 		psStructure->sDisplay.screenY = s.y;
 	}
-
+	
 	iV_MatrixEnd();
 }
 
@@ -2577,13 +2583,14 @@ static BOOL	renderWallSection(STRUCTURE *psStructure)
 				{
 				pie_Draw3DShape(imd, animFrame, 8, brightness, specular, (imd->shadows != true ? 0 : pieFlag), pieFlagData);
 				effectGiveAuxVar(500);
-				if(gameTime-psStructure->timeLastHit < 2.5)	
-					addEffect(&pos,EFFECT_EXPLOSION,EXPLOSION_TYPE_LASER,true,NULL,1);
+
 
 				} else
 				{
 				pie_Draw3DShape(imd, animFrame, getPlayerColour(psStructure->player), brightness, specular, (imd->shadows != true ? 0 : pieFlag), pieFlagData);
 				}
+				if(gameTime-psStructure->timeLastHit < 2.5 && imd->hitEffects == true)	
+					addEffect(&pos,EFFECT_EXPLOSION,EXPLOSION_TYPE_LASER,true,NULL,1);
 		}
 		imd->points = temp;
 
