@@ -987,7 +987,7 @@ static void proj_ImpactFunc( PROJECTILE *psObj )
 	iIMDShape       *imd;
 	HIT_SIDE        impactSide = HIT_SIDE_FRONT;
 	BASE_OBJECT     *temp;
-	STRUCTURE		*psStructure, *psTemp;
+	STRUCTURE		*psTemp;
 	int				clan;
 
 	CHECK_PROJECTILE(psObj);
@@ -1124,17 +1124,19 @@ imd = psStats->pTargetHitGraphic;
 						/* Go through all the players */
 					
 					psTemp = (STRUCTURE *)psObj->psDest;
-						if(psTemp->sDisplay.imd->hitEffects == true)
+						if(psTemp->sDisplay.imd->hitEffects == true && psTemp->pStructureType->type != REF_WALL)
 					{
 						effectGiveAuxVar(500);
 						addEffect(&position,EFFECT_EXPLOSION,EXPLOSION_TYPE_LASER,true,NULL,1);
 					} else
 						{
+							imd = psStats->pTargetHitGraphic;
 							addMultiEffect(&position, &scatter, EFFECT_EXPLOSION, facing, true, imd, psStats->numExplosions, psStats->lightWorld, psStats->effectSize);
 					}
 					} else
 					{
-			addMultiEffect(&position, &scatter, EFFECT_EXPLOSION, facing, true, imd, psStats->numExplosions, psStats->lightWorld, psStats->effectSize);
+						imd = psStats->pTargetHitGraphic;
+						addMultiEffect(&position, &scatter, EFFECT_EXPLOSION, facing, true, imd, psStats->numExplosions, psStats->lightWorld, psStats->effectSize);
 					}
 			}
 		}
