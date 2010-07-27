@@ -2023,8 +2023,6 @@ void	renderStructure(STRUCTURE *psStructure)
 	structX = psStructure->pos.x;
 	structY = psStructure->pos.y;
 
-
-
 	if (defensive && strImd != NULL)
 	{
 		// Play with the imd so its flattened
@@ -2086,7 +2084,6 @@ void	renderStructure(STRUCTURE *psStructure)
 
 	buildingBrightness = structureBrightness(psStructure);
 
-	
 	if (!defensive)
 	{
 		/* Draw the building's base first */
@@ -2103,12 +2100,7 @@ void	renderStructure(STRUCTURE *psStructure)
 				pieFlagData = 255;
 			}
 			pie_Draw3DShape(psStructure->pStructureType->pBaseIMD, animFrame, colour, buildingBrightness, WZCOL_BLACK, pieFlag, pieFlagData);
-			//
-
-
 		}
-
-
 
 		// override
 		if(bHitByElectronic)
@@ -2374,7 +2366,7 @@ void	renderStructure(STRUCTURE *psStructure)
 		psStructure->sDisplay.screenX = s.x;
 		psStructure->sDisplay.screenY = s.y;
 	}
-	
+
 	iV_MatrixEnd();
 }
 
@@ -2591,7 +2583,7 @@ static BOOL	renderWallSection(STRUCTURE *psStructure)
 				{
 				pie_Draw3DShape(imd, animFrame, getPlayerColour(psStructure->player), brightness, specular, (imd->shadows != true ? 0 : pieFlag), pieFlagData);
 				}
-				if(gameTime-psStructure->timeLastHit < 2.5 && imd->hitEffects == true)	
+								if(gameTime-psStructure->timeLastHit < 2.5 && imd->hitEffects == true)	
 					addEffect(&pos,EFFECT_EXPLOSION,EXPLOSION_TYPE_LASER,true,NULL,1);
 		}
 		imd->points = temp;

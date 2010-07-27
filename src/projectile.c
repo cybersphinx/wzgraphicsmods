@@ -987,9 +987,11 @@ static void proj_ImpactFunc( PROJECTILE *psObj )
 	iIMDShape       *imd;
 	HIT_SIDE        impactSide = HIT_SIDE_FRONT;
 	BASE_OBJECT     *temp;
+	STRUCTURE		*psStructure, *psTemp;
+	int				clan;
 
 	CHECK_PROJECTILE(psObj);
-
+	
 	psStats = psObj->psWStats;
 	ASSERT(psStats != NULL, "proj_ImpactFunc: Invalid weapon stats pointer");
 
@@ -1105,10 +1107,36 @@ static void proj_ImpactFunc( PROJECTILE *psObj )
 			// Otherwise we just hit it plain and simple
 			else
 			{
-				imd = psStats->pTargetHitGraphic;
-			}
+				if(psObj->psDest->type == OBJ_STRUCTURE)
+				{
+						/* Go through all the players */
+				for (clan = 0; clan < MAX_PLAYERS; clan++)
+				{
+		/* Now go all buildings for that player */
+					
 
+				}
+imd = psStats->pTargetHitGraphic;
+				
+			}
+				if(psObj->psDest->type == OBJ_STRUCTURE)
+				{
+						/* Go through all the players */
+					
+					psTemp = (STRUCTURE *)psObj->psDest;
+						if(psTemp->sDisplay.imd->hitEffects == true)
+					{
+						effectGiveAuxVar(500);
+						addEffect(&position,EFFECT_EXPLOSION,EXPLOSION_TYPE_LASER,true,NULL,1);
+					} else
+						{
+							addMultiEffect(&position, &scatter, EFFECT_EXPLOSION, facing, true, imd, psStats->numExplosions, psStats->lightWorld, psStats->effectSize);
+					}
+					} else
+					{
 			addMultiEffect(&position, &scatter, EFFECT_EXPLOSION, facing, true, imd, psStats->numExplosions, psStats->lightWorld, psStats->effectSize);
+					}
+			}
 		}
 
 		// Check for electronic warfare damage where we know the subclass and source
