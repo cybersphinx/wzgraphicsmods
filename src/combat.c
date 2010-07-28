@@ -456,6 +456,7 @@ void counterBatteryFire(BASE_OBJECT *psAttacker, BASE_OBJECT *psTarget)
 float objDamage(BASE_OBJECT *psObj, UDWORD damage, UDWORD originalhp, UDWORD weaponClass, UDWORD weaponSubClass, HIT_SIDE impactSide)
 {
 	int	actualDamage, armour, level = 1;
+	DROID *psDroid;
 
 	// If the previous hit was by an EMP cannon and this one is not:
 	// don't reset the weapon class and hit time
@@ -500,7 +501,7 @@ float objDamage(BASE_OBJECT *psObj, UDWORD damage, UDWORD originalhp, UDWORD wea
 
 	if (psObj->type == OBJ_DROID)
 	{
-		DROID *psDroid = (DROID *)psObj;
+		psDroid = (DROID *)psObj;
 
 		// Retrieve highest, applicable, experience level
 		level = getDroidEffectiveLevel(psDroid);
@@ -514,30 +515,34 @@ float objDamage(BASE_OBJECT *psObj, UDWORD damage, UDWORD originalhp, UDWORD wea
 
 	// And at least MIN_WEAPON_DAMAGE points
 	actualDamage = MAX(actualDamage, MIN_WEAPON_DAMAGE);
+		// check if the unit has shield powered.
+			// Will it deplete the shields?
+		if(!psDroid)
+			if(actualDamage > psDroid->shield)
+			{
+				actualDamage =  actualDamage - psDroid->shield;
+				psDroid->shield = 0;
+			
+			}
+			 else
+			{
+				
+				psDroid->shield = psDroid->shield - actualDamage;
+				actualDamage = 0;
+				
+			}
+		
 
 	objTrace(psObj->id, "objDamage: Penetrated %d", actualDamage);
 
 	// If the shell did sufficient damage to destroy the object, deal with it and return
-		if(psObj->shield > 0)
-	{
-		if(psObj->shield < actualDamage)
-		{
-			psObj->shield = 0;
-			actualDamage = actualDamage - psObj->shield;
-		}
-		 else {
-		psObj->shield -= actualDamage;
-		}
-		}
-
-
-	if (actualDamage >= psObj->body && psObj->shield == 0)
+	if (actualDamage >= psObj->body)
 	{
 		return (float) psObj->body / (float) originalhp * -1.0f;
 	}
-	psObj->body -= actualDamage;
-	// Substract the dealt damage from the droid's remaining body points
 
+	// Substract the dealt damage from the droid's remaining body points
+	psObj->body -= actualDamage;
 
 	return (float) actualDamage / (float) originalhp;
 }

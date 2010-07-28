@@ -1465,23 +1465,22 @@ BOOL droidUpdateRepair( DROID *psDroid )
 		return false;
 	}
 }
-// Regenerates shields on droids.
+
 BOOL droidUpdateShield(DROID *psDroid)
 {
-		if(psDroid->shield < psDroid->originalShield)
-	{
-		// We don't want shields regenerating in battle, we'll give it a 5 second cooling off period before regeneration actually starts.
-		if(osDriud->shield < psDroid->originalShield)
-		{
-		if(gameTime-psDroid->timeLastHit > 5) 
-		psDroid->shield = psDroid->shield + SHIELD_REGEN;
-		} else
-		{
-			psDroid->shield = psDroid->originalShield;
-		}
-	
-	}
 
+		// We don't want shields regenerating in battle, we'll give it a 5 second cooling off period before regeneration actually starts.
+/*
+				if(gameTime-psDroid->timeLastHit > 50000) 
+					if(psDroid->shield < psDroid->originalShield)
+						if (psDroid->shield + SHIELD_REGEN <= psDroid->originalShield)
+						{
+							psDroid->shield = psDroid->shield + SHIELD_REGEN;
+						} else
+							psDroid->shield = psDroid->originalShield;
+
+
+*/
 	return true;
 }
 
@@ -2678,10 +2677,8 @@ void droidSetBits(DROID_TEMPLATE *pTemplate,DROID *psDroid)
 	psDroid->rot.pitch =  0;
 	psDroid->rot.roll = 0;
 	psDroid->numWeaps = pTemplate->numWeaps;
-	psDroid->body = calcTemplateBody(pTemplate, psDroid->player)/2;
+	psDroid->body = calcTemplateBody(pTemplate, psDroid->player);
 	psDroid->originalBody = psDroid->body;
-	psDroid->shield = calcTemplateBody(pTemplate, psDroid->player)/4;
-	psDroid->originalShield = psDroid->shield;
 	psDroid->expectedDamage = 0;  // Begin life optimistically.
 	psDroid->time = gameTime - deltaGameTime;         // Start at beginning of tick.
 	psDroid->prevSpacetime.time = psDroid->time - 1;  // -1 for interpolation.
