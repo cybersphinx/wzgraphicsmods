@@ -2686,8 +2686,10 @@ void droidSetBits(DROID_TEMPLATE *pTemplate,DROID *psDroid)
 	psDroid->rot.pitch =  0;
 	psDroid->rot.roll = 0;
 	psDroid->numWeaps = pTemplate->numWeaps;
-	psDroid->body = calcTemplateBody(pTemplate, psDroid->player);
+	psDroid->body = calcTemplateBody(pTemplate, psDroid->player)/2;
 	psDroid->originalBody = psDroid->body;
+	psDroid->shield = psDroid->body/4;
+	psDroid->originalShield = psDroid->shield;
 	psDroid->expectedDamage = 0;  // Begin life optimistically.
 	psDroid->time = gameTime - deltaGameTime;         // Start at beginning of tick.
 	psDroid->prevSpacetime.time = psDroid->time - 1;  // -1 for interpolation.
