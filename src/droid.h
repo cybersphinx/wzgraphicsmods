@@ -139,6 +139,7 @@ extern float droidDamage(DROID *psDroid, UDWORD damage, UDWORD weaponClass,UDWOR
 
 /* The main update routine for all droids */
 extern void droidUpdate(DROID *psDroid);
+extern BOOL droidUpdateShield(DROID *psDroid);
 
 /* Set up a droid to build a structure - returns true if successful */
 extern BOOL droidStartBuild(DROID *psDroid);
