@@ -1472,12 +1472,16 @@ BOOL droidUpdateShield(DROID *psDroid)
 		// We don't want shields regenerating in battle, we'll give it a 5 second cooling off period before regeneration actually starts.
 
 				if(gameTime-psDroid->timeLastHit > 5) 
+				{
 					if(psDroid->shield < psDroid->originalShield)
 						if (psDroid->shield + SHIELD_REGEN <= psDroid->originalShield)
 						{
 							psDroid->shield = psDroid->shield + SHIELD_REGEN;
 						} else
+						{
 							psDroid->shield = psDroid->originalShield;
+						}
+				}
 
 
 
