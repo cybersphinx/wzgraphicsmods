@@ -517,7 +517,8 @@ float objDamage(BASE_OBJECT *psObj, UDWORD damage, UDWORD originalhp, UDWORD wea
 	actualDamage = MAX(actualDamage, MIN_WEAPON_DAMAGE);
 		// check if the unit has shield powered.
 			// Will it deplete the shields?
-		if(!psDroid)
+		if(psObj->type == OBJ_DROID)
+		{
 			if(actualDamage > psDroid->shield)
 			{
 				actualDamage =  actualDamage - psDroid->shield;
@@ -531,6 +532,8 @@ float objDamage(BASE_OBJECT *psObj, UDWORD damage, UDWORD originalhp, UDWORD wea
 				actualDamage = 0;
 				
 			}
+		}
+
 		
 
 	objTrace(psObj->id, "objDamage: Penetrated %d", actualDamage);

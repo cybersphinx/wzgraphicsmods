@@ -1470,8 +1470,8 @@ BOOL droidUpdateShield(DROID *psDroid)
 {
 
 		// We don't want shields regenerating in battle, we'll give it a 5 second cooling off period before regeneration actually starts.
-/*
-				if(gameTime-psDroid->timeLastHit > 50000) 
+
+				if(gameTime-psDroid->timeLastHit > 5) 
 					if(psDroid->shield < psDroid->originalShield)
 						if (psDroid->shield + SHIELD_REGEN <= psDroid->originalShield)
 						{
@@ -1480,7 +1480,7 @@ BOOL droidUpdateShield(DROID *psDroid)
 							psDroid->shield = psDroid->originalShield;
 
 
-*/
+
 	return true;
 }
 
@@ -2572,8 +2572,10 @@ DROID* buildDroid(DROID_TEMPLATE *pTemplate, UDWORD x, UDWORD y, UDWORD player,
 	//allocate 'easy-access' data!
 	objSensorCache((BASE_OBJECT *)psDroid, asSensorStats + pTemplate->asParts[COMP_SENSOR]);
 	objEcmCache((BASE_OBJECT *)psDroid, asECMStats + pTemplate->asParts[COMP_ECM]);
-	psDroid->body = calcTemplateBody(pTemplate, (UBYTE)player);  // Redundant? (Is set in droidSetBits, too.)
+	psDroid->body = calcTemplateBody(pTemplate, (UBYTE)player)/2;  // Redundant? (Is set in droidSetBits, too.)
 	psDroid->originalBody = psDroid->body;  // Redundant? (Is set in droidSetBits, too.)
+	psDroid->originalShield = psDroid->body/2;
+	psDroid->shield = psDroid->originalShield;
 
 	if (cyborgDroid(psDroid))
 	{
