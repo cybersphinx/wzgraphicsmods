@@ -455,7 +455,7 @@ void counterBatteryFire(BASE_OBJECT *psAttacker, BASE_OBJECT *psTarget)
  */
 float objDamage(BASE_OBJECT *psObj, UDWORD damage, UDWORD originalhp, UDWORD weaponClass, UDWORD weaponSubClass, HIT_SIDE impactSide)
 {
-	int	actualDamage, armour, level = 1;
+	int	actualDamage, armour, level = 1, bodyDamage;
 
 	// If the previous hit was by an EMP cannon and this one is not:
 	// don't reset the weapon class and hit time
@@ -518,13 +518,26 @@ float objDamage(BASE_OBJECT *psObj, UDWORD damage, UDWORD originalhp, UDWORD wea
 	objTrace(psObj->id, "objDamage: Penetrated %d", actualDamage);
 
 	// If the shell did sufficient damage to destroy the object, deal with it and return
-	if (actualDamage >= psObj->body)
+		if(psObj->shield > 0)
+	{
+		if(psObj->shield < actualDamage)
+		{
+			psObj->shield = 0;
+			actualDamage = actualDamage - psObj->shield;
+		}
+		 else {
+		psObj->shield -= actualDamage;
+		}
+		}
+
+
+	if (actualDamage >= psObj->body && psObj->shield == 0)
 	{
 		return (float) psObj->body / (float) originalhp * -1.0f;
 	}
-
-	// Substract the dealt damage from the droid's remaining body points
 	psObj->body -= actualDamage;
+	// Substract the dealt damage from the droid's remaining body points
+
 
 	return (float) actualDamage / (float) originalhp;
 }

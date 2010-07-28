@@ -150,6 +150,7 @@ typedef struct DROID
 	UDWORD          weight;
 	UDWORD          baseSpeed;                      ///< the base speed dependant on propulsion type
 	UDWORD          originalBody;                   ///< the original body points
+	UDWORD			originalShield;					///< the original shield points
 	float           experience;
 	UBYTE           NameVersion;                    ///< Version number used for generating on-the-fly names (e.g. Viper Mk "I" would be stored as 1 - Viper Mk "X" as 10)  - copied from droid template
 

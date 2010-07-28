@@ -88,6 +88,7 @@
 #define DEFAULT_RECOIL_TIME	(GAME_TICKS_PER_SEC/4)
 #define	DROID_DAMAGE_SPREAD	(16 - rand()%32)
 #define	DROID_REPAIR_SPREAD	(20 - rand()%40)
+#define SHIELD_REGEN 1
 
 
 /* default droid design template */
@@ -707,6 +708,7 @@ void droidUpdate(DROID *psDroid)
 	unsigned        i;
 
 	CHECK_DROID(psDroid);
+	droidUpdateShield(psDroid);
 
 #ifdef DEBUG
 	// Check that we are (still) in the sensor list
@@ -1462,6 +1464,22 @@ BOOL droidUpdateRepair( DROID *psDroid )
 		psStruct->body = (UWORD)structureBody(psStruct);
 		return false;
 	}
+}
+// Regenerates shields on droids.
+BOOL droidUpdateShield(DROID *psDroid)
+{
+		if(psDroid->shield < psDroid->originalShield)
+	{
+		// We don't want shields regenerating in battle, we'll give it a 5 second cooling off period before regeneration actually starts.
+		if(gameTime-psDroid->timeLastHit > 5) 
+		psDroid->shield = psDroid->shield + SHIELD_REGEN;
+	
+	}
+	else
+	{
+		psDroid->shield = psDroid->originalShield;
+	}
+	return true;
 }
 
 /*Updates a Repair Droid working on a damaged droid*/
@@ -2657,8 +2675,10 @@ void droidSetBits(DROID_TEMPLATE *pTemplate,DROID *psDroid)
 	psDroid->rot.pitch =  0;
 	psDroid->rot.roll = 0;
 	psDroid->numWeaps = pTemplate->numWeaps;
-	psDroid->body = calcTemplateBody(pTemplate, psDroid->player);
+	psDroid->body = calcTemplateBody(pTemplate, psDroid->player)/2;
 	psDroid->originalBody = psDroid->body;
+	psDroid->shield = calcTemplateBody(pTemplate, psDroid->player)/4;
+	psDroid->originalShield = psDroid->shield;
 	psDroid->expectedDamage = 0;  // Begin life optimistically.
 	psDroid->time = gameTime - deltaGameTime;         // Start at beginning of tick.
 	psDroid->prevSpacetime.time = psDroid->time - 1;  // -1 for interpolation.
