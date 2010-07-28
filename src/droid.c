@@ -102,6 +102,7 @@ DROID_TEMPLATE		*apsStaticTemplates;	// for AIs and scripts
 UWORD	aDroidExperience[MAX_PLAYERS][MAX_RECYCLED_DROIDS];
 UDWORD	selectedGroup = UBYTE_MAX;
 UDWORD	selectedCommander = UBYTE_MAX;
+UDWORD	lastRegenTime = 0;
 
 /** Height the transporter hovers at above the terrain. */
 #define TRANSPORTER_HOVER_HEIGHT	10
@@ -1470,8 +1471,8 @@ BOOL droidUpdateShield(DROID *psDroid)
 {
 
 		// We don't want shields regenerating in battle, we'll give it a 5 second cooling off period before regeneration actually starts.
-
-				if(gameTime-psDroid->timeLastHit > 5) 
+				lastRegenTime = 100;
+				if(gameTime-psDroid->timeLastHit > 5000) 
 				{
 					if(psDroid->shield < psDroid->originalShield)
 					{
