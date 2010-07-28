@@ -1474,6 +1474,7 @@ BOOL droidUpdateShield(DROID *psDroid)
 				if(gameTime-psDroid->timeLastHit > 5) 
 				{
 					if(psDroid->shield < psDroid->originalShield)
+					{
 						if (psDroid->shield + SHIELD_REGEN <= psDroid->originalShield)
 						{
 							psDroid->shield = psDroid->shield + SHIELD_REGEN;
@@ -1481,6 +1482,7 @@ BOOL droidUpdateShield(DROID *psDroid)
 						{
 							psDroid->shield = psDroid->originalShield;
 						}
+					}
 				}
 
 
