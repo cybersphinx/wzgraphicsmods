@@ -2581,7 +2581,7 @@ DROID* buildDroid(DROID_TEMPLATE *pTemplate, UDWORD x, UDWORD y, UDWORD player,
 	objEcmCache((BASE_OBJECT *)psDroid, asECMStats + pTemplate->asParts[COMP_ECM]);
 	psDroid->body = calcTemplateBody(pTemplate, (UBYTE)player)/2;  // Redundant? (Is set in droidSetBits, too.)
 	psDroid->originalBody = psDroid->body;  // Redundant? (Is set in droidSetBits, too.)
-	psDroid->originalShield = psDroid->body/2;
+	psDroid->originalShield = psDroid->body/4;
 	psDroid->shield = psDroid->originalShield;
 
 	if (cyborgDroid(psDroid))
