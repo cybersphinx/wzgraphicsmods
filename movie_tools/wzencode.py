@@ -56,22 +56,22 @@ extra_opts = ' '.join(tail)
 #
 #CMD='ffmpeg -r %s -i wz2100_%s_%03d.ppm -b %s %s %s '
 
-basename = "wz2100_%03d" % (options.scene) + '_%03d.ppm'
+basename = "wz2100_%03d" % (options.scene) + '.ppm'
 
 # frame size is None if option is not specified
 
-frame_size = options.size if options.size else ""
 if options.size:
 	frame_size = "-s %s" % options.size
 else:
 	frame_size = ""
 
-# ffmpeg  IFR Basename Framerate Bitrate FrameSize ExtraOptions OutputFile
+# ffmpeg  InFR   Basename Framerate Bitrate FrameSize ExtraOptions OutputFile
+# ffmpeg  -r %d  -i %s    -r %d     -b %s   %s         %s          %s'
 
-cmd = 'ffmpeg -r %d -i %s -r %d -b %s  %s %s %s' %\
+command = 'ffmpeg -r %d -vcodec ppm -f image2pipe -i %s -r %d -b %s  %s %s %s' %\
 (options.input_frame_rate, basename, options.frame_rate, options.bitrate, frame_size, extra_opts, args[0])
 
-command = cmd 
+
 print 'running command:', command
 
 

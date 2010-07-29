@@ -63,8 +63,9 @@ static BOOL		screendump_required = false;
 static GLuint		backDropTexture = ~0;
 
 /* video dump stuff */
+PHYSFS_File* vid_dump_file;
 extern char VideoDumpPath[];
-// no audio capture: extern void sound_Capture();
+//extern void soundCapture(int);
 static unsigned int videodump_scene_num = 0;
 static unsigned int videodump_frame_num = 0;
 static char            videodump_filename[PATH_MAX];
@@ -587,13 +588,13 @@ void screenDoDumpToDiskIfRequired(void)
 * Dump the current screen to disk as a video frame.
 * The videodump_required flag is controlled by videoDumpToDisk()
 * Bytes from glReadPixels are written as a PPM file.  This is postprocessed
-* into a movie format like AVI with something like ffmpeg or mencoder.
+* into a movie format like AVI with something like ffmpeg or mencoder
+* or our movie_tools/wzencode.py script 
 */
 
 void videoDoDumpToDiskIfRequired(void)
 {
-	PHYSFS_File* fileHandle;
-	char buffer[80];
+	char buffer[80];  // for ppm file header
 	const char* fileName = videodump_filename;
 	unsigned int videodump_max_frames = 999;
 
@@ -601,20 +602,17 @@ void videoDoDumpToDiskIfRequired(void)
 	if (!videodump_required) return;
 	debug( LOG_3D, "Saving video frame %s\n", fileName );
 
-	// build file name for this screenshot
+
 
 	++videodump_frame_num;
 	if( videodump_frame_num > videodump_max_frames )
 	{
 		videodump_required = false;
 		// fixme: msg here
+		printf("\n*** video dump canceled.  videodump_max_frames exceeded ***\n");
 		return;
 	}
-	// filename is   dir/wz2100_scene_frame.ppm
-	ssprintf( videodump_filename, "%s/wz2100_%03d_%03d.ppm", 
-			  VideoDumpPath, 
-			  videodump_scene_num, 
-			  videodump_frame_num);
+
 #if 0
 //fixme: replace with check for scene:  wz2100_001_001.png
 
@@ -666,24 +664,17 @@ void videoDoDumpToDiskIfRequired(void)
 	}
 
 
-	// open
-	if((fileHandle = PHYSFS_openWrite(fileName)) == NULL)
-	{
-		debug(LOG_ERROR, "videodump: PHYSFS_openWrite failed. file %s error: %s\n", 
-			  fileName, PHYSFS_getLastError());
-		return;
-	}
 
 	// write ppm header: magic number width height, max value
-	sprintf( buffer, "P6\n%d %d\n255\n", vid_image.width, vid_image.height );
-	PHYSFS_write( fileHandle,  buffer, strlen( buffer ), 1 );
-
+	sprintf( buffer, "P6\n%d %d\n255\n", 
+			 vid_image.width, 
+			 vid_image.height );
+	PHYSFS_write( vid_dump_file,  buffer, strlen( buffer ), 1 );
 
 	// write data
-	PHYSFS_write( fileHandle, vid_tmp_buf, 
+	PHYSFS_write( vid_dump_file, vid_tmp_buf, 
 				  vid_image.width * vid_image.height * channelsPerPixel , 1);
 
-	PHYSFS_close( fileHandle);
 }
 
 
@@ -727,6 +718,7 @@ void screenDumpToDisk(const char* path)
  */
 void videoDumpToDisk(const char* path)
 {
+
 	/* 
 	   Toggle video dump state
 	   if we are starting a new dump:
@@ -736,7 +728,7 @@ void videoDumpToDisk(const char* path)
 		   turn on audio capture
 	*/
 	
-	if(videodump_required){  // turn off
+	if(videodump_required){  // was on.  turn off
 		videodump_required = false;
 		// do cleanup
 		if(vid_image.bmp){
@@ -750,16 +742,23 @@ void videoDumpToDisk(const char* path)
 			vid_tmp_buf = NULL;
 		}
 
+		// close our file
+		PHYSFS_close( vid_dump_file);
+
 
 #if 0
-no audio capture right now
+//no audio capture right now
         // stop audio capture
-		sound_Capture( false );
+		soundCapture( false );
 #endif
 
 	} 
 	else {  // turn on
-		/* increment the scene number and check for overflow so we don't overwrite files */
+		/* increment the scene number and check for overflow so 
+		   we don't overwrite files.
+		   set up our buffers.
+		   open the file.
+		*/
 		++videodump_scene_num;
 
 		if( videodump_scene_num == 0){  // overflow!
@@ -789,10 +788,27 @@ no audio capture right now
 			debug(LOG_ERROR, "could not allocate memory for tmp buf");
 			return;
 		}
-#if 0 
-no audio capture  atm
-		sound_Capture( true );
+
+		// open our frame file.
+		// filename is   dir/wz2100_scene.ppm
+		ssprintf( videodump_filename, "%s/wz2100_%03d.ppm", 
+			  VideoDumpPath, 
+				  videodump_scene_num );
+
+		if((vid_dump_file = PHYSFS_openWrite(videodump_filename)) == NULL)
+		{
+			debug(LOG_ERROR, 
+				  "videodump: PHYSFS_openWrite failed. file %s error: %s\n", 
+				  videodump_filename, PHYSFS_getLastError());
+			return;
+		}
+
+
+#if 0
+
+		soundCapture( true );
 #endif
+
 
 	}
 

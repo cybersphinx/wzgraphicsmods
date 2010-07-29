@@ -2505,11 +2505,6 @@ UDWORD		xJump = 0, yJump = 0;
 	}
 }
 
-// --------------------------------------------------------------------------
-void kf_ToggleFormationSpeedLimiting( void )
-{
-	addConsoleMessage(_("Formation speed limiting has been removed from the game due to bugs."), LEFT_JUSTIFY, SYSTEM_MESSAGE);
-}
 
 // --------------------------------------------------------------------------
 void	kf_RightOrderMenu( void )

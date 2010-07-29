@@ -173,7 +173,6 @@ extern void	kf_RightOrderMenu( void );
 extern BOOL	bAllowOtherKeyPresses;
 
 extern void	kf_TriggerRayCast( void );
-extern void	kf_ToggleFormationSpeedLimiting( void );
 extern void	kf_ToggleSensorDisplay( void );		//Was commented out.  Re-enabled --Q 5/10/05
 extern void	kf_SensorDisplayOn( void );
 extern void	kf_SensorDisplayOff( void );
