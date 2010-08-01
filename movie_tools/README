@@ -4,27 +4,28 @@ WZGM has a video dump function ( hotkey F11 toggles on/off ) that
 dumps video frames in-game to the $(configdir)/videodumps directory.
 
 The frames are dumped as raw PPM files for speed reasons.  You can
-convert them to AVI using the ppm2avi utility here.
+convert them to AVI using the wzencode.py script.
 
-The video dumper writes frames in the format wz2100_SCENE#_FRAME#.ppm
-where the numbers range from 001-999.
+The video dumper writes frames in a single .ppm file named  wz2100_SCENE#.ppm
+where SCENE#  ranges from 001-999.
 
+New! Improved!  The video dumper now does audio, too.
 
-wzencode.py
+The trick for audio is to set your mixer capture device to grab the game sound.  The capture device is normally set to the microphone so will have to do this by hand before doing video dumps.
 
-requires  ffmpeg, python
+Requirements: wzencode.py requires ffmpeg and python
 
 converts WZ videodump files (ppm format) to video.
 output format depends on output file extension
-video dump filenames are wz2100_SCENE_FRAME.ppm where
-SCENE and FRAME are 3 digit numbers with leading zeros.
+video dump filenames are wz2100_SCENE.ppm where
+SCENE is a  3 digit number with leading zeros.
 example:  wz2100_001_001.ppm  for scene 1, frame 1.
 
 examples:
 
 		wzencode.py test.avi
 
-This is a minimal example.  It converts the scene 1 video dump (wz2100_001_*.ppm) to an AVI file using the default arguments.  The bitrate is fairly low (200 kbps)
+This is a minimal example.  It converts the scene 1 video dump (wz2100_001.ppm) to an AVI file using the default arguments.  
 
 	 wzencode.py -s 2 -b 1.0M test2.avi
 
@@ -41,7 +42,7 @@ options that are the same as ffmpeg
 -b bitrate		 default: 200k bits/second
 -r output framerate		default: 25 fps
 
-encode specific options
+wzencode specific options
 -s NNN		scene number.  default: 001
 --ifr input frame rate.  default: 10
 --basename wz2100_

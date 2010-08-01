@@ -71,6 +71,8 @@ extern unsigned int audio_GetSampleQueueCount(void);
 extern unsigned int audio_GetSampleListCount(void);
 extern unsigned int sound_GetActiveSamplesCount(void);
 
+extern void soundCapture( int );
+
 #if defined(__cplusplus)
 }
 #endif

@@ -56,22 +56,16 @@ UDWORD		screenDepth = 0;
 /* global used to indicate preferred internal OpenGL format */
 int wz_texture_compression;
 
-static SDL_Surface	*screen = NULL;
+SDL_Surface	*screen = NULL;
 static BOOL		bBackDrop = false;
 static char		screendump_filename[PATH_MAX];
 static BOOL		screendump_required = false;
 static GLuint		backDropTexture = ~0;
 
-/* video dump stuff */
-PHYSFS_File* vid_dump_file;
-extern char VideoDumpPath[];
-//extern void soundCapture(int);
-static unsigned int videodump_scene_num = 0;
-static unsigned int videodump_frame_num = 0;
-static char            videodump_filename[PATH_MAX];
-static BOOL            videodump_required = false;
-static unsigned char *vid_tmp_buf = 0;
-static iV_Image vid_image = { 0, 0, 0, NULL };
+/* #include "AL/alc.h" */
+/* #include "AL/al.h" */
+/* #include "AL/alext.h" */
+
 
 
 
@@ -584,99 +578,6 @@ void screenDoDumpToDiskIfRequired(void)
 }
 
 
-/***
-* Dump the current screen to disk as a video frame.
-* The videodump_required flag is controlled by videoDumpToDisk()
-* Bytes from glReadPixels are written as a PPM file.  This is postprocessed
-* into a movie format like AVI with something like ffmpeg or mencoder
-* or our movie_tools/wzencode.py script 
-*/
-
-void videoDoDumpToDiskIfRequired(void)
-{
-	char buffer[80];  // for ppm file header
-	const char* fileName = videodump_filename;
-	unsigned int videodump_max_frames = 999;
-
-
-	if (!videodump_required) return;
-	debug( LOG_3D, "Saving video frame %s\n", fileName );
-
-
-
-	++videodump_frame_num;
-	if( videodump_frame_num > videodump_max_frames )
-	{
-		videodump_required = false;
-		// fixme: msg here
-		printf("\n*** video dump canceled.  videodump_max_frames exceeded ***\n");
-		return;
-	}
-
-#if 0
-//fixme: replace with check for scene:  wz2100_001_001.png
-
-	if( PHYSFS_exists( videodump_filename))
-	{ // oops! file exists.  don't overwrite
-		videodump_required = false;
-		// fixme: msg here
-		return;
-	}
-#endif
-
-	// Dump the currently displayed screen in a buffer
-
-
-	glReadPixels(0, 0, vid_image.width, vid_image.height, 
-				 GL_RGB, GL_UNSIGNED_BYTE, vid_image.bmp);
-
-	/* writing a png takes too long so let's dump a binary PPM
-	   PPM format is an ASCII header followed by raw bytes from top to bottom.
-	   Since glReadPixels reads bottom up, we need to flip the image.
-	*/
-
-	{
-		/* flip image vertically by copying rows from top of vid_image 
-		   to bottom of tmp_buf
-		*/
-
-		// image buffers are alloced and freed in videoDumpToDisk()
-		if( vid_image.bmp && vid_tmp_buf) {
-			int row;
-			unsigned char *top;
-			unsigned char *bottom;
-			int row_stride = vid_image.width * channelsPerPixel;
-
-			top = vid_image.bmp;
-			bottom = vid_tmp_buf + row_stride * (vid_image.height - 1);
-
-			for( row = 0; row < vid_image.height; 
-				 row ++, top += row_stride, bottom -= row_stride) {
-
-				memcpy( bottom, top, row_stride);  // copy top to bottom
-			}
-			 
-		} else {
-			// half-hearted error msg
-			printf( "error: malloc failed in video dump\n");  
-			return;
-		}
-	}
-
-
-
-	// write ppm header: magic number width height, max value
-	sprintf( buffer, "P6\n%d %d\n255\n", 
-			 vid_image.width, 
-			 vid_image.height );
-	PHYSFS_write( vid_dump_file,  buffer, strlen( buffer ), 1 );
-
-	// write data
-	PHYSFS_write( vid_dump_file, vid_tmp_buf, 
-				  vid_image.width * vid_image.height * channelsPerPixel , 1);
-
-}
-
 
 
 /** Registers the currently displayed frame for making a screen shot.
@@ -702,124 +603,5 @@ void screenDumpToDisk(const char* path)
 		ssprintf(screendump_filename, "%s/wz2100-%04d%02d%02d_%02d%02d%02d-%s-%d.png", path, t->tm_year + 1900, t->tm_mon + 1, t->tm_mday, t->tm_hour, t->tm_min, t->tm_sec, getLevelName(), ++screendump_num);
 	}
 	screendump_required = true;
-}
-
-
-
-/** videoDumpToDisk
- *  Controls dumping screens to video frames.
- *  Each dump gets a new sequence number
- *  
- *  toggles flag for videoDumpIfRequired
- *  increments scene number
- *  resets frame counter
- *
- *  \param path The directory path to save the screenshot in.
- */
-void videoDumpToDisk(const char* path)
-{
-
-	/* 
-	   Toggle video dump state
-	   if we are starting a new dump:
-	       increment the scene number.
-		     scene numbers run from 1..N
-		     frame numbers run from 1..N
-		   turn on audio capture
-	*/
-	
-	if(videodump_required){  // was on.  turn off
-		videodump_required = false;
-		// do cleanup
-		if(vid_image.bmp){
-			free( vid_image.bmp );
-			vid_image.bmp=NULL;
-			vid_image.width = 0; 
-			vid_image.height = 0;
-		}
-		if(vid_tmp_buf){
-			free( vid_tmp_buf);
-			vid_tmp_buf = NULL;
-		}
-
-		// close our file
-		PHYSFS_close( vid_dump_file);
-
-
-#if 0
-//no audio capture right now
-        // stop audio capture
-		soundCapture( false );
-#endif
-
-	} 
-	else {  // turn on
-		/* increment the scene number and check for overflow so 
-		   we don't overwrite files.
-		   set up our buffers.
-		   open the file.
-		*/
-		++videodump_scene_num;
-
-		if( videodump_scene_num == 0){  // overflow!
-			videodump_required = false;
-			CONPRINTF( ConsoleString, 
-					   (ConsoleString, "Oops! Scene Number overflow"));
-			return;
-		}
-		videodump_required=true;
-		videodump_frame_num=0;
-		// do setup
-		ASSERT(screen->w >= 0 && screen->h >= 0, 
-			   "Screen has negative dimensions! Width = %d; Height = %d", 
-			   screen->w, screen->h);
-
-		vid_image.width = screen->w;
-		vid_image.height = screen->h;
-		vid_image.bmp = malloc(channelsPerPixel * vid_image.width * vid_image.height);
-		if (vid_image.bmp == NULL)
-		{
-			vid_image.width = 0; vid_image.height = 0;
-			debug(LOG_ERROR, "Couldn't allocate memory");
-			return;
-		}
-		vid_tmp_buf = (unsigned char*) malloc( vid_image.width * vid_image.height * channelsPerPixel );
-		if( !vid_tmp_buf){
-			debug(LOG_ERROR, "could not allocate memory for tmp buf");
-			return;
-		}
-
-		// open our frame file.
-		// filename is   dir/wz2100_scene.ppm
-		ssprintf( videodump_filename, "%s/wz2100_%03d.ppm", 
-			  VideoDumpPath, 
-				  videodump_scene_num );
-
-		if((vid_dump_file = PHYSFS_openWrite(videodump_filename)) == NULL)
-		{
-			debug(LOG_ERROR, 
-				  "videodump: PHYSFS_openWrite failed. file %s error: %s\n", 
-				  videodump_filename, PHYSFS_getLastError());
-			return;
-		}
-
-
-#if 0
-
-		soundCapture( true );
-#endif
-
-
-	}
-
-	// tell the user what is going on
-	if( videodump_required){
-		CONPRINTF( ConsoleString, 
-				   (ConsoleString, "Starting Video Dump to dir %s",
-					path));
-	}
-	else{
-		CONPRINTF( ConsoleString, (ConsoleString, "Video Dump Canceled"));
-	}
 }
 

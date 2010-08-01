@@ -164,6 +164,7 @@ noinst_HEADERS = \
 	text.h \
 	texture.h \
 	transporter.h \
+	videodump.h \
 	visibility.h \
 	version.h \
 	warcam.h \
@@ -281,6 +282,7 @@ warzone2100_SOURCES = \
 	texture.c \
 	transporter.c \
 	version.c \
+	videodump.c \
 	visibility.c \
 	warcam.c \
 	warzoneconfig.c \

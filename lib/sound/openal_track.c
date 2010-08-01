@@ -131,7 +131,8 @@ BOOL sound_InitLibrary( void )
 	char buf[512];
 	const ALCchar *deviceName;
 
-#if 0
+#if 1
+// renabled to read devices  sds 2010-07-21
 	// This code is disabled because enumerating devices apparently crashes PulseAudio on Fedora12
 
 	/* Get the available devices and print them.
@@ -144,6 +145,16 @@ BOOL sound_InitLibrary( void )
 		debug(LOG_SOUND, "available OpenAL device(s) are: %s", deviceName);
 		deviceName += strlen(deviceName) + 1;
 	}
+
+	// now do capture devices:
+	deviceName = alcGetString(NULL, ALC_CAPTURE_DEVICE_SPECIFIER);
+	while (deviceName != NULL && *deviceName != '\0')
+	{
+		debug(LOG_SOUND, "capture OpenAL device(s) are: %s", deviceName);
+		deviceName += strlen(deviceName) + 1;
+	}
+
+
 #endif
 
 #ifdef WZ_OS_WIN
@@ -160,6 +171,7 @@ BOOL sound_InitLibrary( void )
 	{
 		// Open default device
 		device = alcOpenDevice(NULL);
+		//device = alcOpenDevice("Wave File Writer");
 	}
 
 	if (!device)
@@ -1490,4 +1502,33 @@ void soundTest()
 		sound_ShutdownLibrary();
 	}
 	fprintf(stdout, "\tSound self-test: PASSED\n");
+}
+
+void soundCapture( int on )
+{
+		
+/* 	int SRATE = 44100; */
+/* 	int SSIZE = 1024; */
+			
+/* 	ALbyte buffer[22050]; */
+/* 	ALint sample; */
+	ALCdevice *device;
+			
+
+	if(on){
+		alGetError();
+		device = alcOpenDevice("Wave File Writer");
+
+/*		device = alcCaptureOpenDevice(NULL, SRATE, 
+  AL_FORMAT_STEREO16, SSIZE); */
+		if( alGetError() == AL_NO_ERROR){
+			//alcCaptureStart(device);
+		}
+	}else{
+		printf("\n*** openal error *\n");
+
+/* 		alcCaptureStop( device ); */
+/* 		alcCaptureCloseDevice(device); */
+	}
+
 }

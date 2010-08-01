@@ -41,6 +41,7 @@
 #include "lib/ivis_common/rendmode.h"
 #include "lib/ivis_common/pieclip.h"
 #include "screen.h"
+#include "src/videodump.h"
 
 /***************************************************************************/
 /*
