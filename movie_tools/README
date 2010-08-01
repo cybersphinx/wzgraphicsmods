@@ -3,6 +3,10 @@ What is here?  Stuff for making videos.
 WZGM has a video dump function ( hotkey F11 toggles on/off ) that
 dumps video frames in-game to the $(configdir)/videodumps directory.
 
+You will need to reset your keymap since one of the default keys has
+changed.  F11 was used to toggle formation speed limiting, a feature no
+longer present.
+
 The frames are dumped as raw PPM files for speed reasons.  You can
 convert them to AVI using the wzencode.py script.
 
@@ -13,15 +17,25 @@ New! Improved!  The video dumper now does audio, too.
 
 The trick for audio is to set your mixer capture device to grab the game sound.  The capture device is normally set to the microphone so will have to do this by hand before doing video dumps.
 
-Requirements: wzencode.py requires ffmpeg and python
+Requirements: 
 
-converts WZ videodump files (ppm format) to video.
-output format depends on output file extension
-video dump filenames are wz2100_SCENE.ppm where
+	wzencode.py requires ffmpeg and python
+	
+	Don't forget to RESET YOUR KEYMAP
+
+
+Some details:
+
+The wzencode.py script converts WZ videodump files (ppm format) to video.
+Output format depends on output file extension as per ffmpeg.
+The video dump filenames are wz2100_SCENE.ppm where
 SCENE is a  3 digit number with leading zeros.
-example:  wz2100_001_001.ppm  for scene 1, frame 1.
+  example:  wz2100_001_001.ppm  for scene 1, frame 1.
 
-examples:
+Audio currently defaults to 2 channel stereo at 48000 Hz (cd quality)
+
+
+Examples:
 
 		wzencode.py test.avi
 
@@ -39,12 +53,12 @@ This prints out the usage and help message.
 More details:
 
 options that are the same as ffmpeg
--b bitrate		 default: 200k bits/second
+-b bitrate		 default: 1000k bits/second
 -r output framerate		default: 25 fps
 
 wzencode specific options
 -s NNN		scene number.  default: 001
---ifr input frame rate.  default: 10
+--ifr input frame rate.  default: 20
 --basename wz2100_
 
 -s size wxh		 default: same as WZ resolution
