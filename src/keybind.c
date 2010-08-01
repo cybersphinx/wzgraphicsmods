@@ -624,7 +624,6 @@ void	kf_ScreenDump( void )
 /* Dumps video to disk.  Sends the screen buffer to disk as video frames */
 void	kf_VideoDump( void )
 {
-	CONPRINTF(ConsoleString,(ConsoleString, "Toggle Video dump to working directory : %s", VideoDumpPath));
 	videoDumpToDisk(VideoDumpPath);
 }
 

@@ -21,10 +21,15 @@ extern SDL_Surface	*screen;
 
 BOOL videodump_required = false;
 
+// cd quality
+#define SAMPLE_RATE  48000
 
-static int sample_rate = 48000;
-static int sample_size = 4; // 16 bit stereo  sb16le
-static int max_duration = 2; // seconds
+// 16 bit stereo  sb16le
+#define SAMPLE_SIZE  4
+
+// capture duration in seconds
+#define MAX_DURATION 2 
+
 static int aud_sample_count;
 
 static ALCuint audio_frequency= 48000;
@@ -44,8 +49,8 @@ static char video_filename[PATH_MAX];
 static char audio_filename[PATH_MAX];
 
 static unsigned char *vid_tmp_buf = 0;
-static unsigned char *aud_tmp_buf = 0;
 
+static unsigned char aud_tmp_buf[ SAMPLE_RATE * SAMPLE_SIZE * MAX_DURATION ];
 
 
 
@@ -62,7 +67,6 @@ void videoDoDumpToDiskIfRequired(void)
 {
 	char buffer[80];  // for ppm file header 
 	const char *fileName = video_filename;
-//	const char *audiofilename = audio_filename;
 
 
 	if (!videodump_required) return;
@@ -186,6 +190,7 @@ void videoDumpToDisk(const char* path)
 	
 	if(videodump_required){  // was on.  turn off
 		videodump_required = false;
+
 		// do cleanup
 		if(vid_image.bmp){
 			free( vid_image.bmp );
@@ -198,26 +203,20 @@ void videoDumpToDisk(const char* path)
 			vid_tmp_buf = NULL;
 		}
 
-		if( aud_tmp_buf ){
-			free( aud_tmp_buf );
-			aud_tmp_buf = NULL;
-		}
-
 		// close our files
 		PHYSFS_close( video_file);
 		PHYSFS_close( audio_file);
 
 		alcCaptureCloseDevice( capture_device );
-
-
-#if 0
-//no audio capture right now
-        // stop audio capture
-		soundCapture( false );
-#endif
-
+		CONPRINTF( ConsoleString, (ConsoleString, "End Video Dump"));
 	} 
 	else {  // turn on
+
+		// startup msg
+		CONPRINTF( ConsoleString, 
+				   (ConsoleString, "Starting Video Dump to dir %s",
+					path));
+
 		/* increment the scene number and check for overflow so 
 		   we don't overwrite files.
 		   set up our buffers.
@@ -252,8 +251,6 @@ void videoDumpToDisk(const char* path)
 			debug(LOG_ERROR, "could not allocate memory for video tmp buf");
 			return;
 		}
-
-		aud_tmp_buf = (unsigned char*) malloc( sample_rate * sample_size * max_duration);
 
 		// open our frame file.
 		// filename is   dir/wz2100_scene.ppm
@@ -299,18 +296,6 @@ void videoDumpToDisk(const char* path)
 				printf("OpenAL Error: %s (0x%x), @ %d\n", 
 					   alGetString(err), err, 873);
 		}
-	}
-
-	// tell the user what is going on
-	if( videodump_required){
-#if 0
-		CONPRINTF( ConsoleString, 
-				   (ConsoleString, "Starting Video Dump to dir %s",
-					path));
-#endif
-	}
-	else{
-		CONPRINTF( ConsoleString, (ConsoleString, "Video Dump Canceled"));
 	}
 }
 
