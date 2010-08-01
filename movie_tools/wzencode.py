@@ -43,8 +43,8 @@ parser.add_option( "--test", dest = "test", action="store_true", default="False"
 
 (options, args) = parser.parse_args()
 
-print 'options', options
-print 'args',args
+## print 'options', options
+## print 'args',args
 
 if len(args) is 0:
 	print 'missing filename argument'
@@ -59,11 +59,6 @@ if '--' in sys.argv:
 
 extra_opts = ''.join(tail)
 
-# ffmpeg command  options format string
-# source file, bitrate,  more options, dest file
-#
-#CMD='ffmpeg -r %s -i wz2100_%s_%03d.ppm -b %s %s %s '
-
 video_data = "wz2100_%03d" % (options.scene) + '.ppm'
 audio_data = "wz2100_%03d" % (options.scene) + '.raw'
 
@@ -75,6 +70,7 @@ else:
 	frame_size = ""
 
 '''
+example command:
 ffmpeg
 -r 20 -vcodec ppm -f image2pipe -i wz2100_001.ppm
 -f s16le -ar 48000 -ac 2 -i wz2100_001.raw
@@ -98,9 +94,8 @@ command = 'ffmpeg -r %d -vcodec ppm -f image2pipe -i %s -r %d -b %s %s %s %s' %\
 
 command = "ffmpeg %s %s %s" %(video_opts, audio_opts, args[0])
 
-
-if options.test:
-	print 'command is:\n\t', command
+if options.test is True:
+	print 'command is:\n  ', command
 else:
 	try:
 		print 'running command:', command
@@ -108,6 +103,3 @@ else:
 	except subprocess.CalledProcessError, e:
 		print "command failed:", command
 
-
-				  
-	
