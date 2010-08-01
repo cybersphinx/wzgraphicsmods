@@ -7,7 +7,21 @@ usage:  log2bbc.py Changelog
 
 import sys
 import re
+from optparse import OptionParser
 
+# option stuff
+
+usage = "usage: %prog Changelog >output_file"
+desc="""\
+script to format Changelog with BBcode tags for posting on webpages.
+Formatted text is sent to standard out
+"""
+
+parser = OptionParser( usage= usage, description = desc)
+
+(options, args) = parser.parse_args()e
+
+# regex stuff
 
 # revisions - rNNNN
 revPat = re.compile(r'r([0-9]+)')
