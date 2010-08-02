@@ -511,7 +511,7 @@ static iIMDShape *getRightPropulsionIMD(DROID *psDroid)
 	return *imd;
 }
 
-
+// Render the pie file used for forcefields
 void displayShieldHit(DROID *psDroid)
 {
 	EFFECT				*effect = Effect_malloc();
@@ -532,7 +532,7 @@ void displayShieldHit(DROID *psDroid)
 	
 	// don't need it no more, get rid of it.
 	killEffect(effect);
-	
+	// Different pie files for different sized units
 	switch (psBdyStats->size)
 	{
 		case SIZE_LIGHT:
@@ -556,11 +556,12 @@ void displayShieldHit(DROID *psDroid)
 			break;
 	}
 
-	
+	// Make sure its not TCMask and is animated
 	if(psShape->numFrames > 0 && psShape->numFrames != 8)
 		pie_Draw3DShape(psShape,getModularScaledGraphicsTime(psShape->animInterval, psShape->numFrames),(gameTime-psDroid->timeLastHit < 300 ? 9 : getPlayerColour(psDroid->player)),brightness,specular,pie_TRANSLUCENT,DEFAULT_COMPONENT_TRANSLUCENCY | psDroid->sDisplay.imd->radius * pie_RAISE_SCALE);
 	else
 	pie_Draw3DShape(psShape,0,getPlayerColour(psDroid->player),brightness,specular,pie_TRANSLUCENT,DEFAULT_COMPONENT_TRANSLUCENCY | psDroid->sDisplay.imd->radius * pie_RAISE_SCALE);
+	// end the matrix
 	iV_MatrixEnd();
 	
 }
