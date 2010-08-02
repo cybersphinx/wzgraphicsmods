@@ -555,6 +555,10 @@ void displayShieldHit(DROID *psDroid)
 			psShape = getImdFromIndex(MI_LSPHERE);
 			break;
 	}
+	// special case for transport, as it is bigger than a heavy unit.
+	if(psDroid->droidType == DROID_TRANSPORTER)
+		psShape = getImdFromIndex(MI_SSPHERE);
+	
 
 	// Make sure its not TCMask and is animated
 	if(psShape->numFrames > 0 && psShape->numFrames != 8)
