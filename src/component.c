@@ -533,14 +533,8 @@ void displayShieldHit(DROID *psDroid)
 	brightness.byte.r = PERCENT(psDroid->shield,psDroid->originalShield)*3;
 	brightness.byte.g = PERCENT(psDroid->shield,psDroid->originalShield)*2.5;
 	brightness.byte.b = PERCENT(psDroid->shield,psDroid->originalShield)*1.5;
+	specular = brightness;
 	// don't need it no more, get rid of it.
-	if(gameTime-psDroid->timeLastHit < 1000)
-	{
-	brightness.byte.a = PERCENT(gameTime-psDroid->timeLastHit,1000)*4;
-	brightness.byte.r = PERCENT(gameTime-psDroid->timeLastHit,1000)*3;
-	brightness.byte.g = PERCENT(gameTime-psDroid->timeLastHit,1000)*2.5;
-	brightness.byte.b = PERCENT(gameTime-psDroid->timeLastHit,1000)*1.5;
-	}
 	killEffect(effect);
 	// Different pie files for different sized units
 	switch (psBdyStats->size)
@@ -572,9 +566,9 @@ void displayShieldHit(DROID *psDroid)
 	
 	// Make sure its not TCMask and is animated
 	if(psShape->numFrames > 0 && psShape->numFrames != 8)
-		pie_Draw3DShape(psShape,getModularScaledGraphicsTime(psShape->animInterval, psShape->numFrames),(gameTime-psDroid->timeLastHit < 5 ? 9 : getPlayerColour(psDroid->player)),(gameTime-psDroid->timeLastHit < 5 ? WZCOL_SHIELDHITCOLOUR : brightness),specular,pie_TRANSLUCENT,DEFAULT_COMPONENT_TRANSLUCENCY | psDroid->sDisplay.imd->radius * pie_RAISE_SCALE);
+		pie_Draw3DShape(psShape,getModularScaledGraphicsTime(psShape->animInterval, psShape->numFrames),getPlayerColour(psDroid->player),brightness,specular,pie_TRANSLUCENT,DEFAULT_COMPONENT_TRANSLUCENCY);
 	else
-	pie_Draw3DShape(psShape,0,getPlayerColour(psDroid->player),brightness,specular,pie_TRANSLUCENT,DEFAULT_COMPONENT_TRANSLUCENCY | psDroid->sDisplay.imd->radius * pie_RAISE_SCALE);
+	pie_Draw3DShape(psShape,0,getPlayerColour(psDroid->player),brightness,specular,pie_TRANSLUCENT,DEFAULT_COMPONENT_TRANSLUCENCY);
 	// end the matrix
 	iV_MatrixEnd();
 	
