@@ -529,11 +529,14 @@ void displayShieldHit(DROID *psDroid)
 	//psShape = getImdFromIndex(MI_LSPHERE);
 	positionEffect(effect);
 	psBdyStats = &asBodyStats[psDroid->asBits[COMP_BODY].nStat];
-	brightness.byte.a = PERCENT(psDroid->shield,psDroid->originalShield)*2.55;
-	brightness.byte.r = PERCENT(psDroid->shield,psDroid->originalShield)*2.55;
-	brightness.byte.g = PERCENT(psDroid->shield,psDroid->originalShield)*2.55;
-	brightness.byte.b = PERCENT(psDroid->shield,psDroid->originalShield)*2.55;
+	brightness.byte.a = 0;
+	brightness.byte.r = (PERCENT(psDroid->shield,psDroid->originalShield)+70)*2.5;
+	brightness.byte.g = (PERCENT(psDroid->shield,psDroid->originalShield)+70)*2.5;
+	brightness.byte.b = (PERCENT(psDroid->shield,psDroid->originalShield)+70)*2.5;
 	specular = brightness;
+
+	if(gameTime-psDroid->timeLastHit < 1)
+		brightness = WZCOL_SHIELDHITCOLOUR;
 	// don't need it no more, get rid of it.
 	killEffect(effect);
 	// Different pie files for different sized units
