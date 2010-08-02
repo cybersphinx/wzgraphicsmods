@@ -518,7 +518,6 @@ void displayShieldHit(DROID *psDroid)
 	PIELIGHT			brightness = WZCOL_WHITE;
 	const PIELIGHT			specular = WZCOL_BLACK;
 	iIMDShape			*psShape;
-	int					i;
 	SPACETIME st = interpolateObjectSpacetime((SIMPLE_OBJECT *)psDroid, graphicsTime);
 	const BODY_STATS* psBdyStats;
 	
