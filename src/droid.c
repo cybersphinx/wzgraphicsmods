@@ -2581,7 +2581,7 @@ DROID* buildDroid(DROID_TEMPLATE *pTemplate, UDWORD x, UDWORD y, UDWORD player,
 	objEcmCache((BASE_OBJECT *)psDroid, asECMStats + pTemplate->asParts[COMP_ECM]);
 	psDroid->body = calcTemplateBody(pTemplate, (UBYTE)player)/2;  // Redundant? (Is set in droidSetBits, too.)
 	psDroid->originalBody = psDroid->body;  // Redundant? (Is set in droidSetBits, too.)
-	psDroid->originalShield = psDroid->body/4;
+	psDroid->originalShield = psDroid->body;
 	psDroid->shield = psDroid->originalShield;
 
 	if (cyborgDroid(psDroid))
@@ -2688,7 +2688,7 @@ void droidSetBits(DROID_TEMPLATE *pTemplate,DROID *psDroid)
 	psDroid->numWeaps = pTemplate->numWeaps;
 	psDroid->body = calcTemplateBody(pTemplate, psDroid->player)/2;
 	psDroid->originalBody = psDroid->body;
-	psDroid->shield = psDroid->body/4;
+	psDroid->shield = psDroid->body;
 	psDroid->originalShield = psDroid->shield;
 	psDroid->expectedDamage = 0;  // Begin life optimistically.
 	psDroid->time = gameTime - deltaGameTime;         // Start at beginning of tick.
