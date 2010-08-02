@@ -540,7 +540,7 @@ static iIMDShape *_imd_load_level(const char **ppFileData, const char *FileDataE
 {
 	const char *pFileData = *ppFileData;
 	char buffer[PATH_MAX] = {'\0'};
-	int cnt = 0, n = 0;
+	int cnt = 0, n = 0, lineno = 0;
 	iIMDShape *s = NULL;
 
 	if (nlevels == 0)
@@ -634,9 +634,10 @@ static iIMDShape *_imd_load_level(const char **ppFileData, const char *FileDataE
 		}
 		else
 		{
-			debug(LOG_ERROR, "(_load_level) unexpected directive %s %d %s", buffer, n, GetLastResourceFilename());
+			debug(LOG_ERROR, "(_load_level) unexpected directive %s %d %s:%d", buffer, n, GetLastResourceFilename(),lineno);
 			break;
 		}
+		lineno++;
 	}
 
 	*ppFileData = pFileData;
