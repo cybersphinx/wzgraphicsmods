@@ -535,8 +535,8 @@ void displayShieldHit(DROID *psDroid)
 	brightness.byte.b = (PERCENT(psDroid->shield,psDroid->originalShield)+70)*2.5;
 	specular = brightness;
 
-	if(gameTime-psDroid->timeLastHit < 1)
-		brightness = WZCOL_SHIELDHITCOLOUR;
+	//if(gameTime-psDroid->timeLastHit < 1)
+	//	brightness = WZCOL_SHIELDHITCOLOUR;
 	// don't need it no more, get rid of it.
 	killEffect(effect);
 	// Different pie files for different sized units
