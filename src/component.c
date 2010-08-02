@@ -530,9 +530,9 @@ void displayShieldHit(DROID *psDroid)
 	positionEffect(effect);
 	psBdyStats = &asBodyStats[psDroid->asBits[COMP_BODY].nStat];
 	brightness.byte.a = 0;
-	brightness.byte.r = (PERCENT(psDroid->shield,psDroid->originalShield)+70)*2.5;
-	brightness.byte.g = (PERCENT(psDroid->shield,psDroid->originalShield)+70)*2.5;
-	brightness.byte.b = (PERCENT(psDroid->shield,psDroid->originalShield)+70)*2.5;
+	brightness.byte.r = (PERCENT(psDroid->shield,psDroid->originalShield)+70)*1.5;
+	brightness.byte.g = (PERCENT(psDroid->shield,psDroid->originalShield)+70)*1.5;
+	brightness.byte.b = (PERCENT(psDroid->shield,psDroid->originalShield)+70)*1.5;
 	specular = brightness;
 
 	//if(gameTime-psDroid->timeLastHit < 1)
