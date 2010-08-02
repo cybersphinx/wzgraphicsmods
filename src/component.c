@@ -526,15 +526,16 @@ void displayShieldHit(DROID *psDroid)
 	effect->position.x = st.pos.x;
 	effect->position.y = st.pos.z;
 	effect->position.z = st.pos.y;
-	//psShape = getImdFromIndex(MI_LSPHERE);
 	positionEffect(effect);
+	// Use this to work out what size the unit is.
 	psBdyStats = &asBodyStats[psDroid->asBits[COMP_BODY].nStat];
+	// Apply colour mask to achieve fade effect.
 	brightness.byte.a = 0;
 	brightness.byte.r = (PERCENT(psDroid->shield,psDroid->originalShield)+70)*1.5;
 	brightness.byte.g = (PERCENT(psDroid->shield,psDroid->originalShield)+70)*1.5;
 	brightness.byte.b = (PERCENT(psDroid->shield,psDroid->originalShield)+70)*1.5;
 	specular = brightness;
-
+	// Turn off the code below, makes the field change colour when hit.
 	//if(gameTime-psDroid->timeLastHit < 1)
 	//	brightness = WZCOL_SHIELDHITCOLOUR;
 	// don't need it no more, get rid of it.
@@ -571,6 +572,7 @@ void displayShieldHit(DROID *psDroid)
 	if(psShape->numFrames > 0 && psShape->numFrames != 8)
 		pie_Draw3DShape(psShape,getModularScaledGraphicsTime(psShape->animInterval, psShape->numFrames),getPlayerColour(psDroid->player),brightness,specular,pie_TRANSLUCENT,DEFAULT_COMPONENT_TRANSLUCENCY);
 	else
+	// Do it without animation.
 	pie_Draw3DShape(psShape,0,getPlayerColour(psDroid->player),brightness,specular,pie_TRANSLUCENT,DEFAULT_COMPONENT_TRANSLUCENCY);
 	// end the matrix
 	iV_MatrixEnd();
