@@ -526,7 +526,7 @@ void displayShieldHit(DROID *psDroid)
 	effect->position.x = st.pos.x;
 	effect->position.y = st.pos.z;
 	effect->position.z = st.pos.y;
-	psShape = getImdFromIndex(MI_LSPHERE);
+	//psShape = getImdFromIndex(MI_LSPHERE);
 	positionEffect(effect);
 	psBdyStats = &asBodyStats[psDroid->asBits[COMP_BODY].nStat];
 	
