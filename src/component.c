@@ -532,7 +532,7 @@ void displayShieldHit(DROID *psDroid)
 	
 
 	if(psShape->numFrames > 0 && psShape->numFrames != 8)
-	pie_Draw3DShape(psShape,getModularScaledGraphicsTime(psShape->animInterval, psShape->numFrames),getPlayerColour(psDroid->player),brightness,specular,pie_TRANSLUCENT,DEFAULT_COMPONENT_TRANSLUCENCY);
+		pie_Draw3DShape(psShape,getModularScaledGraphicsTime(psShape->animInterval, psShape->numFrames),if(gameTime-psDroid->timeLastHit < 300 ? 9 : getPlayerColour(psDroid->player)),brightness,specular,pie_TRANSLUCENT,DEFAULT_COMPONENT_TRANSLUCENCY);
 	else
 	pie_Draw3DShape(psShape,0,getPlayerColour(psDroid->player),brightness,specular,pie_TRANSLUCENT,DEFAULT_COMPONENT_TRANSLUCENCY);
 	iV_MatrixEnd();
