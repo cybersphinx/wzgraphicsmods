@@ -651,6 +651,10 @@
 				>
 			</File>
 			<File
+				RelativePath="..\src\videodump.c"
+				>
+			</File>
+			<File
 				RelativePath="..\src\visibility.c"
 				>
 			</File>
@@ -1210,6 +1214,10 @@
 			</File>
 			<File
 				RelativePath="..\src\version.h"
+				>
+			</File>
+			<File
+				RelativePath="..\src\videodump.h"
 				>
 			</File>
 			<File
