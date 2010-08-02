@@ -160,7 +160,6 @@ typedef struct DROID
 
 	UDWORD          numWeaps;                       ///< Watermelon:Re-enabled this,I need this one in droid.c
 	WEAPON          asWeaps[DROID_MAXWEAPS];
-	iIMDShape		*shieldImd;
 
 	// The group the droid belongs to
 	struct _droid_group* psGroup;

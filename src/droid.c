@@ -710,7 +710,6 @@ void droidUpdate(DROID *psDroid)
 
 	CHECK_DROID(psDroid);
 	droidUpdateShield(psDroid);
-	//displayShieldHit(psDroid);
 
 #ifdef DEBUG
 	// Check that we are (still) in the sensor list
@@ -2694,7 +2693,6 @@ void droidSetBits(DROID_TEMPLATE *pTemplate,DROID *psDroid)
 	psDroid->expectedDamage = 0;  // Begin life optimistically.
 	psDroid->time = gameTime - deltaGameTime;         // Start at beginning of tick.
 	psDroid->prevSpacetime.time = psDroid->time - 1;  // -1 for interpolation.
-	psDroid->shieldImd = (iIMDShape *)resGetData("IMD", "sphere.pie");
 
 	//create the droids weapons
 	if (pTemplate->numWeaps > 0)
