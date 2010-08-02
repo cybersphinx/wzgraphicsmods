@@ -2660,6 +2660,8 @@ void renderShadow( DROID *psDroid, iIMDShape *psShadowIMD )
 void renderDroid( DROID *psDroid )
 {
 	displayComponentObject(psDroid);
+	if(gameTime-psDroid->timeLastHit < 1000 && psDroid->shield > 0)
+	displayShieldHit(psDroid);
 }
 
 /// Draws the strobing 3D drag box that is used for multiple selection

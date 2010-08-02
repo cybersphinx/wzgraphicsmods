@@ -234,7 +234,6 @@ static void	renderBloodEffect		( const EFFECT *psEffect );
 static void	renderDestructionEffect	( const EFFECT *psEffect );
 static void renderFirework			( const EFFECT *psEffect );
 
-static void positionEffect(const EFFECT *psEffect);
 /* There is no render destruction effect! */
 
 // ----------------------------------------------------------------------------------------
@@ -254,7 +253,7 @@ static void effectStructureUpdates(void);
 static void effectDroidUpdates(void);
 
 static UDWORD effectGetNumFrames(EFFECT *psEffect);
-static void killEffect(EFFECT *e);
+
 
 /*!
  * Initialise memory between first and last as singly linked list
@@ -281,7 +280,7 @@ static void initEffectPool(EFFECT *first, EFFECT *last)
  * FIXME: Does not deal with out-of-memory conditions (yet)
  * \return New, uninitialised effect
  */
-static EFFECT *Effect_malloc(void)
+EFFECT *Effect_malloc(void)
 {
 	/* Take the first item in inactiveList */
 	EFFECT *instance = inactiveList.first;
@@ -427,7 +426,7 @@ void initEffectsSystem(void)
 }
 
 
-static void positionEffect(const EFFECT *psEffect)
+void positionEffect(const EFFECT *psEffect)
 {
 	int rx, rz;
 
@@ -452,7 +451,7 @@ static void positionEffect(const EFFECT *psEffect)
 	iV_TRANSLATE(rx, 0, -rz);
 }
 
-static void killEffect(EFFECT *e)
+void killEffect(EFFECT *e)
 {
 	if (e->group == EFFECT_FIRE && psMapTiles)
 	{

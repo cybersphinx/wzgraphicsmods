@@ -512,6 +512,33 @@ static iIMDShape *getRightPropulsionIMD(DROID *psDroid)
 }
 
 
+void displayShieldHit(DROID *psDroid)
+{
+	EFFECT				*effect = Effect_malloc();
+	PIELIGHT			brightness = WZCOL_WHITE;
+	const PIELIGHT			specular = WZCOL_BLACK;
+	iIMDShape			*psShape = getImdFromIndex(MI_SPHERE);
+	Vector3i dv;
+	SDWORD xShift, zShift;
+	SPACETIME st = interpolateObjectSpacetime((SIMPLE_OBJECT *)psDroid, graphicsTime);
+	/* Get internal tile units coordinates */
+	// make horrible dummy effect for positioning reasons.	
+	effect->position.x = st.pos.x;
+	effect->position.y = st.pos.z;
+	effect->position.z = st.pos.y;
+
+	positionEffect(effect);
+	// don't need it no more, get rid of it.
+	killEffect(effect);
+	
+
+
+	pie_Draw3DShape(psShape,(psShape->numFrames > 0 ? getModularScaledGraphicsTime(psShape->animInterval, psShape->numFrames) : 0),getPlayerColour(psDroid->player),brightness,specular,pie_TRANSLUCENT,DEFAULT_COMPONENT_TRANSLUCENCY);
+	
+	iV_MatrixEnd();
+	
+}
+
 /* Assumes matrix context is already set */
 // this is able to handle multiple weapon graphics now
 // removed mountRotation,they get such stuff from psObj directly now

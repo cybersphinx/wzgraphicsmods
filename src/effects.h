@@ -158,9 +158,11 @@ void	shutdownEffectsSystem(void);
 void	processEffects(void);
 void 	addEffect(const Vector3i *pos, EFFECT_GROUP group, EFFECT_TYPE type, bool specified, iIMDShape *imd, int lit);
 void	addMultiEffect(const Vector3i *basePos, Vector3i *scatter, EFFECT_GROUP group, EFFECT_TYPE type, bool specified, iIMDShape *imd, unsigned int number, bool lit, unsigned int size);
-
+void	positionEffect(const EFFECT *psEffect);
 void	renderEffect(const EFFECT *psEffect);
 void	effectResetUpdates(void);
+EFFECT *Effect_malloc(void);
+void killEffect(EFFECT *e);
 
 void	initPerimeterSmoke(iIMDShape *pImd, Vector3i base);
 
