@@ -529,11 +529,12 @@ void displayShieldHit(DROID *psDroid)
 	positionEffect(effect);
 	// don't need it no more, get rid of it.
 	killEffect(effect);
-	
 
 
-	pie_Draw3DShape(psShape,(psShape->numFrames > 0 ? getModularScaledGraphicsTime(psShape->animInterval, psShape->numFrames) : 0),getPlayerColour(psDroid->player),brightness,specular,pie_TRANSLUCENT,DEFAULT_COMPONENT_TRANSLUCENCY);
-	
+	if(psShape->numFrames > 0 && psShape->numFrames != 8)
+	pie_Draw3DShape(psShape,getModularScaledGraphicsTime(psShape->animInterval, psShape->numFrames),getPlayerColour(psDroid->player),brightness,specular,pie_TRANSLUCENT,DEFAULT_COMPONENT_TRANSLUCENCY);
+	else
+	pie_Draw3DShape(psShape,0,getPlayerColour(psDroid->player),brightness,specular,pie_TRANSLUCENT,DEFAULT_COMPONENT_TRANSLUCENCY);
 	iV_MatrixEnd();
 	
 }
