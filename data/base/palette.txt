@@ -73,4 +73,4 @@ ff,ff,0,ff	// production run text
 0,20,40,ff	// production run background
 0,0,0,18	// game loading bar background
 f5,f9,51,ff     // Wall impacts
-f5,f9,51,ff		// Shield impacts
+00,00,00,ff		// Shield impacts
