@@ -518,22 +518,50 @@ void displayShieldHit(DROID *psDroid)
 	PIELIGHT			brightness = WZCOL_WHITE;
 	const PIELIGHT			specular = WZCOL_BLACK;
 	iIMDShape			*psShape;
+	int					i;
 	SPACETIME st = interpolateObjectSpacetime((SIMPLE_OBJECT *)psDroid, graphicsTime);
+	const BODY_STATS* psBdyStats;
+	
 	/* Get internal tile units coordinates */
 	// make horrible dummy effect for positioning reasons.	
 	effect->position.x = st.pos.x;
 	effect->position.y = st.pos.z;
 	effect->position.z = st.pos.y;
-	psShape = getImdFromIndex(MI_SPHERE);
+	psShape = getImdFromIndex(MI_LSPHERE);
 	positionEffect(effect);
+	psBdyStats = &asBodyStats[psDroid->asBits[COMP_BODY].nStat];
+	
 	// don't need it no more, get rid of it.
 	killEffect(effect);
 	
+	switch (psBdyStats->size)
+	{
+		case SIZE_LIGHT:
+			psShape = getImdFromIndex(MI_LSPHERE);
+			break;
 
+		case SIZE_MEDIUM:
+			psShape = getImdFromIndex(MI_MSPHERE);
+			break;
+
+		case SIZE_HEAVY:
+			psShape = getImdFromIndex(MI_HSPHERE);
+			break;
+
+		case SIZE_SUPER_HEAVY:
+			psShape = getImdFromIndex(MI_SSPHERE);
+			break;
+
+		default:
+			psShape = getImdFromIndex(MI_LSPHERE);
+			break;
+	}
+
+	
 	if(psShape->numFrames > 0 && psShape->numFrames != 8)
-		pie_Draw3DShape(psShape,getModularScaledGraphicsTime(psShape->animInterval, psShape->numFrames),(gameTime-psDroid->timeLastHit < 300 ? 9 : getPlayerColour(psDroid->player)),brightness,specular,pie_TRANSLUCENT,DEFAULT_COMPONENT_TRANSLUCENCY);
+		pie_Draw3DShape(psShape,getModularScaledGraphicsTime(psShape->animInterval, psShape->numFrames),(gameTime-psDroid->timeLastHit < 300 ? 9 : getPlayerColour(psDroid->player)),brightness,specular,pie_TRANSLUCENT,DEFAULT_COMPONENT_TRANSLUCENCY | psDroid->sDisplay.imd->radius * pie_RAISE_SCALE);
 	else
-	pie_Draw3DShape(psShape,0,getPlayerColour(psDroid->player),brightness,specular,pie_TRANSLUCENT,DEFAULT_COMPONENT_TRANSLUCENCY);
+	pie_Draw3DShape(psShape,0,getPlayerColour(psDroid->player),brightness,specular,pie_TRANSLUCENT,DEFAULT_COMPONENT_TRANSLUCENCY | psDroid->sDisplay.imd->radius * pie_RAISE_SCALE);
 	iV_MatrixEnd();
 	
 }

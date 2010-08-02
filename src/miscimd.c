@@ -79,7 +79,10 @@ static MISC_IMD	miscImds[] =
 	{NULL,"midebr5"},	// debrisImds[4]		MI_DEBRIS4
 
 	{NULL,"fxflecht"},	// met hit - for repair centre MI_FIREWORK
-	{NULL,"sphere"},
+	{NULL,"light-sphere"},
+	{NULL,"medium-sphere"},
+	{NULL,"heavy-sphere"},
+	{NULL,"super-sphere"},
 
 
 
