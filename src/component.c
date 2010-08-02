@@ -518,8 +518,7 @@ void displayShieldHit(DROID *psDroid)
 	PIELIGHT			brightness = WZCOL_WHITE;
 	const PIELIGHT			specular = WZCOL_BLACK;
 	iIMDShape			*psShape = getImdFromIndex(MI_SPHERE);
-	Vector3i dv;
-	SDWORD xShift, zShift;
+
 	SPACETIME st = interpolateObjectSpacetime((SIMPLE_OBJECT *)psDroid, graphicsTime);
 	/* Get internal tile units coordinates */
 	// make horrible dummy effect for positioning reasons.	
