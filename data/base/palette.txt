@@ -74,6 +74,6 @@ ff,ff,0,ff	// production run text
 0,0,0,18	// game loading bar background
 f5,f9,51,ff     // Wall impacts
 ff,00,00,00		// Shield impacts
-ff,00,ff,ff		// Shield status bar LOW
-00,ff,ff,ff		// Shield status bar MED
+ff,00,99,ff		// Shield status bar LOW
+00,88,ff,ff		// Shield status bar MED
 00,00,ff,ff		// Shield status bar HIGH
