@@ -6,15 +6,15 @@
 ; Do not use the same AppId value in installers for other applications.
 ; (To generate a new GUID, click Tools | Generate GUID inside the IDE.)
 AppId={{4739C3FB-74C1-411C-A97A-71F73F7E5671}
-AppName=WZGM-TrunkBuild
+AppName=WZGM-Exp
 AppVersion=svn
-;AppVerName=Warzone2100GraphicsMods-BergExpTrunkBuild svn-build-0001
+AppVerName=WZGM-EXP 0.5
 AppPublisher=WZGM
 AppPublisherURL=http://www.wzgm.net
 AppSupportURL=http://www.wzgm.net
 AppUpdatesURL=http://www.wzgm.net
-DefaultDirName={pf}\data
-DefaultGroupName=WZGM-EXP
+DefaultDirName={pf}\WZGM-Exp
+DefaultGroupName=WZGM
 AllowNoIcons=yes
 OutputDir=data\installer
 OutputBaseFilename=setup
@@ -28,7 +28,7 @@ Name: "english"; MessagesFile: "compiler:Default.isl"
 Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{cm:AdditionalIcons}"; Flags: unchecked
 
 [Files]
-Source: "data\Warzone2100-Dbg.exe"; DestDir: "{app}"; Flags: ignoreversion
+Source: "data\Warzone2100.exe"; DestDir: "{app}"; Flags: ignoreversion
 Source: "data\base\*"; DestDir: "{app}\base"; Flags: ignoreversion recursesubdirs createallsubdirs
 Source: "data\etc\*"; DestDir: "{app}\etc"; Flags: ignoreversion recursesubdirs createallsubdirs
 Source: "data\fonts\*"; DestDir: "{app}\fonts"; Flags: ignoreversion recursesubdirs createallsubdirs
@@ -47,10 +47,11 @@ Source: "data\zlib1.dll"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs 
 ; NOTE: Don't use "Flags: ignoreversion" on any shared system files
 
 [Icons]
-Name: "{group}\Warzone2100GraphicsMods-BergExpTrunkBuild"; Filename: "{app}\Warzone2100-Dbg.exe"
-Name: "{group}\{cm:UninstallProgram,Warzone2100GraphicsMods-BergExpTrunkBuild}"; Filename: "{uninstallexe}"
-Name: "{commondesktop}\Warzone2100GraphicsMods-BergExpTrunkBuild"; Filename: "{app}\Warzone2100-Dbg.exe"; Tasks: desktopicon
+Name: "{group}\WZGM-EXP-0.5"; Filename: "{app}\Warzone2100.exe"
+Name: "{group}\{cm:UninstallProgram\WZGM-EXP-0.5}"; Filename: "{uninstallexe}"
+Name: "{commondesktop}\WZGM-EXP-0.5"; Filename: "{app}\Warzone2100.exe"; Tasks: desktopicon
 
 [Run]
-Filename: "{app}\Warzone2100-Dbg.exe"; Description: "{cm:LaunchProgram,Warzone2100GraphicsMods-BergExpTrunkBuild}"; Flags: nowait postinstall skipifsilent
+Filename: "{app}\Warzone2100.exe"; Description: "{cm:LaunchProgram,WZGM-EXP-0.5}"; Flags: nowait postinstall skipifsilent
+
 
