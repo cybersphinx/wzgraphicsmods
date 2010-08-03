@@ -1504,31 +1504,5 @@ void soundTest()
 	fprintf(stdout, "\tSound self-test: PASSED\n");
 }
 
-void soundCapture( int on )
-{
-		
-/* 	int SRATE = 44100; */
-/* 	int SSIZE = 1024; */
-			
-/* 	ALbyte buffer[22050]; */
-/* 	ALint sample; */
-	ALCdevice *device;
-			
 
-	if(on){
-		alGetError();
-		device = alcOpenDevice("Wave File Writer");
 
-/*		device = alcCaptureOpenDevice(NULL, SRATE, 
-  AL_FORMAT_STEREO16, SSIZE); */
-		if( alGetError() == AL_NO_ERROR){
-			//alcCaptureStart(device);
-		}
-	}else{
-		printf("\n*** openal error *\n");
-
-/* 		alcCaptureStop( device ); */
-/* 		alcCaptureCloseDevice(device); */
-	}
-
-}

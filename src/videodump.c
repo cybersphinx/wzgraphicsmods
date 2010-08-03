@@ -74,16 +74,21 @@ void videoDoDumpToDiskIfRequired(void)
 	debug( LOG_3D, "Saving video frame %s\n", fileName );
 
 	// max vid frames exceeded?
+
 	++frame_num;
-	if( frame_num > max_frames )
+	if( frame_num > max_frames )    // toggle video dump off
 	{
-		videodump_required = false;
-		// fixme: msg here
-		printf("\n*** video dump stopped. videodump_max_frames reached ***\n");
+		debug(LOG_INFO, "video dump stopped. max frames %d exceeded",
+			  max_frames);
+		CONPRINTF( ConsoleString, 
+				   (ConsoleString, "Video Dump - Max Frame Count Exceeded"));
+
+		videoDumpToDisk(NULL);  // toggle video off.
 		return;
 	}
 
 #if 0
+// overwrite check
 //fixme: replace with check for scene:  wz2100_001_001.png
 
 	if( PHYSFS_exists( videodump_filename))
@@ -155,7 +160,7 @@ void videoDoDumpToDiskIfRequired(void)
 			 vid_image.height );
 	PHYSFS_write( video_file,  buffer, strlen( buffer ), 1 );
 
-	// write vidoe data
+	// write video data
 	PHYSFS_write( video_file, vid_tmp_buf, 
 				  vid_image.width * vid_image.height * channelsPerPixel , 1);
 
