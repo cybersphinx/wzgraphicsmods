@@ -3108,7 +3108,7 @@ static void	drawDroidSelections( void )
 	UDWORD			scrX,scrY,scrR;
 	DROID			*psDroid;
 	UDWORD			damage, shield;
-	PIELIGHT		powerCol = WZCOL_BLACK, powerColShadow = WZCOL_BLACK;
+	PIELIGHT		powerCol = WZCOL_BLACK, powerColShadow = WZCOL_BLACK, shieldCol;
 	PIELIGHT		boxCol;
 	BASE_OBJECT		*psClickedOn;
 	BOOL			bMouseOverDroid = false;
@@ -3130,6 +3130,9 @@ static void	drawDroidSelections( void )
 
 	pie_SetDepthBufferStatus(DEPTH_CMP_ALWAYS_WRT_ON);
 	pie_SetFogStatus(false);
+	shieldCol.byte.r = 0;
+	shieldCol.byte.g = 128;
+	shieldCol.byte.b = 128;
 	for(psDroid = apsDroidLists[selectedPlayer]; psDroid; psDroid = psDroid->psNext)
 	{
 		bBeingTracked = false;
@@ -3192,8 +3195,8 @@ static void	drawDroidSelections( void )
 				pie_BoxFill(scrX - scrR - 1, scrY + scrR+2, scrX + scrR + 1, scrY + scrR + 6, WZCOL_RELOAD_BACKGROUND);
 				pie_BoxFill(scrX - scrR, scrY + scrR+3, scrX - scrR + damage, scrY + scrR + 4, powerCol);
 				pie_BoxFill(scrX - scrR, scrY + scrR+4, scrX - scrR + damage, scrY + scrR + 5, powerColShadow);
-				pie_BoxFill(scrX - scrR+1, scrY + scrR, scrX - scrR + shield, scrY + scrR + 3, WZCOL_RED);
-				pie_BoxFill(scrX - scrR+1, scrY + scrR, scrX - scrR + shield, scrY + scrR + 2, WZCOL_YELLOW);
+				pie_BoxFill(scrX - scrR+1, scrY + scrR, scrX - scrR + shield, scrY + scrR + 3, shieldCol);
+				pie_BoxFill(scrX - scrR+1, scrY + scrR, scrX - scrR + shield, scrY + scrR + 2, shieldCol);
 
 				/* Write the droid rank out */
 				if((scrX+scrR)>0 && (scrY+scrR)>0 && (scrX-scrR) < pie_GetVideoBufferWidth() && (scrY-scrR) < pie_GetVideoBufferHeight())
