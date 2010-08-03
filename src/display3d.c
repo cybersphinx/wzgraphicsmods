@@ -3127,7 +3127,7 @@ static void	drawDroidSelections( void )
 			bMouseOverOwnDroid = true;
 		}
 	}
- 
+
 	pie_SetDepthBufferStatus(DEPTH_CMP_ALWAYS_WRT_ON);
 	pie_SetFogStatus(false);
 
@@ -3143,24 +3143,6 @@ static void	drawDroidSelections( void )
 		{
 			damage = PERCENT(psDroid->body, psDroid->originalBody);
 			shield = PERCENT(psDroid->shield, psDroid->originalShield);
-			
-			if(shield > 75)
-			{
-				shieldCol.byte.r = 0;
-				shieldCol.byte.g = 0;
-				shieldCol.byte.b = 170;
-			} else
-			if(shield > 50)
-			{
-				shieldCol.byte.r = 170;
-				shieldCol.byte.g = 0;
-				shieldCol.byte.b = 170;
-			} else
-			{
-				shieldCol.byte.r = 170;
-				shieldCol.byte.g = 0;
-				shieldCol.byte.b = 0;
-			}
 
 			if (damage > REPAIRLEV_HIGH)
 			{
@@ -3176,6 +3158,24 @@ static void	drawDroidSelections( void )
 			{
 				powerCol = WZCOL_HEALTH_LOW;
 				powerColShadow = WZCOL_HEALTH_LOW_SHADOW;
+			}
+
+						if(shield > 75)
+			{
+				shieldCol.byte.r = 0;
+				shieldCol.byte.g = 0;
+				shieldCol.byte.b = 170;
+			} else
+			if(shield > 50)
+			{
+				shieldCol.byte.r = 170;
+				shieldCol.byte.g = 0;
+				shieldCol.byte.b = 170;
+			} else
+			{
+				shieldCol.byte.r = 170;
+				shieldCol.byte.g = 0;
+				shieldCol.byte.b = 0;
 			}
 			mulH = (float)psDroid->body / (float)psDroid->originalBody;
 			damage = mulH * (float)psDroid->sDisplay.screenR;// (((psDroid->sDisplay.screenR*10000)/100)*damage)/10000;
@@ -3211,10 +3211,8 @@ static void	drawDroidSelections( void )
 				pie_BoxFill(scrX - scrR - 1, scrY + scrR+2, scrX + scrR + 1, scrY + scrR + 6, WZCOL_RELOAD_BACKGROUND);
 				pie_BoxFill(scrX - scrR, scrY + scrR+3, scrX - scrR + damage, scrY + scrR + 4, powerCol);
 				pie_BoxFill(scrX - scrR, scrY + scrR+4, scrX - scrR + damage, scrY + scrR + 5, powerColShadow);
-				//pie_BoxFill(scrX - scrR, scrY + scrR, scrX - scrR + shield, scrY + scrR + 3, WZCOL_BLACK);
-				pie_BoxFill(scrX - scrR+1, scrY + scrR, scrX - scrR + shield, scrY + scrR + 2, shieldCol);
-				
-				
+				pie_BoxFill(scrX - scrR, scrY + scrR, scrX - scrR + shield, scrY + scrR + 2, WZCOL_BLACK);
+				pie_BoxFill(scrX - scrR, scrY + scrR, scrX - scrR + shield, scrY + scrR + 2, shieldCol);
 
 				/* Write the droid rank out */
 				if((scrX+scrR)>0 && (scrY+scrR)>0 && (scrX-scrR) < pie_GetVideoBufferWidth() && (scrY-scrR) < pie_GetVideoBufferHeight())
