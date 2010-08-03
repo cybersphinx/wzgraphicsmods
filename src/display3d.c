@@ -3108,7 +3108,7 @@ static void	drawDroidSelections( void )
 	UDWORD			scrX,scrY,scrR;
 	DROID			*psDroid;
 	UDWORD			damage, shield;
-	PIELIGHT		powerCol = WZCOL_BLACK, powerColShadow = WZCOL_BLACK, shieldCol;
+	PIELIGHT		powerCol = WZCOL_BLACK, powerColShadow = WZCOL_BLACK, shieldCol = WZCOL_BLACK;
 	PIELIGHT		boxCol;
 	BASE_OBJECT		*psClickedOn;
 	BOOL			bMouseOverDroid = false;
@@ -3130,7 +3130,6 @@ static void	drawDroidSelections( void )
 
 	pie_SetDepthBufferStatus(DEPTH_CMP_ALWAYS_WRT_ON);
 	pie_SetFogStatus(false);
-
 	for(psDroid = apsDroidLists[selectedPlayer]; psDroid; psDroid = psDroid->psNext)
 	{
 		bBeingTracked = false;
@@ -3159,7 +3158,6 @@ static void	drawDroidSelections( void )
 				powerCol = WZCOL_HEALTH_LOW;
 				powerColShadow = WZCOL_HEALTH_LOW_SHADOW;
 			}
-
 			if(shield > REPAIRLEV_HIGH)
 			{
 				shieldCol = WZCOL_SHIELDHEALTHHIGH;
@@ -3174,6 +3172,7 @@ static void	drawDroidSelections( void )
 			damage = mulH * (float)psDroid->sDisplay.screenR;// (((psDroid->sDisplay.screenR*10000)/100)*damage)/10000;
 			mulH = (float)psDroid->shield / (float)psDroid->originalShield;
 			shield = mulH * (float)psDroid->sDisplay.screenR;
+
 			if(damage>psDroid->sDisplay.screenR) damage = psDroid->sDisplay.screenR;
 			shield *=2;
 			damage *=2;
