@@ -98,8 +98,11 @@
 #define WZCOL_LOADING_BAR_BACKGROUND			psPalette[73]
 #define WZCOL_WALLHITCOLOUR				psPalette[74]
 #define WZCOL_SHIELDHITCOLOUR			psPalette[75]
+#define WZCOL_SHIELDHEALTHLOW			psPalette[76]
+#define WZCOL_SHIELDHEALTHMED			psPalette[77]
+#define WZCOL_SHIELDHEALTHHIGH			psPalette[78]
 
-#define WZCOL_MAX			76
+#define WZCOL_MAX			79
 
 //*************************************************************************
 
