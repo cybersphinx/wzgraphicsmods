@@ -3212,7 +3212,7 @@ static void	drawDroidSelections( void )
 				pie_BoxFill(scrX - scrR, scrY + scrR+3, scrX - scrR + damage, scrY + scrR + 4, powerCol);
 				pie_BoxFill(scrX - scrR, scrY + scrR+4, scrX - scrR + damage, scrY + scrR + 5, powerColShadow);
 				//pie_BoxFill(scrX - scrR, scrY + scrR, scrX - scrR + shield, scrY + scrR + 3, WZCOL_BLACK);
-				pie_BoxFill(scrX - scrR-1, scrY + scrR, scrX - scrR + shield, scrY + scrR + 3, shieldCol);
+				pie_BoxFill(scrX - scrR+1, scrY + scrR, scrX - scrR + shield, scrY + scrR + 2, shieldCol);
 				
 				
 
