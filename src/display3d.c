@@ -3127,7 +3127,7 @@ static void	drawDroidSelections( void )
 			bMouseOverOwnDroid = true;
 		}
 	}
-
+ 
 	pie_SetDepthBufferStatus(DEPTH_CMP_ALWAYS_WRT_ON);
 	pie_SetFogStatus(false);
 	shieldCol.byte.r = 0;
