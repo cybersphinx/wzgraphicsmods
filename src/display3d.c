@@ -3148,16 +3148,16 @@ static void	drawDroidSelections( void )
 			{
 				shieldCol.byte.r = 0;
 				shieldCol.byte.g = 0;
-				shieldCol.byte.b = 255;
+				shieldCol.byte.b = 170;
 			} else
 			if(shield > 50)
 			{
-				shieldCol.byte.r = 128;
+				shieldCol.byte.r = 170;
 				shieldCol.byte.g = 0;
-				shieldCol.byte.b = 128;
+				shieldCol.byte.b = 170;
 			} else
 			{
-				shieldCol.byte.r = 255;
+				shieldCol.byte.r = 170;
 				shieldCol.byte.g = 0;
 				shieldCol.byte.b = 0;
 			}
@@ -3211,8 +3211,8 @@ static void	drawDroidSelections( void )
 				pie_BoxFill(scrX - scrR - 1, scrY + scrR+2, scrX + scrR + 1, scrY + scrR + 6, WZCOL_RELOAD_BACKGROUND);
 				pie_BoxFill(scrX - scrR, scrY + scrR+3, scrX - scrR + damage, scrY + scrR + 4, powerCol);
 				pie_BoxFill(scrX - scrR, scrY + scrR+4, scrX - scrR + damage, scrY + scrR + 5, powerColShadow);
-				pie_BoxFill(scrX - scrR, scrY + scrR, scrX - scrR + shield, scrY + scrR + 3, WZCOL_BLACK);
-				pie_BoxFill(scrX - scrR, scrY + scrR, scrX - scrR + shield, scrY + scrR + 2, shieldCol);
+				//pie_BoxFill(scrX - scrR, scrY + scrR, scrX - scrR + shield, scrY + scrR + 3, WZCOL_BLACK);
+				pie_BoxFill(scrX - scrR-1, scrY + scrR, scrX - scrR + shield, scrY + scrR + 3, shieldCol);
 				
 				
 
