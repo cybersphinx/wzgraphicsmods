@@ -578,16 +578,16 @@ void displayShieldHit(DROID *psDroid)
 	switch (psBdyStats->size)
 	{
 		case SIZE_LIGHT:
-			scale += 10;
+			scale += 30;
 			break;
 		case SIZE_MEDIUM:
-			scale += 10;
+			scale += 50;
 			break;
 		case SIZE_HEAVY:
-			scale += 10;
+			scale += 70;
 			break;
 		case SIZE_SUPER_HEAVY:
-			scale += 40;
+			scale += 100;
 			break;
 		default:
 			scale += 10;
