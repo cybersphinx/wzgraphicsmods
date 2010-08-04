@@ -581,13 +581,13 @@ void displayShieldHit(DROID *psDroid)
 			scale += 30;
 			break;
 		case SIZE_MEDIUM:
-			scale += 50;
+			scale += 40;
 			break;
 		case SIZE_HEAVY:
 			scale += 70;
 			break;
 		case SIZE_SUPER_HEAVY:
-			scale += 100;
+			scale += 90;
 			break;
 		default:
 			scale += 10;
