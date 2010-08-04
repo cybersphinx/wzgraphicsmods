@@ -21,11 +21,11 @@
  * @file component.c
  * Draws component objects - oh yes indeed.
 */
-
 #include "lib/framework/frame.h"
 #include "lib/ivis_common/piestate.h"
 #include "lib/ivis_opengl/piematrix.h"
 #include "lib/netplay/netplay.h"
+#include <GLee.h>
 
 #include "action.h"
 #include "component.h"
@@ -511,69 +511,87 @@ static iIMDShape *getRightPropulsionIMD(DROID *psDroid)
 	return *imd;
 }
 
+static void positionShield(const SPACETIME st)
+{
+	int rx, rz;
+
+	/* Establish world position */
+	Vector3i dv = {
+		(st.pos.x - player.p.x) - terrainMidX * TILE_UNITS,
+		st.pos.z,
+		terrainMidY * TILE_UNITS - (st.pos.y - player.p.z)
+	};
+
+	/* Push the indentity matrix */
+	iV_MatrixBegin();
+
+	/* Move to position */
+	iV_TRANSLATE(dv.x, dv.y, dv.z);
+
+	/* Get the x,z translation components */
+	rx = map_round(player.p.x);
+	rz = map_round(player.p.z);
+
+	/* Move to camera reference */
+	iV_TRANSLATE(rx, 0, -rz);
+}
+
 // Render the pie file used for forcefields
 void displayShieldHit(DROID *psDroid)
 {
-	EFFECT				*effect = Effect_malloc();
+
 	PIELIGHT			brightness;
 	PIELIGHT			specular = WZCOL_BLACK;
-	iIMDShape			*psShape;
+	iIMDShape			*psShape, *imd;
+	int				scale, max;
 	SPACETIME st = interpolateObjectSpacetime((SIMPLE_OBJECT *)psDroid, graphicsTime);
-	const BODY_STATS* psBdyStats;
-	
+
+	positionShield(st);
+
 	/* Get internal tile units coordinates */
 	// make horrible dummy effect for positioning reasons.	
-	effect->position.x = st.pos.x;
-	effect->position.y = st.pos.z;
-	effect->position.z = st.pos.y;
-	positionEffect(effect);
-	// Use this to work out what size the unit is.
-	psBdyStats = &asBodyStats[psDroid->asBits[COMP_BODY].nStat];
+	
+	imd = psDroid->sDisplay.imd;
 	// Apply colour mask to achieve fade effect.
 	brightness.byte.a = 0;
 	brightness.byte.r = (PERCENT(psDroid->shield,psDroid->originalShield)+70)*1.5;
 	brightness.byte.g = (PERCENT(psDroid->shield,psDroid->originalShield)+70)*1.5;
 	brightness.byte.b = (PERCENT(psDroid->shield,psDroid->originalShield)+70)*1.5;
 	specular = brightness;
-	// Turn off the code below, makes the field change colour when hit.
-	//if(gameTime-psDroid->timeLastHit < 1)
-	//	brightness = WZCOL_SHIELDHITCOLOUR;
-	// don't need it no more, get rid of it.
-	killEffect(effect);
-	// Different pie files for different sized units
-	switch (psBdyStats->size)
-	{
-		case SIZE_LIGHT:
-			psShape = getImdFromIndex(MI_LSPHERE);
-			break;
+	psShape = getImdFromIndex(MI_SSPHERE);
 
-		case SIZE_MEDIUM:
-			psShape = getImdFromIndex(MI_MSPHERE);
-			break;
+	max = imd->max.x;
 
-		case SIZE_HEAVY:
-			psShape = getImdFromIndex(MI_HSPHERE);
-			break;
+	if(imd->max.y > max)
+		max = imd->max.y;
+	if(imd->max.z > max)
+		max = imd->max.z;
+	
+	if(psShape->radius > max)
+		scale = PERCENT(max,psShape->radius)+40;
+	else
+		scale = 140 + PERCENT(psShape->radius,max);
 
-		case SIZE_SUPER_HEAVY:
-			psShape = getImdFromIndex(MI_SSPHERE);
-			break;
+	
 
-		default:
-			psShape = getImdFromIndex(MI_LSPHERE);
-			break;
-	}
-	// special case for transport, as it is bigger than a heavy unit.
-	if(psDroid->droidType == DROID_TRANSPORTER)
-		psShape = getImdFromIndex(MI_SSPHERE);
+
 	
 	
+
+	//{x=41.000000 y=136.00000 z=52.000000 }
 	// Make sure its not TCMask and is animated
 	if(psShape->numFrames > 0 && psShape->numFrames != 8)
+	{
+		glScalef(0.01f*scale, 0.01f*scale, 0.01f*scale);
 		pie_Draw3DShape(psShape,getModularScaledGraphicsTime(psShape->animInterval, psShape->numFrames),getPlayerColour(psDroid->player),brightness,specular,pie_TRANSLUCENT,DEFAULT_COMPONENT_TRANSLUCENCY);
-	else
+	}
+	
 	// Do it without animation.
+	
+	//pie_MatScale(scale);
+		glScalef(0.01f*scale, 0.01f*scale, 0.01f*scale);
 	pie_Draw3DShape(psShape,0,getPlayerColour(psDroid->player),brightness,specular,pie_TRANSLUCENT,DEFAULT_COMPONENT_TRANSLUCENCY);
+	
 	// end the matrix
 	iV_MatrixEnd();
 	
