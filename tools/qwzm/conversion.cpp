@@ -217,7 +217,7 @@ MODEL *QWzmViewer::loadPIE(QString inputFile)
 				}
 				if (textureArrays < faceList[j].frames)
 				{
-					textureArrays = faceList[j].frames;
+					textureArrays = std::min(faceList[j].frames,16);
 				}
 			}
 			else
