@@ -1,0 +1,1 @@
+QGLVIEWER_LIBS = -lqglviewer-qt4
