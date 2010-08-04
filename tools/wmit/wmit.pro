@@ -55,7 +55,7 @@ QMAKE_CXXFLAGS +=  -pipe \#-std=c++0x \
 	-fno-signed-zeros -fno-math-errno #\
 #	-flto -fuse-linker-plugin -fwhole-program
 CONFIG -= rtti exceptions
-CONFIG += warn_on sse2 mmx
+CONFIG += warn_on
 QMAKE_CXXFLAGS_WARN_ON += -pedantic	\
 	-Wextra -Wc++0x-compat \
 	-Wnon-virtual-dtor \
