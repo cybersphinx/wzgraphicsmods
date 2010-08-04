@@ -2579,8 +2579,15 @@ DROID* buildDroid(DROID_TEMPLATE *pTemplate, UDWORD x, UDWORD y, UDWORD player,
 	//allocate 'easy-access' data!
 	objSensorCache((BASE_OBJECT *)psDroid, asSensorStats + pTemplate->asParts[COMP_SENSOR]);
 	objEcmCache((BASE_OBJECT *)psDroid, asECMStats + pTemplate->asParts[COMP_ECM]);
-	psDroid->body = calcTemplateBody(pTemplate, (UBYTE)player)/2;  // Redundant? (Is set in droidSetBits, too.)
+	if((game.scavengers && psDroid->player == 7))
+			psDroid->body = calcTemplateBody(pTemplate, (UBYTE)player);
+	else
+		psDroid->body = calcTemplateBody(pTemplate, (UBYTE)player)/2;
+	// Redundant? (Is set in droidSetBits, too.)
 	psDroid->originalBody = psDroid->body;  // Redundant? (Is set in droidSetBits, too.)
+	if((game.scavengers && psDroid->player == 7))
+		psDroid->originalShield = 0;
+	else
 	psDroid->originalShield = psDroid->body;
 	psDroid->shield = psDroid->originalShield;
 
@@ -2686,8 +2693,15 @@ void droidSetBits(DROID_TEMPLATE *pTemplate,DROID *psDroid)
 	psDroid->rot.pitch =  0;
 	psDroid->rot.roll = 0;
 	psDroid->numWeaps = pTemplate->numWeaps;
+	// People don't have shields.
+	if((game.scavengers && psDroid->player == 7))
+	psDroid->body = calcTemplateBody(pTemplate, psDroid->player);
+	else
 	psDroid->body = calcTemplateBody(pTemplate, psDroid->player)/2;
 	psDroid->originalBody = psDroid->body;
+	if((game.scavengers && psDroid->player == 7))
+	psDroid->shield = 0;
+	else
 	psDroid->shield = psDroid->body;
 	psDroid->originalShield = psDroid->shield;
 	psDroid->expectedDamage = 0;  // Begin life optimistically.
