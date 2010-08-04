@@ -511,109 +511,110 @@ static iIMDShape *getRightPropulsionIMD(DROID *psDroid)
 	return *imd;
 }
 
-static void positionShield(const SPACETIME st)
-{
-	int rx, rz;
-
-	/* Establish world position */
-	Vector3i dv = {
-		(st.pos.x - player.p.x) - terrainMidX * TILE_UNITS,
-		st.pos.z,
-		terrainMidY * TILE_UNITS - (st.pos.y - player.p.z)
-	};
-
-	/* Push the indentity matrix */
-	iV_MatrixBegin();
-
-	/* Move to position */
-	iV_TRANSLATE(dv.x, dv.y, dv.z);
-
-	/* Get the x,z translation components */
-	rx = map_round(player.p.x);
-	rz = map_round(player.p.z);
-
-	/* Move to camera reference */
-	iV_TRANSLATE(rx, 0, -rz);
-}
-
 // Render the pie file used for forcefields
 void displayShieldHit(DROID *psDroid)
 {
-
+	int32_t				xShift,zShift;
 	PIELIGHT			brightness;
 	PIELIGHT			specular = WZCOL_BLACK;
-	iIMDShape			*psShape, *imd;
-	int				scale, max;
+	iIMDShape			*psShape, *psBodyImd, *psTempImd;
+	int					scale;
+	Vector3i			position;
 	SPACETIME st = interpolateObjectSpacetime((SIMPLE_OBJECT *)psDroid, graphicsTime);
-	BODY_STATS		*psBdyStats;
-	if(psDroid->droidType == DROID_TRANSPORTER)
-		st.pos.y += bobTransporterHeight();
-	positionShield(st);
+
+	psShape = getImdFromIndex(MI_SSPHERE);
+	psBodyImd = BODY_IMD(psDroid,((BASE_OBJECT*)psDroid)->player);
+	
+	if (psBodyImd != NULL)
+	{
+		scale = psBodyImd->radius;
+	}
+	else // I'm not sure if this would every happen.
+	{
+		psBodyImd = ((BASE_OBJECT*)psDroid)->sDisplay.imd;
+		if (psBodyImd != NULL)
+		{
+			scale = psBodyImd->radius;
+		}
+	}
+
+	if (!cyborgDroid(psDroid))
+	{
+		psTempImd = getRightPropulsionIMD(psDroid);
+		if (psTempImd != NULL)
+		{
+			scale += psTempImd->radius/4;
+		}
+
+		psTempImd = getLeftPropulsionIMD(psDroid);
+		if (psTempImd != NULL)
+		{
+			scale += psTempImd->radius/4;
+		}
+	}
+	else
+	{
+		scale += scale/2; // FIXME
+	}
 
 	/* Get internal tile units coordinates */
-	// make horrible dummy effect for positioning reasons.	
-	
-	imd = psDroid->sDisplay.imd;
+	xShift = map_round(player.p.x);
+	zShift = map_round(player.p.z);
+
+	/* Get the real position */
+	position.x = (st.pos.x - player.p.x) - terrainMidX*TILE_UNITS;
+	position.z = terrainMidY*TILE_UNITS - (st.pos.y - player.p.z);
+	position.y = st.pos.z;
+
+	if(psDroid->droidType == DROID_TRANSPORTER)
+	{
+		position.y += bobTransporterHeight();
+	}
+
 	// Apply colour mask to achieve fade effect.
 	brightness.byte.a = 0;
 	brightness.byte.r = (PERCENT(psDroid->shield,psDroid->originalShield)+70)*1.5;
 	brightness.byte.g = (PERCENT(psDroid->shield,psDroid->originalShield)+70)*1.5;
 	brightness.byte.b = (PERCENT(psDroid->shield,psDroid->originalShield)+70)*1.5;
 	specular = brightness;
-	psShape = getImdFromIndex(MI_SSPHERE);
 
-	max = imd->max.x;
+	/* Push the matrix */
+	pie_MatBegin();
 
-	
-	
-	
-	if(imd->radius > psShape->radius)
-		scale = 100+PERCENT(psShape->radius,imd->radius);
-	else
-		scale =  PERCENT(imd->radius,psShape->radius);
+		/* Mask out to tile_units resolution */
+		pie_TRANSLATE(xShift,0,-zShift);
 
-	
-		psBdyStats = &asBodyStats[psDroid->asBits[COMP_BODY].nStat];
+		/* Translate origin */
+		pie_TRANSLATE(position.x,position.y,position.z);
 
-	switch (psBdyStats->size)
-	{
-		case SIZE_LIGHT:
-			scale += 30;
-			break;
-		case SIZE_MEDIUM:
-			scale += 30;
-			break;
-		case SIZE_HEAVY:
-			scale += 50;
-			break;
-		case SIZE_SUPER_HEAVY:
-			scale += 95;
-			break;
-		default:
-			scale += 10;
-	}
-
-	
-	
+		pie_MatScale(scale);
 
 	//{x=41.000000 y=136.00000 z=52.000000 }
 	// Make sure its not TCMask and is animated
 	if(psShape->numFrames > 0 && psShape->numFrames != 8)
 	{
 		//glScalef(0.01f*scale, 0.01f*scale, 0.01f*scale);
-		pie_MatScale(scale);
-		pie_Draw3DShape(psShape,getModularScaledGraphicsTime(psShape->animInterval, psShape->numFrames),getPlayerColour(psDroid->player),brightness,specular,pie_TRANSLUCENT,DEFAULT_COMPONENT_TRANSLUCENCY);
+		pie_Draw3DShape(psShape,
+						getModularScaledGraphicsTime(psShape->animInterval, psShape->numFrames),
+						getPlayerColour(psDroid->player),
+						brightness,
+						specular,
+						pie_TRANSLUCENT,
+						DEFAULT_COMPONENT_TRANSLUCENCY);
 	}
 	else
 	{
-	// Do it without animation.
-	
-	pie_MatScale(scale);
-		//glScalef(0.01f*scale, 0.01f*scale, 0.01f*scale);
-	pie_Draw3DShape(psShape,0,getPlayerColour(psDroid->player),brightness,specular,pie_TRANSLUCENT,DEFAULT_COMPONENT_TRANSLUCENCY);
+		// Do it without animation.
+			//glScalef(0.01f*scale, 0.01f*scale, 0.01f*scale);
+		pie_Draw3DShape(psShape,
+						0,
+						getPlayerColour(psDroid->player),
+						brightness,specular,
+						pie_TRANSLUCENT,
+						DEFAULT_COMPONENT_TRANSLUCENCY);
 	}
 	// end the matrix
-	iV_MatrixEnd();
+	pie_MatEnd();
 	
 }
 
