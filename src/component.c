@@ -25,7 +25,7 @@
 #include "lib/ivis_common/piestate.h"
 #include "lib/ivis_opengl/piematrix.h"
 #include "lib/netplay/netplay.h"
-#include <GLee.h>
+
 
 #include "action.h"
 #include "component.h"
@@ -582,16 +582,18 @@ void displayShieldHit(DROID *psDroid)
 	// Make sure its not TCMask and is animated
 	if(psShape->numFrames > 0 && psShape->numFrames != 8)
 	{
-		glScalef(0.01f*scale, 0.01f*scale, 0.01f*scale);
+		//glScalef(0.01f*scale, 0.01f*scale, 0.01f*scale);
+		pie_MatScale(scale);
 		pie_Draw3DShape(psShape,getModularScaledGraphicsTime(psShape->animInterval, psShape->numFrames),getPlayerColour(psDroid->player),brightness,specular,pie_TRANSLUCENT,DEFAULT_COMPONENT_TRANSLUCENCY);
 	}
-	
+	else
+	{
 	// Do it without animation.
 	
-	//pie_MatScale(scale);
-		glScalef(0.01f*scale, 0.01f*scale, 0.01f*scale);
+	pie_MatScale(scale);
+		//glScalef(0.01f*scale, 0.01f*scale, 0.01f*scale);
 	pie_Draw3DShape(psShape,0,getPlayerColour(psDroid->player),brightness,specular,pie_TRANSLUCENT,DEFAULT_COMPONENT_TRANSLUCENCY);
-	
+	}
 	// end the matrix
 	iV_MatrixEnd();
 	
