@@ -3161,7 +3161,7 @@ static void	drawDroidSelections( void )
 			if(shield > REPAIRLEV_HIGH)
 			{
 				shieldCol = WZCOL_SHIELDHEALTHHIGH;
-			} else if (shield > REPAIRLEV_LOW)
+			} else if (shield > 25)
 			{
 				shieldCol = WZCOL_SHIELDHEALTHMED;
 			} else
