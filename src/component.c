@@ -545,7 +545,7 @@ void displayShieldHit(DROID *psDroid)
 	iIMDShape			*psShape, *imd;
 	int				scale, max;
 	SPACETIME st = interpolateObjectSpacetime((SIMPLE_OBJECT *)psDroid, graphicsTime);
-
+	BODY_STATS		*psBdyStats;
 	positionShield(st);
 
 	/* Get internal tile units coordinates */
@@ -568,12 +568,30 @@ void displayShieldHit(DROID *psDroid)
 		max = imd->max.z;
 	
 	if(psShape->radius > max)
-		scale = PERCENT(max,psShape->radius)+40;
+		scale = PERCENT(max,psShape->radius);
 	else
-		scale = 140 + PERCENT(psShape->radius,max);
+		scale = 100+ PERCENT(psShape->radius,max);
 
 	
+		psBdyStats = &asBodyStats[psDroid->asBits[COMP_BODY].nStat];
 
+	switch (psBdyStats->size)
+	{
+		case SIZE_LIGHT:
+			scale += 10;
+			break;
+		case SIZE_MEDIUM:
+			scale += 10;
+			break;
+		case SIZE_HEAVY:
+			scale += 10;
+			break;
+		case SIZE_SUPER_HEAVY:
+			scale += 40;
+			break;
+		default:
+			scale += 10;
+	}
 
 	
 	
