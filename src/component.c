@@ -529,12 +529,16 @@ void displayShieldHit(DROID *psDroid)
 	{
 		scale = psBodyImd->radius;
 	}
-	else // I'm not sure if this would every happen.
+	else // I'm not sure if this would ever happen.
 	{
 		psBodyImd = ((BASE_OBJECT*)psDroid)->sDisplay.imd;
 		if (psBodyImd != NULL)
 		{
 			scale = psBodyImd->radius;
+		}
+		else
+		{
+			scale = 0;
 		}
 	}
 
