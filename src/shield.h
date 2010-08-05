@@ -29,10 +29,6 @@
 
 
 #define	DEFAULT_COMPONENT_TRANSLUCENCY	128
-#define crossProduct(a,b,c) \
-	(a)[0] = (b)[1] * (c)[2] - (c)[1] * (b)[2]; \
-	(a)[1] = (b)[2] * (c)[0] - (c)[2] * (b)[0]; \
-	(a)[2] = (b)[0] * (c)[1] - (c)[0] * (b)[1];
 
 void displayShieldHit(DROID *psDroid);
 void addShieldHitEffect(DROID *psDroid, Vector3i *pos);

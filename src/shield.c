@@ -29,6 +29,7 @@
 #include "lib/ivis_common/piestate.h"
 #include "lib/ivis_common/piepalette.h"
 #include "lib/ivis_common/pieclip.h"
+#include "lib/ivis_opengl/piematrix.h"
 
 
 #include "action.h"
@@ -54,7 +55,7 @@ void addShieldHitEffect(DROID *psDroid, Vector3i *pos)
 	Vector3i rotation, va, vb; 
 	Vector3f ocen;
 	BODY_STATS		*psBdyStats;
-	int scale, s;
+	int scale;
 	float distance;
 	va.x = psDroid->pos.x;
 	va.y = psDroid->pos.y;
