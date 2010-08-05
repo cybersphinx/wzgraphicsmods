@@ -1,2 +1,1 @@
 -Add more getters and setters, possibly replacing friendship with them (e.g. WZM<-PIE3, PIE3<-PIE2)
-- GPL blah blah everywhere

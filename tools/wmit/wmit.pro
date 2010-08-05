@@ -11,7 +11,8 @@ HEADERS += MainWindow.hpp \
     Pie.hpp \
     WZM.hpp \
     TeamColoursDock.hpp \
-    Generic.hpp
+    Generic.hpp \
+    OBJ.hpp
 SOURCES += main.cpp \
     MainWindow.cpp \
     ImportDialog.cpp \
@@ -21,9 +22,10 @@ SOURCES += main.cpp \
     Polygon_t.cpp \
     WZM.cpp \
     TeamColoursDock.cpp \
-    Generic.cpp \ 
-	Pie_t.cpp \
-	Pie.cpp
+    Generic.cpp \
+    Pie_t.cpp \
+    Pie.cpp \
+    OBJ.cpp
 FORMS += MainWindow.ui \
     ImportDialog.ui \
     UVEditor.ui \
@@ -42,26 +44,31 @@ INCLUDEPATH += $$QGLVIEWER_INCL
 LIBS += -l3ds \
     -lm \
     $$QGLVIEWER_LIBS
-
 UI_DIR = ui
 MOC_DIR = moc
 OBJECTS_DIR = bin
 
-#QMAKE_CXX = g++-4.5
-#QMAKE_CC = gcc-4.5
-QMAKE_CXXFLAGS +=  -pipe \#-std=c++0x \
-	-fno-nonansi-builtins -ffor-scope \
-	-fno-exceptions -fno-rtti \
-	-fno-signed-zeros -fno-math-errno #\
-#	-flto -fuse-linker-plugin -fwhole-program
-CONFIG -= rtti exceptions
-CONFIG += warn_on
-QMAKE_CXXFLAGS_WARN_ON += -pedantic	\
-	-Wextra -Wc++0x-compat \
-	-Wnon-virtual-dtor \
-	-Wno-long-long -Wold-style-cast \
-	-Wredundant-decls #-DWARNMORE # if you want more warnings to quash
-QMAKE_CFLAGS_DEBUG+= -fstack-protector-all
-QMAKE_CXXFLAGS_DEBUG+= -fstack-protector-all
+# QMAKE_CXX = g++-4.5
+# QMAKE_CC = gcc-4.5
+QMAKE_CXXFLAGS += -pipe \ # -std=c++0x \
+    -fno-nonansi-builtins \
+    -ffor-scope \
+    -fno-exceptions \
+    -fno-rtti \
+    -fno-signed-zeros \
+	-fno-math-errno
 
-OTHER_FILES += TODO.txt COPYING
+CONFIG -= rtti \
+    exceptions
+CONFIG += warn_on \
+QMAKE_CXXFLAGS_WARN_ON += -pedantic \
+    -Wextra \
+    -Wc++0x-compat \
+    -Wnon-virtual-dtor \
+    -Wno-long-long \
+    -Wold-style-cast \
+    -Wredundant-decls # -DWARNMORE # if you want more warnings to quash
+QMAKE_CFLAGS_DEBUG += -fstack-protector-all
+QMAKE_CXXFLAGS_DEBUG += -fstack-protector-all
+OTHER_FILES += TODO.txt \
+    COPYING.txt
