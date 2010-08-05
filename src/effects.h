@@ -165,7 +165,6 @@ void	renderEffect(const EFFECT *psEffect);
 void	effectResetUpdates(void);
 EFFECT *Effect_malloc(void);
 void killEffect(EFFECT *e);
-void updateShieldHit(EFFECT *psEffect);
 
 void	initPerimeterSmoke(iIMDShape *pImd, Vector3i base);
 
