@@ -941,7 +941,7 @@ static void updateSatLaser(EFFECT *psEffect)
 	}
 }
 
-void updateShieldHit(EFFECT *psEffect)
+static void updateShieldHit(EFFECT *psEffect)
 {	
 	
 	
