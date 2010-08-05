@@ -84,6 +84,7 @@
 #include "combat.h"
 #include "scriptfuncs.h"			//for ThreatInRange()
 #include "design.h"					//for GetDefaultTemplateName
+#include "shield.h"
 
 #define DEFAULT_RECOIL_TIME	(GAME_TICKS_PER_SEC/4)
 #define	DROID_DAMAGE_SPREAD	(16 - rand()%32)

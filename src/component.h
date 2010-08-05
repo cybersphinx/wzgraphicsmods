@@ -66,7 +66,8 @@ void displayResearchButton(BASE_STATS *Stat, Vector3i *Rotation, Vector3i *Posit
 void displayComponentButtonTemplate(DROID_TEMPLATE *psTemplate, Vector3i *Rotation, Vector3i *Position, BOOL RotXYZ, SDWORD scale);
 void displayComponentButtonObject(DROID *psDroid, Vector3i *Rotation, Vector3i *Position, BOOL RotXYZ, SDWORD scale);
 void displayComponentObject(DROID *psDroid);
-void displayShieldHit(DROID *psDroid);
+iIMDShape *getRightPropulsionIMD(DROID *psDroid);
+iIMDShape *getLeftPropulsionIMD(DROID *psDroid);
 
 void compPersonToBits(DROID *psDroid);
 

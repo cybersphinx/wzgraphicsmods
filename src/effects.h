@@ -54,7 +54,8 @@ typedef enum
 	EFFECT_SAT_LASER,
 	EFFECT_DUST_BALL,
 	EFFECT_FIRE,
-	EFFECT_FIREWORK
+	EFFECT_FIREWORK,
+	EFFECT_HIT
 } EFFECT_GROUP;
 
 
@@ -113,6 +114,7 @@ typedef enum
 
 	FIREWORK_TYPE_STARBURST,
 	FIREWORK_TYPE_LAUNCHER,
+	HIT_TYPE_SHIELD
 
 } EFFECT_TYPE;
 
@@ -163,6 +165,7 @@ void	renderEffect(const EFFECT *psEffect);
 void	effectResetUpdates(void);
 EFFECT *Effect_malloc(void);
 void killEffect(EFFECT *e);
+void updateShieldHit(EFFECT *psEffect);
 
 void	initPerimeterSmoke(iIMDShape *pImd, Vector3i base);
 

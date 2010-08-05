@@ -83,6 +83,7 @@ static MISC_IMD	miscImds[] =
 //	{NULL,"msphere"},
 //	{NULL,"hsphere"},
 	{NULL,"ssphere"},
+	{NULL,"hsphere"},
 
 
 

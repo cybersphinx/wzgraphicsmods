@@ -35,6 +35,7 @@
 #include "combat.h"
 #include "effects.h"
 #include "map.h"
+#include "component.h"
 #include "lib/sound/audio_id.h"
 #include "lib/sound/audio.h"
 #include "anim_id.h"
@@ -46,6 +47,7 @@
 #include "group.h"
 #include "cmddroid.h"
 #include "feature.h"
+#include "shield.h"
 #include "lib/ivis_common/piestate.h"
 #include "loop.h"
 // FIXME Direct iVis implementation include!
@@ -1137,6 +1139,7 @@ imd = psStats->pTargetHitGraphic;
 					{
 						imd = psStats->pTargetHitGraphic;
 						addMultiEffect(&position, &scatter, EFFECT_EXPLOSION, facing, true, imd, psStats->numExplosions, psStats->lightWorld, psStats->effectSize);
+
 					}
 			}
 		}
@@ -1189,6 +1192,8 @@ imd = psStats->pTargetHitGraphic;
 			{
 				// For indirect weapons (e.g. artillery) just assume the side as HIT_SIDE_TOP
 				impactSide = proj_Direct(psStats) ? getHitSide(psObj, psObj->psDest) : HIT_SIDE_TOP;
+					
+				//addShieldHitEffect((DROID *)psObj->psDest,&position);
 			}
 
 			// Damage the object

@@ -1107,6 +1107,7 @@ void	renderProjectile(PROJECTILE *psCurr)
 	/*Need to draw the graphic depending on what the projectile is doing - hitting target,
 	missing target, in flight etc - JUST DO IN FLIGHT FOR NOW! */
 	pIMD = psStats->pInFlightGraphic;
+	
 
 	if (clipXY(st.pos.x, st.pos.y))
 	{

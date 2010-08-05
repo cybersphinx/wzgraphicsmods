@@ -664,12 +664,9 @@ static void updateEffect(EFFECT *psEffect)
 	/* What type of effect are we dealing with? */
 	switch(psEffect->group)
 	{
+
 	case EFFECT_EXPLOSION:
 		updateExplosion(psEffect);
-		return;
-
-	case EFFECT_WAYPOINT:
-		if(!gamePaused()) updateWaypoint(psEffect);
 		return;
 
 	case EFFECT_CONSTRUCTION:
@@ -687,6 +684,10 @@ static void updateEffect(EFFECT *psEffect)
 		if(!gamePaused()) updateGraviton(psEffect);
 		return;
 
+	case EFFECT_WAYPOINT:
+		if(!gamePaused()) updateWaypoint(psEffect);
+		return;
+
 	case EFFECT_BLOOD:
 		if(!gamePaused()) updateBlood(psEffect);
 		return;
@@ -695,20 +696,26 @@ static void updateEffect(EFFECT *psEffect)
 		if(!gamePaused()) updateDestruction(psEffect);
 		return;
 
-	case EFFECT_FIRE:
-		if(!gamePaused()) updateFire(psEffect);
-		return;
+
 
 	case EFFECT_SAT_LASER:
 		if(!gamePaused()) updateSatLaser(psEffect);
+		return;
+	case EFFECT_DUST_BALL: // Apparently not a valid effect...
+		return;
+	case EFFECT_FIRE:
+		if(!gamePaused()) updateFire(psEffect);
 		return;
 
 	case EFFECT_FIREWORK:
 		if(!gamePaused()) updateFirework(psEffect);
 		return;
+	case EFFECT_HIT:
+		if(!gamePaused()) updateShieldHit(psEffect);
+		return;
 
-	case EFFECT_DUST_BALL: // Apparently not a valid effect...
-		break;
+
+
 	}
 
 	debug( LOG_ERROR, "Weirdy class of effect passed to updateEffect" );
@@ -930,6 +937,35 @@ static void updateSatLaser(EFFECT *psEffect)
 	{
 		killEffect(psEffect);
 	}
+}
+
+void updateShieldHit(EFFECT *psEffect)
+{	
+	positionEffect(psEffect);
+	
+	if (graphicsTime - psEffect->lastFrame > psEffect->frameDelay)
+	{
+		psEffect->lastFrame = graphicsTime;
+		/* Are we on the last frame? */
+
+		if (++psEffect->frameNumber < psEffect->imd->numFrames)
+	
+		{
+			iV_MatrixRotateX(psEffect->rotation.x);
+			iV_MatrixRotateY(psEffect->rotation.y);
+			iV_MatrixRotateX(psEffect->rotation.z);
+			pie_MatScale(psEffect->size);
+			pie_Draw3DShape(psEffect->imd,psEffect->frameNumber,8,WZCOL_WHITE,WZCOL_BLACK,0,0);
+				
+			
+		} else
+		{
+		killEffect(psEffect);
+		}
+		
+		
+	}
+	iV_MatrixEnd();
 }
 
 /** The update function for the explosions */
@@ -1609,6 +1645,9 @@ void renderEffect(const EFFECT *psEffect)
 
 	case EFFECT_FIREWORK:
 		renderFirework(psEffect);
+		return;
+	case EFFECT_HIT:
+		if(!gamePaused()) updateShieldHit(psEffect);
 		return;
 
 	case EFFECT_DUST_BALL: // Apparently not a valid effect...
@@ -2405,7 +2444,10 @@ void initPerimeterSmoke(iIMDShape *pImd, Vector3i base)
 
 static UDWORD effectGetNumFrames(EFFECT *psEffect)
 {
+	if(psEffect->imd)
 	return psEffect->imd->numFrames;
+	else
+	return 0;
 }
 
 
