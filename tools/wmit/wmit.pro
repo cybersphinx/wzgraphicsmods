@@ -11,8 +11,7 @@ HEADERS += MainWindow.hpp \
     Pie.hpp \
     WZM.hpp \
     TeamColoursDock.hpp \
-    Generic.hpp \
-    OBJ.hpp
+	Generic.hpp
 SOURCES += main.cpp \
     MainWindow.cpp \
     ImportDialog.cpp \
@@ -24,8 +23,7 @@ SOURCES += main.cpp \
     TeamColoursDock.cpp \
     Generic.cpp \
     Pie_t.cpp \
-    Pie.cpp \
-    OBJ.cpp
+	Pie.cpp
 FORMS += MainWindow.ui \
     ImportDialog.ui \
     UVEditor.ui \
