@@ -526,8 +526,6 @@ bool Mesh::importFromOBJ(const std::vector<OBJTri>&	faces,
 			WZMVertex::less_wEps, WZMUV::less_wEps> > pairSet;
 
 	std::vector<OBJTri>::const_iterator itF;
-	std::set<mypair<WZMVertex, WZMUV, WZMVertex::less_wEps,
-						WZMUV::less_wEps> >::iterator itLoc;
 
 	std::pair<std::set<mypair<WZMVertex, WZMUV, WZMVertex::less_wEps,
 						WZMUV::less_wEps> >::iterator, bool> inResult;
@@ -562,43 +560,24 @@ bool Mesh::importFromOBJ(const std::vector<OBJTri>&	faces,
 												  vertLess,
 												  uvLess));
 
-			if (inResult.second)
+			if (!inResult.second)
+			{
+				tmpTri[i] = mapping[std::distance(pairSet.begin(), inResult.first)];
+			}
+			else
 			{
 				itMap = mapping.begin();
 				std::advance(itMap, std::distance(pairSet.begin(), inResult.first));
 				mapping.insert(itMap, m_vertexArray.size());
+				tmpTri[i] = m_vertexArray.size();
 				m_vertexArray.push_back(verts[itF->tri[i]-1]);
 				m_textureArrays[0].push_back(tmpUv);
 			}
-		}
-
-	}
-
-	for (itF = faces.begin(); itF != faces.end(); ++itF)
-	{
-		for (i = 0; i < 3; ++i)
-		{
-			if (itF->uvs.operator [](i) < 1)
-			{
-				tmpUv.u() = 0;
-				tmpUv.v() = 0;
-			}
-			else
-			{
-				tmpUv = uvArray[itF->uvs.operator [](i)-1];
-			}
-
-			itLoc = pairSet.find(make_mypair(verts[itF->tri[i]-1],
-											tmpUv,
-											vertLess,
-											uvLess));
-			tmpTri[i] = mapping[std::distance(pairSet.begin(), itLoc)];
 		}
 		m_indexArray.push_back(tmpTri);
 	}
 	return true;
 }
-
 
 std::string Mesh::getName() const
 {
