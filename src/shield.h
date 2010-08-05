@@ -26,10 +26,8 @@
 #include "droiddef.h"
 #include "structuredef.h"
 
-#ifdef __cplusplus
-extern "C"
-{
-#endif //__cplusplus
+
+
 #define	DEFAULT_COMPONENT_TRANSLUCENCY	128
 #define crossProduct(a,b,c) \
 	(a)[0] = (b)[1] * (c)[2] - (c)[1] * (b)[2]; \
@@ -39,7 +37,5 @@ extern "C"
 void displayShieldHit(DROID *psDroid);
 void addShieldHitEffect(DROID *psDroid, Vector3i *pos);
 
-#ifdef __cplusplus
-}
-#endif //__cplusplus
+
 #endif
