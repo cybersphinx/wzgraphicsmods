@@ -27,6 +27,7 @@
 #include "lib/ivis_common/piedef.h"
 #include "objectdef.h"
 #include "message.h"
+#include "shield.h"
 
 #ifdef __cplusplus
 extern "C"

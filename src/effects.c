@@ -222,6 +222,7 @@ static void updateFire(EFFECT *psEffect);
 static void updateSatLaser(EFFECT *psEffect);
 static void updateFirework(EFFECT *psEffect);
 static void updateEffect(EFFECT *psEffect);	// MASTER function
+static void updateShieldHit(EFFECT *psEffect);
 
 // ----------------------------------------------------------------------------------------
 // ---- The render functions - every group type of effect has a distinct one
@@ -233,6 +234,7 @@ static void	renderWaypointEffect	( const EFFECT *psEffect );
 static void	renderBloodEffect		( const EFFECT *psEffect );
 static void	renderDestructionEffect	( const EFFECT *psEffect );
 static void renderFirework			( const EFFECT *psEffect );
+static void renderShieldHit			( const EFFECT *psEffect );
 
 /* There is no render destruction effect! */
 
@@ -941,31 +943,23 @@ static void updateSatLaser(EFFECT *psEffect)
 
 void updateShieldHit(EFFECT *psEffect)
 {	
-	positionEffect(psEffect);
+	
 	
 	if (graphicsTime - psEffect->lastFrame > psEffect->frameDelay)
 	{
 		psEffect->lastFrame = graphicsTime;
 		/* Are we on the last frame? */
 
-		if (++psEffect->frameNumber < psEffect->imd->numFrames)
+		if (++psEffect->frameNumber > psEffect->imd->numFrames)
 	
 		{
-			iV_MatrixRotateX(psEffect->rotation.x);
-			iV_MatrixRotateY(psEffect->rotation.y);
-			iV_MatrixRotateX(psEffect->rotation.z);
-			pie_MatScale(psEffect->size);
-			pie_Draw3DShape(psEffect->imd,psEffect->frameNumber,8,WZCOL_WHITE,WZCOL_BLACK,0,0);
-				
-			
-		} else
-		{
+
 		killEffect(psEffect);
 		}
 		
 		
 	}
-	iV_MatrixEnd();
+
 }
 
 /** The update function for the explosions */
@@ -1647,7 +1641,7 @@ void renderEffect(const EFFECT *psEffect)
 		renderFirework(psEffect);
 		return;
 	case EFFECT_HIT:
-		if(!gamePaused()) updateShieldHit(psEffect);
+		if(!gamePaused()) renderShieldHit(psEffect);
 		return;
 
 	case EFFECT_DUST_BALL: // Apparently not a valid effect...
@@ -1659,6 +1653,15 @@ void renderEffect(const EFFECT *psEffect)
 }
 
 /** drawing func for wapypoints */
+static void renderShieldHit(const EFFECT *psEffect)
+{
+	positionEffect(psEffect);
+	iV_MatrixRotateX(psEffect->rotation.x);
+	iV_MatrixRotateY(psEffect->rotation.y);
+	iV_MatrixRotateX(psEffect->rotation.z);
+	pie_MatScale(psEffect->size);
+	pie_Draw3DShape(psEffect->imd,psEffect->frameNumber,8,WZCOL_WHITE,WZCOL_BLACK,0,0);
+}
 static void renderWaypointEffect(const EFFECT *psEffect)
 {
 	positionEffect(psEffect);

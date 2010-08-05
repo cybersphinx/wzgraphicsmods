@@ -49,6 +49,7 @@
 #include "lib/sound/audio.h"
 #include "lib/sound/audio_id.h"
 
+#include "shield.h"
 #include "e3demo.h"
 #include "loop.h"
 #include "atmos.h"
