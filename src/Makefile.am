@@ -155,6 +155,7 @@ noinst_HEADERS = \
 	scriptvals_parser.tab.h \
 	selection.h \
 	seqdisp.h \
+	shield.h \
 	statsdef.h \
 	stats.h \
 	stringdef.h \
@@ -275,6 +276,7 @@ warzone2100_SOURCES = \
 	scriptvals_parser.tab.c \
 	selection.c \
 	seqdisp.c \
+	shield.c \
 	stats.c \
 	structure.c \
 	terrain.c \
