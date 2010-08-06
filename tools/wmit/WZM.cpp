@@ -600,27 +600,17 @@ bool Mesh::importFromOBJ(const std::vector<OBJTri>&	faces,
 
 /* Ugh, those wretched template parameters have a way of fuglying things up
  * so I'm burrying them here so that hopefuly no-one sees them...
+ * these are function parameters, currently assumed to be valid pointers,
+ * these are treated like references.
  */
 struct Mesh_exportToOBJ_InOutParams
 {
-	Mesh_exportToOBJ_InOutParams(std::vector<OBJVertex>& _vertices,
-								 std::set<OBJVertex, OBJVertex::less_wEps>& _vertSet,
-								 std::vector<unsigned>& _vertMapping,
-								 std::vector<OBJUV>& _uvs,
-								 std::set<OBJUV, OBJUV::less_wEps>& _uvSet,
-								 std::vector<unsigned>& _uvMapping)
-	:
-	vertices(_vertices), vertSet(_vertSet), vertMapping(_vertMapping),
-	uvs(_uvs), uvSet(_uvSet), uvMapping(_uvMapping)
-	{
-	}
-
-	std::vector<OBJVertex>& vertices;
-	std::set<OBJVertex, OBJVertex::less_wEps>& vertSet;
-	std::vector<unsigned>& vertMapping;
-	std::vector<OBJUV>& uvs;
-	std::set<OBJUV, OBJUV::less_wEps>& uvSet;
-	std::vector<unsigned>& uvMapping;
+	std::vector<OBJVertex>* vertices;
+	std::set<OBJVertex, OBJVertex::less_wEps>* vertSet;
+	std::vector<unsigned>* vertMapping;
+	std::vector<OBJUV>* uvs;
+	std::set<OBJUV, OBJUV::less_wEps>* uvSet;
+	std::vector<unsigned>* uvMapping;
 };
 
 std::stringstream* Mesh::exportToOBJ(const Mesh_exportToOBJ_InOutParams& params) const
@@ -644,36 +634,36 @@ std::stringstream* Mesh::exportToOBJ(const Mesh_exportToOBJ_InOutParams& params)
 		{
 			*out << ' ';
 
-			vertInResult = params.vertSet.insert(m_vertexArray[itF->operator [](i)]);
+			vertInResult = params.vertSet->insert(m_vertexArray[itF->operator [](i)]);
 
 			if (!vertInResult.second)
 			{
-				*out << params.vertMapping[std::distance(params.vertSet.begin(), vertInResult.first)] + 1;
+				*out << (*params.vertMapping)[std::distance(params.vertSet->begin(), vertInResult.first)] + 1;
 			}
 			else
 			{
-				itMap = params.vertMapping.begin();
-				std::advance(itMap, std::distance(params.vertSet.begin(), vertInResult.first));
-				params.vertMapping.insert(itMap, params.vertices.size());
-				params.vertices.push_back(m_vertexArray[itF->operator [](i)]);
-				*out << params.vertices.size();
+				itMap = params.vertMapping->begin();
+				std::advance(itMap, std::distance(params.vertSet->begin(), vertInResult.first));
+				params.vertMapping->insert(itMap, params.vertices->size());
+				params.vertices->push_back(m_vertexArray[itF->operator [](i)]);
+				*out << params.vertices->size();
 			}
 
 			*out << '/';
 
-			uvInResult = params.uvSet.insert(m_textureArrays[0][itF->operator [](i)]);
+			uvInResult = params.uvSet->insert(m_textureArrays[0][itF->operator [](i)]);
 
 			if (!uvInResult.second)
 			{
-				*out << params.uvMapping[std::distance(params.uvSet.begin(), uvInResult.first)] + 1;
+				*out << (*params.uvMapping)[std::distance(params.uvSet->begin(), uvInResult.first)] + 1;
 			}
 			else
 			{
-				itMap = params.uvMapping.begin();
-				std::advance(itMap, std::distance(params.uvSet.begin(), uvInResult.first));
-				params.uvMapping.insert(itMap, params.uvs.size());
-				params.uvs.push_back(m_textureArrays[0][itF->operator [](i)]);
-				*out << params.uvs.size();
+				itMap = params.uvMapping->begin();
+				std::advance(itMap, std::distance(params.uvSet->begin(), uvInResult.first));
+				params.uvMapping->insert(itMap, params.uvs->size());
+				params.uvs->push_back(m_textureArrays[0][itF->operator [](i)]);
+				*out << params.uvs->size();
 			}
 		}
 		*out << '\n';
@@ -707,9 +697,8 @@ void Mesh::setTeamColours(bool tc)
 
 WZMConnector& Mesh::getConnector(int index)
 {
-	int i;
 	std::list<WZMConnector>::iterator pos;
-	for(i=0,pos=m_connectors.begin();i<index;pos++,i++);
+	std::advance(pos, index);
 	return *pos;
 }
 
@@ -967,7 +956,7 @@ bool WZM::importFromOBJ(std::istream& in)
 	/* Note: This program tolerates imperfect .obj files
 	 * because it accepts any whitespace as a space.
 	 */
-	
+
 	while (!(in.eof()|| in.fail()))
 	{
 		std::getline(in, str);
@@ -1117,18 +1106,25 @@ void WZM::exportToOBJ(std::ostream &out) const
 {
 	std::list<std::stringstream*> objectBuffers;
 
+	Mesh_exportToOBJ_InOutParams params;
+
 	OBJVertex::less_wEps vertCompare;
 	std::set<OBJVertex, OBJVertex::less_wEps> vertSet(vertCompare);
 	std::vector<OBJVertex> vertices;
 	std::vector<unsigned> vertMapping;
+
+	params.vertices = &vertices;
+	params.vertSet = &vertSet;
+	params.vertMapping = &vertMapping;
 
 	OBJUV::less_wEps uvCompare;
 	std::set<OBJUV, OBJUV::less_wEps> uvSet(uvCompare);
 	std::vector<OBJUV> uvs;
 	std::vector<unsigned> uvMapping;
 
-	Mesh_exportToOBJ_InOutParams params(vertices,vertSet,vertMapping,
-										uvs,uvSet,uvMapping);
+	params.uvs = &uvs;
+	params.uvSet = &uvSet;
+	params.uvMapping = &uvMapping;
 
 	std::vector<Mesh>::const_iterator itM;
 	std::vector<OBJVertex>::iterator itVert;
@@ -1157,14 +1153,12 @@ void WZM::exportToOBJ(std::ostream &out) const
 		writeOBJUV(*itUV, out);
 	}
 
-	out << "\n\n";
-
 	while (!objectBuffers.empty())
 	{
 		pSSS = objectBuffers.front();
 		objectBuffers.pop_front();
 
-		out << pSSS->str() << "\n\n";
+		out << "\n\n" << pSSS->str();
 
 		delete pSSS;
 	}

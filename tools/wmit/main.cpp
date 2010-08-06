@@ -19,7 +19,6 @@
 
 #include <QtGui/QApplication>
 //#include <QCoreApplication>
-#include <QtGui/QMessageBox>
 #include "MainWindow.hpp"
 
 #ifdef __GNUC__
@@ -38,14 +37,5 @@ int main(int argc, char *argv[])
 	QApplication a(argc, argv);
 	MainWindow w;
 	w.show();
-
-	QMessageBox msgBox;
-
-	msgBox.setText("This program is in very early stages of development.");
-	msgBox.setInformativeText("It might kill your computer, eat your babies, etc.\n See COPYING for license, terms and conditions.");
-	msgBox.setStandardButtons(QMessageBox::Ok);
-	msgBox.setDefaultButton(QMessageBox::Ok);
-	msgBox.exec();
-
 	return a.exec();
 }
