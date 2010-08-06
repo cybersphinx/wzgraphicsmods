@@ -10,16 +10,27 @@ longer present.
 The frames are dumped as raw PPM files for speed reasons.  You can
 convert them to AVI using the wzencode.py script.
 
-The video dumper writes frames in a single .ppm file named  wz2100_SCENE#.ppm
-where SCENE#  ranges from 001-999.
+The video dumper writes frames in a single .ppm file named
+wz2100_SCENE#.ppm where SCENE# ranges from 001-999.
 
 New! Improved!  The video dumper now does audio, too.
+Audio currently defaults to 2 channel stereo at 48000 Hz (cd quality)
 
-The trick for audio is to set your mixer capture device to grab the game sound.  The capture device is normally set to the microphone so will have to do this by hand before doing video dumps.
+The trick for audio is to set your mixer capture device to grab the
+game sound.  The capture device is normally set to the microphone so
+will have to do this by hand before doing video dumps.
+
+SET YOUR AUDIO CAPTURE DEVICE
+
+If you do not set your Capture Device, Audio Capture will NOT grab in-game sound.
 
 Requirements: 
 
-	wzencode.py requires ffmpeg and python
+	The video dumper uses standard OpenAL and OpenGL calls from inside
+	Warzone.  
+
+	The wzencode.py is a Unix-style utility program (uses #! 
+	syntax).  It requires ffmpeg and python
 	
 	Don't forget to RESET YOUR KEYMAP
 
@@ -27,12 +38,20 @@ Requirements:
 Some details:
 
 The wzencode.py script converts WZ videodump files (ppm format) to video.
-Output format depends on output file extension as per ffmpeg.
+
+Vidoe output format depends on output file extension as per ffmpeg.
+
 The video dump filenames are wz2100_SCENE.ppm where
 SCENE is a  3 digit number with leading zeros.
-  example:  wz2100_001_001.ppm  for scene 1, frame 1.
+  example:  
+     wz2100_001.ppm is the raw data (ppm format) for scene 1
+	 wz2100_001.raw is the audio data (16 bit 2 channel stereo 48000 Hz rate)
 
-Audio currently defaults to 2 channel stereo at 48000 Hz (cd quality)
+
+
+Usage:
+
+The wzencode.py script is meant to be run from the directory the dump data files are in.  This is the videodumps subdir of your warzone config dir.
 
 
 Examples:
@@ -73,9 +92,9 @@ something like this:
 
 Notes: the `` marks around pwd are back-ticks, not quotes.  I have a
 bin dir in my home dir where I keep personal utilites, but you can
-link the utility into anywhere in your PATH.
+link the utility into anywhere in your PATH.  Creating symlinks in /usr/bin or /usr/local/bin will require root access.
 
-
+Another option is to copy the wzencode.py script into your videdumps directory and run it from there.
 
 
 

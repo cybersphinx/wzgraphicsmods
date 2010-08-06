@@ -1,16 +1,20 @@
 #!/usr/bin/env /usr/bin/python
 
 import sys
+import os
 import subprocess
 from optparse import OptionParser
 
 
 usage = "usage: %prog [options] dest-file.ext -- more-ffmpeg-options"
+
 desc = """\
 convert wz video dumps (ppm format) into video file.
+script is to be run from the same directory as the data files.
 output format depends on output file name extension, ffmpeg style.
 ffmpeg specific options can be passed after -- 
 """
+
 parser = OptionParser(usage = usage, description = desc)
 
 parser.add_option("-s", "--scene", dest="scene", type="int", default='1',
@@ -59,10 +63,14 @@ if '--' in sys.argv:
 
 extra_opts = ''.join(tail)
 
+
+# templates for our data filename
+
 video_data = "wz2100_%03d" % (options.scene) + '.ppm'
 audio_data = "wz2100_%03d" % (options.scene) + '.raw'
 
-# frame size is None if option is not specified
+# frame size is None if option is not specified,
+# we want an empty string for ffmpeg
 
 if options.size:
 	frame_size = "-s %s" % options.size
@@ -77,8 +85,15 @@ ffmpeg
 -r 25 -b 1200k   -y out.avi
 
 '''
-audio_opts = " -f s16le -ar 48000 -ac 2 -i %s" % (audio_data)
-## print audio_opts
+
+# check if audio file exists and set audio opts
+
+if os.path.exists( audio_data ):
+	audio_opts = " -f s16le -ar 48000 -ac 2 -i %s" % (audio_data)
+else:
+	audio_opts = ""
+
+# set video opts
 
 video_opts = " -r %d -vcodec ppm -f image2pipe -i %s -r %d -b %s %s %s" %\
 (options.input_frame_rate, video_data, options.frame_rate, options.bitrate, frame_size, extra_opts)
@@ -91,6 +106,7 @@ video_opts = " -r %d -vcodec ppm -f image2pipe -i %s -r %d -b %s %s %s" %\
 command = 'ffmpeg -r %d -vcodec ppm -f image2pipe -i %s -r %d -b %s %s %s %s' %\
 (options.input_frame_rate, video_data, options.frame_rate, options.bitrate, frame_size, extra_opts, args[0])
 '''
+
 
 command = "ffmpeg %s %s %s" %(video_opts, audio_opts, args[0])
 
