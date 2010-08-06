@@ -11,7 +11,7 @@ HEADERS += MainWindow.hpp \
     Pie.hpp \
     WZM.hpp \
     TeamColoursDock.hpp \
-	Generic.hpp
+    Generic.hpp
 SOURCES += main.cpp \
     MainWindow.cpp \
     ImportDialog.cpp \
@@ -23,7 +23,7 @@ SOURCES += main.cpp \
     TeamColoursDock.cpp \
     Generic.cpp \
     Pie_t.cpp \
-	Pie.cpp
+    Pie.cpp
 FORMS += MainWindow.ui \
     ImportDialog.ui \
     UVEditor.ui \
@@ -54,11 +54,10 @@ QMAKE_CXXFLAGS += -pipe \ # -std=c++0x \
     -fno-exceptions \
     -fno-rtti \
     -fno-signed-zeros \
-	-fno-math-errno
-
+    -fno-math-errno
 CONFIG -= rtti \
     exceptions
-CONFIG += warn_on \
+CONFIG += warn_on
 QMAKE_CXXFLAGS_WARN_ON += -pedantic \
     -Wextra \
     -Wc++0x-compat \

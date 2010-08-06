@@ -42,23 +42,6 @@ struct UV : public Vector<T,2>
 	inline T v() const {
 		return this->operator [](1);
 	}
-
-	bool operator == (const UV& rhs) const
-	{
-		return (u() == rhs.u() && v() == rhs.v());
-	}
-
-	bool operator < (const UV& rhs) const
-	{
-		if (u() == rhs.u())
-		{
-			return (v() < rhs.v());
-		}
-		else
-		{
-			return (u() < rhs.u());
-		}
-	}
 };
 
 template <typename T>
@@ -97,13 +80,6 @@ struct Vertex : public Vector<T,3>
 		x() = x;
 		y() = y;
 		z() = z;
-	}
-
-	bool operator == (const Vertex& rhs) const
-	{
-		return (x() == rhs.x() 
-				&& y() == rhs.y()
-				&& z() == rhs.z());
 	}
 
 	bool operator < (const Vertex& rhs) const

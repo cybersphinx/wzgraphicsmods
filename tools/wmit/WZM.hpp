@@ -34,10 +34,9 @@
 # endif
 #endif
 
-/* The following 2 lines are for obj conversion
- */
-typedef UV<GLfloat> OBJUV;
-typedef Vertex<GLfloat> OBJVertex;
+typedef Vertex<GLfloat> WZMVertex;
+typedef UV<GLclampf> WZMUV;
+typedef std::vector<UV<GLclampf> > TexArray;
 
 class WZMConnector
 {
@@ -50,7 +49,6 @@ private:
 #pragma message "TODO"
 };
 
-
 struct Frame
 {
 	GLfloat time;
@@ -58,12 +56,15 @@ struct Frame
 	GLfloat xRot, yRot, zRot;
 };
 
-typedef Vertex<GLfloat> WZMVertex;
-typedef UV<GLclampf> WZMUV;
-typedef std::vector<UV<GLclampf> > TexArray;
+typedef Vertex<GLfloat> OBJVertex;
+typedef UV<GLclampf> OBJUV;
+
+void writeOBJVertex(const OBJVertex& vert, std::ostream& out);
+void writeOBJUV(const OBJUV& uv, std::ostream& out);
 
 class Pie3Level;
 class Lib3dsMesh;
+struct Mesh_exportToOBJ_InOutParams;
 class Mesh
 {
 public:
@@ -82,6 +83,8 @@ public:
 					   const std::vector<OBJVertex>& verts,
 					   const std::vector<OBJUV>&	uvArray);
 
+	std::stringstream* exportToOBJ(const Mesh_exportToOBJ_InOutParams& params) const;
+
 	std::string getName() const;
 	void setName(const std::string& name);
 
@@ -95,10 +98,10 @@ public:
 
 
 	int textureArrays() const;
-	TexArray& getTexArray (int index);
-	void addTexArray (const TexArray& tex, int index);
-	void rmTexArray(int index);
-	void replaceTexArray(const TexArray& tex, int index);
+	const TexArray& getTexArray (int index) const;
+//	void addTexArray (const TexArray& tex, int index);
+//	void rmTexArray(int index);
+//	void replaceTexArray(const TexArray& tex, int index);
 
 	unsigned vertices() const;
 	unsigned faces() const;
@@ -133,6 +136,7 @@ public:
 	void write(std::ostream& in) const;
 
 	bool importFromOBJ(std::istream& in);
+	void exportToOBJ(std::ostream& out) const;
 
 	bool importFrom3DS(std::string fileName);
 

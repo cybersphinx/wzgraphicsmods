@@ -598,6 +598,89 @@ bool Mesh::importFromOBJ(const std::vector<OBJTri>&	faces,
 	return true;
 }
 
+/* Ugh, those wretched template parameters have a way of fuglying things up
+ * so I'm burrying them here so that hopefuly no-one sees them...
+ */
+struct Mesh_exportToOBJ_InOutParams
+{
+	Mesh_exportToOBJ_InOutParams(std::vector<OBJVertex>& _vertices,
+								 std::set<OBJVertex, OBJVertex::less_wEps>& _vertSet,
+								 std::vector<unsigned>& _vertMapping,
+								 std::vector<OBJUV>& _uvs,
+								 std::set<OBJUV, OBJUV::less_wEps>& _uvSet,
+								 std::vector<unsigned>& _uvMapping)
+	:
+	vertices(_vertices), vertSet(_vertSet), vertMapping(_vertMapping),
+	uvs(_uvs), uvSet(_uvSet), uvMapping(_uvMapping)
+	{
+	}
+
+	std::vector<OBJVertex>& vertices;
+	std::set<OBJVertex, OBJVertex::less_wEps>& vertSet;
+	std::vector<unsigned>& vertMapping;
+	std::vector<OBJUV>& uvs;
+	std::set<OBJUV, OBJUV::less_wEps>& uvSet;
+	std::vector<unsigned>& uvMapping;
+};
+
+std::stringstream* Mesh::exportToOBJ(const Mesh_exportToOBJ_InOutParams& params) const
+{
+	std::stringstream* out = new std::stringstream;
+
+	std::pair<std::set<OBJVertex, OBJVertex::less_wEps>::iterator, bool> vertInResult;
+	std::pair<std::set<OBJUV, OBJUV::less_wEps>::iterator, bool> uvInResult;
+
+	std::vector<IndexedTri>::const_iterator itF;
+	std::vector<unsigned>::iterator itMap;
+	unsigned i;
+
+	*out << "o " << m_name << "\n\n";
+
+	for (itF = m_indexArray.begin(); itF != m_indexArray.end(); ++itF)
+	{
+		*out << "f";
+
+		for (i = 0; i < 3; ++i)
+		{
+			*out << ' ';
+
+			vertInResult = params.vertSet.insert(m_vertexArray[itF->operator [](i)]);
+
+			if (!vertInResult.second)
+			{
+				*out << params.vertMapping[std::distance(params.vertSet.begin(), vertInResult.first)] + 1;
+			}
+			else
+			{
+				itMap = params.vertMapping.begin();
+				std::advance(itMap, std::distance(params.vertSet.begin(), vertInResult.first));
+				params.vertMapping.insert(itMap, params.vertices.size());
+				params.vertices.push_back(m_vertexArray[itF->operator [](i)]);
+				*out << params.vertices.size();
+			}
+
+			*out << '/';
+
+			uvInResult = params.uvSet.insert(m_textureArrays[0][itF->operator [](i)]);
+
+			if (!uvInResult.second)
+			{
+				*out << params.uvMapping[std::distance(params.uvSet.begin(), uvInResult.first)] + 1;
+			}
+			else
+			{
+				itMap = params.uvMapping.begin();
+				std::advance(itMap, std::distance(params.uvSet.begin(), uvInResult.first));
+				params.uvMapping.insert(itMap, params.uvs.size());
+				params.uvs.push_back(m_textureArrays[0][itF->operator [](i)]);
+				*out << params.uvs.size();
+			}
+		}
+		*out << '\n';
+	}
+
+	return out;
+}
 
 std::string Mesh::getName() const
 {
@@ -657,7 +740,7 @@ int Mesh::textureArrays() const
 	return m_textureArrays.size();
 }
 
-TexArray& Mesh::getTexArray (int index)
+const TexArray& Mesh::getTexArray (int index) const
 {
 	return m_textureArrays.at(index);
 }
@@ -876,17 +959,16 @@ bool WZM::importFromOBJ(std::istream& in)
 
 	clear();
 
-	/*	Build global vertex and
+	/*	Build "global" vertex and
 	 *	texture coordinate arrays.
 	 *	Also figure out the mesh/group boundaries
 	 */
-	/*
-	 * All the directives for the vertices (inc. normals and textures)
-	 * should appear before any are referenced, this method will tolerate
-	 * incorrect obj files to a certain degree.
-	 */
 
-	while(!(in.eof()|| in.fail()))
+	/* Note: This program tolerates imperfect .obj files
+	 * because it accepts any whitespace as a space.
+	 */
+	
+	while (!(in.eof()|| in.fail()))
 	{
 		std::getline(in, str);
 		ss.str(str);
@@ -1016,6 +1098,76 @@ bool WZM::importFromOBJ(std::istream& in)
 		m_meshes.push_back(mesh);
 	}
 	return true;
+}
+
+void writeOBJVertex(const OBJVertex& vert, std::ostream& out)
+{
+	out << "v " << vert.x() << ' '
+			<< vert.y()  << ' '
+			<< vert.z() << '\n';
+}
+
+void writeOBJUV(const OBJUV& uv, std::ostream& out)
+{
+	out << "vt " << uv.u() << ' '
+			<< uv.v() << '\n';
+}
+
+void WZM::exportToOBJ(std::ostream &out) const
+{
+	std::list<std::stringstream*> objectBuffers;
+
+	OBJVertex::less_wEps vertCompare;
+	std::set<OBJVertex, OBJVertex::less_wEps> vertSet(vertCompare);
+	std::vector<OBJVertex> vertices;
+	std::vector<unsigned> vertMapping;
+
+	OBJUV::less_wEps uvCompare;
+	std::set<OBJUV, OBJUV::less_wEps> uvSet(uvCompare);
+	std::vector<OBJUV> uvs;
+	std::vector<unsigned> uvMapping;
+
+	Mesh_exportToOBJ_InOutParams params(vertices,vertSet,vertMapping,
+										uvs,uvSet,uvMapping);
+
+	std::vector<Mesh>::const_iterator itM;
+	std::vector<OBJVertex>::iterator itVert;
+	std::vector<OBJUV>::iterator	itUV;
+	std::stringstream* pSSS;
+
+	if (!m_texName.empty())
+	{
+		out << "# texture: " << m_texName << '\n';
+	}
+
+	for (itM = m_meshes.begin(); itM != m_meshes.end(); ++itM)
+	{
+		objectBuffers.push_back(itM->exportToOBJ(params));
+	}
+
+	for (itVert = vertices.begin(); itVert != vertices.end(); ++itVert)
+	{
+		writeOBJVertex(*itVert, out);
+	}
+
+	out << '\n';
+
+	for (itUV = uvs.begin(); itUV != uvs.end(); ++itUV)
+	{
+		writeOBJUV(*itUV, out);
+	}
+
+	out << "\n\n";
+
+	while (!objectBuffers.empty())
+	{
+		pSSS = objectBuffers.front();
+		objectBuffers.pop_front();
+
+		out << pSSS->str() << "\n\n";
+
+		delete pSSS;
+	}
 }
 
 bool WZM::importFrom3DS(std::string fileName)
