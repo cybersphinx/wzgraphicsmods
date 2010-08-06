@@ -1,5 +1,5 @@
 AC_PREREQ([2.56])
-AC_INIT([Warzone 2100],[tcmask_branch],[http://wz2100.net/],[warzone2100])
+AC_INIT([WZGM],[berg_exp],[http://wzgm.net],[warzone2100_wzgm])
 
 AM_INIT_AUTOMAKE([1.10 tar-ustar])
 
