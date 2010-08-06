@@ -30,6 +30,7 @@
 #include "lib/ivis_common/piepalette.h"
 #include "lib/ivis_common/pieclip.h"
 #include "lib/ivis_opengl/piematrix.h"
+#include "lib/framework/vector.h"
 
 
 #include "action.h"
@@ -52,7 +53,7 @@
 void addShieldHitEffect(DROID *psDroid, Vector3i *pos)
 {
 	EFFECT *psEffect = Effect_malloc();
-	Vector3i rotation, va, vb; 
+	Vector3f rotation, va, vb; 
 	Vector3f ocen;
 	BODY_STATS		*psBdyStats;
 	int scale;
@@ -63,18 +64,8 @@ void addShieldHitEffect(DROID *psDroid, Vector3i *pos)
 	vb.x = pos->x;
 	vb.y = pos->y;
 	vb.z = pos->z;
-
-	distance = sqrt((float)((va.x*vb.x) + (va.y*vb.y) + (va.z*vb.z)));
-	va.x = va.x/distance;
-	va.y = va.y/distance;
-	va.z = va.z/distance;
-	vb.x = vb.x/distance;
-	vb.y = vb.y/distance;
-	vb.z = vb.z/distance;
+	rotation = Vector3f_CrossP(va, vb);
 		// flip z and y
-	rotation.x = va.x - vb.x;
-	rotation.z = va.y - vb.y;
-	rotation.y = va.z - vb.z;
 
 
 	
@@ -90,7 +81,9 @@ void addShieldHitEffect(DROID *psDroid, Vector3i *pos)
 	ocen.y = psDroid->pos.z;
 
 	psEffect->position = ocen;
-	psEffect->rotation = rotation;
+	psEffect->rotation.x = rotation.x;
+	psEffect->rotation.y = rotation.y;
+	psEffect->rotation.z = rotation.z;
 	psEffect->type = HIT_TYPE_SHIELD;
 	psEffect->group = EFFECT_HIT;
 	

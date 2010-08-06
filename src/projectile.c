@@ -1192,7 +1192,7 @@ imd = psStats->pTargetHitGraphic;
 			{
 				// For indirect weapons (e.g. artillery) just assume the side as HIT_SIDE_TOP
 				impactSide = proj_Direct(psStats) ? getHitSide(psObj, psObj->psDest) : HIT_SIDE_TOP;
-					
+				// incomplete, disable for now.	
 				//addShieldHitEffect((DROID *)psObj->psDest,&position);
 			}
 
