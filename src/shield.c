@@ -49,7 +49,7 @@
 
 
 
-
+/*
 void addShieldHitEffect(DROID *psDroid, Vector3i *pos)
 {
 	EFFECT *psEffect = Effect_malloc();
@@ -120,7 +120,7 @@ void addShieldHitEffect(DROID *psDroid, Vector3i *pos)
 
 	}
 
-}
+}*/
 
 // Render the pie file used for forcefields
 void displayShieldHit(DROID *psDroid)
