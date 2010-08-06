@@ -85,6 +85,8 @@ public:
 
 	std::stringstream* exportToOBJ(const Mesh_exportToOBJ_InOutParams& params) const;
 
+	virtual operator Lib3dsMesh*() const;
+
 	std::string getName() const;
 	void setName(const std::string& name);
 
@@ -139,6 +141,7 @@ public:
 	void exportToOBJ(std::ostream& out) const;
 
 	bool importFrom3DS(std::string fileName);
+	bool exportTo3DS(std::string fileName) const;
 
 	int version() const;
 	int meshes() const;

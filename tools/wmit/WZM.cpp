@@ -672,6 +672,78 @@ std::stringstream* Mesh::exportToOBJ(const Mesh_exportToOBJ_InOutParams& params)
 	return out;
 }
 
+Mesh::operator Lib3dsMesh*() const
+{
+	const bool swapYZ = true;
+	const bool reverseWinding = true;
+	const bool invertV = true;
+
+	Lib3dsMesh* mesh;
+	unsigned i;
+
+	if (m_name.length() >= 64)
+	{
+		char name[64];
+		i = m_name.copy(name, 64 - 1);
+		name[i] = '\0';
+		mesh = lib3ds_mesh_new(name);
+	}
+	else
+	{
+		mesh = lib3ds_mesh_new(m_name.c_str());
+	}
+
+	lib3ds_mesh_new_point_list(mesh, m_vertexArray.size());
+	lib3ds_mesh_new_texel_list(mesh, m_vertexArray.size());
+
+	for (i = 0; i < mesh->points; ++i)
+	{
+		if (swapYZ)
+		{
+			mesh->pointL[i].pos[0] = m_vertexArray[i].x();
+			mesh->pointL[i].pos[2] = m_vertexArray[i].y();
+			mesh->pointL[i].pos[1] = m_vertexArray[i].z();
+		}
+		else
+		{
+			mesh->pointL[i].pos[0] = m_vertexArray[i].x();
+			mesh->pointL[i].pos[1] = m_vertexArray[i].y();
+			mesh->pointL[i].pos[2] = m_vertexArray[i].z();
+		}
+
+		mesh->texelL[i][0] = m_textureArrays[0][i].u();
+		if (invertV)
+		{
+			mesh->texelL[i][1] = 1.0f - m_textureArrays[0][i].v();
+		}
+		else
+		{
+			mesh->texelL[i][1] = m_textureArrays[0][i].v();
+		}
+
+	}
+
+	lib3ds_mesh_new_face_list(mesh, m_indexArray.size());
+
+	for (i = 0; i < mesh->faces; ++i)
+	{
+		if (reverseWinding)
+		{
+			mesh->faceL[i].points[2] = m_indexArray[i].a();
+			mesh->faceL[i].points[1] = m_indexArray[i].b();
+			mesh->faceL[i].points[0] = m_indexArray[i].c();
+		}
+		else
+		{
+			mesh->faceL[i].points[0] = m_indexArray[i].a();
+			mesh->faceL[i].points[1] = m_indexArray[i].b();
+			mesh->faceL[i].points[2] = m_indexArray[i].c();
+		}
+	}
+
+	return mesh;
+}
+
 std::string Mesh::getName() const
 {
 	return m_name;
@@ -1197,6 +1269,33 @@ bool WZM::importFrom3DS(std::string fileName)
 
 	lib3ds_file_free(f);
 	return true;
+}
+
+
+bool WZM::exportTo3DS(std::string fileName) const
+{
+	Lib3dsFile* f = lib3ds_file_new();
+	Lib3dsBool retVal;
+	Lib3dsMaterial* material = lib3ds_material_new();
+
+	std::vector<Mesh>::const_iterator itM;
+	unsigned i;
+
+	i = m_texName.copy(material->texture1_map.name, 64 - 1);
+	material->texture1_map.name[i] = '\0';
+	lib3ds_file_insert_material(f, material);
+
+	for (itM = m_meshes.begin(); itM != m_meshes.end(); ++itM)
+	{
+		/* FIXME 3DS meshes have unique names,
+		 * and overwrite meshes with same names when inserting
+		 */
+		lib3ds_file_insert_mesh(f, *itM);
+	}
+
+	retVal = lib3ds_file_save (f, fileName.c_str());
+	delete f;
+	return retVal;
 }
 
 int WZM::version() const
