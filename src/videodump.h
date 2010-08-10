@@ -8,7 +8,7 @@ GPL. blah, blah, blah.
 
 #include "AL/alc.h"
 #include "AL/al.h"
-#include "AL/alext.h"
+//#include "AL/alext.h"
 
 
 void videoDoDumpToDiskIfRequired(void);
