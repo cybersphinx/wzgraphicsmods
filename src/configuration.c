@@ -260,7 +260,7 @@ BOOL loadConfig(void)
 	}
 	else
 	{
-		NETsetMasterserverName("lobby.wz2100.net");
+		NETsetMasterserverName("lobby.wzgm.net");
 		setWarzoneKeyString("masterserver_name", NETgetMasterserverName());
 	}
 
