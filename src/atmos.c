@@ -72,9 +72,9 @@ UDWORD	i;
 	for(i=0; i<MAX_ATMOS_PARTICLES; i++)
 	{
 		/* None are being used initially */
+		
 
-		//Identified as cause of random segfault, no apparent function.
-		//asAtmosParts[i].status = APS_INACTIVE;
+		asAtmosParts[i].status = APS_INACTIVE;
 	}
 	/* Start at the beginning */
 	freeParticle = 0;
