@@ -958,7 +958,7 @@ BOOL init3DView(void)
 	seconds = time (NULL);
  
 
-	skycycle = seconds % 2;
+	skycycle = (seconds/3600) % 2;
 
 	// fixme: values should be enums  
 	// 1 = GL_CLAMP, 0 = GL_REPEAT 
@@ -966,7 +966,6 @@ BOOL init3DView(void)
 	{
 	pie_InitSkybox(iV_GetTexture("page-301"), 1);  // moon, clamp
 	pie_InitSkybox(iV_GetTexture("page-300"), 0);  // stars, repeat
-	pie_InitSkybox(iV_GetTexture("page-302"), 0);  // clouds, repeat
 	}
 	else
 	{
