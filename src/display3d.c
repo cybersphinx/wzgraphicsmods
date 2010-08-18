@@ -97,6 +97,7 @@
 #include "anim_id.h"
 #include "cmddroid.h"
 #include "terrain.h"
+#include <time.h>
 
 /********************  Prototypes  ********************/
 
@@ -914,6 +915,9 @@ BOOL init3DView(void)
 {
 	/* Arbitrary choice - from direct read! */
 	Vector3f theSun = { 225.0f, -600.0f, 450.0f };
+	time_t seconds;
+	int skycycle;
+
 
 	setTheSun(theSun);
 
@@ -947,16 +951,30 @@ BOOL init3DView(void)
 	imdRot2.x = 0;
 	imdRot.y = 0;
 	imdRot2.z = 0;
-
-	bRender3DOnly = false;
-
 	
+	bRender3DOnly = false;
+ 
+
+	seconds = time (NULL);
+ 
+
+	skycycle = seconds % 2;
+
 	// fixme: values should be enums  
 	// 1 = GL_CLAMP, 0 = GL_REPEAT 
+	if(skycycle == 0)
+	{
 	pie_InitSkybox(iV_GetTexture("page-301"), 1);  // moon, clamp
 	pie_InitSkybox(iV_GetTexture("page-300"), 0);  // stars, repeat
 	pie_InitSkybox(iV_GetTexture("page-302"), 0);  // clouds, repeat
+	}
+	else
+	{
+	pie_InitSkybox(iV_GetTexture("page-304"), 1);  // moon, clamp
+	pie_InitSkybox(iV_GetTexture("page-303"), 0);  // stars, repeat
 
+	}
+	pie_InitSkybox(iV_GetTexture("page-302"), 0);  // clouds, repeat
 	// distance is not saved, so initialise it now
 	distance = START_DISTANCE; // distance
 	
