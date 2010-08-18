@@ -915,7 +915,11 @@ BOOL init3DView(void)
 {
 	/* Arbitrary choice - from direct read! */
 	Vector3f theSun = { 225.0f, -600.0f, 450.0f };
-	time_t seconds;
+	 time_t rawtime;
+	 
+
+  
+	 
 	int skycycle;
 
 
@@ -955,25 +959,14 @@ BOOL init3DView(void)
 	bRender3DOnly = false;
  
 
-	seconds = time (NULL);
- 
 
-	skycycle = (seconds/3600) % 2;
-
-	// fixme: values should be enums  
-	// 1 = GL_CLAMP, 0 = GL_REPEAT 
-	if(skycycle == 0)
-	{
 	pie_InitSkybox(iV_GetTexture("page-301"), 1);  // moon, clamp
 	pie_InitSkybox(iV_GetTexture("page-300"), 0);  // stars, repeat
-	}
-	else
-	{
-	pie_InitSkybox(iV_GetTexture("page-304"), 1);  // moon, clamp
-	pie_InitSkybox(iV_GetTexture("page-303"), 0);  // stars, repeat
-
-	}
 	pie_InitSkybox(iV_GetTexture("page-302"), 0);  // clouds, repeat
+	pie_InitSkybox(iV_GetTexture("page-304"), 1);  // sun, clamp
+	pie_InitSkybox(iV_GetTexture("page-303"), 0);  // sky, repeat
+
+
 	// distance is not saved, so initialise it now
 	distance = START_DISTANCE; // distance
 	
@@ -3633,7 +3626,13 @@ static void renderSurroundings(void)
 {
 	static float wind = 0.0f;
 	const float skybox_scale = 10000.0f;
-	pie_MatBegin();
+	time_t rawtime;
+	int skycycle;
+	pie_MatBegin();	
+	
+	time(&rawtime);
+	
+	skycycle = (gmtime(&rawtime)->tm_hour) % 2;
 
 	// Now, scale the world according to what resolution we're running in
 	pie_MatScale(pie_GetResScalingFactor());
@@ -3645,7 +3644,7 @@ static void renderSurroundings(void)
 	pie_TRANSLATE(0, -skybox_scale/8, 0);
 
 	// Set the texture page
-	pie_SetTexturePage(iV_GetTexture("page-300"));
+	pie_SetTexturePage((skycycle == 0 ?iV_GetTexture("page-300") : iV_GetTexture("page-303")));
 
 	pie_DrawSkybox(skybox_scale, 0, 0, 1, 1,false);
 
@@ -3665,7 +3664,7 @@ static void renderSurroundings(void)
 	pie_TRANSLATE(0, -skybox_scale/8, 0);
 
 	// Set the texture page
-	pie_SetTexturePage(iV_GetTexture("page-301"));
+	pie_SetTexturePage((skycycle == 0 ?iV_GetTexture("page-301") : iV_GetTexture("page-304")));
 
 	pie_DrawSkybox(skybox_scale, 0, 0, 1, 1,true);
 
