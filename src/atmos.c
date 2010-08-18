@@ -69,12 +69,12 @@ void	atmosInitSystem( void )
 {
 UDWORD	i;
 
-	for(i=0; i<MAX_ATMOS_PARTICLES; i++)
+	for(i=0; i<MAX_ATMOS_PARTICLES;)
 	{
 		/* None are being used initially */
-		
-
+		if(i <= sizeof(asAtmosParts))
 		asAtmosParts[i].status = APS_INACTIVE;
+		i++;
 	}
 	/* Start at the beginning */
 	freeParticle = 0;
@@ -89,6 +89,7 @@ UDWORD	i;
 static void testParticleWrap(ATPART *psPart)
 {
 	/* Gone off left side */
+
 	if(psPart->position.x < player.p.x)
 	{
 		psPart->position.x += (visibleTiles.x*TILE_UNITS);
