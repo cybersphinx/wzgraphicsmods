@@ -60,7 +60,7 @@ APS_ACTIVE,
 APS_INACTIVE,
 } AP_STATUS;
 
-static ATPART	asAtmosParts[MAX_ATMOS_PARTICLES];
+static ATPART	asAtmosParts[65536];
 static	UDWORD	freeParticle;
 static	UDWORD	weather;
 
@@ -69,12 +69,12 @@ void	atmosInitSystem( void )
 {
 UDWORD	i;
 
-	for(i=0; i<MAX_ATMOS_PARTICLES;)
+	for(i=0; i<65536;i++)
 	{
 		/* None are being used initially */
 		if(i <= sizeof(asAtmosParts))
 		asAtmosParts[i].status = APS_INACTIVE;
-		i++;
+		
 	}
 	/* Start at the beginning */
 	freeParticle = 0;
