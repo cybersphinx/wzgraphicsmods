@@ -915,13 +915,6 @@ BOOL init3DView(void)
 {
 	/* Arbitrary choice - from direct read! */
 	Vector3f theSun = { 225.0f, -600.0f, 450.0f };
-	 time_t rawtime;
-	 
-
-  
-	 
-	int skycycle;
-
 
 	setTheSun(theSun);
 
