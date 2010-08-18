@@ -1,0 +1,5 @@
+20	432	120	250	_("Commander, welcome to NEXUS!")
+
+
+
+
