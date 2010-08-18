@@ -175,13 +175,23 @@ int pie_AddTexPage(iV_Image *s, const char* filename, int slot, int maxTextureSi
 }
 
 
-void pie_InitSkybox(SDWORD pageNum)
+void pie_InitSkybox(SDWORD pageNum, int clamp_or_repeat)
 {
+	GLint clamp;
+
+	clamp =  clamp_or_repeat ? GL_CLAMP : GL_REPEAT;
+
 	pie_SetTexturePage(pageNum);
+
+#if 0
 	if(pageNum == iV_GetTexture("page-301"))
 		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP);
+
 	else if (pageNum == iV_GetTexture("page-300") || pageNum == iV_GetTexture("page-302"))
 		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+#endif
+
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, clamp );
 }
 
 

@@ -951,9 +951,11 @@ BOOL init3DView(void)
 	bRender3DOnly = false;
 
 	
-	pie_InitSkybox(iV_GetTexture("page-301"));
-	pie_InitSkybox(iV_GetTexture("page-300"));
-	pie_InitSkybox(iV_GetTexture("page-302"));
+	// fixme: values should be enums  
+	// 1 = GL_CLAMP, 0 = GL_REPEAT 
+	pie_InitSkybox(iV_GetTexture("page-301"), 1);  // moon, clamp
+	pie_InitSkybox(iV_GetTexture("page-300"), 0);  // stars, repeat
+	pie_InitSkybox(iV_GetTexture("page-302"), 0);  // clouds, repeat
 
 	// distance is not saved, so initialise it now
 	distance = START_DISTANCE; // distance
