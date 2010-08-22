@@ -1337,7 +1337,7 @@ static void formDisplayTTabs(W_TABFORM *psForm,SDWORD x0, SDWORD y0,
 	x = x0 + 2;
 	x1 = x + width - 2;
 	y1 = y0 + height;
-	if (number > MAX_TAB_SMALL_SHOWN)	//we can display 8 tabs fine with no extra voodoo.
+	if (number > (MAX_TAB_SMALL_SHOWN - 1))	//we can display 8 tabs fine with no extra voodoo.
 	{	// We do NOT want to draw all the tabs once we have drawn 7 tabs
 		// Both selected & hilite are converted from virtual tab range, to a range
 		// that is seen on the form itself.  This would be 0-6 (7 tabs)

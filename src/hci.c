@@ -7324,3 +7324,22 @@ BASE_OBJECT * getCurrentSelected(void)
 {
 	return psObjSelected;
 }
+
+// Checks if a coordinate is over the build menu
+BOOL CoordInBuild(int x, int y)
+{
+	// This measurement is valid for the menu, so the buildmenu_height
+	// value is used to "nudge" it all upwards from the command menu.
+	const int buildmenu_height = 300;
+
+	Vector2f pos;
+	pos.x = x - RET_X;
+	pos.y = y - RET_Y + buildmenu_height; // guesstimation
+
+	if (pos.x<0 || pos.y<0 || pos.x>=RET_FORMWIDTH || pos.y>= buildmenu_height)
+	{
+		return false;
+	}
+	return true;
+
+}

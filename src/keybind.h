@@ -262,4 +262,7 @@ void	kf_PowerInfo( void );
 }
 #endif //__cplusplus
 
+void	kf_BuildNextPage( void );
+void	kf_BuildPrevPage( void );
+
 #endif // __INCLUDED_SRC_KEYBIND_H__

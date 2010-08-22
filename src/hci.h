@@ -451,4 +451,6 @@ extern void intDemolishCancel(void);
 }
 #endif //__cplusplus
 
+extern BOOL CoordInBuild(int x, int y);
+
 #endif // __INCLUDED_SRC_HCI_H__
