@@ -1955,7 +1955,7 @@ void renderProximityMsg(PROXIMITY_DISPLAY *psProxDisp)
 	iV_MatrixRotateY(-player.r.y);
 	iV_MatrixRotateX(-player.r.x);
 
-	pie_Draw3DShape(proxImd, getModularScaledGraphicsTime(1000, 4), 0, WZCOL_WHITE, WZCOL_BLACK, pie_ADDITIVE, 192);
+	pie_Draw3DShape(proxImd, getModularScaledGraphicsTime(proxImd->animInterval, proxImd->numFrames), 0, WZCOL_WHITE, WZCOL_BLACK, pie_ADDITIVE, 192);
 
 	//get the screen coords for determining when clicked on
 	calcFlagPosScreenCoords(&x, &y, &r);
@@ -2017,7 +2017,7 @@ void	renderStructure(STRUCTURE *psStructure)
 	animFrame = 0;
 
 	/* Power stations and factories have pulsing lights. Hack for fortresses, since they need team colour. */
-	if (!defensive && psStructure->sDisplay.imd->numFrames > 0 && !(bMultiPlayer && psStructure->pStructureType->type == REF_BLASTDOOR))
+	if (psStructure->sDisplay.imd->numFrames > 0 && !(bMultiPlayer && psStructure->pStructureType->type == REF_BLASTDOOR))
 	{
 		// Calculate an animation frame
 		animFrame = getModularScaledGraphicsTime(psStructure->sDisplay.imd->animInterval, psStructure->sDisplay.imd->numFrames);
@@ -2236,7 +2236,7 @@ void	renderStructure(STRUCTURE *psStructure)
 					iV_MatrixRotateX(rot.pitch);
 					pie_TRANSLATE(0, 0, psStructure->asWeaps[i].recoilValue);
 
-					pie_Draw3DShape(weaponImd[i], 0, colour, buildingBrightness, WZCOL_BLACK, pieFlag, pieFlagData);
+					pie_Draw3DShape(weaponImd[i], animFrame, colour, buildingBrightness, WZCOL_BLACK, pieFlag, pieFlagData);
 					if (psStructure->status == SS_BUILT && psStructure->visible[selectedPlayer] > (UBYTE_MAX / 2))
 					{
 						if (psStructure->pStructureType->type == REF_REPAIR_FACILITY)
@@ -2529,21 +2529,21 @@ static BOOL	renderWallSection(STRUCTURE *psStructure)
 
 		rotation = psStructure->rot.direction;
 		iV_MatrixRotateY(-rotation);
-
+		if(psStructure->sDisplay.imd->numFrames != 8 && psStructure->sDisplay.imd->numFrames != 0)
+		animFrame = getModularScaledGraphicsTime(psStructure->sDisplay.imd->animInterval, psStructure->sDisplay.imd->numFrames);
 		if(imd != NULL)
 		{
 			// Make the imd pointer to the vertex list point to ours
 			temp = imd->points;
 			imd->points = alteredPoints;
 			// Actually render it
-			pie_Draw3DShape(imd, 0, getPlayerColour(psStructure->player), brightness, specular, 0, 0);
+			pie_Draw3DShape(imd, animFrame, getPlayerColour(psStructure->player), brightness, specular, 0, 0);
 			imd->points = temp;
 		}
 
 		imd = psStructure->sDisplay.imd;
 		temp = imd->points;
-		if(psStructure->sDisplay.imd->numFrames != 8 && psStructure->sDisplay.imd->numFrames != 0)
-		animFrame = getModularScaledGraphicsTime(psStructure->sDisplay.imd->animInterval, psStructure->sDisplay.imd->numFrames);
+
 
 		flattenImd(imd, structX, structY, UNDEG(psStructure->rot.direction));
 

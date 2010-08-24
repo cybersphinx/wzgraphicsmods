@@ -224,10 +224,10 @@ void displayStructureButton(STRUCTURE *psStructure, Vector3i *rotation, Vector3i
 	/* Draw the building's base first */
 	baseImd = psStructure->pStructureType->pBaseIMD;
 	if(baseImd!=NULL) {
-		pie_Draw3DShape(baseImd, 0, getPlayerColour(selectedPlayer), WZCOL_WHITE, WZCOL_BLACK, pie_BUTTON, 0);
+		pie_Draw3DShape(baseImd, getModularScaledGraphicsTime(baseImd->animInterval, baseImd->numFrames), getPlayerColour(selectedPlayer), WZCOL_WHITE, WZCOL_BLACK, pie_BUTTON, 0);
 	}
 	
-	pie_Draw3DShape(psStructure->sDisplay.imd, 0, getPlayerColour(selectedPlayer), WZCOL_WHITE, WZCOL_BLACK, pie_BUTTON, 0);
+	pie_Draw3DShape(psStructure->sDisplay.imd, getModularScaledGraphicsTime(psStructure->sDisplay.imd->animInterval, psStructure->sDisplay.imd->numFrames), getPlayerColour(selectedPlayer), WZCOL_WHITE, WZCOL_BLACK, pie_BUTTON, 0);
 	//and draw the turret
 	if(psStructure->sDisplay.imd->nconnectors)
 	{
