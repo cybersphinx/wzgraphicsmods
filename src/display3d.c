@@ -1988,7 +1988,7 @@ void	renderStructure(STRUCTURE *psStructure)
 {
 	int			i, structX, structY, rx, rz, colour, rotation, frame, animFrame, pieFlag, pieFlagData;
 	PIELIGHT		buildingBrightness;
-	Vector3i		dv;
+	Vector3i		dv, pos;
 	Vector3f		*temp = NULL;
 	BOOL			bHitByElectronic = false;
 	BOOL			defensive = false;
@@ -2125,8 +2125,17 @@ void	renderStructure(STRUCTURE *psStructure)
 
 	if (defensive)
 	{
+		// Also do splash effect on hit.
+		pos.x = psStructure->pos.x;
+		pos.z = psStructure->pos.y;
+		pos.y = map_Height(psStructure->pos.x, psStructure->pos.y);
 		temp = strImd->points;
 		strImd->points = alteredPoints;
+					if(gameTime-psStructure->timeLastHit < 2.5 && strImd->hitEffects == true)
+					{
+					effectGiveAuxVar(500);
+					addEffect(&pos,EFFECT_EXPLOSION,EXPLOSION_TYPE_LASER,true,NULL,1);
+		}
 	}
 
 	//first check if partially built - ANOTHER HACK!
