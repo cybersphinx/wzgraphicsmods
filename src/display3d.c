@@ -2126,17 +2126,20 @@ void	renderStructure(STRUCTURE *psStructure)
 	if (defensive)
 	{
 		// Also do splash effect on hit.
+
+		temp = strImd->points;
+		strImd->points = alteredPoints;
+
+		
+	}
 		pos.x = psStructure->pos.x;
 		pos.z = psStructure->pos.y;
 		pos.y = map_Height(psStructure->pos.x, psStructure->pos.y);
-		temp = strImd->points;
-		strImd->points = alteredPoints;
-					if(gameTime-psStructure->timeLastHit < 2.5 && strImd->hitEffects == true)
+		if(gameTime-psStructure->timeLastHit < 2.5 && strImd->hitEffects == true)
 					{
 					effectGiveAuxVar(500);
 					addEffect(&pos,EFFECT_EXPLOSION,EXPLOSION_TYPE_LASER,true,NULL,1);
-		}
-	}
+					}
 
 	//first check if partially built - ANOTHER HACK!
 	if (psStructure->status == SS_BEING_BUILT || psStructure->status == SS_BEING_DEMOLISHED)
