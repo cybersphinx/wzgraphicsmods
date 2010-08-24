@@ -1755,8 +1755,8 @@ void	renderFeature(FEATURE *psFeature)
 	Vector3i dv;
 	Vector3f *vecTemp;
 	BOOL bForceDraw = ( !getRevealStatus() && psFeature->psStats->visibleAtStart);
-	int shadowFlags = 0;
-
+	int shadowFlags = 0, animFrame = 0;
+	
 	if (!psFeature->visible[selectedPlayer] && !demoGetStatus() && !bForceDraw)
 	{
 		return;
@@ -1827,18 +1827,20 @@ void	renderFeature(FEATURE *psFeature)
 		/* these cast a shadow */
 		shadowFlags = pie_STATIC_SHADOW;
 	}
+	// Actually calculate the animation frame rather than using the old hack.
+	if(psFeature->sDisplay.imd->numFrames > 0 && psFeature->sDisplay.imd->numFrames != 8)
+	animFrame = getModularScaledGraphicsTime(psFeature->sDisplay.imd->animInterval, psFeature->sDisplay.imd->numFrames);
 
 	if (psFeature->psStats->subType == FEAT_OIL_RESOURCE)
 	{
 		vecTemp = psFeature->sDisplay.imd->points;
 		flattenImd(psFeature->sDisplay.imd, psFeature->pos.x, psFeature->pos.y, 0);
-		/* currentGameFrame/2 set anim running - GJ hack */
-		pie_Draw3DShape(psFeature->sDisplay.imd, currentGameFrame/2, 0, brightness, WZCOL_BLACK, 0, 0);
+		pie_Draw3DShape(psFeature->sDisplay.imd, (psFeature->sDisplay.imd->numFrames  != 8 ? animFrame : 0), 0, brightness, WZCOL_BLACK, 0, 0);
 		psFeature->sDisplay.imd->points = vecTemp;
 	}
 	else
 	{
-		pie_Draw3DShape(psFeature->sDisplay.imd, 0, 0, brightness, WZCOL_BLACK, shadowFlags,0);
+		pie_Draw3DShape(psFeature->sDisplay.imd, (psFeature->sDisplay.imd->numFrames  != 8 ? animFrame : 0), 0, brightness, WZCOL_BLACK, shadowFlags,0);
 	}
 
 	{
@@ -2353,7 +2355,7 @@ void	renderStructure(STRUCTURE *psStructure)
 									frame = (graphicsTime - psStructure->asWeaps[i].lastFired) / flashImd[i]->animInterval;
 									if (frame < flashImd[i]->numFrames)
 									{
-										pie_Draw3DShape(flashImd[i], 0, colour, buildingBrightness, WZCOL_BLACK, 0, 0); //muzzle flash
+										pie_Draw3DShape(flashImd[i], frame, colour, buildingBrightness, WZCOL_BLACK, 0, 0); //muzzle flash
 									}
 								}
 							}
