@@ -25,16 +25,25 @@ namespace Ui {
 	class ImportDialog;
 }
 
+class QFileDialog;
+
 class ImportDialog : public QDialog {
     Q_OBJECT
 public:
     ImportDialog(QWidget *parent = 0);
+	QString modelFilePath() const;
+	QString textureFilePath() const;
 
 protected:
     void changeEvent(QEvent *e);
 
 private:
 	Ui::ImportDialog *ui;
+	QFileDialog* fileDialog;
+
+private slots:
+	void on_tb_seekTextureFName_clicked();
+	void on_tb_seekFileName_clicked();
 };
 
 #endif // IMPORTDIALOG_HPP

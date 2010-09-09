@@ -11,7 +11,15 @@ HEADERS += MainWindow.hpp \
     Pie.hpp \
     WZM.hpp \
     TeamColoursDock.hpp \
-    Generic.hpp
+    Generic.hpp \
+    IAnimatable.hpp \
+    QtGLView.hpp \
+    TextureAccess.hpp \
+    IGLRenderable.hpp \
+    IGLTextureManager.hpp \
+    GLTexture.hpp \
+    Mesh.hpp \
+    OBJ.hpp
 SOURCES += main.cpp \
     MainWindow.cpp \
     ImportDialog.cpp \
@@ -23,7 +31,10 @@ SOURCES += main.cpp \
     TeamColoursDock.cpp \
     Generic.cpp \
     Pie_t.cpp \
-    Pie.cpp
+    Pie.cpp \
+    QtGLView.cpp \
+    Mesh.cpp \
+    GLTexture.cpp
 FORMS += MainWindow.ui \
     ImportDialog.ui \
     UVEditor.ui \
@@ -57,7 +68,9 @@ QMAKE_CXXFLAGS += -pipe \ # -std=c++0x \
     -fno-math-errno
 CONFIG -= rtti \
     exceptions
-CONFIG += warn_on
+CONFIG += warn_on \
+    sse2 \
+    mmx
 QMAKE_CXXFLAGS_WARN_ON += -pedantic \
     -Wextra \
     -Wc++0x-compat \

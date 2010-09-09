@@ -17,27 +17,27 @@
 	along with WMIT.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-#include <QtGui/QApplication>
-#include <QCoreApplication>
-#include <QTextCodec>
-#include "MainWindow.hpp"
+#include "GLTexture.hpp"
 
-#ifdef __GNUC__
-# ifdef WARNMORE
-#  pragma  GCC diagnostic warning "-Weffc++"
-#  pragma  GCC diagnostic warning "-Wconversion"
-# endif
-#endif
-
-int main(int argc, char *argv[])
+GLTexture::GLTexture() : m_id(0), m_w(0), m_h(0)
 {
-	QTextCodec::setCodecForCStrings(QTextCodec::codecForLocale());
-	//	if (command line mode)
-	//		QCoreApplication a(argc, argv);
-	//		TODO: Command line functionality
-	//	else // gui mode1
-	QApplication a(argc, argv);
-	MainWindow w;
-	w.show();
-	return a.exec();
+}
+
+GLTexture::GLTexture(GLuint id, GLsizei w, GLsizei h) : m_id(id), m_w(w), m_h(h)
+{
+}
+
+GLuint GLTexture::id() const
+{
+	return m_id;
+}
+
+GLsizei GLTexture::height() const
+{
+	return m_h;
+}
+
+GLsizei GLTexture::width() const
+{
+	return m_w;
 }

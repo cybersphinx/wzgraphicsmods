@@ -26,6 +26,8 @@
 #include "VectorTypes.hpp"
 #include "Polygon.hpp"
 
+#include "WZM.hpp" // for friends
+
 #ifdef __GNUC__
 # ifdef WARNMORE
 #  pragma  GCC diagnostic warning "-Weffc++"
@@ -41,7 +43,8 @@
 template<typename V, typename P, typename C>
 class APieLevel
 {
-	friend class Mesh;
+	friend Mesh::operator Pie3Level() const;
+	friend Mesh::Mesh(const Pie3Level& p3, float uvEps, float vertEps);
 public:
 	APieLevel();
 	virtual ~APieLevel(){}
@@ -69,12 +72,12 @@ public:
 	APieModel();
 	virtual ~APieModel();
 
-	virtual unsigned int version() const =0;
+	virtual unsigned version() const =0;
 
 	virtual bool read(std::istream& in);
 	virtual void write(std::ostream& out) const;
 
-	unsigned int levels() const;
+	unsigned levels() const;
 	unsigned long getType() const;
 
 	bool isValid() const;
@@ -84,8 +87,8 @@ protected:
 
 	void clearAll();
 
-	virtual unsigned int textureHeight() const =0;
-	virtual unsigned int textureWidth() const =0;
+	virtual unsigned textureHeight() const =0;
+	virtual unsigned textureWidth() const =0;
 
 	std::string m_texture;
 	std::vector<L> m_levels;
@@ -131,10 +134,10 @@ public:
 	Pie2Model();
 	virtual ~Pie2Model();
 
-	unsigned int version() const;
+	unsigned version() const;
 
-	unsigned int textureHeight() const;
-	unsigned int textureWidth() const;
+	unsigned textureHeight() const;
+	unsigned textureWidth() const;
 };
 /**********************************************
   Pie version 3
@@ -200,23 +203,26 @@ public:
 
 class Pie3Model : public APieModel<Pie3Level>
 {
-	friend class WZM; // only for operator thisclass() and thatclass(const thisclass&)
+	friend WZM::WZM(const Pie3Model &p3);
+	friend WZM::operator Pie3Model() const;
 public:
 	Pie3Model();
 	Pie3Model(const Pie2Model& pie2);
 	virtual ~Pie3Model();
 
-	unsigned int version() const;
+	unsigned version() const;
 
 	operator Pie2Model() const;
 
 	bool setType(int type);
 private:
-	unsigned int textureHeight() const;
-	unsigned int textureWidth() const;
+	unsigned textureHeight() const;
+	unsigned textureWidth() const;
 };
 
 // Include template implementations
+#define PIE_T_CPP
 #include "Pie_t.cpp"
+#undef PIE_T_CPP
 
 #endif // PIE_HPP

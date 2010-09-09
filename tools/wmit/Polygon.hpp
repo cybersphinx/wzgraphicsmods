@@ -18,12 +18,14 @@
 */
 #ifndef POLYGON_HPP
 #define POLYGON_HPP
-#include "Vector.hpp"
-#include "VectorTypes.hpp"
+
 #include <iostream>
+
 #include <GL/gl.h>
 
-///
+#include "Vector.hpp"
+
+
 struct IndexedTri : public Vector<GLushort,3>
 {
 	GLushort& a() {
@@ -64,7 +66,7 @@ public:
 	void write(std::ostream& out) const;
 
 	unsigned getFrames() const;
-	unsigned getIndex(unsigned int n) const;
+	unsigned getIndex(unsigned n) const;
 	U getUV(int index) const;
 	unsigned short vertices() const;
 	unsigned short triangles() const;
@@ -82,26 +84,9 @@ protected:
 	S m_width, m_height;
 };
 
-struct OBJTri
-{
-	 IndexedTri tri;
-	 // ignoring normals
-	 Vector<short, 3> uvs; // signed short: -1 means not specified
-	bool operator == (const OBJTri& rhs)
-	{
-		return (tri == rhs.tri) && (uvs == rhs.uvs);
-	}
-	bool operator < (const OBJTri& rhs)
-	{
-		if (tri == rhs.tri)
-		{
-			return uvs < rhs.uvs;
-		}
-		return tri < rhs.tri;
-	}
-};
-
 // Include template implementations
+#define POLYGON_T_CPP
 #include "Polygon_t.cpp"
+#undef POLYGON_T_CPP
 
 #endif // POLYGON_HPP

@@ -20,11 +20,23 @@
 #include "ImportDialog.hpp"
 #include "ui_ImportDialog.h"
 
+#include <QFileDialog>
+
 ImportDialog::ImportDialog(QWidget *parent) :
 	QDialog(parent),
 	ui(new Ui::ImportDialog)
 {
 	ui->setupUi(this);
+}
+
+QString ImportDialog::modelFilePath() const
+{
+	return ui->le_fileName->text();
+}
+
+QString ImportDialog::textureFilePath() const
+{
+	return ui->le_textureFName->text();
 }
 
 void ImportDialog::changeEvent(QEvent *e)
@@ -37,4 +49,37 @@ void ImportDialog::changeEvent(QEvent *e)
     default:
         break;
     }
+}
+
+void ImportDialog::on_tb_seekFileName_clicked()
+{
+	fileDialog = new QFileDialog(this,
+								 tr("Select File to open"),
+								 QDir::currentPath(),
+								 tr("All Compatible (*.wzm *.pie *.3ds *.obj);;"
+									"WZM models (*.wzm);;"
+									"PIE models (*.pie);;"
+									"3DS files (*.3ds);;"
+									"OBJ files (*.obj)"));
+	fileDialog->setFileMode(QFileDialog::ExistingFile);
+	fileDialog->exec();
+	if (fileDialog->result() == QDialog::Accepted)
+	{
+		ui->le_fileName->setText(fileDialog->selectedFiles().first());
+	}
+}
+
+void ImportDialog::on_tb_seekTextureFName_clicked()
+{
+	fileDialog = new QFileDialog(this,
+								 tr("Select File to open"),
+								 QDir::currentPath(),
+								 tr("WZ Compatible (*.png);;"
+									"WMIT Compatible (*.bmp *.jpg *.jpeg *.png)"));
+	fileDialog->setFileMode(QFileDialog::ExistingFile);
+	fileDialog->exec();
+	if (fileDialog->result() == QDialog::Accepted)
+	{
+		ui->le_textureFName->setText(fileDialog->selectedFiles().first());
+	}
 }

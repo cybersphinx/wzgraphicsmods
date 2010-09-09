@@ -31,17 +31,17 @@ Pie2Model::~Pie2Model()
 {
 }
 
-unsigned int Pie2Model::version() const
+unsigned Pie2Model::version() const
 {
 	return 2;
 }
 
-unsigned int Pie2Model::textureHeight() const
+unsigned Pie2Model::textureHeight() const
 {
 	return 256;
 }
 
-unsigned int Pie2Model::textureWidth() const
+unsigned Pie2Model::textureWidth() const
 {
 	return 256;
 }
@@ -137,7 +137,7 @@ Pie3Polygon::~Pie3Polygon()
 
 int Pie3Polygon::upConvert(const Pie2Polygon& pie2Poly, std::back_insert_iterator<std::vector<Pie3Polygon> > result)
 {
-	unsigned int i;
+	unsigned i;
 
 	for(i = 0; i < pie2Poly.triangles(); ++i, ++result)
 	{
@@ -296,7 +296,7 @@ Pie3Model::~Pie3Model()
 {
 }
 
-unsigned int Pie3Model::version() const
+unsigned Pie3Model::version() const
 {
 	return 3;
 }
@@ -311,12 +311,12 @@ Pie3Model::operator Pie2Model() const
 	return p2;
 }
 
-unsigned int Pie3Model::textureHeight() const
+unsigned Pie3Model::textureHeight() const
 {
 	return 0;
 }
 
-unsigned int Pie3Model::textureWidth() const
+unsigned Pie3Model::textureWidth() const
 {
 	return 0;
 }

@@ -47,6 +47,20 @@ struct UV : public Vector<T,2>
 template <typename T>
 struct Vertex : public Vector<T,3>
 {
+	Vertex()
+	{
+		x() = 0;
+		y() = 0;
+		z() = 0;
+	}
+
+	Vertex (T x, T y, T z)
+	{
+		x() = x;
+		y() = y;
+		z() = z;
+	}
+
 	inline T& x() {
 		return this->operator [](0);
 	}
@@ -66,37 +80,6 @@ struct Vertex : public Vector<T,3>
 	}
 	inline T z() const {
 		return this->operator [](2);
-	}
-
-	Vertex()
-	{
-		x() = 0;
-		y() = 0;
-		z() = 0;
-	}
-
-	Vertex (T x, T y, T z)
-	{
-		x() = x;
-		y() = y;
-		z() = z;
-	}
-
-	bool operator < (const Vertex& rhs) const
-	{
-		/// Sorted first by the "up" direction
-		if (y() == rhs.y() && z() == rhs.z())
-		{
-			return (x() < rhs.x());
-		}
-		else if (y() == rhs.y())
-		{
-			return (z() < rhs.z());
-		}
-		else
-		{
-			return (y() < rhs.y());
-		}
 	}
 };
 

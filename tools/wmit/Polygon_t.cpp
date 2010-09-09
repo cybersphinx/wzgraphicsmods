@@ -16,10 +16,12 @@
 	You should have received a copy of the GNU General Public License
 	along with WMIT.  If not, see <http://www.gnu.org/licenses/>.
 */
+#ifdef POLYGON_T_CPP
 
 #include <algorithm>
 
-#include "Polygon.hpp" // Hack for autocomplete, should be disabled for build
+
+#include "Polygon.hpp" // Hack for autocomplete
 
 /*
   *
@@ -41,7 +43,7 @@ PiePolygon<U, S, MAX>::PiePolygon():
 template<typename U, typename S, size_t MAX>
 bool PiePolygon<U, S, MAX>::read(std::istream& in)
 {
-	unsigned int i;
+	unsigned i;
 	clear();
 
 	in >> std::hex >> m_flags >> std::dec >> m_vertices;
@@ -80,7 +82,7 @@ bool PiePolygon<U, S, MAX>::read(std::istream& in)
 template<typename U, typename S, size_t MAX>
 void PiePolygon<U, S, MAX>::write(std::ostream& out) const
 {
-	unsigned int i;
+	unsigned i;
 
 	out << std::hex << m_flags << std::dec << '\t';
 	out << m_vertices << '\t';
@@ -113,7 +115,7 @@ unsigned PiePolygon<U, S, MAX>::getFrames() const
 }
 
 template<typename U, typename S, size_t MAX>
-unsigned PiePolygon<U, S, MAX>::getIndex(unsigned int n) const
+unsigned PiePolygon<U, S, MAX>::getIndex(unsigned n) const
 {
 	//TODO: assert n >= vertices()
 #pragma message "TODO"
@@ -143,3 +145,5 @@ unsigned short PiePolygon<U, S, MAX>::triangles() const
 {
 	return std::max(0,vertices() - 2);
 }
+
+#endif //POLYGON_T_CPP

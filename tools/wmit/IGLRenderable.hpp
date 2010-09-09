@@ -17,27 +17,15 @@
 	along with WMIT.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-#include <QtGui/QApplication>
-#include <QCoreApplication>
-#include <QTextCodec>
-#include "MainWindow.hpp"
+#ifndef IGLRENDERABLE_HPP
+#define IGLRENDERABLE_HPP
 
-#ifdef __GNUC__
-# ifdef WARNMORE
-#  pragma  GCC diagnostic warning "-Weffc++"
-#  pragma  GCC diagnostic warning "-Wconversion"
-# endif
-#endif
-
-int main(int argc, char *argv[])
+class IGLRenderable
 {
-	QTextCodec::setCodecForCStrings(QTextCodec::codecForLocale());
-	//	if (command line mode)
-	//		QCoreApplication a(argc, argv);
-	//		TODO: Command line functionality
-	//	else // gui mode1
-	QApplication a(argc, argv);
-	MainWindow w;
-	w.show();
-	return a.exec();
-}
+public:
+	IGLRenderable(){}
+	virtual ~IGLRenderable(){}
+	virtual void render() = 0;
+};
+
+#endif // IGLRENDERABLE_HPP

@@ -24,6 +24,11 @@
 #include "ImportDialog.hpp"
 #include "UVEditor.hpp"
 
+#include <fstream>
+#include <QFileInfo>
+
+#include "Pie.hpp"
+
 MainWindow::MainWindow(QWidget *parent) :
 	QMainWindow(parent),
 	ui(new Ui::MainWindow),
@@ -32,6 +37,7 @@ MainWindow::MainWindow(QWidget *parent) :
 	transformDock(new TransformDock),
 	m_UVEditor(new UVEditor)
 {
+	connect(importDialog, SIGNAL(accepted()), this, SLOT(s_fileOpen()));
 	ui->setupUi(this);
 
 	// A work around to add actions in the order we want
@@ -53,6 +59,10 @@ MainWindow::MainWindow(QWidget *parent) :
 	m_UVEditor->setAllowedAreas(Qt::LeftDockWidgetArea|Qt::RightDockWidgetArea);
 	m_UVEditor->hide();
 	this->addDockWidget(Qt::RightDockWidgetArea, m_UVEditor, Qt::Horizontal);
+
+
+	// TODO: cleanup the following possibly
+	model.setTextureManager(static_cast<IGLTextureManager*>(ui->centralWidget));
 }
 
 void MainWindow::changeEvent(QEvent *e)
@@ -65,6 +75,35 @@ void MainWindow::changeEvent(QEvent *e)
     default:
         break;
     }
+}
+
+void MainWindow::s_fileOpen()
+{
+	//	importDialog->textureFilePath();
+	// TODO: cleanup the following possibly
+	QFileInfo modelFileNfo(importDialog->modelFilePath());
+	std::ifstream f;
+	if (modelFileNfo.completeSuffix().compare(QString("wzm"), Qt::CaseInsensitive) == 0)
+	{
+		f.open(modelFileNfo.absoluteFilePath().toLocal8Bit(), std::ios::in);
+		model.read(f);
+	}
+	else if(modelFileNfo.completeSuffix().compare(QString("pie"), Qt::CaseInsensitive) == 0)
+	{
+#pragma message "unfinished"
+	}
+	else if(modelFileNfo.completeSuffix().compare(QString("3ds"), Qt::CaseInsensitive) == 0)
+	{
+		model.importFrom3DS(std::string(modelFileNfo.absoluteFilePath().toLocal8Bit().constData()));
+	}
+	else if(modelFileNfo.completeSuffix().compare(QString("obj"), Qt::CaseInsensitive) == 0)
+	{
+		f.open(modelFileNfo.absoluteFilePath().toLocal8Bit(), std::ios::in);
+		model.importFromOBJ(f);
+	}
+	ui->centralWidget->clearRenderList();
+	ui->centralWidget->addToRenderList(&model);
+	model.setRenderTexture(importDialog->textureFilePath().toStdString());
 }
 
 void MainWindow::on_actionConfig_triggered()

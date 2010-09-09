@@ -21,6 +21,8 @@
 
 #include <QMainWindow>
 
+#include "WZM.hpp"
+
 class TransformDock;
 class ConfigDialog;
 class ImportDialog;
@@ -39,6 +41,7 @@ protected:
     void changeEvent(QEvent *e);
 
 private slots:
+	void s_fileOpen();
 	void on_actionUVEditor_toggled(bool );
 	void on_actionOpen_triggered();
 	void on_actionConfig_triggered();
@@ -50,6 +53,8 @@ private:
 	ImportDialog* importDialog;
 	TransformDock* transformDock;
 	UVEditor* m_UVEditor;
+
+	WZM model;
 };
 
 #endif // MAINWINDOW_HPP

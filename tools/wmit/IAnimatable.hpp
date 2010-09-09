@@ -16,28 +16,15 @@
 	You should have received a copy of the GNU General Public License
 	along with WMIT.  If not, see <http://www.gnu.org/licenses/>.
 */
+#ifndef IANIMATABLE_HPP
+#define IANIMATABLE_HPP
 
-#include <QtGui/QApplication>
-#include <QCoreApplication>
-#include <QTextCodec>
-#include "MainWindow.hpp"
-
-#ifdef __GNUC__
-# ifdef WARNMORE
-#  pragma  GCC diagnostic warning "-Weffc++"
-#  pragma  GCC diagnostic warning "-Wconversion"
-# endif
-#endif
-
-int main(int argc, char *argv[])
+class IAnimatable
 {
-	QTextCodec::setCodecForCStrings(QTextCodec::codecForLocale());
-	//	if (command line mode)
-	//		QCoreApplication a(argc, argv);
-	//		TODO: Command line functionality
-	//	else // gui mode1
-	QApplication a(argc, argv);
-	MainWindow w;
-	w.show();
-	return a.exec();
-}
+public:
+	IAnimatable(){}
+	virtual ~IAnimatable(){}
+	virtual void animate() = 0;
+};
+
+#endif // IANIMATABLE_HPP

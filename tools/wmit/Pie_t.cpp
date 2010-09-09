@@ -16,10 +16,11 @@
 	You should have received a copy of the GNU General Public License
 	along with WMIT.  If not, see <http://www.gnu.org/licenses/>.
 */
+#ifdef PIE_T_CPP
 
 #include "Generic.hpp"
 
-#include "Pie.hpp" // Hack for autocomplete, should be disabled for build
+#include "Pie.hpp" // Hack for autocomplete
 
 /*
   *
@@ -38,7 +39,7 @@ template<typename V, typename P, typename C>
 bool APieLevel< V, P, C>::read(std::istream& in)
 {
 	std::string str;
-	unsigned int uint;
+	unsigned uint;
 
 	std::streampos cnctrStrt;
 
@@ -182,7 +183,7 @@ template<typename V, typename P, typename C>
 bool APieLevel<V, P, C>::isValid() const
 {
 	typename std::vector<P>::const_iterator it;
-	unsigned int i;
+	unsigned i;
 
 	for (it = m_polygons.begin(); it != m_polygons.end(); ++it)
 	{
@@ -235,7 +236,7 @@ template <typename L>
 bool APieModel<L>::read(std::istream& in)
 {
 	std::string str;
-	unsigned int uint;
+	unsigned uint;
 
 	std::streampos start = in.tellg();
 
@@ -297,7 +298,7 @@ template <typename L>
 void APieModel<L>::write(std::ostream& out) const
 {
 	typename std::vector<L>::const_iterator it;
-	unsigned int i = 1;
+	unsigned i = 1;
 
 	out << "PIE\t"	<< version() << '\n';
 
@@ -317,7 +318,7 @@ void APieModel<L>::write(std::ostream& out) const
 }
 
 template <typename L>
-unsigned int APieModel<L>::levels() const
+unsigned APieModel<L>::levels() const
 {
 	return m_levels.size();
 }
@@ -341,3 +342,5 @@ bool APieModel<L>::isValid() const
 	}
 	return true;
 }
+
+#endif //PIE_T_CPP

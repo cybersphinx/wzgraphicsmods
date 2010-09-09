@@ -23,26 +23,22 @@
 #include <cmath>
 #include <functional>
 
-template <typename T, size_t C>
+template <typename T, size_t COMPONENTS>
 struct Vector
 {
-	Vector(){}
-	virtual ~Vector(){}
-	static const size_t COMPONENTS = C;
-
-	inline T  operator [](unsigned int i) const {
+	inline T  operator [](unsigned i) const {
 		return component[i];
 	}
-	inline T& operator [](unsigned int i)       {
+	inline T& operator [](unsigned i)       {
 		return component[i];
 	}
 	inline operator const T*() const {
 		return component;
 	}
 
-	struct equal_wEps : public std::binary_function<const Vector&,const Vector&,bool>
+	struct equal_wEps : public std::binary_function<const Vector&, const Vector&, bool>
 	{
-		equal_wEps(double eps = std::numeric_limits<T>::epsilon()):m_eps(eps)
+		equal_wEps(T eps = std::numeric_limits<T>::epsilon()):m_eps(eps)
 		{
 			if (m_eps < 0)
 			{
@@ -66,7 +62,7 @@ struct Vector
 			m_eps = eps;
 		}
 	private:
-		double m_eps;
+		T m_eps;
 	};
 
 	bool operator == (const Vector& rhs) const
@@ -82,7 +78,7 @@ struct Vector
 		return true;
 	}
 
-	virtual bool operator < (const Vector& rhs) const
+	bool operator < (const Vector& rhs) const
 	{
 		unsigned i;
 		for (i = 0; i < COMPONENTS-1; ++i)
@@ -95,9 +91,9 @@ struct Vector
 		return component[i] < rhs.component[i];
 	}
 
-	struct less_wEps : public std::binary_function<const Vector&,const Vector&,bool>
+	struct less_wEps : public std::binary_function<const Vector&, const Vector&, bool>
 	{
-		less_wEps(double eps = -1): compare(eps) {}
+		less_wEps(T eps = -1): compare(eps) {}
 		bool operator() (const Vector& lhs, const Vector& rhs)const
 		{
 			bool dbgtmp = (lhs < rhs) && !compare(lhs, rhs);
@@ -108,7 +104,7 @@ struct Vector
 	};
 
 protected:
-	T component[C];
+	T component[COMPONENTS];
 };
 
 #endif // VERTEX_HPP
