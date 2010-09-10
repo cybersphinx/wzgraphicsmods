@@ -41,14 +41,14 @@
 
 #include "IGLTextureManager.hpp"
 
-WZM::WZM()
+WZM::WZM() : m_texture(0)
 {
 }
 
-WZM::WZM(const Pie3Model &p3)
+WZM::WZM(const Pie3Model &p3) : m_texture(0)
 {
-	m_texName = p3.m_texture;
 	std::vector<Pie3Level>::const_iterator it;
+	m_texName = p3.m_texture;
 	for (it = p3.m_levels.begin(); it != p3.m_levels.end(); ++it)
 	{
 		m_meshes.push_back(*it);
@@ -178,7 +178,7 @@ bool WZM::importFromOBJ(std::istream& in)
 	/* Note: This program tolerates imperfect .obj files
 	 * because it accepts any whitespace as a space.
 	 */
-	
+
 	while (!(in.eof()|| in.fail()))
 	{
 		std::getline(in, str);
@@ -513,6 +513,8 @@ void WZM::render()
 	glEnableClientState(GL_VERTEX_ARRAY);
 	glBindTexture(GL_TEXTURE_2D, m_texture);
 
+	glScalef(1/128.f, 1/128.f, 1/128.f); // Scale from warzone to fit in our scene. possibly a FIXME
+
 	for (it = m_meshes.begin(); it != m_meshes.end(); ++it)
 	{
 
@@ -531,7 +533,10 @@ void WZM::animate()
 
 void WZM::setRenderTexture(std::string fileName)
 {
-	deleteTexture(m_texture);
+	if (m_texture != 0)
+	{
+		deleteTexture(m_texture);
+	}
 	m_texture = createTexture(fileName).id();
 }
 

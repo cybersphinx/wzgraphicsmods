@@ -50,7 +50,7 @@ void QtGLView::init()
 	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 	glEnable(GL_ALPHA_TEST);
 	glAlphaFunc(GL_GEQUAL, 0.05f);
-	glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
+//	glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
 }
 
 void QtGLView::draw()

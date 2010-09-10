@@ -104,6 +104,8 @@ struct PieConnector
 	V pos;
 };
 
+int pieVersion(std::istream& in);
+
 /**********************************************
   Pie version 2
   *********************************************/

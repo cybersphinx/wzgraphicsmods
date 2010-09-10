@@ -23,6 +23,25 @@
 
 #include "Pie.hpp"
 
+int pieVersion(std::istream& in)
+{
+	std::string pie;
+	unsigned version;
+	std::streampos start = in.tellg();
+
+	// PIE %u
+	in >> pie >> version;
+	if (in.good() && pie.compare("PIE") == 0)
+	{
+		in.seekg(start);
+		if (version >= 2 || version <= 3)
+		{
+			return version;
+		}
+	}
+	return -1;
+}
+
 Pie2Model::Pie2Model()
 {
 }

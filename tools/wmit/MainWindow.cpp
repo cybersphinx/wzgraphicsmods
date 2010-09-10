@@ -37,7 +37,6 @@ MainWindow::MainWindow(QWidget *parent) :
 	transformDock(new TransformDock),
 	m_UVEditor(new UVEditor)
 {
-	connect(importDialog, SIGNAL(accepted()), this, SLOT(s_fileOpen()));
 	ui->setupUi(this);
 
 	// A work around to add actions in the order we want
@@ -60,26 +59,23 @@ MainWindow::MainWindow(QWidget *parent) :
 	m_UVEditor->hide();
 	this->addDockWidget(Qt::RightDockWidgetArea, m_UVEditor, Qt::Horizontal);
 
-
-	// TODO: cleanup the following possibly
-	model.setTextureManager(static_cast<IGLTextureManager*>(ui->centralWidget));
+	connect(importDialog, SIGNAL(accepted()), this, SLOT(s_fileOpen()));
 }
 
 void MainWindow::changeEvent(QEvent *e)
 {
-    QMainWindow::changeEvent(e);
-    switch (e->type()) {
-    case QEvent::LanguageChange:
+	QMainWindow::changeEvent(e);
+	switch (e->type()) {
+	case QEvent::LanguageChange:
 		ui->retranslateUi(this);
-        break;
-    default:
-        break;
-    }
+		break;
+	default:
+		break;
+	}
 }
 
 void MainWindow::s_fileOpen()
 {
-	//	importDialog->textureFilePath();
 	// TODO: cleanup the following possibly
 	QFileInfo modelFileNfo(importDialog->modelFilePath());
 	std::ifstream f;
@@ -90,7 +86,20 @@ void MainWindow::s_fileOpen()
 	}
 	else if(modelFileNfo.completeSuffix().compare(QString("pie"), Qt::CaseInsensitive) == 0)
 	{
-#pragma message "unfinished"
+		f.open(modelFileNfo.absoluteFilePath().toLocal8Bit(), std::ios::in);
+		int version = pieVersion(f);
+		if (version == 3)
+		{
+			Pie3Model p3;
+			p3.read(f);
+			model = WZM(p3);
+		}
+		else if (version == 2)
+		{
+			Pie2Model p2;
+			p2.read(f);
+			model = WZM(Pie3Model(p2));
+		}
 	}
 	else if(modelFileNfo.completeSuffix().compare(QString("3ds"), Qt::CaseInsensitive) == 0)
 	{
@@ -103,6 +112,10 @@ void MainWindow::s_fileOpen()
 	}
 	ui->centralWidget->clearRenderList();
 	ui->centralWidget->addToRenderList(&model);
+
+	// HACK FIXME: Temporary nastiness
+	model.setTextureManager(static_cast<IGLTextureManager*>(ui->centralWidget));
+
 	model.setRenderTexture(importDialog->textureFilePath().toStdString());
 }
 
@@ -113,7 +126,7 @@ void MainWindow::on_actionConfig_triggered()
 
 void MainWindow::on_actionTransformWidget_toggled(bool show)
 {
-	show? transformDock->show() : transformDock->hide();
+	show ? transformDock->show() : transformDock->hide();
 }
 
 void MainWindow::on_actionOpen_triggered()
