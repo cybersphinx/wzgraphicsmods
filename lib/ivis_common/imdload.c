@@ -72,8 +72,6 @@ static bool _imd_load_polys( const char **ppFileData, iIMDShape *s, int pieVersi
 	unsigned int i, j;
 	iIMDPoly *poly;
 
-	s->numFrames = 0;
-	s->animInterval = 0;
 	if(s->shadows != false)
 	s->shadows = true;
 	if(s->hitEffects != true)
@@ -165,6 +163,8 @@ static bool _imd_load_polys( const char **ppFileData, iIMDShape *s, int pieVersi
 			}
 			pFileData += cnt;
 
+			ASSERT(nFrames > 0, "%s: Frames = %d", GetLastResourceFilename(), nFrames);
+			ASSERT(pbRate > 0, "%s: Playback Rate = %d", GetLastResourceFilename(), pbRate);
 			ASSERT(tWidth > 0, "%s: texture width = %f", GetLastResourceFilename(), tWidth);
 			ASSERT(tHeight > 0, "%s: texture height = %f (width=%f)", GetLastResourceFilename(), tHeight, tWidth);
 
@@ -558,6 +558,9 @@ static iIMDShape *_imd_load_level(const char **ppFileData, const char *FileDataE
 	s->nconnectors = 0; // Default number of connectors must be 0
 	s->npoints = 0;
 	s->npolys = 0;
+
+	s->numFrames = 1;
+	s->animInterval = 1;
 
 	s->points = NULL;
 	s->polys = NULL;
