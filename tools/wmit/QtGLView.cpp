@@ -171,7 +171,10 @@ void QtGLView::addToRenderList(IGLRenderable* object)
 void QtGLView::removeFromRenderList(IGLRenderable* object)
 {
 	int index = renderList.indexOf(object, 0);
-	renderList.removeAt(index);
+	if (index != -1)
+	{
+		renderList.removeAt(index);
+	}
 }
 
 void QtGLView::clearRenderList()
@@ -247,7 +250,7 @@ void QtGLView::deleteTexture(GLuint id)
 			{
 				textureUpdater.removePath(texIt.key());
 				QGLWidget::deleteTexture(id);
-				m_textures.remove(texIt.key());
+				texIt = m_textures.erase(texIt);
 			}
 			break;
 		}
@@ -264,7 +267,7 @@ void QtGLView::deleteTexture(const QString& fileName)
 		{
 			textureUpdater.removePath(texIt.key());
 			QGLWidget::deleteTexture(texIt.value().id());
-			m_textures.remove(texIt.key());
+			texIt = m_textures.erase(texIt);
 		}
 	}
 }
@@ -276,7 +279,7 @@ void QtGLView::deleteAllTextures()
 	{
 		textureUpdater.removePath(texIt.key());
 		QGLWidget::deleteTexture(texIt.value().id());
-		m_textures.remove(texIt.key());
+		texIt = m_textures.erase(texIt);
 	}
 	m_textures.clear();
 }
