@@ -16,27 +16,15 @@
 	You should have received a copy of the GNU General Public License
 	along with WMIT.  If not, see <http://www.gnu.org/licenses/>.
 */
-#ifndef UVEDITOR_HPP
-#define UVEDITOR_HPP
 
-#include <QDockWidget>
+#ifndef UTIL_HPP
+#define UTIL_HPP
+#include <string>
+#include <QString>
 
-namespace Ui {
-	class UVEditor;
-}
+bool isValidWzName(const std::string name);
 
-class UVEditor : public QDockWidget {
-    Q_OBJECT
-public:
-    UVEditor(QWidget *parent = 0);
-	~UVEditor();
+QString getTextureName(const QString& filePath);
 
-protected:
-    void changeEvent(QEvent *e);
 
-private:
-	Ui::UVEditor* ui;
-};
-
-#endif // UVEDITOR_HPP
-
+#endif // UTIL_HPP

@@ -19,7 +19,10 @@ HEADERS += MainWindow.hpp \
     IGLTextureManager.hpp \
     GLTexture.hpp \
     Mesh.hpp \
-    OBJ.hpp
+    OBJ.hpp \
+    Util.hpp \
+    QWZM.hpp \
+    ExportDialog.hpp
 SOURCES += main.cpp \
     MainWindow.cpp \
     ImportDialog.cpp \
@@ -34,13 +37,17 @@ SOURCES += main.cpp \
     Pie.cpp \
     QtGLView.cpp \
     Mesh.cpp \
-    GLTexture.cpp
+    GLTexture.cpp \
+    Util.cpp \
+    QWZM.cpp \
+    ExportDialog.cpp
 FORMS += MainWindow.ui \
     ImportDialog.ui \
     UVEditor.ui \
     ConfigDialog.ui \
     TransformDock.ui \
-    TeamColoursDock.ui
+    TeamColoursDock.ui \
+    ExportDialog.ui
 QT += opengl \
     xml
 
@@ -81,4 +88,5 @@ QMAKE_CXXFLAGS_WARN_ON += -pedantic \
 QMAKE_CFLAGS_DEBUG += -fstack-protector-all
 QMAKE_CXXFLAGS_DEBUG += -fstack-protector-all
 OTHER_FILES += TODO.txt \
-    COPYING.txt
+    COPYING.txt \
+    HACKING.txt

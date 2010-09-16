@@ -21,6 +21,10 @@
 
 #include <QDialog>
 
+#include <QList>
+#include <QPair>
+#include <QString>
+
 namespace Ui {
     class ConfigDialog;
 }
@@ -36,6 +40,18 @@ protected:
 
 private:
     Ui::ConfigDialog *ui;
+	QList<QPair<bool,QString> > searchDirChanges;
+signals:
+	void updateTextureSearchDirs(QList<QPair<bool,QString> >);
+
+public slots:
+	void setTextureSearchDirs(QStringList);
+
+private slots:
+	void on_buttonBox_rejected();
+	void on_buttonBox_accepted();
+	void on_pb_remove_clicked();
+	void on_pb_add_clicked();
 };
 
 #endif // CONFIGDIALOG_HPP

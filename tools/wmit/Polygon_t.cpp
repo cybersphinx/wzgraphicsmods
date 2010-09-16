@@ -118,7 +118,6 @@ template<typename U, typename S, size_t MAX>
 unsigned PiePolygon<U, S, MAX>::getIndex(unsigned n) const
 {
 	//TODO: assert n >= vertices()
-#pragma message "TODO"
 	return m_indices[n];
 }
 

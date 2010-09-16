@@ -148,6 +148,7 @@ Pie3Connector::operator Pie2Connector() const
 
 Pie3Polygon::Pie3Polygon()
 {
+	m_vertices = 3;
 }
 
 Pie3Polygon::~Pie3Polygon()

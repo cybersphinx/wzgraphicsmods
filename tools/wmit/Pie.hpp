@@ -38,8 +38,8 @@
 /**
   * Templates used to remove tedious code
   * duplication.
-  *
   */
+
 template<typename V, typename P, typename C>
 class APieLevel
 {
@@ -104,6 +104,13 @@ struct PieConnector
 	V pos;
 };
 
+
+/** Returns the Pie version
+  *
+  *	@param	in	istream to a Pie file, the stream's position will be
+  *		returned to where it was (on success).
+  *	@return	int Version of the pie version.
+  */
 int pieVersion(std::istream& in);
 
 /**********************************************

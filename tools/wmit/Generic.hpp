@@ -28,8 +28,6 @@
 #include <iostream>
 #include <vector>
 
-bool isValidWzName(const std::string name);
-
 inline void skipWhitespace(std::stringstream& ss)
 {
 	std::string str = ss.str();
@@ -59,6 +57,21 @@ public:
 	}
 };
 
+template <class Container, class F>
+		struct conditional_back_insert_iterator : public std::back_insert_iterator<Container>
+{
+	const F f;
+public:
+	explicit conditional_back_insert_iterator (Container& x, const F& op)
+	   : f(op), std::back_insert_iterator<Container>(x) {}
+	conditional_back_insert_iterator& operator= (typename Container::const_reference value)
+	{
+		return f(value)?
+						std::back_insert_iterator<Container>::operator =(value):
+						*this;
+	}
+};
+
 template <class F> class mybinder1st
 	: public std::unary_function <typename F::second_argument_type,
 						   typename F::result_type>
@@ -67,9 +80,7 @@ protected:
   const F f;
   typename F::first_argument_type lhs;
 public:
-  mybinder1st (const F& op,
-			  const typename F::first_argument_type& x) : f(op), lhs(x) {}
-  mybinder1st (const typename F::first_argument_type& x) : lhs(x) {}
+  mybinder1st (const typename F::first_argument_type& x, const F& op = F()) : f(op), lhs(x) {}
   typename F::result_type
 	operator() (const typename F::second_argument_type& rhs) const
 	{ return f(lhs,rhs); }
@@ -83,9 +94,7 @@ protected:
   const F f;
   typename F::second_argument_type rhs;
 public:
-  mybinder2nd (const F& op,
-			  const typename F::second_argument_type& y) : f (op), rhs(y) {}
-  mybinder2nd (const typename F::second_argument_type& y) : rhs(y) {}
+  mybinder2nd (const typename F::second_argument_type& y, const F& op = F()) : f(op), rhs(y) {}
   typename F::result_type
 	operator() (const typename F::first_argument_type& lhs) const
 	{ return f(lhs,rhs); }

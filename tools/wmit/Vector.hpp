@@ -38,11 +38,15 @@ struct Vector
 
 	struct equal_wEps : public std::binary_function<const Vector&, const Vector&, bool>
 	{
-		equal_wEps(T eps = std::numeric_limits<T>::epsilon()):m_eps(eps)
+		equal_wEps(T eps = std::numeric_limits<T>::epsilon())
 		{
-			if (m_eps < 0)
+			if (eps < std::numeric_limits<T>::epsilon())
 			{
 				m_eps = std::numeric_limits<T>::epsilon();
+			}
+			else
+			{
+				m_eps = eps;
 			}
 		}
 		bool operator() (const Vector& lhs, const Vector& rhs)const
@@ -96,8 +100,7 @@ struct Vector
 		less_wEps(T eps = -1): compare(eps) {}
 		bool operator() (const Vector& lhs, const Vector& rhs)const
 		{
-			bool dbgtmp = (lhs < rhs) && !compare(lhs, rhs);
-			return dbgtmp;
+			return  (lhs < rhs) && !compare(lhs, rhs);
 		}
 	private:
 		equal_wEps compare;

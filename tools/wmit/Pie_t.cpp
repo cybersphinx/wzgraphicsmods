@@ -19,6 +19,7 @@
 #ifdef PIE_T_CPP
 
 #include "Generic.hpp"
+#include "Util.hpp"
 
 #include "Pie.hpp" // Hack for autocomplete
 

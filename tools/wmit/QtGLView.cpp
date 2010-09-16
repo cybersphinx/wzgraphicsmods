@@ -19,6 +19,9 @@
 
 #include <QPixmap>
 #include <QImage>
+#include <QApplication>
+
+#include <QGLViewer/vec.h>
 
 #include "QtGLView.hpp"
 
@@ -26,6 +29,10 @@ QtGLView::QtGLView(QWidget *parent) :
 		QGLViewer(parent)
 {
 	connect(&textureUpdater, SIGNAL(fileChanged(QString)), this, SLOT(textureChanged(QString)));
+
+	setShortcut(DISPLAY_FPS, 0); // Disable stuff that won't work.
+	setShortcut(DRAW_AXIS, 0);
+	setShortcut(DRAW_GRID, 0);
 }
 
 QtGLView::~QtGLView()
@@ -40,7 +47,6 @@ QtGLView::~QtGLView()
 void QtGLView::init()
 {
 	glDisable(GL_LIGHTING); // QGLViewer likes enabling this stuff
-	glDisable(GL_LIGHT0);
 	glDisable(GL_COLOR_MATERIAL);
 
 	glEnable(GL_TEXTURE_2D);
@@ -50,7 +56,13 @@ void QtGLView::init()
 	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 	glEnable(GL_ALPHA_TEST);
 	glAlphaFunc(GL_GEQUAL, 0.05f);
-//	glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
+
+	glEnable(GL_CULL_FACE);
+
+	setSceneRadius(2);
+
+	camera()->setPosition(qglviewer::Vec(0.5 * 2, 2.12 * 2, -2.12 * 2));
+	camera()->setViewDirection(qglviewer::Vec(-0.5, -2.12, 2.12));
 }
 
 void QtGLView::draw()
@@ -59,6 +71,96 @@ void QtGLView::draw()
 	{
 		obj->render();
 	}
+}
+
+void QtGLView::postDraw()
+{
+	glDisable(GL_TEXTURE_2D);
+
+	/* Grid begin - Copied from QGLViewer source then modified */
+	glColor3f(.7f, 1.f, .7f);
+	glPushMatrix();
+
+	glRotatef(90.0f, 1.f, 0.f, 0.f);
+	const int subdivisions = 3;
+	const float halfSize = subdivisions/2.f;
+	glBegin(GL_LINES);
+	for (int i=0; i <= subdivisions; ++i)
+	{
+		const float pos = i - halfSize;
+		glVertex2f(pos, -halfSize); // vertical
+		glVertex2f(pos, +halfSize);
+
+		// horizontal
+		glVertex2f(-halfSize, pos); // |   |    | |  |_|_
+		glVertex2f( halfSize, pos); // |   |___ |_|_ |_|_
+	}
+	glEnd();
+	glColor3f(1.f, 1.f, 1.f);
+	glPopMatrix();
+
+	/* Grid end
+	 * Axis begin  - Copied from QGLViewer source then modified */
+	const float length =camera()->sceneRadius();
+	const float charWidth = length / 40.0;
+	const float charHeight = length / 30.0;
+	const float charShift = 1.04 * length;
+
+	GLboolean lighting;
+	glGetBooleanv(GL_LIGHTING, &lighting);
+
+	glDisable(GL_LIGHTING);
+	glEnable(GL_LINE_SMOOTH);
+	glLineWidth(2);
+
+#define swap(a,b) a,b // Swap the qglviewer code so that it fits the WZ axis
+	glBegin(GL_LINES);
+	// The X
+	glVertex3f(-charShift,  charWidth, -charHeight);
+	glVertex3f(-charShift, -charWidth,  charHeight);
+	glVertex3f(-charShift, -charWidth, -charHeight);
+	glVertex3f(-charShift,  charWidth,  charHeight);
+	// The Y
+	glVertex3f( charWidth, swap(charShift, charHeight));
+	glVertex3f(0.0,        swap(charShift, 0.0));
+	glVertex3f(-charWidth, swap(charShift, charHeight));
+	glVertex3f(0.0,        swap(charShift, 0.0));
+	glVertex3f(0.0,        swap(charShift, 0.0));
+	glVertex3f(0.0,        swap(charShift, -charHeight));
+	// The Z
+	glVertex3f(-charWidth,  swap(charHeight, charShift));
+	glVertex3f( charWidth,  swap(charHeight, charShift));
+	glVertex3f( charWidth,  swap(charHeight, charShift));
+	glVertex3f(-charWidth, swap(-charHeight, charShift));
+	glVertex3f(-charWidth, swap(-charHeight, charShift));
+	glVertex3f( charWidth, swap(-charHeight, charShift));
+	glEnd();
+#undef swap
+
+	glEnable(GL_LIGHTING);
+
+	float color[4];
+	color[0] = 0.7f;  color[1] = 0.7f;  color[2] = 1.0f;  color[3] = 1.0f;
+	glMaterialfv(GL_FRONT_AND_BACK, GL_AMBIENT_AND_DIFFUSE, color);
+	QGLViewer::drawArrow(length, 0.01*length);
+
+	color[0] = 1.0f;  color[1] = 0.7f;  color[2] = 0.7f;  color[3] = 1.0f;
+	glMaterialfv(GL_FRONT_AND_BACK, GL_AMBIENT_AND_DIFFUSE, color);
+	glPushMatrix();
+	glRotatef(-90.0, 0.0, 1.0, 0.0);
+	QGLViewer::drawArrow(length, 0.01*length);
+	glPopMatrix();
+
+	color[0] = 0.7f;  color[1] = 1.0f;  color[2] = 0.7f;  color[3] = 1.0f;
+	glMaterialfv(GL_FRONT_AND_BACK, GL_AMBIENT_AND_DIFFUSE, color);
+	glPushMatrix();
+	glRotatef(-90.0, 1.0, 0.0, 0.0);
+	QGLViewer::drawArrow(length, 0.01*length);
+	glPopMatrix();
+
+	if (!lighting)
+		glDisable(GL_LIGHTING);
+	glEnable(GL_TEXTURE_2D);
 }
 
 void QtGLView::addToRenderList(IGLRenderable* object)

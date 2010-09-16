@@ -25,10 +25,6 @@
 
 #include "Mesh.hpp"
 
-#include "IGLRenderable.hpp"
-#include "TextureAccess.hpp"
-#include "IAnimatable.hpp"
-
 #ifdef __GNUC__
 # ifdef WARNMORE
 #  pragma  GCC diagnostic warning "-Weffc++"
@@ -36,11 +32,9 @@
 # endif
 #endif
 
-class IGLTextureManager;
-
 class Pie3Model;
 
-class WZM : public IGLRenderable, public IAnimatable, protected TextureAccess
+class WZM
 {
 public:
 	WZM();
@@ -50,7 +44,7 @@ public:
 	virtual operator Pie3Model() const;
 
 	bool read(std::istream& in);
-	void write(std::ostream& in) const;
+	void write(std::ostream& out) const;
 
 	bool importFromOBJ(std::istream& in);
 	void exportToOBJ(std::ostream& out) const;
@@ -71,19 +65,10 @@ public:
 
 	bool isValid() const;
 
-	void render();	// ITexturedRenderable
-	void animate();	// IAnimatable
-	void setRenderTexture(std::string fileName);
-	void setTextureManager(IGLTextureManager * manager);
-
 protected:
 	void clear();
 	std::vector<Mesh> m_meshes;
 	std::string m_texName;
-
-private:
-	/// Rendering members
-	GLuint m_texture;
 };
 
 #endif // WZM_HPP

@@ -19,19 +19,6 @@
 
 #include "Generic.hpp"
 
-bool isValidWzName(const std::string name)
-{
-	static const std::string valid = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
-									 "abcdefghijklmnopqrstuvwxyz"
-									 "0123456789._\\-";
-	std::string::size_type found = name.find_first_not_of(valid);
-	if (found == std::string::npos)
-	{
-		return true;
-	}
-	return false;
-}
-
 std::vector<std::string> split(std::istringstream& iss)
 {
 	using namespace std;

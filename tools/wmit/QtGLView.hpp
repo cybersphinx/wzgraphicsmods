@@ -40,6 +40,7 @@ public:
 	~QtGLView();
 
 	void draw();
+	void postDraw();
 
 	void addToRenderList(IGLRenderable* object);
 	void removeFromRenderList(IGLRenderable* object);

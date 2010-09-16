@@ -20,11 +20,14 @@
 #include "ConfigDialog.hpp"
 #include "ui_ConfigDialog.h"
 
+#include <QFileDialog>
+
 ConfigDialog::ConfigDialog(QWidget *parent) :
     QDialog(parent),
     ui(new Ui::ConfigDialog)
 {
     ui->setupUi(this);
+	ui->lw_dirs->setSelectionMode(QAbstractItemView::MultiSelection);
 }
 
 ConfigDialog::~ConfigDialog()
@@ -42,4 +45,48 @@ void ConfigDialog::changeEvent(QEvent *e)
     default:
         break;
     }
+}
+
+void ConfigDialog::setTextureSearchDirs(QStringList dirs)
+{
+	ui->lw_dirs->clear();
+	ui->lw_dirs->addItems(dirs);
+}
+
+void ConfigDialog::on_pb_add_clicked()
+{
+	QFileDialog* fileDialog = new QFileDialog(this);
+	fileDialog->setWindowTitle(tr("Select texture search directory."));
+	fileDialog->setFileMode(QFileDialog::Directory);
+	fileDialog->setFilter("*.png");
+	fileDialog->exec();
+	if (fileDialog->result() == QDialog::Accepted)
+	{
+		foreach (QString dir, fileDialog->selectedFiles())
+		{
+			searchDirChanges.append(qMakePair(true, dir));
+			ui->lw_dirs->addItem(dir);
+		}
+	}
+	delete fileDialog;
+}
+
+void ConfigDialog::on_pb_remove_clicked()
+{
+	foreach(QListWidgetItem* item, ui->lw_dirs->selectedItems())
+	{
+		searchDirChanges.append(qMakePair(false, item->text()));
+		delete ui->lw_dirs->takeItem(ui->lw_dirs->row(item));
+	}
+}
+
+void ConfigDialog::on_buttonBox_accepted()
+{
+	emit updateTextureSearchDirs(searchDirChanges);
+	searchDirChanges.clear();
+}
+
+void ConfigDialog::on_buttonBox_rejected()
+{
+	searchDirChanges.clear();
 }

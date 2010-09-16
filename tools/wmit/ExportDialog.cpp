@@ -16,27 +16,40 @@
 	You should have received a copy of the GNU General Public License
 	along with WMIT.  If not, see <http://www.gnu.org/licenses/>.
 */
-#ifndef UVEDITOR_HPP
-#define UVEDITOR_HPP
 
-#include <QDockWidget>
+#include "ExportDialog.hpp"
+#include "ui_ExportDialog.h"
 
-namespace Ui {
-	class UVEditor;
+ExportDialog::ExportDialog(QWidget *parent) :
+    QDialog(parent),
+    ui(new Ui::ExportDialog)
+{
+    ui->setupUi(this);
 }
 
-class UVEditor : public QDockWidget {
-    Q_OBJECT
-public:
-    UVEditor(QWidget *parent = 0);
-	~UVEditor();
+ExportDialog::~ExportDialog()
+{
+    delete ui;
+}
 
-protected:
-    void changeEvent(QEvent *e);
+void ExportDialog::changeEvent(QEvent *e)
+{
+    QDialog::changeEvent(e);
+    switch (e->type()) {
+    case QEvent::LanguageChange:
+        ui->retranslateUi(this);
+        break;
+    default:
+        break;
+    }
+}
 
-private:
-	Ui::UVEditor* ui;
-};
+int ExportDialog::optimisationSelected() const
+{
+	return ui->comboBox->currentIndex();
+}
 
-#endif // UVEDITOR_HPP
-
+PieExportDialog::PieExportDialog(QWidget* parent)
+	: ExportDialog(parent)
+{
+}

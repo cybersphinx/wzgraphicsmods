@@ -37,6 +37,8 @@ int main(int argc, char *argv[])
 	//		TODO: Command line functionality
 	//	else // gui mode1
 	QApplication a(argc, argv);
+	a.setApplicationName("WMIT");
+	a.setOrganizationName("WMIT");
 	MainWindow w;
 	w.show();
 	return a.exec();

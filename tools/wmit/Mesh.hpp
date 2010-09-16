@@ -60,7 +60,7 @@ struct Mesh_exportToOBJ_InOutParams;
 
 class Mesh
 {
-	friend class WZM; // For rendering only!
+	friend class QWZM; // For rendering
 public:
 	Mesh();
 	Mesh(const Pie3Level& p3, float uvEps = 0.0001, float vertEps = -1);
@@ -115,6 +115,8 @@ protected:
 	std::vector<IndexedTri> m_indexArray;
 	std::list<WZMConnector> m_connectors;
 	bool m_teamColours;
+private:
+	void defaultConstructor();
 };
 
 

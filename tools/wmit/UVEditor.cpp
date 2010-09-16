@@ -27,6 +27,11 @@ UVEditor::UVEditor(QWidget *parent) :
 	ui->setupUi(this);
 }
 
+UVEditor::~UVEditor()
+{
+	delete ui;
+}
+
 void UVEditor::changeEvent(QEvent *e)
 {
     QDockWidget::changeEvent(e);

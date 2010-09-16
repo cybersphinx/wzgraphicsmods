@@ -30,14 +30,17 @@
 
 #include <lib3ds/mesh.h>
 #include <lib3ds/vector.h>
+#include <lib3ds/matrix.h>
 #include <lib3ds/material.h>
 
 #include "Generic.hpp"
+#include "Util.hpp"
 #include "Pie.hpp"
 #include "Vector.hpp"
 
 Mesh::Mesh()
 {
+	defaultConstructor();
 }
 
 Mesh::Mesh(const Pie3Level& p3, float uvEps, float vertEps)
@@ -55,6 +58,8 @@ Mesh::Mesh(const Pie3Level& p3, float uvEps, float vertEps)
 	unsigned vert;
 	unsigned frame;
 	bool foundMatch;
+
+	defaultConstructor();
 
 	/*
 	 *	Try to prevent duplicate vertices
@@ -148,88 +153,117 @@ Mesh::Mesh(const Lib3dsMesh& mesh3ds)
 	const bool swapYZ = true;
 	const bool reverseWinding = true;
 	const bool invertV = true;
+	const bool transform = true;
 
-	TexArray texArr;
+	const WZMVertex::less_wEps vertLess; // For make_mypair
+	const WZMUV::less_wEps uvLess;
 
-	clear();
+	typedef std::set<mypair<WZMVertex, WZMUV,
+		WZMVertex::less_wEps, WZMUV::less_wEps> > t_pairSet;
+
+	t_pairSet pairSet;
+
+	std::pair<t_pairSet::iterator, bool> inResult;
+
+	std::vector<unsigned> mapping;
+	std::vector<unsigned>::iterator itMap;
+
+	unsigned i, j;
+
+	IndexedTri idx; // temporaries
+	WZMVertex tmpVert;
+	WZMUV tmpUV;
 
 	m_vertexArray.reserve(mesh3ds.points);
-	texArr.reserve(mesh3ds.points);
 
 	m_indexArray.reserve(mesh3ds.faces);
-	m_textureArrays.reserve(1); // only one supported from 3DS
+
+	m_textureArrays.push_back(TexArray()); // only one supported from 3DS
+	m_textureArrays[0].reserve(mesh3ds.points);
 
 	if (isValidWzName(mesh3ds.name))
 	{
 		m_name = mesh3ds.name;
 	}
 
-	for (unsigned i = 0; i < mesh3ds.points; i++)
+	for (i = 0; i < mesh3ds.faces; ++i)
 	{
-		Lib3dsVector pos;
-		WZMVertex vert;
+		Lib3dsFace* face = &mesh3ds.faceL[i];
 
-		lib3ds_vector_copy(pos, mesh3ds.pointL[i].pos);
+		for (j = 0; j < 3; ++j)
+		{
+			Lib3dsVector pos;
 
-		/* TODO: Check if mesh3ds->matrix is identity,
-		 *	if not we probably should transform the vertices.
-		 */
-		if (swapYZ)
-		{
-			vert.x() = pos[0];
-			vert.y() = pos[2];
-			vert.z() = pos[1];
-		}
-		else
-		{
-			vert.x() = pos[0];
-			vert.y() = pos[1];
-			vert.z() = pos[2];
-		}
-		m_vertexArray.push_back(vert);
-
-		if (i < mesh3ds.texels)
-		{
-			WZMUV uv;
-			uv.u() = mesh3ds.texelL[i][0];
-			if (invertV)
+			if (transform)
 			{
-				uv.v() = 1.0f - mesh3ds.texelL[i][1];
+				lib3ds_vector_transform(pos,
+										const_cast<float(*)[4]>(mesh3ds.matrix),
+										mesh3ds.pointL[face->points[j]].pos);
 			}
 			else
 			{
-				uv.v() = mesh3ds.texelL[i][1];
+				lib3ds_vector_copy(pos,
+								   mesh3ds.pointL[face->points[j]].pos);
 			}
-			texArr.push_back(uv);
+
+			if (swapYZ)
+			{
+				tmpVert.x() = pos[0];
+				tmpVert.y() = pos[2];
+				tmpVert.z() = pos[1];
+			}
+			else
+			{
+				tmpVert.x() = pos[0];
+				tmpVert.y() = pos[1];
+				tmpVert.z() = pos[2];
+			}
+
+			if (mesh3ds.points == mesh3ds.texels)
+			{
+				tmpUV.u() = mesh3ds.texelL[face->points[j]][0];
+				if (invertV)
+				{
+					tmpUV.v() = 1.0f - mesh3ds.texelL[face->points[j]][1];
+				}
+				else
+				{
+					tmpUV.v() = mesh3ds.texelL[face->points[j]][1];
+				}
+			}
+			else
+			{
+				tmpUV = WZMUV();
+			}
+
+			inResult = pairSet.insert(make_mypair(tmpVert,
+												  tmpUV,
+												  vertLess,
+												  uvLess));
+
+			if (!inResult.second)
+			{
+				idx[j] = mapping[std::distance(pairSet.begin(), inResult.first)];
+			}
+			else
+			{
+				itMap = mapping.begin();
+				std::advance(itMap, std::distance(pairSet.begin(), inResult.first));
+				mapping.insert(itMap, m_vertexArray.size());
+				idx[j] = m_vertexArray.size();
+				m_vertexArray.push_back(tmpVert);
+				m_textureArrays[0].push_back(tmpUV);
+			}
 		}
-		else
-		{
-			texArr.push_back(WZMUV());
-		}
-	}
-
-	m_textureArrays.push_back(texArr);
-
-	for (unsigned i = 0; i < mesh3ds.faces; ++i)
-	{
-		Lib3dsFace *face = &mesh3ds.faceL[i];
-
-		IndexedTri idx;
 
 		if (reverseWinding)
 		{
-			idx.a() = face->points[2];
-			idx.b() = face->points[1];
-			idx.c() = face->points[0];
+			std::swap(idx.b(), idx.c());
 		}
-		else
-		{
-			idx.a() = face->points[0];
-			idx.b() = face->points[1];
-			idx.c() = face->points[2];
-		}
+
 		m_indexArray.push_back(idx);
 	}
+
 	// TODO: Check if 3DS animation data can be used with our Frames
 }
 
@@ -264,7 +298,7 @@ Mesh::operator Pie3Level() const
 		for (i = 0; i < 3; ++i)
 		{
 			typedef Pie3Vertex::equal_wEps equals;
-			mybinder1st<equals> compare(equals(), m_vertexArray[(*itTri)[i]]);
+			mybinder1st<equals> compare(m_vertexArray[(*itTri)[i]]);
 
 			itPV = std::find_if(p3.m_points.begin(), p3.m_points.end(), compare);
 
@@ -487,8 +521,8 @@ void Mesh::write(std::ostream &out) const
 		out << m_name << '\n';
 	}
 
-	// noboolalpha is default
-	out << "TEAMCOLOURS " << teamColours() << '\n';
+	// noboolalpha should be default...
+	out << "TEAMCOLOURS " << std::noboolalpha << teamColours() << '\n';
 
 	out << "VERTICES " << vertices() << '\n';
 	out << "FACES " << faces() << '\n';
@@ -538,15 +572,17 @@ bool Mesh::importFromOBJ(const std::vector<OBJTri>&	faces,
 						 const std::vector<OBJVertex>& verts,
 						 const std::vector<OBJUV>&	uvArray)
 {
-	const WZMVertex::less_wEps vertLess(0);
-	const WZMUV::less_wEps uvLess(0);
-	std::set<mypair<WZMVertex, WZMUV,
-			WZMVertex::less_wEps, WZMUV::less_wEps> > pairSet;
+	const WZMVertex::less_wEps vertLess; // For make_mypair
+	const WZMUV::less_wEps uvLess;
+
+	typedef std::set<mypair<WZMVertex, WZMUV,
+		WZMVertex::less_wEps, WZMUV::less_wEps> > t_pairSet;
+
+	t_pairSet pairSet;
 
 	std::vector<OBJTri>::const_iterator itF;
 
-	std::pair<std::set<mypair<WZMVertex, WZMUV, WZMVertex::less_wEps,
-						WZMUV::less_wEps> >::iterator, bool> inResult;
+	std::pair<t_pairSet::iterator, bool> inResult;
 
 	std::vector<unsigned> mapping;
 	std::vector<unsigned>::iterator itMap;
@@ -564,6 +600,9 @@ bool Mesh::importFromOBJ(const std::vector<OBJTri>&	faces,
 	{
 		for (i = 0; i < 3; ++i)
 		{
+			/* in the uv's, -1 is "not specified," but the OBJ indices
+			 * are 0 based, hence < 1
+			 */
 			if (itF->uvs.operator [](i) < 1)
 			{
 				tmpUv.u() = 0;
@@ -862,6 +901,12 @@ bool Mesh::isValid() const
 		}
 	}
 	return true;
+}
+
+void Mesh::defaultConstructor()
+{
+	m_name = std::string();
+	m_teamColours = false;
 }
 
 void Mesh::clear()

@@ -16,40 +16,36 @@
 	You should have received a copy of the GNU General Public License
 	along with WMIT.  If not, see <http://www.gnu.org/licenses/>.
 */
-#ifndef TRANSFORMDOCK_HPP
-#define TRANSFORMDOCK_HPP
 
-#include <QDockWidget>
+#ifndef EXPORTDIALOG_HPP
+#define EXPORTDIALOG_HPP
+
+#include <QDialog>
 
 namespace Ui {
-    class TransformDock;
+    class ExportDialog;
 }
 
-class TransformDock : public QDockWidget
-{
+class ExportDialog : public QDialog {
     Q_OBJECT
 public:
-    TransformDock(QWidget *parent = 0);
-    ~TransformDock();
-signals:
-	void scaleXYZChanged(double);
-	void scaleXChanged(double);
-	void scaleYChanged(double);
-	void scaleZChanged(double);
-	void reverseWindings();
+    ExportDialog(QWidget *parent = 0);
+    ~ExportDialog();
 
+	int optimisationSelected() const;
 protected:
     void changeEvent(QEvent *e);
 
 private:
-    Ui::TransformDock *ui;
-	double scale_all, scale_xyz[3];
-
-private slots:
-	void on_comboBox_currentIndexChanged(int index);
-	void on_horizontalSlider_valueChanged(int value);
-	void on_doubleSpinBox_valueChanged(double );
-	void on_pb_revWindings_clicked();
+    Ui::ExportDialog *ui;
 };
 
-#endif // TRANSFORMDOCK_HPP
+class PieExportDialog : public ExportDialog
+{
+	Q_OBJECT
+public:
+	PieExportDialog(QWidget* parent = NULL);
+private:
+};
+
+#endif // EXPORTDIALOG_HPP

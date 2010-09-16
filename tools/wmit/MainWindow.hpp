@@ -21,11 +21,17 @@
 
 #include <QMainWindow>
 
-#include "WZM.hpp"
+#include <QString>
+#include <QList>
+#include <QSet>
+#include <QPair>
+
+#include "QWZM.hpp"
 
 class TransformDock;
 class ConfigDialog;
 class ImportDialog;
+class ExportDialog;
 class UVEditor;
 
 namespace Ui {
@@ -36,25 +42,42 @@ class MainWindow : public QMainWindow {
     Q_OBJECT
 public:
     MainWindow(QWidget *parent = 0);
+	~MainWindow();
 
 protected:
     void changeEvent(QEvent *e);
 
+signals:
+	void textureSearchDirsChanged(QStringList);
+
 private slots:
+	void on_actionSave_As_triggered();
+	void on_actionSave_triggered();
 	void s_fileOpen();
+	void s_updateTexSearchDirs(const QList<QPair<bool,QString> >&);
 	void on_actionUVEditor_toggled(bool );
 	void on_actionOpen_triggered();
 	void on_actionConfig_triggered();
 	void on_actionTransformWidget_toggled(bool );
 
+	// transformations
+	void _on_scaleXYZChanged(double);
+	void _on_scaleXChanged(double);
+	void _on_scaleYChanged(double);
+	void _on_scaleZChanged(double);
+	void _on_reverseWindings();
+
 private:
 	Ui::MainWindow* ui;
 	ConfigDialog* configDialog;
 	ImportDialog* importDialog;
+	ExportDialog* exportDialog;
 	TransformDock* transformDock;
 	UVEditor* m_UVEditor;
 
-	WZM model;
+	QSet<QString> textureSearchDirs;
+
+	QWZM model;
 };
 
 #endif // MAINWINDOW_HPP

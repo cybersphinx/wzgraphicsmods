@@ -20,28 +20,42 @@
 #define IMPORTDIALOG_HPP
 
 #include <QDialog>
+#include <QStringList>
 
 namespace Ui {
 	class ImportDialog;
 }
 
-class QFileDialog;
+class QListWidgetItem;
 
 class ImportDialog : public QDialog {
     Q_OBJECT
 public:
     ImportDialog(QWidget *parent = 0);
+	~ImportDialog();
+
 	QString modelFilePath() const;
 	QString textureFilePath() const;
+
+public slots:
+	void scanForTextures(const QStringList&);
 
 protected:
     void changeEvent(QEvent *e);
 
 private:
-	Ui::ImportDialog *ui;
-	QFileDialog* fileDialog;
+	Ui::ImportDialog* ui;
+	QStringList m_textures;
+	QListWidgetItem* lw_autoFoundTextures_previous;
+
+	void setModelFileName(QString fileName);
+	void lw_autoFoundTextures_clearSelection();
 
 private slots:
+	void on_radioButton_toggled(bool checked);
+	void on_pb_autoTex_clicked();
+	void on_lw_autoFoundTextures_itemClicked(QListWidgetItem* item);
+	void on_lw_autoFoundTextures_itemSelectionChanged();
 	void on_tb_seekTextureFName_clicked();
 	void on_tb_seekFileName_clicked();
 };

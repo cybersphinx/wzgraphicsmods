@@ -18,7 +18,7 @@
 */
 
 #include "WZM.hpp"
-#include <QString>
+
 #include <algorithm>
 #include <iterator>
 #include <map>
@@ -34,18 +34,17 @@
 #include <lib3ds/material.h>
 
 #include "Generic.hpp"
+#include "Util.hpp"
 #include "Pie.hpp"
 #include "Vector.hpp"
 
 #include "OBJ.hpp"
 
-#include "IGLTextureManager.hpp"
-
-WZM::WZM() : m_texture(0)
+WZM::WZM()
 {
 }
 
-WZM::WZM(const Pie3Model &p3) : m_texture(0)
+WZM::WZM(const Pie3Model &p3)
 {
 	std::vector<Pie3Level>::const_iterator it;
 	m_texName = p3.m_texture;
@@ -131,7 +130,14 @@ void WZM::write(std::ostream& out) const
 {
 	std::vector<Mesh>::const_iterator it;
 	out << "WZM\t" << version() << '\n';
-	out << "TEXTURE " << m_texName << '\n';
+	if (!m_texName.empty())
+	{
+		out << "TEXTURE " << m_texName << '\n';
+	}
+	else
+	{
+		out << "TEXTURE emptytex.png\n";
+	}
 	out << "MESHES " << meshes() << '\n';
 	for (it = m_meshes.begin(); it != m_meshes.end(); ++it)
 	{
@@ -158,7 +164,7 @@ bool WZM::importFromOBJ(std::istream& in)
 	std::stringstream ss;
 
 	// Only give warnings once
-	bool warnLine=false, warnPoint=false;
+	bool warnLine = false, warnPoint = false;
 
 	// More temporaries
 	OBJTri tri;
@@ -178,7 +184,7 @@ bool WZM::importFromOBJ(std::istream& in)
 	/* Note: This program tolerates imperfect .obj files
 	 * because it accepts any whitespace as a space.
 	 */
-
+	
 	while (!(in.eof()|| in.fail()))
 	{
 		std::getline(in, str);
@@ -499,58 +505,4 @@ void WZM::clear()
 {
 	m_meshes.clear();
 	m_texName = std::string();
-}
-
-void WZM::render()
-{
-	std::vector<Mesh>::iterator it;
-
-	// Basic rendering
-	glEnable(GL_TEXTURE_2D);
-	glPushClientAttrib(GL_CLIENT_VERTEX_ARRAY_BIT);
-	glClientActiveTexture(GL_TEXTURE0);
-	glEnableClientState(GL_TEXTURE_COORD_ARRAY);
-	glEnableClientState(GL_VERTEX_ARRAY);
-	glBindTexture(GL_TEXTURE_2D, m_texture);
-
-	glScalef(1/128.f, 1/128.f, 1/128.f); // Scale from warzone to fit in our scene. possibly a FIXME
-
-	for (it = m_meshes.begin(); it != m_meshes.end(); ++it)
-	{
-
-		glTexCoordPointer(2, GL_FLOAT, 0, &it->m_textureArrays[0][0]);
-		glVertexPointer(3, GL_FLOAT, 0, &it->m_vertexArray[0]);
-		glDrawElements(GL_TRIANGLES, it->m_indexArray.size() * 3, GL_UNSIGNED_SHORT, &it->m_indexArray[0]);
-	}
-
-	glPopClientAttrib();
-}
-
-void WZM::animate()
-{
-
-}
-
-void WZM::setRenderTexture(std::string fileName)
-{
-	if (m_texture != 0)
-	{
-		deleteTexture(m_texture);
-	}
-	m_texture = createTexture(fileName).id();
-}
-
-void WZM::setTextureManager(IGLTextureManager * manager)
-{
-	std::string fileName;
-	if (m_texture != 0)
-	{
-		fileName = idToFilePath(m_texture);
-		deleteTexture(m_texture);
-	}
-	TextureAccess::setTextureManager(manager);
-	if (m_texture != 0)
-	{
-		m_texture = createTexture(fileName).id();
-	}
 }
