@@ -75,11 +75,12 @@ private:
 	QList<IGLRenderable*> renderList;
 
 	/// GLTextureManager components
-	void updateTextures() const;
-
 	mutable QHash<QString, ManagedGLTexture> m_textures;
 	typedef QHash<QString, ManagedGLTexture>::iterator t_texIt;
 	typedef QHash<QString, ManagedGLTexture>::const_iterator t_cTexIt;
+
+	void updateTextures() const;
+	void _deleteTexture(t_texIt& texIt);
 
 	QFileSystemWatcher textureUpdater;
 	QBasicTimer updateTimer;

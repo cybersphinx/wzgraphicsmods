@@ -203,9 +203,7 @@ GLTexture QtGLView::createTexture(const QString& fileName)
 			{
 				if (m_textures.size() > 2 && texIt->users == 0)
 				{
-					textureUpdater.removePath(texIt.key());
-					QGLWidget::deleteTexture(texIt.value().id());
-					m_textures.remove(texIt.key());
+					_deleteTexture(texIt);
 				}
 			}
 
@@ -248,9 +246,7 @@ void QtGLView::deleteTexture(GLuint id)
 			texIt->users = std::min(texIt->users - 1, 0);
 			if ( m_textures.size() > 2 && texIt->users == 0)
 			{
-				textureUpdater.removePath(texIt.key());
-				QGLWidget::deleteTexture(id);
-				texIt = m_textures.erase(texIt);
+				_deleteTexture(texIt);
 			}
 			break;
 		}
@@ -265,9 +261,7 @@ void QtGLView::deleteTexture(const QString& fileName)
 		texIt->users = std::min(texIt->users - 1, 0);
 		if (m_textures.size() > 2 && texIt->users == 0)
 		{
-			textureUpdater.removePath(texIt.key());
-			QGLWidget::deleteTexture(texIt.value().id());
-			texIt = m_textures.erase(texIt);
+			_deleteTexture(texIt);
 		}
 	}
 }
@@ -277,9 +271,7 @@ void QtGLView::deleteAllTextures()
 	t_texIt texIt;
 	for (texIt = m_textures.begin(); texIt != m_textures.end(); ++texIt)
 	{
-		textureUpdater.removePath(texIt.key());
-		QGLWidget::deleteTexture(texIt.value().id());
-		texIt = m_textures.erase(texIt);
+		_deleteTexture(texIt);
 	}
 	m_textures.clear();
 }
@@ -326,3 +318,9 @@ void QtGLView::updateTextures() const
 	}
 }
 
+void QtGLView::_deleteTexture(t_texIt& texIt)
+{
+	textureUpdater.removePath(texIt.key());
+	QGLWidget::deleteTexture(texIt.value().id());
+	texIt = m_textures.erase(texIt);
+}
