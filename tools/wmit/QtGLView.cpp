@@ -113,29 +113,27 @@ void QtGLView::postDraw()
 	glEnable(GL_LINE_SMOOTH);
 	glLineWidth(2);
 
-#define swap(a,b) a,b // Swap the qglviewer code so that it fits the WZ axis
 	glBegin(GL_LINES);
-	// The X
-	glVertex3f(-charShift,  charWidth, -charHeight);
-	glVertex3f(-charShift, -charWidth,  charHeight);
-	glVertex3f(-charShift, -charWidth, -charHeight);
-	glVertex3f(-charShift,  charWidth,  charHeight);
-	// The Y
-	glVertex3f( charWidth, swap(charShift, charHeight));
-	glVertex3f(0.0,        swap(charShift, 0.0));
-	glVertex3f(-charWidth, swap(charShift, charHeight));
-	glVertex3f(0.0,        swap(charShift, 0.0));
-	glVertex3f(0.0,        swap(charShift, 0.0));
-	glVertex3f(0.0,        swap(charShift, -charHeight));
-	// The Z
-	glVertex3f(-charWidth,  swap(charHeight, charShift));
-	glVertex3f( charWidth,  swap(charHeight, charShift));
-	glVertex3f( charWidth,  swap(charHeight, charShift));
-	glVertex3f(-charWidth, swap(-charHeight, charShift));
-	glVertex3f(-charWidth, swap(-charHeight, charShift));
-	glVertex3f( charWidth, swap(-charHeight, charShift));
+		// The X
+		glVertex3f(-charShift,  charWidth, -charHeight);
+		glVertex3f(-charShift, -charWidth,  charHeight);
+		glVertex3f(-charShift, -charWidth, -charHeight);
+		glVertex3f(-charShift,  charWidth,  charHeight);
+		// The Y
+		glVertex3f( charWidth, charShift, charHeight);
+		glVertex3f(0.f,        charShift, 0.f);
+		glVertex3f(-charWidth, charShift, charHeight);
+		glVertex3f(0.f,        charShift, 0.f);
+		glVertex3f(0.f,        charShift, 0.f);
+		glVertex3f(0.f,        charShift, -charHeight);
+		// The Z
+		glVertex3f(-charWidth,  charHeight, charShift);
+		glVertex3f( charWidth,  charHeight, charShift);
+		glVertex3f( charWidth,  charHeight, charShift);
+		glVertex3f(-charWidth, -charHeight, charShift);
+		glVertex3f(-charWidth, -charHeight, charShift);
+		glVertex3f( charWidth, -charHeight, charShift);
 	glEnd();
-#undef swap
 
 	glEnable(GL_LIGHTING);
 
