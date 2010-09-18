@@ -51,6 +51,16 @@ QString ImportDialog::textureFilePath() const
 	return ui->le_textureFName->text();
 }
 
+bool ImportDialog::tcmaskChecked() const
+{
+	return ui->gb_tcmask->isEnabled();
+}
+
+QString ImportDialog::tcmaskFilePath() const
+{
+	return ui->le_tcmFName->text();
+}
+
 void ImportDialog::scanForTextures(const QStringList& dirs)
 {
 	ui->lw_autoFoundTextures->clear();
@@ -62,9 +72,12 @@ void ImportDialog::scanForTextures(const QStringList& dirs)
 		foreach (QString texture, textures)
 		{
 			m_textures.append(dir.absoluteFilePath(texture));
+			if (!texture.endsWith("tcmask.png", Qt::CaseInsensitive))
+			{
+				ui->lw_autoFoundTextures->addItem(dir.absoluteFilePath(texture));
+			}
 		}
 	}
-	ui->lw_autoFoundTextures->addItems(m_textures);
 }
 
 void ImportDialog::changeEvent(QEvent *e)
@@ -109,7 +122,7 @@ void ImportDialog::on_tb_seekFileName_clicked()
 void ImportDialog::on_tb_seekTextureFName_clicked()
 {
 	QFileDialog* fileDialog = new QFileDialog(this,
-											  tr("Select File to open"),
+											  tr("Select texture to use"),
 											  QDir::currentPath(),
 											  tr("WZ Compatible (*.png);;"
 												 "WMIT Compatible (*.bmp *.jpg *.jpeg *.png)"));
@@ -160,10 +173,43 @@ void ImportDialog::on_pb_autoTex_clicked()
 	}
 }
 
-void ImportDialog::on_radioButton_toggled(bool checked)
+
+void ImportDialog::on_tb_seekTcmFName_clicked()
 {
-	foreach(QListWidgetItem* item, ui->lw_autoFoundTextures->findItems("tcmask.png", Qt::MatchEndsWith))
+	QFileDialog* fileDialog = new QFileDialog(this,
+											  tr("Select tcmask to use"),
+											  QDir::currentPath(),
+											  tr("WZ Compatible (*.png);;"));
+	fileDialog->setFileMode(QFileDialog::ExistingFile);
+	fileDialog->exec();
+	if (fileDialog->result() == QDialog::Accepted)
 	{
-		item->setHidden(checked);
+		ui->le_tcmFName->setText(fileDialog->selectedFiles().first());
+	}
+	delete fileDialog;
+}
+
+void ImportDialog::on_pb_autoTCM_clicked()
+{
+	QRegExp pageNoRegX("page\\-(\\d+)");
+	QFileInfo nfo;
+
+	if (pageNoRegX.indexIn(ui->le_textureFName->text()) != -1)
+	{
+		nfo.setFile(ui->le_textureFName->text());
+		nfo.setFile(QDir(nfo.absolutePath()), pageNoRegX.cap(0).append("_tcmask.png"));
+		if (nfo.exists())
+		{
+			ui->le_tcmFName->setText(nfo.absoluteFilePath());
+			return;
+		}
+		foreach (QString texture, m_textures)
+		{
+			if (texture.contains(pageNoRegX.cap(0)) && texture.endsWith("_tcmask.png", Qt::CaseInsensitive))
+			{
+				ui->le_tcmFName->setText(nfo.absoluteFilePath());
+				return;
+			}
+		}
 	}
 }

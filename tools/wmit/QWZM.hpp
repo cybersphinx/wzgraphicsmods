@@ -25,23 +25,29 @@
 #include <GL/gl.h>
 
 #include "IGLRenderable.hpp"
-#include "TextureAccess.hpp"
+#include "TexturedRenderable.hpp"
+#include "TCMaskRenderable.hpp"
 #include "IAnimatable.hpp"
 
 class IGLTextureManager;
 
-class QWZM : public WZM, public IGLRenderable, public IAnimatable, protected TextureAccess
+class QWZM : public WZM, public ATCMaskRenderable, public IAnimatable
 {
 public:
     QWZM();
 	QWZM(const WZM& wzm);
 	QWZM(const Pie3Model& p3);
 
+	~QWZM();
+
 	void render();
 	void animate();
 
-	void setRenderTexture(std::string fileName);
+	void setRenderTexture(QString fileName);
 	void setTextureManager(IGLTextureManager * manager);
+
+	void setTCMaskTexture(QString fileName);
+	bool hasTCMaskTexture() const;
 
 	void setScaleXYZ(GLfloat xyz);
 	void setScaleX(GLfloat x);
@@ -52,12 +58,10 @@ public:
 private:
 	void defaultConstructor();
 
-	GLuint m_texture;
+	GLuint m_texture, m_tcm;
 
 	GLfloat scale_all, scale_xyz[3];
 	GLint winding;
-
-	bool forsythInitialized;
 };
 
 #endif // QWZM_HPP

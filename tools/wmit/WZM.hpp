@@ -58,6 +58,8 @@ public:
 	void setTextureName(std::string name);
 	std::string getTextureName() const;
 
+	bool couldHaveTCArrays() const;
+
 	/// might throw out_of_range exception? not decided yet
 	Mesh& getMesh(int index);
 	void addMesh (const Mesh& mesh);

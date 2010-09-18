@@ -28,24 +28,25 @@
 
 struct IndexedTri : public Vector<GLushort,3>
 {
-	GLushort& a() {
+	typedef GLushort indexType;
+	indexType& a() {
 		return component[0];
 	}
-	GLushort a() const {
+	indexType a() const {
 		return component[0];
 	}
 
-	GLushort& b() {
+	indexType& b() {
 		return component[1];
 	}
-	GLushort b() const {
+	indexType b() const {
 		return component[1];
 	}
 
-	GLushort& c() {
+	indexType& c() {
 		return component[2];
 	}
-	GLushort c() const {
+	indexType c() const {
 		return component[2];
 	}
 };

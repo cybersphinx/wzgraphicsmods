@@ -48,7 +48,6 @@ MainWindow::MainWindow(QWidget *parent) :
 	QSettings settings("WMIT", "WMIT");
 
 	// A work around to add actions in the order we want
-	// TODO: Need to check what this does on MAC
 	ui->menuBar->clear();
 	ui->menuBar->addMenu(ui->menuFile);
 	ui->menuBar->addAction(ui->actionConfig);
@@ -67,6 +66,7 @@ MainWindow::MainWindow(QWidget *parent) :
 	m_UVEditor->hide();
 	this->addDockWidget(Qt::RightDockWidgetArea, m_UVEditor, Qt::Horizontal);
 
+//	connect(ui->centralWidget, SIGNAL(viewerInitialized()), this, SLOT(_on_viewerInitialized()));
 	connect(importDialog, SIGNAL(accepted()), this, SLOT(s_fileOpen()));
 	connect(this, SIGNAL(textureSearchDirsChanged(QStringList)), importDialog, SLOT(scanForTextures(QStringList)));
 	connect(configDialog, SIGNAL(updateTextureSearchDirs(QList<QPair<bool,QString> >)), this, SLOT(s_updateTexSearchDirs(const QList<QPair<bool,QString> >&)));
@@ -139,13 +139,37 @@ void MainWindow::s_fileOpen()
 		f.open(modelFileNfo.absoluteFilePath().toLocal8Bit(), std::ios::in);
 		model.importFromOBJ(f);
 	}
+
 	ui->centralWidget->clearRenderList();
 	ui->centralWidget->addToRenderList(&model);
 
-	// HACK FIXME: Temporary nastiness
-	model.setTextureManager(static_cast<IGLTextureManager*>(ui->centralWidget));
+	model.setRenderTexture(importDialog->textureFilePath());
 
-	model.setRenderTexture(importDialog->textureFilePath().toStdString());
+	if (importDialog->tcmaskChecked() && !importDialog->tcmaskFilePath().isEmpty())
+	{
+		model.setTCMaskTexture(importDialog->tcmaskFilePath());
+		if (ui->centralWidget->tcmaskSupport() & FixedPipeline)
+		{
+			ui->actionFixed_Pipeline->setEnabled(true);
+		}
+		if (ui->centralWidget->tcmaskSupport() & Shaders)
+		{
+			ui->actionShaders->setEnabled(true);
+		}
+
+		if (ui->actionShaders->isEnabled())
+		{
+			ui->actionShaders->setChecked(true);
+		}
+		else if (ui->actionFixed_Pipeline->isEnabled())
+		{
+			ui->actionFixed_Pipeline->setChecked(true);
+		}
+	}
+	else if (model.couldHaveTCArrays())
+	{
+		ui->actionTexture_Frames->setEnabled(true);
+	}
 }
 
 void MainWindow::s_updateTexSearchDirs(const QList<QPair<bool,QString> >& changes)
@@ -297,6 +321,12 @@ void MainWindow::on_actionSave_As_triggered()
 		model.exportToOBJ(out);
 	}
 }
+
+void MainWindow::_on_viewerInitialized()
+{
+
+}
+
 void MainWindow::_on_scaleXYZChanged(double val)
 {
 	model.setScaleXYZ(val);
@@ -325,4 +355,26 @@ void MainWindow::_on_reverseWindings()
 {
 	model.reverseWindings();
 	ui->centralWidget->updateGL();
+}
+
+void MainWindow::on_actionFixed_Pipeline_toggled(bool checked)
+{
+	if (checked)
+	{
+		ui->actionShaders->setChecked(false);
+		ui->centralWidget->setTCMaskMode(FixedPipeline);
+	}
+}
+
+void MainWindow::on_actionShaders_toggled(bool checked)
+{
+	if (checked)
+	{
+		ui->actionFixed_Pipeline->setChecked(false);
+		ui->centralWidget->setTCMaskMode(Shaders);
+	}
+	else
+	{
+		ui->centralWidget->setTCMaskMode(None);
+	}
 }

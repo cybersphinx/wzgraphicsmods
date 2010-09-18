@@ -51,7 +51,9 @@ signals:
 	void textureSearchDirsChanged(QStringList);
 
 private slots:
-	void on_actionSave_As_triggered();
+	void on_actionShaders_toggled(bool );
+ void on_actionFixed_Pipeline_toggled(bool );
+ void on_actionSave_As_triggered();
 	void on_actionSave_triggered();
 	void s_fileOpen();
 	void s_updateTexSearchDirs(const QList<QPair<bool,QString> >&);
@@ -59,6 +61,8 @@ private slots:
 	void on_actionOpen_triggered();
 	void on_actionConfig_triggered();
 	void on_actionTransformWidget_toggled(bool );
+
+	void _on_viewerInitialized();
 
 	// transformations
 	void _on_scaleXYZChanged(double);

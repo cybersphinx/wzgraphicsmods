@@ -95,9 +95,6 @@ public:
 
 	int textureArrays() const;
 	const TexArray& getTexArray (int index) const;
-//	void addTexArray (const TexArray& tex, int index);
-//	void rmTexArray(int index);
-//	void replaceTexArray(const TexArray& tex, int index);
 
 	unsigned vertices() const;
 	unsigned faces() const;

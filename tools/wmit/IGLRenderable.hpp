@@ -23,7 +23,6 @@
 class IGLRenderable
 {
 public:
-	IGLRenderable(){}
 	virtual ~IGLRenderable(){}
 	virtual void render() = 0;
 };

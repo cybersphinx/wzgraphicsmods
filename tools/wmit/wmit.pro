@@ -14,7 +14,7 @@ HEADERS += MainWindow.hpp \
     Generic.hpp \
     IAnimatable.hpp \
     QtGLView.hpp \
-    TextureAccess.hpp \
+    TexturedRenderable.hpp \
     IGLRenderable.hpp \
     IGLTextureManager.hpp \
     GLTexture.hpp \
@@ -22,7 +22,9 @@ HEADERS += MainWindow.hpp \
     OBJ.hpp \
     Util.hpp \
     QWZM.hpp \
-    ExportDialog.hpp
+    ExportDialog.hpp \
+    ITCMaskProvider.hpp \
+    TCMaskRenderable.hpp
 SOURCES += main.cpp \
     MainWindow.cpp \
     ImportDialog.cpp \

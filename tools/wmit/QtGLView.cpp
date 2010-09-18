@@ -21,12 +21,22 @@
 #include <QImage>
 #include <QApplication>
 
+#include <QGLShaderProgram>
+#include <QtDebug>
+
+#include <GL/gl.h>
+
 #include <QGLViewer/vec.h>
 
 #include "QtGLView.hpp"
+#include "TexturedRenderable.hpp"
+#include "TCMaskRenderable.hpp"
+#include "IGLRenderable.hpp"
 
 QtGLView::QtGLView(QWidget *parent) :
-		QGLViewer(parent)
+		QGLViewer(parent),
+		m_tcmaskShader(NULL),
+		m_currentMode(None)
 {
 	connect(&textureUpdater, SIGNAL(fileChanged(QString)), this, SLOT(textureChanged(QString)));
 
@@ -41,6 +51,11 @@ QtGLView::~QtGLView()
 	{
 		const GLuint id = texture.id();
 		QGLWidget::deleteTexture(id);
+	}
+
+	if (m_tcmaskShader != NULL)
+	{
+		delete m_tcmaskShader;
 	}
 }
 
@@ -63,6 +78,80 @@ void QtGLView::init()
 
 	camera()->setPosition(qglviewer::Vec(0.5 * 2, 2.12 * 2, -2.12 * 2));
 	camera()->setViewDirection(qglviewer::Vec(-0.5, -2.12, 2.12));
+
+	// Determine which opengl version is present.
+	QGLFormat::OpenGLVersionFlags oglFFlags = context()->format().openGLVersionFlags();
+
+	/*
+	 * Fixed function OGL requirements
+	 * GL_ARB_texture_env_crossbar (core in 1.4)
+	 *	-> GL_ARB_texture_env_combine ( core in 1.3)
+	 * 		-> GL_ARB_multitexture ( core in 1.3)
+	 * GL_ARB_multitexture ( core in 1.3)
+	 * Just going to check for 1.4
+	 * Also, shader requirements are > 1.4,
+	 */
+	if (!oglFFlags&QGLFormat::OpenGL_Version_1_4)
+	{
+		// Cannot use fixed function tcmask nor Shaders
+		m_tcmSupport = 0;
+	}
+	else
+	{
+		// Can use tcmask
+		m_tcmSupport = FixedPipeline;
+
+		// What about shaders?
+		/*
+		 * Shader requirements
+		 * Using Qt's shader functions, so using
+		 * QGLShaderProgram::hasOpenGLShaderPrograms
+		 * and whether linking fails
+		 */
+		if (QGLShaderProgram::hasOpenGLShaderPrograms(context()))
+		{
+			if (m_tcmaskShader != NULL)
+			{
+				m_tcmaskShader->removeAllShaders();
+			}
+			else
+			{
+				m_tcmaskShader = new QGLShaderProgram(this);
+			}
+
+			if (!m_tcmaskShader->addShaderFromSourceFile(QGLShader::Vertex,"./tcmask.vert"))
+			{
+				qWarning() << QString("QtGLView::init - Error loading vertex shader:\n%1").arg(m_tcmaskShader->log());
+				delete m_tcmaskShader;
+				m_tcmaskShader = NULL;
+			}
+			else if (!m_tcmaskShader->addShaderFromSourceFile(QGLShader::Fragment,"./tcmask.frag"))
+			{
+				qWarning() << QString("QtGLView::init - Error loading fragment shader:\n%1").arg(m_tcmaskShader->log());
+				delete m_tcmaskShader;
+				m_tcmaskShader = NULL;
+			}
+			else if (!m_tcmaskShader->link())
+			{
+				qWarning() << QString("QtGLView::init - Error linking shaders:\n%1").arg(m_tcmaskShader->log());
+				delete m_tcmaskShader;
+				m_tcmaskShader = NULL;
+			}
+			else
+			{
+				m_tcmaskShader->bind();
+				m_baseTexLoc = m_tcmaskShader->uniformLocation("Texture0");
+				m_tcTexLoc = m_tcmaskShader->uniformLocation("Texture1");
+				m_colorLoc = m_tcmaskShader->uniformLocation("teamcolour");
+				m_tcmaskShader->setUniformValue(m_tcTexLoc, GLint(1));
+				m_tcmaskShader->setUniformValue(m_baseTexLoc, GLint(0));
+				m_tcmaskShader->release();
+				m_tcmSupport |= Shaders;
+			}
+		}
+	}
+
+	emit viewerInitialized();
 }
 
 void QtGLView::draw()
@@ -163,6 +252,19 @@ void QtGLView::postDraw()
 
 void QtGLView::addToRenderList(IGLRenderable* object)
 {
+	renderList.append(object);
+}
+
+void QtGLView::addToRenderList(ITexturedRenderable* object)
+{
+	object->setTextureManager(this);
+	renderList.append(object);
+}
+
+void QtGLView::addToRenderList(ITCMaskRenderable* object)
+{
+	object->setTextureManager(this);
+	object->setTCMaskProvider(this);
 	renderList.append(object);
 }
 
@@ -274,6 +376,80 @@ void QtGLView::deleteAllTextures()
 	m_textures.clear();
 }
 
+unsigned QtGLView::tcmaskSupport() const
+{
+	return m_tcmSupport;
+}
+
+TCMaskMethod QtGLView::currentTCMaskMode() const
+{
+	return m_currentMode;
+}
+
+void QtGLView::setTCMaskMode(TCMaskMethod method)
+{
+	m_currentMode = static_cast<TCMaskMethod>(m_tcmSupport & method);
+}
+
+void QtGLView::setTCMaskEnvironment(const GLfloat tcmaskColour[4])
+{
+	if (m_currentMode == Shaders)
+	{
+		m_tcmaskShader->bind();
+
+		m_tcmaskShader->setUniformValue(m_colorLoc, tcmaskColour[0],
+								tcmaskColour[1],
+								tcmaskColour[2],
+								tcmaskColour[3]);
+	}
+	else if (m_currentMode == FixedPipeline)
+	{
+		glActiveTexture(GL_TEXTURE0);
+		glTexEnvi(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE,	GL_COMBINE);
+		glTexEnvfv(GL_TEXTURE_ENV, GL_TEXTURE_ENV_COLOR, tcmaskColour);
+
+		// TU0 RGB
+		glTexEnvi(GL_TEXTURE_ENV, GL_COMBINE_RGB,		GL_ADD_SIGNED);
+		glTexEnvi(GL_TEXTURE_ENV, GL_SOURCE0_RGB,		GL_TEXTURE);
+		glTexEnvi(GL_TEXTURE_ENV, GL_OPERAND0_RGB,		GL_SRC_COLOR);
+		glTexEnvi(GL_TEXTURE_ENV, GL_SOURCE1_RGB,		GL_CONSTANT);
+		glTexEnvi(GL_TEXTURE_ENV, GL_OPERAND1_RGB,		GL_SRC_COLOR);
+
+		// TU0 Alpha
+		glTexEnvi(GL_TEXTURE_ENV, GL_COMBINE_ALPHA,		GL_REPLACE);
+		glTexEnvi(GL_TEXTURE_ENV, GL_SOURCE0_ALPHA,		GL_TEXTURE);
+		glTexEnvi(GL_TEXTURE_ENV, GL_OPERAND0_ALPHA,	GL_SRC_ALPHA);
+
+		// TU1
+		glActiveTexture(GL_TEXTURE1);
+		glEnable(GL_TEXTURE_2D);
+		glTexEnvi(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE,	GL_COMBINE);
+
+		// TU1 RGB
+		glTexEnvi(GL_TEXTURE_ENV, GL_COMBINE_RGB,		GL_INTERPOLATE);
+		glTexEnvi(GL_TEXTURE_ENV, GL_SOURCE0_RGB,		GL_PREVIOUS);
+		glTexEnvi(GL_TEXTURE_ENV, GL_OPERAND0_RGB,		GL_SRC_COLOR);
+		glTexEnvi(GL_TEXTURE_ENV, GL_SOURCE1_RGB,		GL_TEXTURE0);
+		glTexEnvi(GL_TEXTURE_ENV, GL_OPERAND1_RGB,		GL_SRC_COLOR);
+		glTexEnvi(GL_TEXTURE_ENV, GL_SOURCE2_RGB,		GL_TEXTURE);
+		glTexEnvi(GL_TEXTURE_ENV, GL_OPERAND2_RGB,		GL_SRC_ALPHA);
+
+		// TU1 Alpha
+		glTexEnvi(GL_TEXTURE_ENV, GL_COMBINE_ALPHA,		GL_REPLACE);
+		glTexEnvi(GL_TEXTURE_ENV, GL_SOURCE0_ALPHA,		GL_PREVIOUS);
+		glTexEnvi(GL_TEXTURE_ENV, GL_OPERAND0_ALPHA,	GL_SRC_ALPHA);
+
+	}
+}
+
+void QtGLView::resetTCMaskEnvironment()
+{
+	if (m_currentMode == Shaders)
+	{
+		m_tcmaskShader->release();
+	}
+}
+
 void QtGLView::textureChanged(const QString& fileName)
 {
 	t_texIt texIt = m_textures.find(fileName);
@@ -297,7 +473,7 @@ void QtGLView::timerEvent(QTimerEvent *event)
 	}
 }
 
-void QtGLView::updateTextures() const
+void QtGLView::updateTextures()
 {
 	t_texIt texIt;
 	for (texIt = m_textures.begin(); texIt != m_textures.end(); ++texIt)
@@ -308,12 +484,13 @@ void QtGLView::updateTextures() const
 			texIt.value().update = false;
 			if (!image.isNull())
 			{
-				image = convertToGLFormat(image);
+				image = convertToGLFormat(image.mirrored(false, true));
 				glBindTexture(GL_TEXTURE_2D, texIt.value().id());
 				glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, image.width(), image.height(), 0, GL_RGBA, GL_UNSIGNED_BYTE, image.bits());
 			}
 		}
 	}
+	updateGL();
 }
 
 void QtGLView::_deleteTexture(t_texIt& texIt)

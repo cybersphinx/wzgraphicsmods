@@ -17,22 +17,28 @@
 	along with WMIT.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-#ifndef IGLTEXTUREMANAGER_HPP
-#define IGLTEXTUREMANAGER_HPP
+#ifndef ITCMASKPROVIDER_HPP
+#define ITCMASKPROVIDER_HPP
 
-#include <QString>
+#include <GL/gl.h>
 
-#include "GLTexture.hpp"
+enum TCMaskMethod
+{
+	None = 0,
+	FixedPipeline = 1,
+	Shaders = 2
+};
 
-class QString;
-class IGLTextureManager
+class ITCMaskProvider
 {
 public:
-	virtual ~IGLTextureManager(){}
-	virtual GLTexture createTexture(const QString& fileName) = 0;
-	virtual void deleteTexture(GLuint id) = 0;
-	virtual void deleteTexture(const QString& fileName) = 0;
-	virtual void deleteAllTextures() = 0;
-	virtual QString idToFilePath(GLuint id) = 0;
+	virtual ~ITCMaskProvider(){}
+
+	/// Return a bitfield containing supported tcmask methods
+	virtual unsigned tcmaskSupport() const = 0;
+	virtual TCMaskMethod currentTCMaskMode() const = 0;
+	virtual void setTCMaskEnvironment(const GLfloat tcmaskColour[4]) = 0;
+	virtual void resetTCMaskEnvironment() = 0;
 };
-#endif // IGLTEXTUREMANAGER_HPP
+
+#endif // ITCMASKPROVIDER_HPP

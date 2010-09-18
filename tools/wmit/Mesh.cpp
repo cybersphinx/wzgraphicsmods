@@ -197,7 +197,7 @@ Mesh::Mesh(const Lib3dsMesh& mesh3ds)
 			if (transform)
 			{
 				lib3ds_vector_transform(pos,
-										const_cast<float(*)[4]>(mesh3ds.matrix),
+										const_cast<Lib3dsMatrix&>(mesh3ds.matrix),
 										mesh3ds.pointL[face->points[j]].pos);
 			}
 			else
@@ -829,16 +829,18 @@ const TexArray& Mesh::getTexArray (int index) const
 	return m_textureArrays.at(index);
 }
 
-/*void Mesh::addTexArray (const TexArray& tex, int index)
+#if 0
+void Mesh::addTexArray (const TexArray& tex, int index)
 {
 	if(tex.size()!=indices())
 	{
 		return;
 	}
 	m_textureArrays.insert(m_textureArrays.begin() + index,tex);
-}*/
-
-/*void Mesh::rmTexArray(int index)
+}
+#endif
+#if 0
+void Mesh::rmTexArray(int index)
 {
 	std::vector<TexArray>::iterator pos;
 	pos=m_textureArrays.begin()+index;
@@ -847,7 +849,8 @@ const TexArray& Mesh::getTexArray (int index) const
 		return;
 	}
 	m_textureArrays.erase(pos);
-}*/
+}
+#endif
 
 unsigned Mesh::vertices() const
 {

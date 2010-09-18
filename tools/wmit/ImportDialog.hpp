@@ -36,6 +36,8 @@ public:
 
 	QString modelFilePath() const;
 	QString textureFilePath() const;
+	bool tcmaskChecked() const;
+	QString tcmaskFilePath() const;
 
 public slots:
 	void scanForTextures(const QStringList&);
@@ -52,7 +54,8 @@ private:
 	void lw_autoFoundTextures_clearSelection();
 
 private slots:
-	void on_radioButton_toggled(bool checked);
+	void on_pb_autoTCM_clicked();
+ void on_tb_seekTcmFName_clicked();
 	void on_pb_autoTex_clicked();
 	void on_lw_autoFoundTextures_itemClicked(QListWidgetItem* item);
 	void on_lw_autoFoundTextures_itemSelectionChanged();

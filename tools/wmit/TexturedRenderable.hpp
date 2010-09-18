@@ -26,30 +26,36 @@
 
 #include "GLTexture.hpp"
 #include "IGLTextureManager.hpp"
+#include "IGLRenderable.hpp"
 
-class TextureAccess
+class ITexturedRenderable : virtual public IGLRenderable
+{
+public:
+	virtual ~ITexturedRenderable(){}
+	virtual void setTextureManager(IGLTextureManager * manager) = 0;
+};
+
+class ATexturedRenderable : virtual public ITexturedRenderable
 {
 	IGLTextureManager * m_texMan;
+public:
+	ATexturedRenderable():m_texMan(NULL){}
+	ATexturedRenderable(IGLTextureManager * manager):m_texMan(manager){}
+	virtual ~ATexturedRenderable(){}
+
+	void setTextureManager(IGLTextureManager* manager){m_texMan=manager;}
+
 protected:
-	TextureAccess():m_texMan(NULL){}
-	TextureAccess(IGLTextureManager * manager):m_texMan(manager){}
-	virtual ~TextureAccess(){}
 
-	virtual void setTextureManager(IGLTextureManager * manager){m_texMan=manager;}
-
-	std::string idToFilePath(GLuint id)
+	QString idToFilePath(GLuint id)
 	{
-		if(m_texMan!=NULL){return m_texMan->idToFilePath(id).toStdString();}
-		else{return std::string();}
+		if(m_texMan!=NULL){return m_texMan->idToFilePath(id);}
+		else{return QString();}
 	}
+
+	IGLTextureManager* getTextureManager(){return m_texMan;}
 
 	bool hasTextureManager()const{return m_texMan!=NULL;}
-
-	GLTexture createTexture(std::string fileName) const
-	{
-		if(m_texMan!=NULL){return m_texMan->createTexture(QString().fromStdString(fileName));}
-		else{return GLTexture();}
-	}
 
 	GLTexture createTexture(const QString& fileName) const
 	{

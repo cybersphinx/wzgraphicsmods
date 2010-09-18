@@ -30,9 +30,15 @@
 
 #include "GLTexture.hpp"
 #include "IGLTextureManager.hpp"
-#include "IGLRenderable.hpp"
 
-class QtGLView : public QGLViewer , public IGLTextureManager
+#include "ITCMaskProvider.hpp"
+
+class IGLRenderable;
+class ITexturedRenderable;
+class ITCMaskRenderable;
+class QGLShaderProgram;
+
+class QtGLView : public QGLViewer , public IGLTextureManager, public ITCMaskProvider
 {
 	Q_OBJECT
 public:
@@ -43,6 +49,8 @@ public:
 	void postDraw();
 
 	void addToRenderList(IGLRenderable* object);
+	void addToRenderList(ITexturedRenderable* object);
+	void addToRenderList(ITCMaskRenderable* object);
 	void removeFromRenderList(IGLRenderable* object);
 	void clearRenderList();
 
@@ -53,6 +61,17 @@ public:
 	void deleteTexture(GLuint id);
 	void deleteTexture(const QString& fileName);
 	void deleteAllTextures();
+
+	/// TCMaskProvider components
+	unsigned tcmaskSupport() const;
+	TCMaskMethod currentTCMaskMode() const;
+	void setTCMaskMode(TCMaskMethod method);
+	void setTCMaskEnvironment(const GLfloat tcmaskColor[4]);
+	void setTCMaskEnvironment(const QColor& tcmaskColour);
+	void resetTCMaskEnvironment();
+
+signals:
+	void viewerInitialized();
 
 protected:
 
@@ -75,15 +94,21 @@ private:
 	QList<IGLRenderable*> renderList;
 
 	/// GLTextureManager components
-	mutable QHash<QString, ManagedGLTexture> m_textures;
+	QHash<QString, ManagedGLTexture> m_textures;
 	typedef QHash<QString, ManagedGLTexture>::iterator t_texIt;
 	typedef QHash<QString, ManagedGLTexture>::const_iterator t_cTexIt;
 
-	void updateTextures() const;
+	void updateTextures();
 	void _deleteTexture(t_texIt& texIt);
 
 	QFileSystemWatcher textureUpdater;
 	QBasicTimer updateTimer;
+
+	/// TCMaskProvider components
+	QGLShaderProgram* m_tcmaskShader;
+	int m_colorLoc, m_baseTexLoc, m_tcTexLoc;
+	TCMaskMethod m_currentMode;
+	unsigned m_tcmSupport;
 
 private slots:
 	void textureChanged(const QString& fileName);

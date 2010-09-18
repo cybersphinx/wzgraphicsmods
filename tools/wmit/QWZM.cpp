@@ -42,18 +42,26 @@ QWZM::QWZM(const Pie3Model& p3)
 
 void QWZM::render()
 {
-	GLint frontFace;
-	glGetIntegerv(GL_FRONT_FACE, &frontFace);
+	const GLfloat tcColour[4] = {160/255.f,32/255.f,240/255.f,255/255.f}; // temporary...
+	const bool tcmask = currentTCMaskMode() != None && m_tcm != 0;
 
 	std::vector<Mesh>::iterator it;
 
-	// Basic rendering
-	glEnable(GL_TEXTURE_2D);
+	GLint frontFace;
+	glGetIntegerv(GL_FRONT_FACE, &frontFace);
+
+
+	glPushAttrib(GL_TEXTURE_BIT);
 	glPushClientAttrib(GL_CLIENT_VERTEX_ARRAY_BIT);
+
+	glActiveTexture(GL_TEXTURE0);
+	glEnable(GL_TEXTURE_2D);
+	glBindTexture(GL_TEXTURE_2D, m_texture);
+
 	glClientActiveTexture(GL_TEXTURE0);
 	glEnableClientState(GL_TEXTURE_COORD_ARRAY);
+
 	glEnableClientState(GL_VERTEX_ARRAY);
-	glBindTexture(GL_TEXTURE_2D, m_texture);
 
 	glPushMatrix();
 
@@ -65,19 +73,46 @@ void QWZM::render()
 
 	glScalef(scale_all * scale_xyz[0], scale_all * scale_xyz[1], scale_all * scale_xyz[2]);
 
+	if (tcmask)
+	{
+		setTCMaskEnvironment(tcColour);
+
+		if (currentTCMaskMode() == FixedPipeline)
+		{
+			glClientActiveTexture(GL_TEXTURE1);
+			glEnableClientState(GL_TEXTURE_COORD_ARRAY);
+		}
+		else
+		{
+			glActiveTexture(GL_TEXTURE1);
+			glEnable(GL_TEXTURE_2D);
+		}
+		glBindTexture(GL_TEXTURE_2D, m_tcm);
+	}
+
 	for (it = m_meshes.begin(); it != m_meshes.end(); ++it)
 	{
-
 		glTexCoordPointer(2, GL_FLOAT, 0, &it->m_textureArrays[0][0]);
+		if (currentTCMaskMode() == FixedPipeline)
+		{
+			glClientActiveTexture(GL_TEXTURE0);
+			glTexCoordPointer(2, GL_FLOAT, 0, &it->m_textureArrays[0][0]);
+			glClientActiveTexture(GL_TEXTURE1);
+		}
 		glVertexPointer(3, GL_FLOAT, 0, &it->m_vertexArray[0]);
 		glDrawElements(GL_TRIANGLES, it->m_indexArray.size() * 3, GL_UNSIGNED_SHORT, &it->m_indexArray[0]);
 	}
+
+	resetTCMaskEnvironment();
+
 	if (frontFace != winding)
 	{
 		glFrontFace(GL_CCW);
 	}
+
 	glPopMatrix();
 	glPopClientAttrib();
+	glPopAttrib();
 }
 
 void QWZM::animate()
@@ -85,7 +120,7 @@ void QWZM::animate()
 
 }
 
-void QWZM::setRenderTexture(std::string fileName)
+void QWZM::setRenderTexture(QString fileName)
 {
 	if (m_texture != 0)
 	{
@@ -96,28 +131,57 @@ void QWZM::setRenderTexture(std::string fileName)
 
 void QWZM::setTextureManager(IGLTextureManager * manager)
 {
-	std::string fileName;
+	QString tex_fileName, tcm_fileName;
+
 	if (m_texture != 0)
 	{
-		fileName = idToFilePath(m_texture);
+		tex_fileName = idToFilePath(m_texture);
 		deleteTexture(m_texture);
 	}
-	TextureAccess::setTextureManager(manager);
+	if (m_tcm != 0)
+	{
+		tcm_fileName = idToFilePath(m_tcm);
+		deleteTexture(m_tcm);
+	}
+
+	ATexturedRenderable::setTextureManager(manager);
+
 	if (m_texture != 0)
 	{
-		m_texture = createTexture(fileName).id();
+		m_texture = createTexture(tex_fileName).id();
 	}
+	if (m_tcm != 0)
+	{
+		m_texture = createTexture(tcm_fileName).id();
+	}
+}
+
+void QWZM::setTCMaskTexture(QString fileName)
+{
+	if (m_tcm != 0)
+	{
+		deleteTexture(m_tcm);
+	}
+	m_tcm = createTexture(fileName).id();
 }
 
 inline void QWZM::defaultConstructor()
 {
 	m_texture = 0;
+	m_tcm = 0;
 	scale_all = 1.f;
 	scale_xyz[0] = 1.f;
 	scale_xyz[1] = 1.f;
 	scale_xyz[2] = 1.f;
 	winding = GL_CW;
-	forsythInitialized = false;
+}
+
+QWZM::~QWZM()
+{
+	if (m_texture != 0)
+	{
+		deleteTexture(m_texture);
+	}
 }
 
 void QWZM::setScaleXYZ(GLfloat xyz)
