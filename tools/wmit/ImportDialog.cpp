@@ -82,14 +82,14 @@ void ImportDialog::scanForTextures(const QStringList& dirs)
 
 void ImportDialog::changeEvent(QEvent *e)
 {
-    QDialog::changeEvent(e);
-    switch (e->type()) {
-    case QEvent::LanguageChange:
+	QDialog::changeEvent(e);
+	switch (e->type()) {
+	case QEvent::LanguageChange:
 		ui->retranslateUi(this);
-        break;
-    default:
-        break;
-    }
+		break;
+	default:
+		break;
+	}
 }
 
 inline void ImportDialog::lw_autoFoundTextures_clearSelection()
@@ -192,12 +192,13 @@ void ImportDialog::on_tb_seekTcmFName_clicked()
 void ImportDialog::on_pb_autoTCM_clicked()
 {
 	QRegExp pageNoRegX("page\\-(\\d+)");
-	QFileInfo nfo;
 
 	if (pageNoRegX.indexIn(ui->le_textureFName->text()) != -1)
 	{
-		nfo.setFile(ui->le_textureFName->text());
+		QFileInfo nfo(ui->le_textureFName->text());
+
 		nfo.setFile(QDir(nfo.absolutePath()), pageNoRegX.cap(0).append("_tcmask.png"));
+
 		if (nfo.exists())
 		{
 			ui->le_tcmFName->setText(nfo.absoluteFilePath());
@@ -205,9 +206,9 @@ void ImportDialog::on_pb_autoTCM_clicked()
 		}
 		foreach (QString texture, m_textures)
 		{
-			if (texture.contains(pageNoRegX.cap(0)) && texture.endsWith("_tcmask.png", Qt::CaseInsensitive))
+			if (texture.endsWith(pageNoRegX.cap(0).append("_tcmask.png"), Qt::CaseInsensitive))
 			{
-				ui->le_tcmFName->setText(nfo.absoluteFilePath());
+				ui->le_tcmFName->setText(texture);
 				return;
 			}
 		}
