@@ -93,15 +93,15 @@ MainWindow::~MainWindow()
 
 void MainWindow::changeEvent(QEvent *e)
 {
-    QMainWindow::changeEvent(e);
+	QMainWindow::changeEvent(e);
 	switch (e->type())
 	{
-    case QEvent::LanguageChange:
+	case QEvent::LanguageChange:
 		ui->retranslateUi(this);
-        break;
-    default:
-        break;
-    }
+		break;
+	default:
+		break;
+	}
 }
 
 void MainWindow::s_fileOpen()
@@ -364,6 +364,13 @@ void MainWindow::on_actionFixed_Pipeline_toggled(bool checked)
 		ui->actionShaders->setChecked(false);
 		ui->centralWidget->setTCMaskMode(FixedPipeline);
 	}
+	else
+	{
+		if (!ui->actionShaders->isChecked())
+		{
+			ui->centralWidget->setTCMaskMode(None);
+		}
+	}
 }
 
 void MainWindow::on_actionShaders_toggled(bool checked)
@@ -375,6 +382,9 @@ void MainWindow::on_actionShaders_toggled(bool checked)
 	}
 	else
 	{
-		ui->centralWidget->setTCMaskMode(None);
+		if (!ui->actionFixed_Pipeline->isChecked())
+		{
+			ui->centralWidget->setTCMaskMode(None);
+		}
 	}
 }

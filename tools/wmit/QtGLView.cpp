@@ -389,6 +389,7 @@ TCMaskMethod QtGLView::currentTCMaskMode() const
 void QtGLView::setTCMaskMode(TCMaskMethod method)
 {
 	m_currentMode = static_cast<TCMaskMethod>(m_tcmSupport & method);
+	updateGL();
 }
 
 void QtGLView::setTCMaskEnvironment(const GLfloat tcmaskColour[4])
@@ -438,7 +439,6 @@ void QtGLView::setTCMaskEnvironment(const GLfloat tcmaskColour[4])
 		glTexEnvi(GL_TEXTURE_ENV, GL_COMBINE_ALPHA,		GL_REPLACE);
 		glTexEnvi(GL_TEXTURE_ENV, GL_SOURCE0_ALPHA,		GL_PREVIOUS);
 		glTexEnvi(GL_TEXTURE_ENV, GL_OPERAND0_ALPHA,	GL_SRC_ALPHA);
-
 	}
 }
 
