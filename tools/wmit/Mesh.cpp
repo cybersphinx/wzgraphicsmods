@@ -638,6 +638,7 @@ bool Mesh::importFromOBJ(const std::vector<OBJTri>&	faces,
 
 std::stringstream* Mesh::exportToOBJ(const Mesh_exportToOBJ_InOutParams& params) const
 {
+	const bool invertV = true;
 	std::stringstream* out = new std::stringstream;
 
 	std::pair<std::set<OBJVertex, OBJVertex::less_wEps>::iterator, bool> vertInResult;
@@ -646,6 +647,8 @@ std::stringstream* Mesh::exportToOBJ(const Mesh_exportToOBJ_InOutParams& params)
 	std::vector<IndexedTri>::const_iterator itF;
 	std::vector<unsigned>::iterator itMap;
 	unsigned i;
+
+	OBJUV uv;
 
 	*out << "o " << m_name << "\n\n";
 
@@ -674,7 +677,12 @@ std::stringstream* Mesh::exportToOBJ(const Mesh_exportToOBJ_InOutParams& params)
 
 			*out << '/';
 
-			uvInResult = params.uvSet->insert(m_textureArrays[0][itF->operator [](i)]);
+			uv = m_textureArrays[0][itF->operator [](i)];
+			if (invertV)
+			{
+				uv.v() = 1 - uv.v();
+			}
+			uvInResult = params.uvSet->insert(uv);
 
 			if (!uvInResult.second)
 			{
@@ -685,7 +693,7 @@ std::stringstream* Mesh::exportToOBJ(const Mesh_exportToOBJ_InOutParams& params)
 				itMap = params.uvMapping->begin();
 				std::advance(itMap, std::distance(params.uvSet->begin(), uvInResult.first));
 				params.uvMapping->insert(itMap, params.uvs->size());
-				params.uvs->push_back(m_textureArrays[0][itF->operator [](i)]);
+				params.uvs->push_back(uv);
 				*out << params.uvs->size();
 			}
 		}

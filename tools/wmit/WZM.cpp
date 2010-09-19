@@ -151,6 +151,7 @@ void WZM::write(std::ostream& out) const
  */
 bool WZM::importFromOBJ(std::istream& in)
 {
+	const bool invertV = true;
 	std::vector<OBJVertex> vertArray;
 
 	std::vector<OBJUV> uvArray;
@@ -184,7 +185,7 @@ bool WZM::importFromOBJ(std::istream& in)
 	/* Note: This program tolerates imperfect .obj files
 	 * because it accepts any whitespace as a space.
 	 */
-	
+
 	while (!(in.eof()|| in.fail()))
 	{
 		std::getline(in, str);
@@ -209,6 +210,10 @@ bool WZM::importFromOBJ(std::istream& in)
 				if (ss.fail())
 				{
 					return false;
+				}
+				else if (invertV)
+				{
+					uv.v() = 1 - uv.v();
 				}
 				uvArray.push_back(uv);
 				break;
