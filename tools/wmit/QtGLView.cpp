@@ -17,6 +17,10 @@
 	along with WMIT.  If not, see <http://www.gnu.org/licenses/>.
 */
 
+#include "QtGLView.hpp"
+
+#include <cstdio>
+
 #include <QPixmap>
 #include <QImage>
 #include <QApplication>
@@ -25,10 +29,10 @@
 #include <QtDebug>
 
 #include <GL/gl.h>
+#include <GL/glext.h>
 
 #include <QGLViewer/vec.h>
 
-#include "QtGLView.hpp"
 #include "TexturedRenderable.hpp"
 #include "TCMaskRenderable.hpp"
 #include "IGLRenderable.hpp"
@@ -36,7 +40,8 @@
 QtGLView::QtGLView(QWidget *parent) :
 		QGLViewer(parent),
 		m_tcmaskShader(NULL),
-		m_currentMode(None)
+		m_currentMode(None),
+		m_tcmSupport(0)
 {
 	connect(&textureUpdater, SIGNAL(fileChanged(QString)), this, SLOT(textureChanged(QString)));
 
@@ -91,24 +96,34 @@ void QtGLView::init()
 	 * Just going to check for 1.4
 	 * Also, shader requirements are > 1.4,
 	 */
-	if (!oglFFlags&QGLFormat::OpenGL_Version_1_4)
+	if (oglFFlags & QGLFormat::OpenGL_Version_1_4)
 	{
-		// Cannot use fixed function tcmask nor Shaders
-		m_tcmSupport = 0;
-	}
-	else
-	{
-		// Can use tcmask
+		// Can use fixed function tcmask
 		m_tcmSupport = FixedPipeline;
+	}
 
-		// What about shaders?
+	// What about shader tcmask?
+	if (oglFFlags & QGLFormat::OpenGL_Version_2_0)
+	{
 		/*
 		 * Shader requirements
-		 * Using Qt's shader functions, so using
-		 * QGLShaderProgram::hasOpenGLShaderPrograms
-		 * and whether linking fails
+		 * GLSL >= 1.20
+		 * So using opengl >= 2.0, glGetString( GL_SHADING_LANGUAGE_VERSION )
+		 * and whether shader compilation succeeds.
 		 */
-		if (QGLShaderProgram::hasOpenGLShaderPrograms(context()))
+		unsigned major = 0, minor = 0; // initialised to 0 so that it can fall through on error
+		const char* glslVersionStr = reinterpret_cast<const char*>(glGetString(GL_SHADING_LANGUAGE_VERSION));
+
+		if (glslVersionStr != NULL)
+		{
+			std::sscanf(glslVersionStr, "%u.%u", &major, &minor);
+		}
+		else
+		{
+			while(glGetError() != GL_NO_ERROR);
+		}
+
+		if (major > 1 || (major == 1 && minor >= 20))
 		{
 			if (m_tcmaskShader != NULL)
 			{
