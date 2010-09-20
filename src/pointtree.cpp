@@ -216,8 +216,13 @@ PointTree::ResultVector &PointTree::queryMaybeFilter(Filter &filter, int32_t x, 
 	}
 	for (int r = 0; r != numRanges; ++r)
 	{
+#ifndef WZ_OS_WIN
 		unsigned i1 = std::lower_bound(points.begin(),      points.end(), Point(ranges[r].a,     NULL)) - points.begin();
 		unsigned i2 = std::lower_bound(points.begin() + i1, points.end(), Point(ranges[r].z + 1, NULL)) - points.begin();
+#else
+		unsigned i1 = std::lower_bound(points.begin(),      points.end(), Point(ranges[r].a,     nullptr)) - points.begin();
+		unsigned i2 = std::lower_bound(points.begin() + i1, points.end(), Point(ranges[r].z + 1, nullptr)) - points.begin();
+#endif
 		for (unsigned i = current<IsFiltered>(filter.data, i1); i < i2; i = current<IsFiltered>(filter.data, i + 1))
 		{
 			uint64_t px = points[i].first & 0xAAAAAAAAAAAAAAAAULL;

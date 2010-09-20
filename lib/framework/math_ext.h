@@ -94,6 +94,7 @@ static double nearbyint(double x)
 	}
 }
 
+#ifndef WZ_OS_WIN
 
 static inline WZ_DECL_CONST double hypot(double x, double y)
 {
@@ -105,6 +106,7 @@ static inline WZ_DECL_CONST float hypotf(float x, float y)
 {
 	return sqrtf(x * x + y * y);
 }
+#endif
 #endif
 
 

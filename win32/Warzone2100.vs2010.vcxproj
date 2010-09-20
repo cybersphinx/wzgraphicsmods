@@ -1,0 +1,459 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectName>Warzone2100</ProjectName>
+    <ProjectGuid>{BDDCCB7B-F4F7-4768-A1C3-AE20E9F5FDFC}</ProjectGuid>
+    <RootNamespace>Warzone2100</RootNamespace>
+    <Keyword>Win32Proj</Keyword>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <CharacterSet>Unicode</CharacterSet>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <BisonParserAfterTargets>PreBuildEvent</BisonParserAfterTargets>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <CharacterSet>Unicode</CharacterSet>
+    <BisonParserAfterTargets>PreBuildEvent</BisonParserAfterTargets>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+    <Import Project="..\devpkg\FlexBison.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>10.0.30319.1</_ProjectFileVersion>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(SolutionDir)$(Configuration)\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(Configuration)\</IntDir>
+    <CustomBuildAfterTargets Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">_BisonParser</CustomBuildAfterTargets>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</LinkIncremental>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(SolutionDir)$(Configuration)\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(Configuration)\</IntDir>
+    <CustomBuildAfterTargets Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">_BisonParser</CustomBuildAfterTargets>
+    <CodeAnalysisRuleSet Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRules Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" />
+    <CodeAnalysisRuleAssemblies Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" />
+    <CodeAnalysisRuleSet Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRules Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" />
+    <CodeAnalysisRuleAssemblies Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" />
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <PreBuildEvent>
+      <Message>Generating the autorevison.h file...</Message>
+      <Command>$(ProjectDir)..\autorevision  +cstr -v $(ProjectDir)..\  $(ProjectDir)..\src\autorevision.h</Command>
+    </PreBuildEvent>
+    <BisonParser>
+      <Defines>true</Defines>
+      <NoGenLineDirectives>true</NoGenLineDirectives>
+      <OutputFile>$(SolutionDir)..\src\$(ProjectName).tab.c</OutputFile>
+    </BisonParser>
+    <FlexGenerator>
+      <OutputFile>$(ProjectDir)..\src\$(ProjectName).lex.c</OutputFile>
+    </FlexGenerator>
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>$(SolutionDir)..\src;$(SolutionDir)\..;$(SolutionDir)\..\devpkg\include;$(SolutionDir)\..\devpkg\include\SDL;$(SolutionDir)\..\lib\ivis_opengl;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;_CRT_SECURE_NO_DEPRECATE;_CRT_NONSTDC_NO_DEPRECATE;YY_NO_UNISTD_H;VERSION="TRUNK";PACKAGE="warzone2100";LOCALEDIR="";YY_STATIC;_HAS_ITERATOR_DEBUGGING=0;_SECURE_SCL=0;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MinimalRebuild>true</MinimalRebuild>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <ProgramDataBaseFileName>$(IntDir)$(ProjectName)-Dbg.pdb</ProgramDataBaseFileName>
+      <WarningLevel>Level4</WarningLevel>
+      <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>OpenGL32.lib;GLU32.lib;shfolder.lib;winmm.lib;ws2_32.lib;dbghelp.lib;glc32.lib;libintl.lib;libogg_static.lib;libpngd_static.lib;libpopt.lib;libtheora_static.lib;libvorbis_static.lib;libvorbisfile_static.lib;OpenAL32.lib;physfs_static.lib;SDL.lib;SDLmain.lib;zlibd_static.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>$(OutDir)$(ProjectName)-Dbg.exe</OutputFile>
+      <AdditionalLibraryDirectories>$(SolutionDir)\..\devpkg\libd;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Windows</SubSystem>
+      <TargetMachine>MachineX86</TargetMachine>
+      <IgnoreSpecificDefaultLibraries>libcmtd.lib;libcmt.lib;libc.lib;libcd.lib</IgnoreSpecificDefaultLibraries>
+    </Link>
+    <PostBuildEvent>
+      <Message>***  Copying $(TargetPath) to $(SolutionDir)..\data\$(TargetFileName)  ***</Message>
+      <Command>copy /Y /B $(TargetPath) $(ProjectDir)..\data\</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <PreBuildEvent>
+      <Message>Generating the autorevison.h file...</Message>
+      <Command>$(ProjectDir)..\autorevision  +cstr -v $(ProjectDir)..\  $(ProjectDir)..\src\autorevision.h</Command>
+    </PreBuildEvent>
+    <BisonParser>
+      <Defines>true</Defines>
+      <OutputFile>$(SolutionDir)..\src\$(ProjectName).tab.c</OutputFile>
+    </BisonParser>
+    <FlexGenerator>
+      <OutputFile>$(ProjectDir)..\src\$(ProjectName).lex.c</OutputFile>
+    </FlexGenerator>
+    <ClCompile>
+      <AdditionalIncludeDirectories>$(SolutionDir)\..;$(SolutionDir)\..\devpkg\include;$(SolutionDir)\..\devpkg\include\SDL;$(SolutionDir)\..\lib\ivis_opengl;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;_CRT_SECURE_NO_DEPRECATE;_CRT_NONSTDC_NO_DEPRECATE;YY_NO_UNISTD_H;VERSION="TRUNK";PACKAGE="warzone2100";LOCALEDIR="";YY_STATIC;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <WholeProgramOptimization>false</WholeProgramOptimization>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>OpenGL32.lib;GLU32.lib;shfolder.lib;winmm.lib;ws2_32.lib;dbghelp.lib;glc32.lib;libintl.lib;libogg_static.lib;libpng_static.lib;libpopt.lib;libtheora_static.lib;libvorbis_static.lib;libvorbisfile_static.lib;OpenAL32.lib;physfs_static.lib;SDL.lib;SDLmain.lib;zlib_static.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(SolutionDir)\..\devpkg\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Windows</SubSystem>
+      <OptimizeReferences>true</OptimizeReferences>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <TargetMachine>MachineX86</TargetMachine>
+      <IgnoreSpecificDefaultLibraries>libcmtd.lib</IgnoreSpecificDefaultLibraries>
+    </Link>
+    <PostBuildEvent>
+      <Message>***  Copying $(TargetPath) to $(SolutionDir)..\data\$(TargetFileName)  ***</Message>
+      <Command>copy /Y /B $(TargetPath) $(ProjectDir)..\data\</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="..\src\action.c" />
+    <ClCompile Include="..\src\advvis.c" />
+    <ClCompile Include="..\src\ai.c" />
+    <ClCompile Include="..\src\aiexperience.c" />
+    <ClCompile Include="..\src\astar.c" />
+    <ClCompile Include="..\src\atmos.c" />
+    <ClCompile Include="..\src\aud.c" />
+    <ClCompile Include="..\src\baseobject.c" />
+    <ClCompile Include="..\src\bridge.c" />
+    <ClCompile Include="..\src\bucket3d.c" />
+    <ClCompile Include="..\src\challenge.c" />
+    <ClCompile Include="..\src\cheat.c" />
+    <ClCompile Include="..\src\clparse.c" />
+    <ClCompile Include="..\src\cluster.c" />
+    <ClCompile Include="..\src\cmddroid.c" />
+    <ClCompile Include="..\src\combat.c" />
+    <ClCompile Include="..\src\component.c" />
+    <ClCompile Include="..\src\configuration.c" />
+    <ClCompile Include="..\src\console.c" />
+    <ClCompile Include="..\src\data.c" />
+    <ClCompile Include="..\src\design.c" />
+    <ClCompile Include="..\src\difficulty.c" />
+    <ClCompile Include="..\src\display.c" />
+    <ClCompile Include="..\src\display3d.c" />
+    <ClCompile Include="..\src\drive.c" />
+    <ClCompile Include="..\src\droid.c" />
+    <ClCompile Include="..\src\e3demo.c" />
+    <ClCompile Include="..\src\edit3d.c" />
+    <ClCompile Include="..\src\effects.c" />
+    <ClCompile Include="..\src\environ.c" />
+    <ClCompile Include="..\src\feature.c" />
+    <ClCompile Include="..\src\formation.c" />
+    <ClCompile Include="..\src\fpath.c" />
+    <ClCompile Include="..\src\frontend.c" />
+    <ClCompile Include="..\src\function.c" />
+    <ClCompile Include="..\src\game.c" />
+    <ClCompile Include="..\src\gateway.c" />
+    <ClCompile Include="..\src\geometry.c" />
+    <ClCompile Include="..\src\group.c" />
+    <ClCompile Include="..\src\hci.c" />
+    <ClCompile Include="..\src\ingameop.c" />
+    <ClCompile Include="..\src\init.c" />
+    <ClCompile Include="..\src\intdisplay.c" />
+    <ClCompile Include="..\src\intelmap.c" />
+    <ClCompile Include="..\src\intimage.c" />
+    <ClCompile Include="..\src\intorder.c" />
+    <ClCompile Include="..\src\keybind.c" />
+    <ClCompile Include="..\src\keyedit.c" />
+    <ClCompile Include="..\src\keymap.c" />
+    <ClCompile Include="..\src\level_lexer.lex.c" />
+    <ClCompile Include="..\src\levels.c" />
+    <ClCompile Include="..\src\lighting.c" />
+    <ClCompile Include="..\src\loadsave.c" />
+    <ClCompile Include="..\src\loop.c" />
+    <ClCompile Include="..\src\main.c" />
+    <ClCompile Include="..\src\map.c" />
+    <ClCompile Include="..\src\mapdisplay.c" />
+    <ClCompile Include="..\src\mapgrid.cpp" />
+    <ClCompile Include="..\src\mechanics.c" />
+    <ClCompile Include="..\src\message.c" />
+    <ClCompile Include="..\src\message_lexer.lex.c" />
+    <ClCompile Include="..\src\message_parser.tab.c" />
+    <ClCompile Include="..\src\miscimd.c" />
+    <ClCompile Include="..\src\mission.c" />
+    <ClCompile Include="..\src\move.c" />
+    <ClCompile Include="..\src\multibot.c" />
+    <ClCompile Include="..\src\multigifts.c" />
+    <ClCompile Include="..\src\multiint.c" />
+    <ClCompile Include="..\src\multijoin.c" />
+    <ClCompile Include="..\src\multilimit.c" />
+    <ClCompile Include="..\src\multimenu.c" />
+    <ClCompile Include="..\src\multiopt.c" />
+    <ClCompile Include="..\src\multiplay.c" />
+    <ClCompile Include="..\src\multistat.c" />
+    <ClCompile Include="..\src\multistruct.c" />
+    <ClCompile Include="..\src\multisync.c" />
+    <ClCompile Include="..\src\objects.c" />
+    <ClCompile Include="..\src\objmem.c" />
+    <ClCompile Include="..\src\oprint.c" />
+    <ClCompile Include="..\src\order.c" />
+    <ClCompile Include="..\src\parsetest.c" />
+    <ClCompile Include="..\src\pointtree.cpp" />
+    <ClCompile Include="..\src\power.c" />
+    <ClCompile Include="..\src\projectile.c" />
+    <ClCompile Include="..\src\radar.c" />
+    <ClCompile Include="..\src\random.cpp" />
+    <ClCompile Include="..\src\raycast.c" />
+    <ClCompile Include="..\src\research.c" />
+    <ClCompile Include="..\src\scores.c" />
+    <ClCompile Include="..\src\scriptai.c" />
+    <ClCompile Include="..\src\scriptcb.c" />
+    <ClCompile Include="..\src\scriptextern.c" />
+    <ClCompile Include="..\src\scriptfuncs.c" />
+    <ClCompile Include="..\src\scriptobj.c" />
+    <ClCompile Include="..\src\scripttabs.c" />
+    <ClCompile Include="..\src\scriptvals.c" />
+    <ClCompile Include="..\src\scriptvals_lexer.lex.c" />
+    <ClCompile Include="..\src\scriptvals_parser.tab.c" />
+    <ClCompile Include="..\src\selection.c" />
+    <ClCompile Include="..\src\seqdisp.c" />
+    <ClCompile Include="..\src\shield.c" />
+    <ClCompile Include="..\src\stats.c" />
+    <ClCompile Include="..\src\structure.c" />
+    <ClCompile Include="..\src\terrain.c" />
+    <ClCompile Include="..\src\text.c" />
+    <ClCompile Include="..\src\texture.c" />
+    <ClCompile Include="..\src\transporter.c" />
+    <ClCompile Include="..\src\version.c" />
+    <ClCompile Include="..\src\videodump.c" />
+    <ClCompile Include="..\src\visibility.c" />
+    <ClCompile Include="..\src\warcam.c" />
+    <ClCompile Include="..\src\warzoneconfig.c" />
+    <ClCompile Include="..\src\wavecast.cpp" />
+    <ClCompile Include="..\src\wrappers.c" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\src\action.h" />
+    <ClInclude Include="..\src\advvis.h" />
+    <ClInclude Include="..\src\ai.h" />
+    <ClInclude Include="..\src\aiexperience.h" />
+    <ClInclude Include="..\src\anim_id.h" />
+    <ClInclude Include="..\src\astar.h" />
+    <ClInclude Include="..\src\atmos.h" />
+    <ClInclude Include="audp_parser.tab.h" />
+    <ClInclude Include="..\src\autorevision.h" />
+    <ClInclude Include="..\src\base.h" />
+    <ClInclude Include="..\src\basedef.h" />
+    <ClInclude Include="..\src\baseobject.h" />
+    <ClInclude Include="..\src\bridge.h" />
+    <ClInclude Include="..\src\bucket3d.h" />
+    <ClInclude Include="..\src\bullet.h" />
+    <ClInclude Include="..\src\bulletdef.h" />
+    <ClInclude Include="..\src\challenge.h" />
+    <ClInclude Include="..\src\cheat.h" />
+    <ClInclude Include="..\src\clparse.h" />
+    <ClInclude Include="..\src\cluster.h" />
+    <ClInclude Include="..\src\cmddroid.h" />
+    <ClInclude Include="..\src\cmddroiddef.h" />
+    <ClInclude Include="..\src\combat.h" />
+    <ClInclude Include="..\src\component.h" />
+    <ClInclude Include="..\src\configuration.h" />
+    <ClInclude Include="..\src\console.h" />
+    <ClInclude Include="..\src\data.h" />
+    <ClInclude Include="..\src\design.h" />
+    <ClInclude Include="..\src\difficulty.h" />
+    <ClInclude Include="..\src\display.h" />
+    <ClInclude Include="..\src\display3d.h" />
+    <ClInclude Include="..\src\display3ddef.h" />
+    <ClInclude Include="..\src\displaydef.h" />
+    <ClInclude Include="..\src\drive.h" />
+    <ClInclude Include="..\src\droid.h" />
+    <ClInclude Include="..\src\droiddef.h" />
+    <ClInclude Include="..\src\e3demo.h" />
+    <ClInclude Include="..\src\edit3d.h" />
+    <ClInclude Include="..\src\effects.h" />
+    <ClInclude Include="..\src\environ.h" />
+    <ClInclude Include="..\src\feature.h" />
+    <ClInclude Include="..\src\featuredef.h" />
+    <ClInclude Include="..\src\formation.h" />
+    <ClInclude Include="..\src\formationdef.h" />
+    <ClInclude Include="..\src\fpath.h" />
+    <ClInclude Include="..\src\frend.h" />
+    <ClInclude Include="..\src\frontend.h" />
+    <ClInclude Include="..\src\function.h" />
+    <ClInclude Include="..\src\functiondef.h" />
+    <ClInclude Include="..\src\game.h" />
+    <ClInclude Include="..\src\gateway.h" />
+    <ClInclude Include="..\src\geometry.h" />
+    <ClInclude Include="..\src\group.h" />
+    <ClInclude Include="..\src\hci.h" />
+    <ClInclude Include="..\src\ingameop.h" />
+    <ClInclude Include="..\src\init.h" />
+    <ClInclude Include="..\src\intdisplay.h" />
+    <ClInclude Include="..\src\intelmap.h" />
+    <ClInclude Include="..\src\intfac.h" />
+    <ClInclude Include="..\src\intimage.h" />
+    <ClInclude Include="..\src\intorder.h" />
+    <ClInclude Include="..\src\keybind.h" />
+    <ClInclude Include="..\src\keyedit.h" />
+    <ClInclude Include="..\src\keymap.h" />
+    <ClInclude Include="..\src\levelint.h" />
+    <ClInclude Include="..\src\levels.h" />
+    <ClInclude Include="..\src\lighting.h" />
+    <ClInclude Include="..\src\loadsave.h" />
+    <ClInclude Include="..\src\loop.h" />
+    <ClInclude Include="..\src\main.h" />
+    <ClInclude Include="..\src\map.h" />
+    <ClInclude Include="..\src\mapdisplay.h" />
+    <ClInclude Include="..\src\mapgrid.h" />
+    <ClInclude Include="..\src\mechanics.h" />
+    <ClInclude Include="..\src\message.h" />
+    <ClInclude Include="..\src\message_parser.tab.h" />
+    <ClInclude Include="..\src\messagedef.h" />
+    <ClInclude Include="..\src\messagely.h" />
+    <ClInclude Include="..\src\miscimd.h" />
+    <ClInclude Include="..\src\mission.h" />
+    <ClInclude Include="..\src\missiondef.h" />
+    <ClInclude Include="..\src\modding.h" />
+    <ClInclude Include="..\src\move.h" />
+    <ClInclude Include="..\src\movedef.h" />
+    <ClInclude Include="..\src\multigifts.h" />
+    <ClInclude Include="..\src\multiint.h" />
+    <ClInclude Include="..\src\multijoin.h" />
+    <ClInclude Include="..\src\multilimit.h" />
+    <ClInclude Include="..\src\multimenu.h" />
+    <ClInclude Include="..\src\multiplay.h" />
+    <ClInclude Include="..\src\multirecv.h" />
+    <ClInclude Include="..\src\multistat.h" />
+    <ClInclude Include="..\src\objectdef.h" />
+    <ClInclude Include="..\src\objects.h" />
+    <ClInclude Include="..\src\objmem.h" />
+    <ClInclude Include="..\src\oprint.h" />
+    <ClInclude Include="..\src\optimisepath.h" />
+    <ClInclude Include="..\src\order.h" />
+    <ClInclude Include="..\src\orderdef.h" />
+    <ClInclude Include="..\src\parsetest.h" />
+    <ClInclude Include="..\lib\framework\platform.h" />
+    <ClInclude Include="..\src\pointtree.h" />
+    <ClInclude Include="..\src\positiondef.h" />
+    <ClInclude Include="..\src\power.h" />
+    <ClInclude Include="..\src\projectile.h" />
+    <ClInclude Include="..\src\projectiledef.h" />
+    <ClInclude Include="..\src\radar.h" />
+    <ClInclude Include="..\src\raycast.h" />
+    <ClInclude Include="..\src\research.h" />
+    <ClInclude Include="..\src\researchdef.h" />
+    <ClInclude Include="resource_parser.tab.h" />
+    <ClInclude Include="..\src\scores.h" />
+    <ClInclude Include="script_parser.tab.h" />
+    <ClInclude Include="..\src\scriptai.h" />
+    <ClInclude Include="..\src\scriptcb.h" />
+    <ClInclude Include="..\src\scriptextern.h" />
+    <ClInclude Include="..\src\scriptfuncs.h" />
+    <ClInclude Include="..\src\scriptobj.h" />
+    <ClInclude Include="..\src\scripttabs.h" />
+    <ClInclude Include="..\src\scriptvals.h" />
+    <ClInclude Include="..\src\scriptvals_parser.tab.h" />
+    <ClInclude Include="..\src\selection.h" />
+    <ClInclude Include="..\src\seqdisp.h" />
+    <ClInclude Include="..\src\shield.h" />
+    <ClInclude Include="..\src\stats.h" />
+    <ClInclude Include="..\src\statsdef.h" />
+    <ClInclude Include="..\lib\sequence\streamer.h" />
+    <ClInclude Include="..\src\stringdef.h" />
+    <ClInclude Include="strres_parser.tab.h" />
+    <ClInclude Include="..\src\structure.h" />
+    <ClInclude Include="..\src\structuredef.h" />
+    <ClInclude Include="..\src\text.h" />
+    <ClInclude Include="..\src\texture.h" />
+    <ClInclude Include="..\src\transporter.h" />
+    <ClInclude Include="..\src\version.h" />
+    <ClInclude Include="..\src\videodump.h" />
+    <ClInclude Include="..\src\visibility.h" />
+    <ClInclude Include="..\src\warcam.h" />
+    <ClInclude Include="..\src\warzoneconfig.h" />
+    <ClInclude Include="..\src\wavecast.h" />
+    <ClInclude Include="..\src\weapondef.h" />
+    <ClInclude Include="..\src\weapons.h" />
+    <ClInclude Include="..\src\winmain.h" />
+    <ClInclude Include="..\src\wrappers.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <FlexGenerator Include="..\src\level_lexer.l" />
+    <FlexGenerator Include="..\src\message_lexer.l" />
+    <FlexGenerator Include="..\src\scriptvals_lexer.l" />
+  </ItemGroup>
+  <ItemGroup>
+    <BisonParser Include="..\src\message_parser.y" />
+    <BisonParser Include="..\src\scriptvals_parser.y" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\build_tools\autorevision\autorevision.vcxproj">
+      <Project>{32fc4941-5adf-483f-bd90-cdebc50ba4ae}</Project>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+    <ProjectReference Include="..\lib\framework\framework.vcxproj">
+      <Project>{33979915-684a-4885-bfea-2a4ccc5a5fd6}</Project>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+    <ProjectReference Include="..\lib\gamelib\gamelib.vcxproj">
+      <Project>{efe011b6-4c0b-40aa-9f18-5ad599e70d28}</Project>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+    <ProjectReference Include="..\lib\iniparser\iniparser.vcxproj">
+      <Project>{0a5a8b49-7072-4196-aa26-dd767760c6b5}</Project>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+    <ProjectReference Include="..\lib\ivis_common\ivis_common.vcxproj">
+      <Project>{f580f567-ce2a-4c58-a036-c1b71664bf2d}</Project>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+    <ProjectReference Include="..\lib\ivis_opengl\ivis_opengl.vcxproj">
+      <Project>{4d637147-73f9-4a51-944b-34bf78e6c6dc}</Project>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+    <ProjectReference Include="..\lib\netplay\netplay.vcxproj">
+      <Project>{c7698ece-9255-4a60-8091-a9a76e8be911}</Project>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+    <ProjectReference Include="..\lib\script\script.vcxproj">
+      <Project>{2d0b0f06-3ca2-46c7-908d-5c7098645021}</Project>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+    <ProjectReference Include="..\lib\sequence\sequence.vcxproj">
+      <Project>{30f5fc4a-31f5-42f5-9581-45309559382f}</Project>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+    <ProjectReference Include="..\lib\sound\sound.vcxproj">
+      <Project>{8136a1f0-463e-44f6-b0b2-64b12f4c27ba}</Project>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+    <ProjectReference Include="..\lib\widget\widget.vcxproj">
+      <Project>{e538d7a9-0660-4979-95f4-80b0c5c11da7}</Project>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="warzone2100.vs2010.rc" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+    <Import Project="..\devpkg\FlexBison.targets" />
+  </ImportGroup>
+</Project>
