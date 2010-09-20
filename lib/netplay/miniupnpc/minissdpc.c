@@ -61,7 +61,7 @@ getDevicesFromMiniSSDPD(const char * devtype, const char * socketpath)
 	if(connect(s, (struct sockaddr *)&addr, sizeof(struct sockaddr_un)) < 0)
 	{
 		/*syslog(LOG_WARNING, "connect(\"%s\"): %m", socketpath);*/
-		_close(s);
+		close(s);
 		return NULL;
 	}
 	stsize = strlen(devtype);
@@ -71,23 +71,23 @@ getDevicesFromMiniSSDPD(const char * devtype, const char * socketpath)
 	if(p + stsize > buffer + sizeof(buffer))
 	{
 		/* devtype is too long ! */
-		_close(s);
+		close(s);
 		return NULL;
 	}
 	memcpy(p, devtype, stsize);
 	p += stsize;
-	if(_write(s, buffer, p - buffer) < 0)
+	if(write(s, buffer, p - buffer) < 0)
 	{
 		/*syslog(LOG_ERR, "write(): %m");*/
 		perror("minissdpc.c: write()");
-		_close(s);
+		close(s);
 		return NULL;
 	}
-	n = _read(s, buffer, sizeof(buffer));
+	n = read(s, buffer, sizeof(buffer));
 	if(n<=0)
 	{
 		perror("minissdpc.c: read()");
-		_close(s);
+		close(s);
 		return NULL;
 	}
 	p = buffer + 1;
@@ -120,7 +120,7 @@ getDevicesFromMiniSSDPD(const char * devtype, const char * socketpath)
 		if(p>buffer + sizeof(buffer))
 			break;
 	}
-	_close(s);
+	close(s);
 	return devlist;
 }
 
