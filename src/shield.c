@@ -49,78 +49,7 @@
 
 
 
-/*
-void addShieldHitEffect(DROID *psDroid, Vector3i *pos)
-{
-	EFFECT *psEffect = Effect_malloc();
-	Vector3f rotation, va, vb; 
-	Vector3f ocen;
-	BODY_STATS		*psBdyStats;
-	int scale;
-	float distance;
-	va.x = psDroid->pos.x;
-	va.y = psDroid->pos.y;
-	va.z = psDroid->pos.z;
-	vb.x = pos->x;
-	vb.y = pos->y;
-	vb.z = pos->z;
-	rotation = Vector3f_CrossP(va, vb);
-		// flip z and y
 
-
-	
-	// first we check to see if the unit actually has shield power.
-	if(psDroid->shield > 0)
-	{
-		// Now we work out which way it should be facing
-	
-
-	// Flip Y and Z
-	ocen.x = psDroid->pos.x;
-	ocen.z = psDroid->pos.y;
-	ocen.y = psDroid->pos.z;
-
-	psEffect->position = ocen;
-	psEffect->rotation.x = rotation.x;
-	psEffect->rotation.y = rotation.y;
-	psEffect->rotation.z = rotation.z;
-	psEffect->type = HIT_TYPE_SHIELD;
-	psEffect->group = EFFECT_HIT;
-	
-	psEffect->lifeSpan = 800;
-	psEffect->imd = getImdFromIndex(MI_HITSPHERE);
-	psEffect->birthTime = psEffect->lastFrame = graphicsTime;
-	psBdyStats = &asBodyStats[psDroid->asBits[COMP_BODY].nStat];
-	psEffect->frameNumber = 0;
-
-	if(psDroid->sDisplay.imd->radius > getImdFromIndex(MI_HITSPHERE)->radius)
-		scale = 100+PERCENT(getImdFromIndex(MI_HITSPHERE)->radius,psDroid->sDisplay.imd->radius);
-	else
-		scale =  PERCENT(psDroid->sDisplay.imd->radius,getImdFromIndex(MI_HITSPHERE)->radius);
-
-	switch (psBdyStats->size)
-	{
-		case SIZE_LIGHT:
-			scale += 30;
-			break;
-		case SIZE_MEDIUM:
-			scale += 30;
-			break;
-		case SIZE_HEAVY:
-			scale += 50;
-			break;
-		case SIZE_SUPER_HEAVY:
-			scale += 90;
-			break;
-		default:
-			scale += 10;
-	}
-
-	psEffect->size = scale;
-
-	}
-
-}*/
 
 // Render the pie file used for forcefields
 void displayShieldHit(DROID *psDroid)
