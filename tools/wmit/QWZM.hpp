@@ -34,11 +34,12 @@ class IGLTextureManager;
 class QWZM : public WZM, public ATCMaskRenderable, public IAnimatable
 {
 public:
-    QWZM();
-	QWZM(const WZM& wzm);
+	QWZM();
 	QWZM(const Pie3Model& p3);
 
 	~QWZM();
+
+	void operator=(const WZM& wzm);
 
 	void render();
 	void animate();

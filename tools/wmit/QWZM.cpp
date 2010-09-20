@@ -28,16 +28,23 @@ QWZM::QWZM()
 	defaultConstructor();
 }
 
-QWZM::QWZM(const WZM& wzm)
-	: WZM(wzm)
-{
-	defaultConstructor();
-}
-
 QWZM::QWZM(const Pie3Model& p3)
 	: WZM(p3)
 {
 	defaultConstructor();
+}
+
+void QWZM::operator =(const WZM& wzm)
+{
+	if (m_texture != 0)
+	{
+		deleteTexture(m_texture);
+	}
+	if (m_tcm != 0)
+	{
+		deleteTexture(m_texture);
+	}
+	WZM::operator=(wzm);
 }
 
 void QWZM::render()
@@ -179,6 +186,10 @@ inline void QWZM::defaultConstructor()
 QWZM::~QWZM()
 {
 	if (m_texture != 0)
+	{
+		deleteTexture(m_texture);
+	}
+	if (m_tcm != 0)
 	{
 		deleteTexture(m_texture);
 	}

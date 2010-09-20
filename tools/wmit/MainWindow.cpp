@@ -66,7 +66,7 @@ MainWindow::MainWindow(QWidget *parent) :
 	m_UVEditor->hide();
 	this->addDockWidget(Qt::RightDockWidgetArea, m_UVEditor, Qt::Horizontal);
 
-//	connect(ui->centralWidget, SIGNAL(viewerInitialized()), this, SLOT(_on_viewerInitialized()));
+	connect(ui->centralWidget, SIGNAL(viewerInitialized()), this, SLOT(_on_viewerInitialized()));
 	connect(importDialog, SIGNAL(accepted()), this, SLOT(s_fileOpen()));
 	connect(this, SIGNAL(textureSearchDirsChanged(QStringList)), importDialog, SLOT(scanForTextures(QStringList)));
 	connect(configDialog, SIGNAL(updateTextureSearchDirs(QList<QPair<bool,QString> >)), this, SLOT(s_updateTexSearchDirs(const QList<QPair<bool,QString> >&)));
@@ -139,9 +139,6 @@ void MainWindow::s_fileOpen()
 		f.open(modelFileNfo.absoluteFilePath().toLocal8Bit(), std::ios::in);
 		model.importFromOBJ(f);
 	}
-
-	ui->centralWidget->clearRenderList();
-	ui->centralWidget->addToRenderList(&model);
 
 	model.setRenderTexture(importDialog->textureFilePath());
 
@@ -324,7 +321,7 @@ void MainWindow::on_actionSave_As_triggered()
 
 void MainWindow::_on_viewerInitialized()
 {
-
+	ui->centralWidget->addToRenderList(&model);
 }
 
 void MainWindow::_on_scaleXYZChanged(double val)
