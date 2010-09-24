@@ -19,8 +19,6 @@
 
 #include "QtGLView.hpp"
 
-#include <cstdio>
-
 #include <QPixmap>
 #include <QImage>
 #include <QApplication>
@@ -29,7 +27,6 @@
 #include <QtDebug>
 
 #include <GL/gl.h>
-#include <GL/glext.h>
 
 #include <QGLViewer/vec.h>
 
@@ -46,8 +43,8 @@ QtGLView::QtGLView(QWidget *parent) :
 	connect(&textureUpdater, SIGNAL(fileChanged(QString)), this, SLOT(textureChanged(QString)));
 
 	setShortcut(DISPLAY_FPS, 0); // Disable stuff that won't work.
-	setShortcut(DRAW_AXIS, 0);
-	setShortcut(DRAW_GRID, 0);
+	setGridIsDrawn(true);
+	setAxisIsDrawn(true);
 }
 
 QtGLView::~QtGLView()
@@ -100,30 +97,14 @@ void QtGLView::init()
 	{
 		// Can use fixed function tcmask
 		m_tcmSupport = FixedPipeline;
-	}
 
-	// What about shader tcmask?
-	if (oglFFlags & QGLFormat::OpenGL_Version_2_0)
-	{
-		/*
-		 * Shader requirements
-		 * GLSL >= 1.20
-		 * So using opengl >= 2.0, glGetString( GL_SHADING_LANGUAGE_VERSION )
-		 * and whether shader compilation succeeds.
+		/* What about shader tcmask?
+		 * Using Qt's shader functions, so using
+		 * QGLShaderProgram::hasOpenGLShaderPrograms
+		 * and whether linking fails
 		 */
-		unsigned major = 0, minor = 0; // initialised to 0 so that it can fall through on error
-		const char* glslVersionStr = reinterpret_cast<const char*>(glGetString(GL_SHADING_LANGUAGE_VERSION));
 
-		if (glslVersionStr != NULL)
-		{
-			std::sscanf(glslVersionStr, "%u.%u", &major, &minor);
-		}
-		else
-		{
-			while(glGetError() != GL_NO_ERROR);
-		}
-
-		if (major > 1 || (major == 1 && minor >= 20))
+		if (QGLShaderProgram::hasOpenGLShaderPrograms(context()))
 		{
 			if (m_tcmaskShader != NULL)
 			{
@@ -182,42 +163,47 @@ void QtGLView::postDraw()
 	glDisable(GL_TEXTURE_2D);
 
 	/* Grid begin - Copied from QGLViewer source then modified */
-	glColor3f(.7f, 1.f, .7f);
-	glPushMatrix();
-
-	glRotatef(90.0f, 1.f, 0.f, 0.f);
-	const int subdivisions = 3;
-	const float halfSize = subdivisions/2.f;
-	glBegin(GL_LINES);
-	for (int i=0; i <= subdivisions; ++i)
+	if (gridIsDrawn())
 	{
-		const float pos = i - halfSize;
-		glVertex2f(pos, -halfSize); // vertical
-		glVertex2f(pos, +halfSize);
+		glColor3f(.7f, 1.f, .7f);
+		glPushMatrix();
 
-		// horizontal
-		glVertex2f(-halfSize, pos); // |   |    | |  |_|_
-		glVertex2f( halfSize, pos); // |   |___ |_|_ |_|_
+		glRotatef(90.0f, 1.f, 0.f, 0.f);
+		const int subdivisions = 3;
+		const float halfSize = subdivisions/2.f;
+		glBegin(GL_LINES);
+		for (int i=0; i <= subdivisions; ++i)
+		{
+			const float pos = i - halfSize;
+			glVertex2f(pos, -halfSize); // vertical
+			glVertex2f(pos, +halfSize);
+
+			// horizontal
+			glVertex2f(-halfSize, pos); // |   |    | |  |_|_
+			glVertex2f( halfSize, pos); // |   |___ |_|_ |_|_
+		}
+		glEnd();
+		glColor3f(1.f, 1.f, 1.f);
+		glPopMatrix();
 	}
-	glEnd();
-	glColor3f(1.f, 1.f, 1.f);
-	glPopMatrix();
 
 	/* Grid end
 	 * Axis begin  - Copied from QGLViewer source then modified */
-	const float length =camera()->sceneRadius();
-	const float charWidth = length / 40.0;
-	const float charHeight = length / 30.0;
-	const float charShift = 1.04 * length;
+	if (axisIsDrawn())
+	{
+		const float length =camera()->sceneRadius();
+		const float charWidth = length / 40.0;
+		const float charHeight = length / 30.0;
+		const float charShift = 1.04 * length;
 
-	GLboolean lighting;
-	glGetBooleanv(GL_LIGHTING, &lighting);
+		GLboolean lighting;
+		glGetBooleanv(GL_LIGHTING, &lighting);
 
-	glDisable(GL_LIGHTING);
-	glEnable(GL_LINE_SMOOTH);
-	glLineWidth(2);
+		glDisable(GL_LIGHTING);
+		glEnable(GL_LINE_SMOOTH);
+		glLineWidth(2);
 
-	glBegin(GL_LINES);
+		glBegin(GL_LINES);
 		// The X
 		glVertex3f(-charShift,  charWidth, -charHeight);
 		glVertex3f(-charShift, -charWidth,  charHeight);
@@ -237,31 +223,35 @@ void QtGLView::postDraw()
 		glVertex3f(-charWidth, -charHeight, charShift);
 		glVertex3f(-charWidth, -charHeight, charShift);
 		glVertex3f( charWidth, -charHeight, charShift);
-	glEnd();
+		glEnd();
 
-	glEnable(GL_LIGHTING);
+		glEnable(GL_LIGHTING);
 
-	float color[4];
-	color[0] = 0.7f;  color[1] = 0.7f;  color[2] = 1.0f;  color[3] = 1.0f;
-	glMaterialfv(GL_FRONT_AND_BACK, GL_AMBIENT_AND_DIFFUSE, color);
-	QGLViewer::drawArrow(length, 0.01*length);
+		float color[4];
+		color[0] = 0.7f;  color[1] = 0.7f;  color[2] = 1.0f;  color[3] = 1.0f;
+		glMaterialfv(GL_FRONT_AND_BACK, GL_AMBIENT_AND_DIFFUSE, color);
+		QGLViewer::drawArrow(length, 0.01*length);
 
-	color[0] = 1.0f;  color[1] = 0.7f;  color[2] = 0.7f;  color[3] = 1.0f;
-	glMaterialfv(GL_FRONT_AND_BACK, GL_AMBIENT_AND_DIFFUSE, color);
-	glPushMatrix();
-	glRotatef(-90.0, 0.0, 1.0, 0.0);
-	QGLViewer::drawArrow(length, 0.01*length);
-	glPopMatrix();
+		color[0] = 1.0f;  color[1] = 0.7f;  color[2] = 0.7f;  color[3] = 1.0f;
+		glMaterialfv(GL_FRONT_AND_BACK, GL_AMBIENT_AND_DIFFUSE, color);
+		glPushMatrix();
+		glRotatef(-90.0, 0.0, 1.0, 0.0);
+		QGLViewer::drawArrow(length, 0.01*length);
+		glPopMatrix();
 
-	color[0] = 0.7f;  color[1] = 1.0f;  color[2] = 0.7f;  color[3] = 1.0f;
-	glMaterialfv(GL_FRONT_AND_BACK, GL_AMBIENT_AND_DIFFUSE, color);
-	glPushMatrix();
-	glRotatef(-90.0, 1.0, 0.0, 0.0);
-	QGLViewer::drawArrow(length, 0.01*length);
-	glPopMatrix();
+		color[0] = 0.7f;  color[1] = 1.0f;  color[2] = 0.7f;  color[3] = 1.0f;
+		glMaterialfv(GL_FRONT_AND_BACK, GL_AMBIENT_AND_DIFFUSE, color);
+		glPushMatrix();
+		glRotatef(-90.0, 1.0, 0.0, 0.0);
+		QGLViewer::drawArrow(length, 0.01*length);
+		glPopMatrix();
 
-	if (!lighting)
-		glDisable(GL_LIGHTING);
+		if (!lighting)
+		{
+			glDisable(GL_LIGHTING);
+		}
+	}
+
 	glEnable(GL_TEXTURE_2D);
 }
 

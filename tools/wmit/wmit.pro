@@ -53,6 +53,12 @@ FORMS += MainWindow.ui \
 QT += opengl \
     xml
 
+OTHER_FILES += TODO.txt \
+	COPYING.txt \
+	HACKING.txt	\
+	tcmask.vert \
+	tcmask.frag
+
 # If your system uses different paths for QGLViewer, create a file named
 # "config" and override the necessary variables below (with "=").
 QGLVIEWER_INCL = /usr/include/QGLViewer
@@ -89,6 +95,3 @@ QMAKE_CXXFLAGS_WARN_ON += -pedantic \
     -Wredundant-decls # -DWARNMORE # if you want more warnings to quash
 QMAKE_CFLAGS_DEBUG += -fstack-protector-all
 QMAKE_CXXFLAGS_DEBUG += -fstack-protector-all
-OTHER_FILES += TODO.txt \
-    COPYING.txt \
-    HACKING.txt
