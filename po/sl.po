@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: warzone2100\n"
 "Report-Msgid-Bugs-To: warzone-dev@gna.org\n"
-"POT-Creation-Date: 2010-07-12 13:52+1000\n"
+"POT-Creation-Date: 2010-09-30 22:17-0400\n"
 "PO-Revision-Date: 2009-06-10 14:43+0100\n"
 "Last-Translator: Tomaž Povšin <tomaz.povsin@gmail.com>\n"
 "Language-Team: Slovenian <sl@li.org>\n"
@@ -5663,84 +5663,67 @@ msgid "Incoming intelligence report... Team Gamma"
 msgstr "Prihajajoče obveščevalno poročilo... Skupina gama"
 
 #: data/base/messages/strings/genstrings.txt:4
-#: data/mods/multiplay/ntw/messages/strings/genstrings.txt:4
 msgid "Briefing Commences:"
 msgstr "Navodila sledijo:"
 
 #: data/base/messages/strings/genstrings.txt:7
-#: data/mods/multiplay/ntw/messages/strings/genstrings.txt:7
 msgid "Scavenger Outpost"
 msgstr "Oporišče plenilcev"
 
 #: data/base/messages/strings/genstrings.txt:8
-#: data/mods/multiplay/ntw/messages/strings/genstrings.txt:8
 msgid "Power Resource"
 msgstr "Vir moči"
 
 #: data/base/messages/strings/genstrings.txt:9
-#: data/mods/multiplay/ntw/messages/strings/genstrings.txt:9
 msgid "Unknown Artifact"
 msgstr "Neznan artefakt"
 
 #: data/base/messages/strings/genstrings.txt:10
-#: data/mods/multiplay/ntw/messages/strings/genstrings.txt:10
 msgid "Source of Power Surge"
 msgstr "Izvor nenavadnega vzpona moči"
 
 #: data/base/messages/strings/genstrings.txt:13
-#: data/mods/multiplay/ntw/messages/strings/genstrings.txt:13
 msgid "Landing Zone"
 msgstr "Pristajalna cona"
 
 #: data/base/messages/strings/genstrings.txt:14
 #: data/base/messages/strings/genstrings.txt:24
-#: data/mods/multiplay/ntw/messages/strings/genstrings.txt:14
-#: data/mods/multiplay/ntw/messages/strings/genstrings.txt:24
 msgid "Mission Target"
 msgstr "Cilj misije"
 
 #: data/base/messages/strings/genstrings.txt:15
-#: data/mods/multiplay/ntw/messages/strings/genstrings.txt:15
 msgid "Pre-Collapse Research Center"
 msgstr "Predpropadno raziskovalno središče"
 
 #: data/base/messages/strings/genstrings.txt:17
-#: data/mods/multiplay/ntw/messages/strings/genstrings.txt:17
 msgid "En-route To Mission Site"
 msgstr "Med potjo na kraj misije"
 
 #: data/base/messages/strings/genstrings.txt:18
-#: data/mods/multiplay/ntw/messages/strings/genstrings.txt:18
 msgid "Mission Failed"
 msgstr "Misija spodletela"
 
 #: data/base/messages/strings/genstrings.txt:19
-#: data/mods/multiplay/ntw/messages/strings/genstrings.txt:19
 msgid "Mission Successful"
 msgstr "Misija uspešna"
 
 #: data/base/messages/strings/genstrings.txt:22
-#: data/mods/multiplay/ntw/messages/strings/genstrings.txt:22
 msgid "Enemy Landing Zone"
 msgstr "Sovražna pristajalna cona"
 
 #: data/base/messages/strings/genstrings.txt:23
-#: data/mods/multiplay/ntw/messages/strings/genstrings.txt:23
 msgid "Enemy Base"
 msgstr "Sovražna baza"
 
 #: data/base/messages/strings/genstrings.txt:27
-#: data/mods/multiplay/ntw/messages/strings/genstrings.txt:27
 msgid "Incoming transmission"
 msgstr "Prihajajoče sporočilo"
 
 #: data/base/messages/strings/genstrings.txt:30
-#: data/mods/multiplay/ntw/messages/strings/genstrings.txt:30
 msgid "Incoming intelligence report."
 msgstr "Prihajajoče obveščevalno poročilo."
 
 #: data/base/messages/strings/genstrings.txt:33
-#: data/mods/multiplay/ntw/messages/strings/genstrings.txt:33
 msgid "Nuclear Reactor"
 msgstr "Jedrski reaktor"
 
@@ -5921,7 +5904,6 @@ msgid "Light Cannon Python Tracks"
 msgstr "Lahki top Piton Gosenice"
 
 #: data/base/messages/strings/names.txt:194
-#: data/mods/multiplay/ntw/messages/strings/names.txt:1357
 #: data/mods/multiplay/old-1.10-balance/messages/strings/names.txt:1923
 #: data/mp/messages/strings/names.txt:197
 #: data/mp/messages/strings/names.txt:1926
@@ -9165,7 +9147,6 @@ msgid "Downed Transport"
 msgstr "Sestreljen prevoz"
 
 #: data/base/messages/strings/names.txt:1458
-#: data/mods/multiplay/ntw/messages/strings/names.txt:1356
 #: data/mods/multiplay/old-1.10-balance/messages/strings/names.txt:1922
 #: data/mp/messages/strings/names.txt:1477
 #: data/mp/messages/strings/names.txt:1925
@@ -10359,180 +10340,6 @@ msgstr ""
 msgid "Slowly, out of the ashes we will rise again..."
 msgstr ""
 
-#: data/mods/multiplay/ntw/messages/strings/names.txt:1313
-msgid "Cobra Hover Heavy-Repair"
-msgstr "Naočarka Zračna blazina Težka popravila"
-
-#: data/mods/multiplay/ntw/messages/strings/names.txt:1314
-msgid "Viper HMG Wheels"
-msgstr "Gad TST Kolesa"
-
-#: data/mods/multiplay/ntw/messages/strings/names.txt:1315
-#: data/mods/multiplay/old-1.10-balance/messages/strings/names.txt:1824
-#: data/mp/messages/strings/names.txt:1827
-msgid "Scourge Mantis Hover"
-msgstr "Bič Bogomolka Zračna blazina"
-
-#: data/mods/multiplay/ntw/messages/strings/names.txt:1316
-msgid "TK Mantis Hover"
-msgstr "MT Bogomolka Zračna blazina"
-
-#: data/mods/multiplay/ntw/messages/strings/names.txt:1317
-msgid "Cobra HMG Tracks"
-msgstr "Naočarka TST Gosenice"
-
-#: data/mods/multiplay/ntw/messages/strings/names.txt:1318
-msgid "Cobra Hover HC"
-msgstr "Naočarka Zračna blazina TT"
-
-#: data/mods/multiplay/ntw/messages/strings/names.txt:1319
-msgid "Scorpion Lancer Tracks"
-msgstr "Škorpijon Suličar Gosenice"
-
-#: data/mods/multiplay/ntw/messages/strings/names.txt:1320
-msgid "Scorpion Heavy Cannon Tracks"
-msgstr "Škorpijon Težki top Gosenice"
-
-#: data/mods/multiplay/ntw/messages/strings/names.txt:1321
-msgid "Scorpion Lancer VTOL"
-msgstr "Škorpijon Suličar NVP"
-
-#: data/mods/multiplay/ntw/messages/strings/names.txt:1322
-msgid "Scorpion BB VTOL"
-msgstr "Škorpijon UB NVP"
-
-#: data/mods/multiplay/ntw/messages/strings/names.txt:1323
-msgid "Viper Command Turret Tracks"
-msgstr "Gad Poveljniška kupola Gosenice"
-
-#: data/mods/multiplay/ntw/messages/strings/names.txt:1324
-msgid "Cobra Command Turret Tracks"
-msgstr "Naočarka Poveljniška kupola Gosenice"
-
-#: data/mods/multiplay/ntw/messages/strings/names.txt:1325
-msgid "Scorpion Command Turret Tracks"
-msgstr "Škorpijon Poveljniška kupola Gosenice"
-
-#: data/mods/multiplay/ntw/messages/strings/names.txt:1326
-msgid "mantis Command Turret Tracks"
-msgstr "Bogomolka Poveljniška kupola Gosenice"
-
-#: data/mods/multiplay/ntw/messages/strings/names.txt:1327
-msgid "Cobra Lancer Tracks"
-msgstr "Naočarka Suličar Gosenice"
-
-#: data/mods/multiplay/ntw/messages/strings/names.txt:1328
-msgid "Mantis Heavy Cannon Tracks"
-msgstr "Bogomolka Težki top Gosenice"
-
-#: data/mods/multiplay/ntw/messages/strings/names.txt:1329
-msgid "Mantis Tank Killer Tracks"
-msgstr "Bogomolka Morilec tankov Gosenice"
-
-#: data/mods/multiplay/ntw/messages/strings/names.txt:1330
-msgid "Mantis Scourge Tracks"
-msgstr "Bogomolka Bič Gosenice"
-
-#: data/mods/multiplay/ntw/messages/strings/names.txt:1331
-msgid "Scorpion Heavy Machinegun Tracks"
-msgstr "Škorpijon Težka strojnica Gosenice"
-
-#: data/mods/multiplay/ntw/messages/strings/names.txt:1332
-msgid "Scorpion Repair Tracks"
-msgstr "Škorpijon Popravila Gosenice"
-
-#: data/mods/multiplay/ntw/messages/strings/names.txt:1333
-msgid "Scorpion Heavy Repair Hover"
-msgstr "Škorpijon Težka popravila Zračna blazina"
-
-#: data/mods/multiplay/ntw/messages/strings/names.txt:1334
-msgid "Cobra Hover Truck"
-msgstr "Naočarka Zračna blazina Tovornjak"
-
-#: data/mods/multiplay/ntw/messages/strings/names.txt:1335
-msgid "Scorpion Hover Truck"
-msgstr "Škorpijon Zračna blazina Tovornjak"
-
-#: data/mods/multiplay/ntw/messages/strings/names.txt:1336
-msgid "Mantis Hover Truck"
-msgstr "Bogomolka Zračna blazina Tovornjak"
-
-#: data/mods/multiplay/ntw/messages/strings/names.txt:1337
-msgid "Cobra Bunker Buster Tracks"
-msgstr "Naočarka z uničevalcem bunkerjev in gosenicami"
-
-#: data/mods/multiplay/ntw/messages/strings/names.txt:1338
-msgid "Scorpion Bunker Buster Tracks"
-msgstr "Škorpijon z uničevalcem bunkerjev in gosenicami"
-
-#: data/mods/multiplay/ntw/messages/strings/names.txt:1339
-msgid "Mantis Bunker Buster Tracks"
-msgstr "Bogomolka Uničevalec bunkerjev Gosenice"
-
-#: data/mods/multiplay/ntw/messages/strings/names.txt:1340
-msgid "Viper Tracks Lancer"
-msgstr "Gad Gosenice Suličar"
-
-#: data/mods/multiplay/ntw/messages/strings/names.txt:1341
-msgid "Cobra Half-Tracks Mini-Pod"
-msgstr "Naočarka Polgosenice Mini-metalec"
-
-#: data/mods/multiplay/ntw/messages/strings/names.txt:1342
-msgid "Cobra Tracks Mini-Pod"
-msgstr "Naočarka Gosenice Mini-metalec"
-
-#: data/mods/multiplay/ntw/messages/strings/names.txt:1343
-msgid "Cobra Tracks Mini-Rocket Artillery"
-msgstr "Naočarka Gosenice Mini-raketno topništvo"
-
-#: data/mods/multiplay/ntw/messages/strings/names.txt:1344
-msgid "Cobra Inferno Half-track"
-msgstr "Naočarka Pekel Polgosenice"
-
-#: data/mods/multiplay/ntw/messages/strings/names.txt:1345
-msgid "Python HVC Hover"
-msgstr "Piton HHT Zračna blazina"
-
-#: data/mods/multiplay/ntw/messages/strings/names.txt:1346
-msgid "Python Scourge Tracks"
-msgstr "Piton Bič Gosenice"
-
-#: data/mods/multiplay/ntw/messages/strings/names.txt:1347
-msgid "Python Gauss Cannon Tracks"
-msgstr "Piton Gavs top Gosenice"
-
-#: data/mods/multiplay/ntw/messages/strings/names.txt:1348
-msgid "Python Pulse Laser Tracks"
-msgstr "Piton Sunkovni laser Gosenice"
-
-#: data/mods/multiplay/ntw/messages/strings/names.txt:1349
-msgid "Tiger Pulse Laser Tracks"
-msgstr "Tiger Sunkovni laser Gosenice"
-
-#: data/mods/multiplay/ntw/messages/strings/names.txt:1350
-msgid "Tiger Heavy Laser Tracks"
-msgstr "Tiger Težki laser Gosenice"
-
-#: data/mods/multiplay/ntw/messages/strings/names.txt:1351
-msgid "Wyvern Gauss Cannon Tracks"
-msgstr "Krilata kača Gavs top Gosenice"
-
-#: data/mods/multiplay/ntw/messages/strings/names.txt:1352
-msgid "Wyvern Pulse Laser Tracks"
-msgstr "Krilata kača Sunkovni laser Gosenice"
-
-#: data/mods/multiplay/ntw/messages/strings/names.txt:1353
-msgid "Wyvern Heavy Laser Tracks"
-msgstr "Krilata kača Težki laser Gosenice"
-
-#: data/mods/multiplay/ntw/messages/strings/names.txt:1354
-msgid "Viper Machinegun Half-Track"
-msgstr "Gad Strojnica Polgosenice"
-
-#: data/mods/multiplay/ntw/messages/strings/names.txt:1355
-msgid "Viper Flamer Half-Track"
-msgstr "Gad Plamenometalec Polgosenice"
-
 #: data/mods/multiplay/old-1.10-balance/messages/strings/names.txt:1822
 #: data/mp/messages/strings/names.txt:1825
 msgid "Heavy Repair Turret Cobra Hover"
@@ -10544,6 +10351,11 @@ msgstr "Kupola za težka popravila Naočarka Zračna blazina"
 #: data/mp/messages/strings/names.txt:1837
 msgid "Heavy Machinegun Viper Wheels"
 msgstr "Težka strojnica Gad Kolesa"
+
+#: data/mods/multiplay/old-1.10-balance/messages/strings/names.txt:1824
+#: data/mp/messages/strings/names.txt:1827
+msgid "Scourge Mantis Hover"
+msgstr "Bič Bogomolka Zračna blazina"
 
 #: data/mods/multiplay/old-1.10-balance/messages/strings/names.txt:1825
 #: data/mp/messages/strings/names.txt:1828
@@ -12704,8 +12516,8 @@ msgstr "gostitelj"
 msgid "go directly to host screen"
 msgstr "pojdi naravnost na gostiteljev zaslon"
 
-#: src/configuration.c:443
-#: src/configuration.c:444
+#: src/configuration.c:439
+#: src/configuration.c:440
 #: src/multistat.c:120
 msgid "Player"
 msgstr "Igralec"
@@ -12851,52 +12663,52 @@ msgstr "Orožja"
 msgid "Systems"
 msgstr "Sistemi"
 
-#: src/display3d.c:565
+#: src/display3d.c:564
 msgid "Player left"
 msgstr "Igralec odšel"
 
-#: src/display3d.c:565
+#: src/display3d.c:564
 msgid "Player dropped"
 msgstr "Igralec izpadel"
 
-#: src/display.c:1679
+#: src/display.c:1693
 msgid "Cannot Build. Oil Resource Burning."
 msgstr "Gradnja ni možna. Vir nafte gori."
 
-#: src/display.c:1859
-#: src/display.c:2462
+#: src/display.c:1873
+#: src/display.c:2476
 #, c-format
 msgid "%s - Damage %d%% - Experience %d, %s"
 msgstr "%s - Poškodbe %d%% - Izkušenj %d %s"
 
-#: src/display.c:1875
+#: src/display.c:1889
 #, fuzzy, c-format
 msgid "%s - Allied - Damage %d%% - Experience %d, %s"
 msgstr "%s - Poškodbe %d%% - Izkušenj %d %s"
 
-#: src/display.c:2077
+#: src/display.c:2091
 msgid "Truck ordered to build Oil Derrick"
 msgstr "Tovornjaku ukazana gradnja naftne vrtine"
 
-#: src/display.c:2078
+#: src/display.c:2092
 #, fuzzy
 msgid "2 trucks ordered to build Oil Derrick"
 msgstr "Tovornjaku ukazana gradnja naftne vrtine"
 
-#: src/display.c:2079
+#: src/display.c:2093
 #, fuzzy, c-format
 msgid "%d trucks ordered to build Oil Derrick"
 msgstr "Tovornjaku ukazana gradnja naftne vrtine"
 
-#: src/droid.c:210
+#: src/droid.c:213
 msgid "Unit Lost!"
 msgstr "Enota izgubljena!"
 
-#: src/droid.c:1347
+#: src/droid.c:1351
 msgid "Structure Restored"
 msgstr "Zgradba obnovljena"
 
-#: src/droid.c:2959
+#: src/droid.c:3005
 #, c-format
 msgid "Group %u selected - %u Unit"
 msgid_plural "Group %u selected - %u Units"
@@ -12905,7 +12717,7 @@ msgstr[1] "Skupina %u izbrana - %u enota"
 msgstr[2] "Skupina %u izbrana - %u enoti"
 msgstr[3] "Skupina %u izbrana - %u enote"
 
-#: src/droid.c:2972
+#: src/droid.c:3018
 #, c-format
 msgid "%u unit assigned to Group %u"
 msgid_plural "%u units assigned to Group %u"
@@ -12914,7 +12726,7 @@ msgstr[1] "%u enota dodeljena skupini %u"
 msgstr[2] "%u enoti dodeljeni skupini %u"
 msgstr[3] "%u enote dodeljene skupini %u"
 
-#: src/droid.c:2985
+#: src/droid.c:3031
 #, c-format
 msgid "Centered on Group %u - %u Unit"
 msgid_plural "Centered on Group %u - %u Units"
@@ -12923,7 +12735,7 @@ msgstr[1] "Centriran na skupino %u - %u enota"
 msgstr[2] "Centriran na skupino %u - %u enoti"
 msgstr[3] "Centriran na skupino %u - %u enote"
 
-#: src/droid.c:2989
+#: src/droid.c:3035
 #, c-format
 msgid "Aligning with Group %u - %u Unit"
 msgid_plural "Aligning with Group %u - %u Units"
@@ -12932,40 +12744,40 @@ msgstr[1] "Poravnava s skupino %u - %u enota"
 msgstr[2] "Poravnava s skupino %u - %u enoti"
 msgstr[3] "Poravnava s skupino %u - %u enote"
 
-#: src/droid.c:3273
+#: src/droid.c:3319
 msgid "Rookie"
 msgstr "Novinec"
 
-#: src/droid.c:3274
+#: src/droid.c:3320
 msgctxt "rank"
 msgid "Green"
 msgstr "Zelen"
 
-#: src/droid.c:3275
+#: src/droid.c:3321
 msgid "Trained"
 msgstr "Izurjen"
 
-#: src/droid.c:3276
+#: src/droid.c:3322
 msgid "Regular"
 msgstr "Navaden"
 
-#: src/droid.c:3277
+#: src/droid.c:3323
 msgid "Professional"
 msgstr "Poklicni"
 
-#: src/droid.c:3278
+#: src/droid.c:3324
 msgid "Veteran"
 msgstr "Veteran"
 
-#: src/droid.c:3279
+#: src/droid.c:3325
 msgid "Elite"
 msgstr "Elita"
 
-#: src/droid.c:3280
+#: src/droid.c:3326
 msgid "Special"
 msgstr "Poseben"
 
-#: src/droid.c:3281
+#: src/droid.c:3327
 msgid "Hero"
 msgstr "Junak"
 
@@ -13503,7 +13315,7 @@ msgid "Power Accrued"
 msgstr "Moč povečana"
 
 #: src/intelmap.c:247
-#: src/keybind.c:1397
+#: src/keybind.c:1406
 msgid "PAUSED"
 msgstr "IGRA USTAVLJENA"
 
@@ -13524,32 +13336,32 @@ msgid "New Intelligence Report"
 msgstr "Novo obveščevalno poročilo"
 
 #: src/intorder.c:161
-#: src/keymap.c:390
+#: src/keymap.c:398
 msgid "Short Range"
 msgstr "Kratki domet"
 
 #: src/intorder.c:162
-#: src/keymap.c:397
+#: src/keymap.c:405
 msgid "Long Range"
 msgstr "Dolgi domet"
 
 #: src/intorder.c:163
-#: src/keymap.c:389
+#: src/keymap.c:397
 msgid "Optimum Range"
 msgstr "Najugodnejši domet"
 
 #: src/intorder.c:164
-#: src/keymap.c:409
+#: src/keymap.c:417
 msgid "Retreat at Medium Damage"
 msgstr "Umik pri srednje težki poškodbi"
 
 #: src/intorder.c:165
-#: src/keymap.c:410
+#: src/keymap.c:418
 msgid "Retreat at Heavy Damage"
 msgstr "Umik pri težki poškodbi"
 
 #: src/intorder.c:166
-#: src/keymap.c:411
+#: src/keymap.c:419
 msgid "Do or Die!"
 msgstr "Stori ali umri!"
 
@@ -13558,37 +13370,37 @@ msgid "Fire-At-Will"
 msgstr "Streljaj-po-želji"
 
 #: src/intorder.c:168
-#: src/keymap.c:385
+#: src/keymap.c:393
 msgid "Return Fire"
 msgstr "Vračaj streljanje"
 
 #: src/intorder.c:169
-#: src/keymap.c:383
+#: src/keymap.c:391
 msgid "Hold Fire"
 msgstr "Ustavi streljanje"
 
 #: src/intorder.c:170
-#: src/keymap.c:392
+#: src/keymap.c:400
 msgid "Patrol"
 msgstr "Patruliraj"
 
 #: src/intorder.c:171
-#: src/keymap.c:391
+#: src/keymap.c:399
 msgid "Pursue"
 msgstr "Zasleduj"
 
 #: src/intorder.c:172
-#: src/keymap.c:387
+#: src/keymap.c:395
 msgid "Guard Position"
 msgstr "Straži položaj"
 
 #: src/intorder.c:173
-#: src/keymap.c:394
+#: src/keymap.c:402
 msgid "Hold Position"
 msgstr "Drži položaj"
 
 #: src/intorder.c:174
-#: src/keymap.c:393
+#: src/keymap.c:401
 msgid "Return For Repair"
 msgstr "Vrni se na popravilo"
 
@@ -13597,12 +13409,12 @@ msgid "Return To HQ"
 msgstr "Vrni se v GS"
 
 #: src/intorder.c:176
-#: src/keymap.c:395
+#: src/keymap.c:403
 msgid "Go to Transport"
 msgstr "Pojdi do prevoza"
 
 #: src/intorder.c:177
-#: src/keymap.c:420
+#: src/keymap.c:428
 msgid "Return for Recycling"
 msgstr "Vrni se za reciklažo"
 
@@ -13630,289 +13442,285 @@ msgstr "Dodeli NVP tovarniško izdelavo"
 msgid "Circle"
 msgstr "Kroži"
 
-#: src/keybind.c:136
+#: src/keybind.c:137
 msgid "Sorry, that cheat is disabled in multiplayer games."
 msgstr "Oprostite, ta goljufija je onemogočena v igrah z večimi igralci."
 
-#: src/keybind.c:142
+#: src/keybind.c:143
 msgid "Warning! This cheat is buggy.  We recommend to NOT use it."
 msgstr "Opozorilo! Ta goljufija je hroščata. Priporočamo, da se je NE uporablja."
 
-#: src/keybind.c:226
+#: src/keybind.c:227
 msgid "Lets us see what you see!"
 msgstr "Dovoli nam videti kar vidite vi!"
 
-#: src/keybind.c:228
+#: src/keybind.c:229
 msgid "Fine, weapon & sensor display is off!"
 msgstr "Vredu, prikaz orožja & senzorjev je izklopljen!"
 
-#: src/keybind.c:359
+#: src/keybind.c:360
 #, fuzzy, c-format
 msgid "Player %u is cheating him/herself a new droid army of %s(s)."
 msgstr "Igralec/ka %u si je prigoljufal/a (razhroščevalni meni) novega droida: %s."
 
-#: src/keybind.c:399
-#: src/keybind.c:429
-#: src/keybind.c:446
-#: src/keybind.c:490
-#: src/keybind.c:598
-#: src/keybind.c:638
-#: src/keybind.c:744
-#: src/keybind.c:1287
-#: src/keybind.c:1344
-#: src/keybind.c:1446
-#: src/keybind.c:1567
-#: src/keybind.c:1918
-#: src/keybind.c:1959
+#: src/keybind.c:400
+#: src/keybind.c:430
+#: src/keybind.c:447
+#: src/keybind.c:491
+#: src/keybind.c:599
+#: src/keybind.c:647
+#: src/keybind.c:753
+#: src/keybind.c:1296
+#: src/keybind.c:1353
+#: src/keybind.c:1455
+#: src/keybind.c:1576
+#: src/keybind.c:1927
+#: src/keybind.c:1968
 #, c-format
 msgid "(Player %u) is using cheat :%s"
 msgstr "(Igralec %u) uporablja goljufijo :%s"
 
-#: src/keybind.c:400
+#: src/keybind.c:401
 msgid "Hard as nails!!!"
 msgstr "Trdo kot žeblji!!!"
 
-#: src/keybind.c:414
+#: src/keybind.c:415
 msgid "Takings thing easy!"
 msgstr "Enostavno jemanje stvari!"
 
-#: src/keybind.c:430
+#: src/keybind.c:431
 msgid "1000 big ones!!!"
 msgstr "1000 velikih!!!"
 
-#: src/keybind.c:447
+#: src/keybind.c:448
 msgid "Power overwhelming"
 msgstr "Neustavljiva moč"
 
-#: src/keybind.c:462
+#: src/keybind.c:463
 msgid "Back to normality!"
 msgstr "Nazaj v normalnost!"
 
-#: src/keybind.c:475
+#: src/keybind.c:476
 msgid "Getting tricky!"
 msgstr "Postaja zapleteno!"
 
-#: src/keybind.c:491
+#: src/keybind.c:492
 msgid "Twice as nice!"
 msgstr "Dvakrat tako dobro!"
 
-#: src/keybind.c:502
+#: src/keybind.c:503
 msgid "FPS display is enabled."
 msgstr "Prikaz SNS je omogočen."
 
-#: src/keybind.c:506
+#: src/keybind.c:507
 msgid "FPS display is disabled."
 msgstr "Prikaz SNS je onemogočen."
 
-#: src/keybind.c:530
+#: src/keybind.c:531
 #, c-format
 msgid "FPS %d; FPS-Limit: %d; PIEs %d; polys %d; Terr. polys %d; States %d"
 msgstr "SNS %d; Meja SNS: %d; PIE-ji %d; poliji %d; Ter. poliji %d; Stanja %d"
 
-#: src/keybind.c:562
+#: src/keybind.c:563
 #, c-format
 msgid "(Player %u) is using a cheat :Num Droids: %d  Num Structures: %d  Num Features: %d"
 msgstr "(Igralec %u) uporablja goljufijo :Št droidov: %d  Št zgradb: %d  Št odlik: %d"
 
-#: src/keybind.c:599
+#: src/keybind.c:600
 msgid "Infinite power disabled"
 msgstr "Neustavljiva moč onemogočena"
 
-#: src/keybind.c:599
+#: src/keybind.c:600
 msgid "Infinite power enabled"
 msgstr "Neustavljiva moč omogočena"
 
-#: src/keybind.c:639
+#: src/keybind.c:648
 msgid "All items made available"
 msgstr "Vse zadeve dane na voljo"
 
-#: src/keybind.c:745
+#: src/keybind.c:754
 msgid "Fog on"
 msgstr "Megla vklopljena"
 
-#: src/keybind.c:745
+#: src/keybind.c:754
 msgid "Fog off"
 msgstr "Megla izklopljena"
 
-#: src/keybind.c:1176
+#: src/keybind.c:1185
 #, c-format
 msgid "Warning!  This cheat can cause dire problems later on! [%s]"
 msgstr "Opozorilo! Ta goljufija lahko kasneje povzroči resne težave! [%s]"
 
-#: src/keybind.c:1176
+#: src/keybind.c:1185
 msgid "Ending Mission."
 msgstr "Končujem misijo."
 
-#: src/keybind.c:1288
+#: src/keybind.c:1297
 msgid "CHEATS ARE NOW ENABLED!"
 msgstr "GOLJUFIJE SO SEDAJ OMOGOČENE!"
 
-#: src/keybind.c:1288
+#: src/keybind.c:1297
 msgid "CHEATS ARE NOW DISABLED!"
 msgstr "GOLJUFIJE SO SEDAJ ONEMOGOČENE!"
 
-#: src/keybind.c:1345
+#: src/keybind.c:1354
 msgid "God Mode ON"
 msgstr "Božji način VKLOPLJEN"
 
-#: src/keybind.c:1345
+#: src/keybind.c:1354
 msgid "God Mode OFF"
 msgstr "Božji način IZKLOPLJEN"
 
-#: src/keybind.c:1357
+#: src/keybind.c:1366
 msgid "View Aligned to North"
 msgstr "Pogled poravnan na sever"
 
-#: src/keybind.c:1366
+#: src/keybind.c:1375
 #, fuzzy, c-format
 msgid "Trap cursor %s"
 msgstr "Ujemi kazalec"
 
-#: src/keybind.c:1447
+#: src/keybind.c:1456
 msgid "Researched EVERYTHING for you!"
 msgstr "Raziskal VSE za vas!"
 
-#: src/keybind.c:1503
+#: src/keybind.c:1512
 #, c-format
 msgid "(Player %u) is using cheat :%s %s"
 msgstr "(Igralec %u) uporablja goljufijo :%s %s"
 
-#: src/keybind.c:1504
+#: src/keybind.c:1513
 msgid "Researched"
 msgstr "Raziskano"
 
-#: src/keybind.c:1525
+#: src/keybind.c:1534
 msgid "Only displaying energy bars when selected"
 msgstr "Črte moči prikazane le ob izboru"
 
-#: src/keybind.c:1528
+#: src/keybind.c:1537
 msgid "Always displaying energy bars for units"
 msgstr "Vedno prikazane črte moči za enote"
 
-#: src/keybind.c:1531
+#: src/keybind.c:1540
 msgid "Always displaying energy bars for units and structures"
 msgstr "Vedno prikazane črte moči za enote in zgradbe"
 
-#: src/keybind.c:1553
+#: src/keybind.c:1562
 msgid "Demo mode off - Returning to normal game mode"
 msgstr "Demo način izklopljen - Vračanje na navadni način igre"
 
-#: src/keybind.c:1568
+#: src/keybind.c:1577
 msgid "Debug menu is Open"
 msgstr "Razhroščevalni meni je odprt"
 
-#: src/keybind.c:1599
+#: src/keybind.c:1608
 msgid "Unable to locate any resource extractors!"
 msgstr "Ni mogoče najti nobenih črpalcev virov!"
 
-#: src/keybind.c:1820
+#: src/keybind.c:1829
 msgid "Oh, the weather outside is frightful... SNOW"
 msgstr "Oh, vreme zunaj je strašno... SNEG"
 
-#: src/keybind.c:1826
+#: src/keybind.c:1835
 msgid "Singing in the rain, I'm singing in the rain... RAIN"
 msgstr "Pojem v dežju, jaz pojem v dežju... DEŽ"
 
-#: src/keybind.c:1832
+#: src/keybind.c:1841
 msgid "Forecast : Clear skies for all areas... NO WEATHER"
 msgstr "Napoved : jasno nebo za vsa območja... NI VREMENA"
 
-#: src/keybind.c:1917
+#: src/keybind.c:1926
 msgid "Warning! This can have drastic consequences if used incorrectly in missions."
 msgstr "Opozorilo! To ima lahko drastične posledice, če se nepravilno uporabi v misijah"
 
-#: src/keybind.c:1919
+#: src/keybind.c:1928
 msgid "All enemies destroyed by cheating!"
 msgstr "Vsi sovražniki uničeni z goljufanjem!"
 
-#: src/keybind.c:1960
+#: src/keybind.c:1969
 msgid "Destroying selected droids and structures!"
 msgstr "Uničevanje izbranih droidov in zgradb!"
 
-#: src/keybind.c:2482
+#: src/keybind.c:2491
 msgid "Centered on player HQ, direction NORTH"
 msgstr "Centriran na GS igralca, smer SEVER"
 
-#: src/keybind.c:2494
+#: src/keybind.c:2503
 msgid "Unable to locate HQ!"
 msgstr "Ni mogoče najti GS!"
 
-#: src/keybind.c:2501
-msgid "Formation speed limiting has been removed from the game due to bugs."
-msgstr ""
-
-#: src/keybind.c:2550
+#: src/keybind.c:2554
 msgid "Vertical rotation direction: Normal"
 msgstr ""
 
-#: src/keybind.c:2555
+#: src/keybind.c:2559
 msgid "Vertical rotation direction: Flipped"
 msgstr ""
 
-#: src/keybind.c:2564
+#: src/keybind.c:2568
 msgid "Screen shake when things die: Off"
 msgstr ""
 
-#: src/keybind.c:2569
+#: src/keybind.c:2573
 msgid "Screen shake when things die: On"
 msgstr ""
 
-#: src/keybind.c:2614
-#: src/keybind.c:2657
+#: src/keybind.c:2618
+#: src/keybind.c:2661
 #, fuzzy
 msgid "Sorry, but game speed cannot be changed in multiplayer."
 msgstr "Oprostite, ta goljufija je onemogočena v igrah z večimi igralci."
 
-#: src/keybind.c:2635
-#: src/keybind.c:2678
-#: src/keybind.c:2700
+#: src/keybind.c:2639
+#: src/keybind.c:2682
+#: src/keybind.c:2704
 msgid "Game Speed Reset"
 msgstr "Hitrost igre ponastavljena"
 
-#: src/keybind.c:2639
+#: src/keybind.c:2643
 #, c-format
 msgid "Game Speed Increased to %3.1f"
 msgstr "Hitrost igre povečana na %3.1f"
 
-#: src/keybind.c:2682
+#: src/keybind.c:2686
 #, c-format
 msgid "Game Speed Reduced to %3.1f"
 msgstr "Hitrost igre zmanjšana na %3.1f"
 
-#: src/keybind.c:2712
+#: src/keybind.c:2716
 msgid "Build menu will reopen"
 msgstr "Gradbeni meni se bo ponovno odprl"
 
-#: src/keybind.c:2716
+#: src/keybind.c:2720
 msgid "Build menu will not reopen"
 msgstr "Gradbeni meni se ne bo ponovno odprl"
 
-#: src/keybind.c:2728
+#: src/keybind.c:2732
 msgid "Radar showing friend-foe colors"
 msgstr "Radar kaže barve prijateja-sovražnika"
 
-#: src/keybind.c:2732
+#: src/keybind.c:2736
 msgid "Radar showing player colors"
 msgstr "Radar kaže barve igralca"
 
-#: src/keybind.c:2753
+#: src/keybind.c:2757
 msgid "Radar showing only objects"
 msgstr "Radar kaže samo predmete"
 
-#: src/keybind.c:2756
+#: src/keybind.c:2760
 msgid "Radar blending terrain and height"
 msgstr "Radar združuje teren in višino "
 
-#: src/keybind.c:2759
+#: src/keybind.c:2763
 msgid "Radar showing terrain"
 msgstr "Radar kaže teren"
 
-#: src/keybind.c:2762
+#: src/keybind.c:2766
 #, fuzzy
 msgid "Radar showing revealed terrain"
 msgstr "Radar kaže teren"
 
-#: src/keybind.c:2765
+#: src/keybind.c:2769
 msgid "Radar showing height"
 msgstr "Radar kaže višino"
 
@@ -13931,365 +13739,369 @@ msgstr "Vrni se na prejšnji zaslon"
 msgid "Select Default"
 msgstr "Izberi privzeto"
 
-#: src/keymap.c:295
+#: src/keymap.c:296
 msgid "Manufacture"
 msgstr "Izdeluj"
 
-#: src/keymap.c:296
+#: src/keymap.c:297
 msgid "Research"
 msgstr "Razišči"
 
-#: src/keymap.c:297
+#: src/keymap.c:298
 msgid "Build"
 msgstr "Gradi"
 
-#: src/keymap.c:298
+#: src/keymap.c:299
 msgid "Design"
 msgstr "Načrtuj"
 
-#: src/keymap.c:299
+#: src/keymap.c:300
 msgid "Intelligence Display"
 msgstr "Obveščevalni zaslon"
 
-#: src/keymap.c:300
+#: src/keymap.c:301
 msgid "Commanders"
 msgstr "Poveljniki"
 
-#: src/keymap.c:301
+#: src/keymap.c:302
 msgid "Toggle Radar"
 msgstr "Nastavi radar"
 
-#: src/keymap.c:302
+#: src/keymap.c:303
 msgid "Toggle Console Display"
 msgstr "Nastavi konzolni zaslon"
 
-#: src/keymap.c:303
+#: src/keymap.c:304
 msgid "Toggle Damage Bars On/Off"
 msgstr "Nastavi vklop/izklop črt škode"
 
-#: src/keymap.c:304
+#: src/keymap.c:306
 msgid "Take Screen Shot"
 msgstr "Naredi sliko zaslona"
 
-#: src/keymap.c:305
+#: src/keymap.c:309
+msgid "Dump Vido Sequence"
+msgstr ""
+
+#: src/keymap.c:312
 msgid "Toggle Formation Speed Limiting"
 msgstr "Nastavi omejevanje hitrosti reda"
 
-#: src/keymap.c:306
+#: src/keymap.c:314
 msgid "View Location of Previous Message"
 msgstr "Poglej položaj prejšnjega sporočila"
 
-#: src/keymap.c:311
+#: src/keymap.c:319
 msgid "Assign Group 0"
 msgstr "Dodeli skupino 0"
 
-#: src/keymap.c:312
+#: src/keymap.c:320
 msgid "Assign Group 1"
 msgstr "Dodeli skupino 1"
 
-#: src/keymap.c:313
+#: src/keymap.c:321
 msgid "Assign Group 2"
 msgstr "Dodeli skupino 2"
 
-#: src/keymap.c:314
+#: src/keymap.c:322
 msgid "Assign Group 3"
 msgstr "Dodeli skupino 3"
 
-#: src/keymap.c:315
+#: src/keymap.c:323
 msgid "Assign Group 4"
 msgstr "Dodeli skupino 4"
 
-#: src/keymap.c:316
+#: src/keymap.c:324
 msgid "Assign Group 5"
 msgstr "Dodeli skupino 5"
 
-#: src/keymap.c:317
+#: src/keymap.c:325
 msgid "Assign Group 6"
 msgstr "Dodeli skupino 6"
 
-#: src/keymap.c:318
+#: src/keymap.c:326
 msgid "Assign Group 7"
 msgstr "Dodeli skupino 7"
 
-#: src/keymap.c:319
+#: src/keymap.c:327
 msgid "Assign Group 8"
 msgstr "Dodeli skupino 8"
 
-#: src/keymap.c:320
+#: src/keymap.c:328
 msgid "Assign Group 9"
 msgstr "Dodeli skupino 9"
 
-#: src/keymap.c:324
+#: src/keymap.c:332
 msgid "Select Group 0"
 msgstr "Izberite skupino 0"
 
-#: src/keymap.c:325
+#: src/keymap.c:333
 msgid "Select Group 1"
 msgstr "Izberite skupino 1"
 
-#: src/keymap.c:326
+#: src/keymap.c:334
 msgid "Select Group 2"
 msgstr "Izberite skupino 2"
 
-#: src/keymap.c:327
+#: src/keymap.c:335
 msgid "Select Group 3"
 msgstr "Izberite skupino 3"
 
-#: src/keymap.c:328
+#: src/keymap.c:336
 msgid "Select Group 4"
 msgstr "Izberite skupino 4"
 
-#: src/keymap.c:329
+#: src/keymap.c:337
 msgid "Select Group 5"
 msgstr "Izberite skupino 5"
 
-#: src/keymap.c:330
+#: src/keymap.c:338
 msgid "Select Group 6"
 msgstr "Izberite skupino 6"
 
-#: src/keymap.c:331
+#: src/keymap.c:339
 msgid "Select Group 7"
 msgstr "Izberite skupino 7"
 
-#: src/keymap.c:332
+#: src/keymap.c:340
 msgid "Select Group 8"
 msgstr "Izberite skupino 8"
 
-#: src/keymap.c:333
+#: src/keymap.c:341
 msgid "Select Group 9"
 msgstr "Izberite skupino 9"
 
-#: src/keymap.c:337
+#: src/keymap.c:345
 msgid "Select Commander 0"
 msgstr "Izberite poveljnika 0"
 
-#: src/keymap.c:338
+#: src/keymap.c:346
 msgid "Select Commander 1"
 msgstr "Izberite poveljnika 1"
 
-#: src/keymap.c:339
+#: src/keymap.c:347
 msgid "Select Commander 2"
 msgstr "Izberite poveljnika 2"
 
-#: src/keymap.c:340
+#: src/keymap.c:348
 msgid "Select Commander 3"
 msgstr "Izberite poveljnika 3"
 
-#: src/keymap.c:341
+#: src/keymap.c:349
 msgid "Select Commander 4"
 msgstr "Izberite poveljnika 4"
 
-#: src/keymap.c:342
+#: src/keymap.c:350
 msgid "Select Commander 5"
 msgstr "Izberite poveljnika 5"
 
-#: src/keymap.c:343
+#: src/keymap.c:351
 msgid "Select Commander 6"
 msgstr "Izberite poveljnika 6"
 
-#: src/keymap.c:344
+#: src/keymap.c:352
 msgid "Select Commander 7"
 msgstr "Izberite poveljnika 7"
 
-#: src/keymap.c:345
+#: src/keymap.c:353
 msgid "Select Commander 8"
 msgstr "Izberite poveljnika 8"
 
-#: src/keymap.c:346
+#: src/keymap.c:354
 msgid "Select Commander 9"
 msgstr "Izberite poveljnika 9"
 
-#: src/keymap.c:350
+#: src/keymap.c:358
 #, fuzzy
 msgid "Multiplayer Options / Alliance dialog"
 msgstr "Večigralske možnosti"
 
-#: src/keymap.c:353
+#: src/keymap.c:361
 msgid "Snap View to North"
 msgstr "Usmeri pogled na sever"
 
-#: src/keymap.c:354
+#: src/keymap.c:362
 msgid "Toggle Tracking Camera"
 msgstr "Nastavi sledilno kamero"
 
-#: src/keymap.c:355
+#: src/keymap.c:363
 msgid "Display In-Game Options"
 msgstr "Prikaži možnosti v igri"
 
-#: src/keymap.c:356
+#: src/keymap.c:364
 msgid "Zoom Radar Out"
 msgstr "Zumiraj radar ven"
 
-#: src/keymap.c:357
+#: src/keymap.c:365
 msgid "Zoom Radar In"
 msgstr "Zumiraj radar noter"
 
-#: src/keymap.c:358
+#: src/keymap.c:366
 msgid "Zoom In"
 msgstr "Zumiraj ven"
 
-#: src/keymap.c:359
+#: src/keymap.c:367
 msgid "Zoom Out"
 msgstr "Zumiraj noter"
 
-#: src/keymap.c:360
+#: src/keymap.c:368
 msgid "Pitch Forward"
 msgstr "Nagni naprej"
 
-#: src/keymap.c:361
+#: src/keymap.c:369
 msgid "Rotate Left"
 msgstr "Zavrti levo"
 
-#: src/keymap.c:362
+#: src/keymap.c:370
 msgid "Reset Pitch"
 msgstr "Ponastavi naklon"
 
-#: src/keymap.c:363
+#: src/keymap.c:371
 msgid "Rotate Right"
 msgstr "Zavrti desno"
 
-#: src/keymap.c:364
+#: src/keymap.c:372
 msgid "Pitch Back"
 msgstr "Nagni nazaj"
 
-#: src/keymap.c:365
+#: src/keymap.c:373
 msgid "Orders Menu"
 msgstr "Ukazni meni"
 
-#: src/keymap.c:366
+#: src/keymap.c:374
 msgid "Decrease Game Speed"
 msgstr "Zmanjšaj hitrost igre"
 
-#: src/keymap.c:367
+#: src/keymap.c:375
 msgid "Increase Game Speed"
 msgstr "Povečaj hitrost igre"
 
-#: src/keymap.c:368
+#: src/keymap.c:376
 msgid "Reset Game Speed"
 msgstr "Ponastavi hitrost igre"
 
-#: src/keymap.c:369
+#: src/keymap.c:377
 msgid "View North"
 msgstr "Poglej sever"
 
-#: src/keymap.c:370
+#: src/keymap.c:378
 msgid "View South"
 msgstr "Poglej jug"
 
-#: src/keymap.c:371
+#: src/keymap.c:379
 msgid "View East"
 msgstr "Poglej vzhod"
 
-#: src/keymap.c:372
+#: src/keymap.c:380
 msgid "View West"
 msgstr "Poglej zahod"
 
-#: src/keymap.c:373
+#: src/keymap.c:381
 msgid "View next Oil Derrick"
 msgstr "Poglej naslednjo naftno vrtino"
 
-#: src/keymap.c:374
+#: src/keymap.c:382
 msgid "View next Repair Unit"
 msgstr "Poglej naslednjo enoto za popravila"
 
-#: src/keymap.c:375
+#: src/keymap.c:383
 msgid "View next Truck"
 msgstr "Poglej naslednji tovornjak"
 
-#: src/keymap.c:376
+#: src/keymap.c:384
 msgid "View next Sensor Unit"
 msgstr "Poglej naslednjo senzorsko enoto"
 
-#: src/keymap.c:377
+#: src/keymap.c:385
 msgid "View next Commander"
 msgstr "Poglej naslednjega poveljnika"
 
-#: src/keymap.c:378
+#: src/keymap.c:386
 msgid "Toggle Overlays"
 msgstr "Nastavi prekrivanja"
 
-#: src/keymap.c:379
+#: src/keymap.c:387
 msgid "Console On/Off"
 msgstr "Konzola vklopljena/izklopljena"
 
-#: src/keymap.c:382
+#: src/keymap.c:390
 msgid "Center View on HQ"
 msgstr "Centriraj pogled na GS"
 
-#: src/keymap.c:384
+#: src/keymap.c:392
 msgid "View Unassigned Units"
 msgstr "Poglej nedodeljene enote"
 
-#: src/keymap.c:386
+#: src/keymap.c:394
 msgid "Fire at Will"
 msgstr "Streljaj po želji"
 
-#: src/keymap.c:388
+#: src/keymap.c:396
 msgid "Return to HQ"
 msgstr "Vrni se v GS"
 
-#: src/keymap.c:396
+#: src/keymap.c:404
 msgid "Send Text Message"
 msgstr "Pošlji besedilno sporočilo"
 
-#: src/keymap.c:415
+#: src/keymap.c:423
 msgid "Select all Combat Units"
 msgstr "Izberi vse bojne enote"
 
-#: src/keymap.c:416
+#: src/keymap.c:424
 msgid "Select all Heavily Damaged Units"
 msgstr "Izberi vse težko poškodovane enote"
 
-#: src/keymap.c:418
+#: src/keymap.c:426
 msgid "Select all Half-tracks"
 msgstr "Izberi vse polgosenice"
 
-#: src/keymap.c:419
+#: src/keymap.c:427
 msgid "Select all Hovers"
 msgstr "Izberi vse zračne blazine"
 
-#: src/keymap.c:421
+#: src/keymap.c:429
 msgid "Select all Units on Screen"
 msgstr "Izberi vse enote na zaslonu"
 
-#: src/keymap.c:422
+#: src/keymap.c:430
 msgid "Select all Tracks"
 msgstr "Izberi vse gosenice"
 
-#: src/keymap.c:423
+#: src/keymap.c:431
 msgid "Select EVERY unit"
 msgstr "Izberi VSE enote"
 
-#: src/keymap.c:424
+#: src/keymap.c:432
 msgid "Select all VTOLs"
 msgstr "Izberi vse NVP"
 
-#: src/keymap.c:425
+#: src/keymap.c:433
 msgid "Select all Wheels"
 msgstr "Izberi vsa kolesa"
 
-#: src/keymap.c:427
+#: src/keymap.c:435
 #, fuzzy
 msgid "Select all Similar Units"
 msgstr "Izberi vse istovrstne enote"
 
-#: src/keymap.c:431
+#: src/keymap.c:439
 msgid "Select next Factory"
 msgstr "Izberi naslednjo tovarno"
 
-#: src/keymap.c:432
+#: src/keymap.c:440
 msgid "Select next Research Facility"
 msgstr "Izberi naslednjo raziskovalno stavbo"
 
-#: src/keymap.c:433
+#: src/keymap.c:441
 msgid "Select next Power Generator"
 msgstr "Izberi naslednji generator moči"
 
-#: src/keymap.c:434
+#: src/keymap.c:442
 msgid "Select next Cyborg Factory"
 msgstr "Izberi naslednjo tovarno kiborgov"
 
-#: src/keymap.c:435
+#: src/keymap.c:443
 msgid "Toggle reopening the build menu"
 msgstr "Nastavi ponovno odpiranje gradbenega menija"
 
@@ -15091,6 +14903,132 @@ msgstr "- Zgrajen %s"
 #, c-format
 msgid "Version %s%s%s%s"
 msgstr "Verzija %s%s%s%s"
+
+#~ msgid "Cobra Hover Heavy-Repair"
+#~ msgstr "Naočarka Zračna blazina Težka popravila"
+
+#~ msgid "Viper HMG Wheels"
+#~ msgstr "Gad TST Kolesa"
+
+#~ msgid "TK Mantis Hover"
+#~ msgstr "MT Bogomolka Zračna blazina"
+
+#~ msgid "Cobra HMG Tracks"
+#~ msgstr "Naočarka TST Gosenice"
+
+#~ msgid "Cobra Hover HC"
+#~ msgstr "Naočarka Zračna blazina TT"
+
+#~ msgid "Scorpion Lancer Tracks"
+#~ msgstr "Škorpijon Suličar Gosenice"
+
+#~ msgid "Scorpion Heavy Cannon Tracks"
+#~ msgstr "Škorpijon Težki top Gosenice"
+
+#~ msgid "Scorpion Lancer VTOL"
+#~ msgstr "Škorpijon Suličar NVP"
+
+#~ msgid "Scorpion BB VTOL"
+#~ msgstr "Škorpijon UB NVP"
+
+#~ msgid "Viper Command Turret Tracks"
+#~ msgstr "Gad Poveljniška kupola Gosenice"
+
+#~ msgid "Cobra Command Turret Tracks"
+#~ msgstr "Naočarka Poveljniška kupola Gosenice"
+
+#~ msgid "Scorpion Command Turret Tracks"
+#~ msgstr "Škorpijon Poveljniška kupola Gosenice"
+
+#~ msgid "mantis Command Turret Tracks"
+#~ msgstr "Bogomolka Poveljniška kupola Gosenice"
+
+#~ msgid "Cobra Lancer Tracks"
+#~ msgstr "Naočarka Suličar Gosenice"
+
+#~ msgid "Mantis Heavy Cannon Tracks"
+#~ msgstr "Bogomolka Težki top Gosenice"
+
+#~ msgid "Mantis Tank Killer Tracks"
+#~ msgstr "Bogomolka Morilec tankov Gosenice"
+
+#~ msgid "Mantis Scourge Tracks"
+#~ msgstr "Bogomolka Bič Gosenice"
+
+#~ msgid "Scorpion Heavy Machinegun Tracks"
+#~ msgstr "Škorpijon Težka strojnica Gosenice"
+
+#~ msgid "Scorpion Repair Tracks"
+#~ msgstr "Škorpijon Popravila Gosenice"
+
+#~ msgid "Scorpion Heavy Repair Hover"
+#~ msgstr "Škorpijon Težka popravila Zračna blazina"
+
+#~ msgid "Cobra Hover Truck"
+#~ msgstr "Naočarka Zračna blazina Tovornjak"
+
+#~ msgid "Scorpion Hover Truck"
+#~ msgstr "Škorpijon Zračna blazina Tovornjak"
+
+#~ msgid "Mantis Hover Truck"
+#~ msgstr "Bogomolka Zračna blazina Tovornjak"
+
+#~ msgid "Cobra Bunker Buster Tracks"
+#~ msgstr "Naočarka z uničevalcem bunkerjev in gosenicami"
+
+#~ msgid "Scorpion Bunker Buster Tracks"
+#~ msgstr "Škorpijon z uničevalcem bunkerjev in gosenicami"
+
+#~ msgid "Mantis Bunker Buster Tracks"
+#~ msgstr "Bogomolka Uničevalec bunkerjev Gosenice"
+
+#~ msgid "Viper Tracks Lancer"
+#~ msgstr "Gad Gosenice Suličar"
+
+#~ msgid "Cobra Half-Tracks Mini-Pod"
+#~ msgstr "Naočarka Polgosenice Mini-metalec"
+
+#~ msgid "Cobra Tracks Mini-Pod"
+#~ msgstr "Naočarka Gosenice Mini-metalec"
+
+#~ msgid "Cobra Tracks Mini-Rocket Artillery"
+#~ msgstr "Naočarka Gosenice Mini-raketno topništvo"
+
+#~ msgid "Cobra Inferno Half-track"
+#~ msgstr "Naočarka Pekel Polgosenice"
+
+#~ msgid "Python HVC Hover"
+#~ msgstr "Piton HHT Zračna blazina"
+
+#~ msgid "Python Scourge Tracks"
+#~ msgstr "Piton Bič Gosenice"
+
+#~ msgid "Python Gauss Cannon Tracks"
+#~ msgstr "Piton Gavs top Gosenice"
+
+#~ msgid "Python Pulse Laser Tracks"
+#~ msgstr "Piton Sunkovni laser Gosenice"
+
+#~ msgid "Tiger Pulse Laser Tracks"
+#~ msgstr "Tiger Sunkovni laser Gosenice"
+
+#~ msgid "Tiger Heavy Laser Tracks"
+#~ msgstr "Tiger Težki laser Gosenice"
+
+#~ msgid "Wyvern Gauss Cannon Tracks"
+#~ msgstr "Krilata kača Gavs top Gosenice"
+
+#~ msgid "Wyvern Pulse Laser Tracks"
+#~ msgstr "Krilata kača Sunkovni laser Gosenice"
+
+#~ msgid "Wyvern Heavy Laser Tracks"
+#~ msgstr "Krilata kača Težki laser Gosenice"
+
+#~ msgid "Viper Machinegun Half-Track"
+#~ msgstr "Gad Strojnica Polgosenice"
+
+#~ msgid "Viper Flamer Half-Track"
+#~ msgstr "Gad Plamenometalec Polgosenice"
 
 #, fuzzy
 #~ msgid "Strategy Game"

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: warzone2100\n"
 "Report-Msgid-Bugs-To: warzone-dev@gna.org\n"
-"POT-Creation-Date: 2010-07-12 13:52+1000\n"
+"POT-Creation-Date: 2010-09-30 22:17-0400\n"
 "PO-Revision-Date: 2009-05-11 00:21+0800\n"
 "Last-Translator: \n"
 "Language-Team: zh_TW\n"
@@ -5667,84 +5667,67 @@ msgid "Incoming intelligence report... Team Gamma"
 msgstr "傳入情報報告...GAMMA中隊"
 
 #: data/base/messages/strings/genstrings.txt:4
-#: data/mods/multiplay/ntw/messages/strings/genstrings.txt:4
 msgid "Briefing Commences:"
 msgstr "簡報開始："
 
 #: data/base/messages/strings/genstrings.txt:7
-#: data/mods/multiplay/ntw/messages/strings/genstrings.txt:7
 msgid "Scavenger Outpost"
 msgstr "拾荒者前哨站"
 
 #: data/base/messages/strings/genstrings.txt:8
-#: data/mods/multiplay/ntw/messages/strings/genstrings.txt:8
 msgid "Power Resource"
 msgstr "能源資源"
 
 #: data/base/messages/strings/genstrings.txt:9
-#: data/mods/multiplay/ntw/messages/strings/genstrings.txt:9
 msgid "Unknown Artifact"
 msgstr "不知名遺留科技"
 
 #: data/base/messages/strings/genstrings.txt:10
-#: data/mods/multiplay/ntw/messages/strings/genstrings.txt:10
 msgid "Source of Power Surge"
 msgstr "能量波的源頭"
 
 #: data/base/messages/strings/genstrings.txt:13
-#: data/mods/multiplay/ntw/messages/strings/genstrings.txt:13
 msgid "Landing Zone"
 msgstr "降落點"
 
 #: data/base/messages/strings/genstrings.txt:14
 #: data/base/messages/strings/genstrings.txt:24
-#: data/mods/multiplay/ntw/messages/strings/genstrings.txt:14
-#: data/mods/multiplay/ntw/messages/strings/genstrings.txt:24
 msgid "Mission Target"
 msgstr "任務目標"
 
 #: data/base/messages/strings/genstrings.txt:15
-#: data/mods/multiplay/ntw/messages/strings/genstrings.txt:15
 msgid "Pre-Collapse Research Center"
 msgstr "崩潰前的研發中心"
 
 #: data/base/messages/strings/genstrings.txt:17
-#: data/mods/multiplay/ntw/messages/strings/genstrings.txt:17
 msgid "En-route To Mission Site"
 msgstr "在前往任務地點途中..."
 
 #: data/base/messages/strings/genstrings.txt:18
-#: data/mods/multiplay/ntw/messages/strings/genstrings.txt:18
 msgid "Mission Failed"
 msgstr "任務失敗"
 
 #: data/base/messages/strings/genstrings.txt:19
-#: data/mods/multiplay/ntw/messages/strings/genstrings.txt:19
 msgid "Mission Successful"
 msgstr "任務成功"
 
 #: data/base/messages/strings/genstrings.txt:22
-#: data/mods/multiplay/ntw/messages/strings/genstrings.txt:22
 msgid "Enemy Landing Zone"
 msgstr "敵軍降落點"
 
 #: data/base/messages/strings/genstrings.txt:23
-#: data/mods/multiplay/ntw/messages/strings/genstrings.txt:23
 msgid "Enemy Base"
 msgstr "敵方基地"
 
 #: data/base/messages/strings/genstrings.txt:27
-#: data/mods/multiplay/ntw/messages/strings/genstrings.txt:27
 msgid "Incoming transmission"
 msgstr "傳入訊息"
 
 #: data/base/messages/strings/genstrings.txt:30
-#: data/mods/multiplay/ntw/messages/strings/genstrings.txt:30
 msgid "Incoming intelligence report."
 msgstr "傳入情報報告"
 
 #: data/base/messages/strings/genstrings.txt:33
-#: data/mods/multiplay/ntw/messages/strings/genstrings.txt:33
 msgid "Nuclear Reactor"
 msgstr "核子反應爐"
 
@@ -5931,7 +5914,6 @@ msgid "Light Cannon Python Tracks"
 msgstr "履帶式蟒蛇坦克（輕型加農砲）"
 
 #: data/base/messages/strings/names.txt:194
-#: data/mods/multiplay/ntw/messages/strings/names.txt:1357
 #: data/mods/multiplay/old-1.10-balance/messages/strings/names.txt:1923
 #: data/mp/messages/strings/names.txt:197
 #: data/mp/messages/strings/names.txt:1926
@@ -9180,7 +9162,6 @@ msgid "Downed Transport"
 msgstr "卸載運輸艦"
 
 #: data/base/messages/strings/names.txt:1458
-#: data/mods/multiplay/ntw/messages/strings/names.txt:1356
 #: data/mods/multiplay/old-1.10-balance/messages/strings/names.txt:1922
 #: data/mp/messages/strings/names.txt:1477
 #: data/mp/messages/strings/names.txt:1925
@@ -10373,180 +10354,6 @@ msgstr ""
 msgid "Slowly, out of the ashes we will rise again..."
 msgstr ""
 
-#: data/mods/multiplay/ntw/messages/strings/names.txt:1313
-msgid "Cobra Hover Heavy-Repair"
-msgstr "眼鏡蛇重型修理氣墊船"
-
-#: data/mods/multiplay/ntw/messages/strings/names.txt:1314
-msgid "Viper HMG Wheels"
-msgstr "輪式響尾蛇坦克（重機槍）"
-
-#: data/mods/multiplay/ntw/messages/strings/names.txt:1315
-#: data/mods/multiplay/old-1.10-balance/messages/strings/names.txt:1824
-#: data/mp/messages/strings/names.txt:1827
-msgid "Scourge Mantis Hover"
-msgstr "螳螂氣墊船（天譴飛彈）"
-
-#: data/mods/multiplay/ntw/messages/strings/names.txt:1316
-msgid "TK Mantis Hover"
-msgstr "螳螂氣墊船（坦克殺手）"
-
-#: data/mods/multiplay/ntw/messages/strings/names.txt:1317
-msgid "Cobra HMG Tracks"
-msgstr "履帶式眼鏡蛇坦克（重機槍）"
-
-#: data/mods/multiplay/ntw/messages/strings/names.txt:1318
-msgid "Cobra Hover HC"
-msgstr "眼鏡蛇氣墊船（重型加農砲）"
-
-#: data/mods/multiplay/ntw/messages/strings/names.txt:1319
-msgid "Scorpion Lancer Tracks"
-msgstr "履帶式毒蠍坦克（槍騎兵火箭）"
-
-#: data/mods/multiplay/ntw/messages/strings/names.txt:1320
-msgid "Scorpion Heavy Cannon Tracks"
-msgstr "履帶式毒蠍坦克（重型加農砲）"
-
-#: data/mods/multiplay/ntw/messages/strings/names.txt:1321
-msgid "Scorpion Lancer VTOL"
-msgstr "毒蠍VTOL（槍騎兵火箭）"
-
-#: data/mods/multiplay/ntw/messages/strings/names.txt:1322
-msgid "Scorpion BB VTOL"
-msgstr "毒蠍 BB VTOL"
-
-#: data/mods/multiplay/ntw/messages/strings/names.txt:1323
-msgid "Viper Command Turret Tracks"
-msgstr "響尾蛇指揮車"
-
-#: data/mods/multiplay/ntw/messages/strings/names.txt:1324
-msgid "Cobra Command Turret Tracks"
-msgstr "眼鏡蛇指揮車"
-
-#: data/mods/multiplay/ntw/messages/strings/names.txt:1325
-msgid "Scorpion Command Turret Tracks"
-msgstr "毒蠍指揮車"
-
-#: data/mods/multiplay/ntw/messages/strings/names.txt:1326
-msgid "mantis Command Turret Tracks"
-msgstr "螳螂指揮車"
-
-#: data/mods/multiplay/ntw/messages/strings/names.txt:1327
-msgid "Cobra Lancer Tracks"
-msgstr "履帶式眼鏡蛇坦克（槍騎兵火箭）"
-
-#: data/mods/multiplay/ntw/messages/strings/names.txt:1328
-msgid "Mantis Heavy Cannon Tracks"
-msgstr "履帶式螳螂坦克（重型加農砲）"
-
-#: data/mods/multiplay/ntw/messages/strings/names.txt:1329
-msgid "Mantis Tank Killer Tracks"
-msgstr "履帶式螳螂坦克（坦克殺手）"
-
-#: data/mods/multiplay/ntw/messages/strings/names.txt:1330
-msgid "Mantis Scourge Tracks"
-msgstr "履帶式螳螂坦克（天譴飛彈）"
-
-#: data/mods/multiplay/ntw/messages/strings/names.txt:1331
-msgid "Scorpion Heavy Machinegun Tracks"
-msgstr "履帶式毒蠍坦克（重機槍）"
-
-#: data/mods/multiplay/ntw/messages/strings/names.txt:1332
-msgid "Scorpion Repair Tracks"
-msgstr "毒蠍修理車"
-
-#: data/mods/multiplay/ntw/messages/strings/names.txt:1333
-msgid "Scorpion Heavy Repair Hover"
-msgstr "毒蠍重型修理車"
-
-#: data/mods/multiplay/ntw/messages/strings/names.txt:1334
-msgid "Cobra Hover Truck"
-msgstr "眼鏡蛇工程氣墊船"
-
-#: data/mods/multiplay/ntw/messages/strings/names.txt:1335
-msgid "Scorpion Hover Truck"
-msgstr "毒蠍工程氣墊船"
-
-#: data/mods/multiplay/ntw/messages/strings/names.txt:1336
-msgid "Mantis Hover Truck"
-msgstr "螳螂工程氣墊船"
-
-#: data/mods/multiplay/ntw/messages/strings/names.txt:1337
-msgid "Cobra Bunker Buster Tracks"
-msgstr "履帶式眼鏡蛇坦克（碉堡終結者）"
-
-#: data/mods/multiplay/ntw/messages/strings/names.txt:1338
-msgid "Scorpion Bunker Buster Tracks"
-msgstr "履帶式毒蠍坦克（碉堡終結者）"
-
-#: data/mods/multiplay/ntw/messages/strings/names.txt:1339
-msgid "Mantis Bunker Buster Tracks"
-msgstr "履帶式螳螂坦克（碉堡終結者）"
-
-#: data/mods/multiplay/ntw/messages/strings/names.txt:1340
-msgid "Viper Tracks Lancer"
-msgstr "履帶式響尾蛇坦克（槍騎兵火箭）"
-
-#: data/mods/multiplay/ntw/messages/strings/names.txt:1341
-msgid "Cobra Half-Tracks Mini-Pod"
-msgstr "半履帶式眼鏡蛇坦克（迷你火箭）"
-
-#: data/mods/multiplay/ntw/messages/strings/names.txt:1342
-msgid "Cobra Tracks Mini-Pod"
-msgstr "履帶式眼鏡蛇坦克（迷你火箭）"
-
-#: data/mods/multiplay/ntw/messages/strings/names.txt:1343
-msgid "Cobra Tracks Mini-Rocket Artillery"
-msgstr "履帶式眼鏡蛇坦克（迷你火箭砲）"
-
-#: data/mods/multiplay/ntw/messages/strings/names.txt:1344
-msgid "Cobra Inferno Half-track"
-msgstr "半履帶式眼鏡蛇坦克（火焰噴射）"
-
-#: data/mods/multiplay/ntw/messages/strings/names.txt:1345
-msgid "Python HVC Hover"
-msgstr "蟒蛇氣墊船（高速加農砲）"
-
-#: data/mods/multiplay/ntw/messages/strings/names.txt:1346
-msgid "Python Scourge Tracks"
-msgstr "履帶式蟒蛇坦克（天譴飛彈）"
-
-#: data/mods/multiplay/ntw/messages/strings/names.txt:1347
-msgid "Python Gauss Cannon Tracks"
-msgstr "履帶式蟒蛇坦克（高斯加農砲）"
-
-#: data/mods/multiplay/ntw/messages/strings/names.txt:1348
-msgid "Python Pulse Laser Tracks"
-msgstr "履帶式蟒蛇坦克（脈衝雷射）"
-
-#: data/mods/multiplay/ntw/messages/strings/names.txt:1349
-msgid "Tiger Pulse Laser Tracks"
-msgstr "履帶式虎式坦克（脈衝雷射）"
-
-#: data/mods/multiplay/ntw/messages/strings/names.txt:1350
-msgid "Tiger Heavy Laser Tracks"
-msgstr "履帶式虎式坦克（高能雷射）"
-
-#: data/mods/multiplay/ntw/messages/strings/names.txt:1351
-msgid "Wyvern Gauss Cannon Tracks"
-msgstr "履帶式雙足飛龍坦克（高斯加農砲）"
-
-#: data/mods/multiplay/ntw/messages/strings/names.txt:1352
-msgid "Wyvern Pulse Laser Tracks"
-msgstr "履帶式雙足飛龍坦克（脈衝雷射）"
-
-#: data/mods/multiplay/ntw/messages/strings/names.txt:1353
-msgid "Wyvern Heavy Laser Tracks"
-msgstr "履帶式雙足飛龍坦克（重機槍）"
-
-#: data/mods/multiplay/ntw/messages/strings/names.txt:1354
-msgid "Viper Machinegun Half-Track"
-msgstr "半履帶式響尾蛇坦克（雙管機槍）"
-
-#: data/mods/multiplay/ntw/messages/strings/names.txt:1355
-msgid "Viper Flamer Half-Track"
-msgstr "半履帶式響尾蛇坦克（火焰噴射）"
-
 #: data/mods/multiplay/old-1.10-balance/messages/strings/names.txt:1822
 #: data/mp/messages/strings/names.txt:1825
 msgid "Heavy Repair Turret Cobra Hover"
@@ -10558,6 +10365,11 @@ msgstr "眼鏡蛇重型修理氣墊船"
 #: data/mp/messages/strings/names.txt:1837
 msgid "Heavy Machinegun Viper Wheels"
 msgstr "輪式響尾蛇坦克（重機槍）"
+
+#: data/mods/multiplay/old-1.10-balance/messages/strings/names.txt:1824
+#: data/mp/messages/strings/names.txt:1827
+msgid "Scourge Mantis Hover"
+msgstr "螳螂氣墊船（天譴飛彈）"
 
 #: data/mods/multiplay/old-1.10-balance/messages/strings/names.txt:1825
 #: data/mp/messages/strings/names.txt:1828
@@ -12756,8 +12568,8 @@ msgstr "host"
 msgid "go directly to host screen"
 msgstr "go directly to host screen"
 
-#: src/configuration.c:443
-#: src/configuration.c:444
+#: src/configuration.c:439
+#: src/configuration.c:440
 #: src/multistat.c:120
 msgid "Player"
 msgstr "玩家"
@@ -12903,111 +12715,111 @@ msgstr "武器裝備"
 msgid "Systems"
 msgstr "系統裝備"
 
-#: src/display3d.c:565
+#: src/display3d.c:564
 #, fuzzy
 msgid "Player left"
 msgstr "玩家"
 
-#: src/display3d.c:565
+#: src/display3d.c:564
 #, fuzzy
 msgid "Player dropped"
 msgstr "玩家"
 
-#: src/display.c:1679
+#: src/display.c:1693
 msgid "Cannot Build. Oil Resource Burning."
 msgstr "油田燃燒中，無法建築鑽油井"
 
-#: src/display.c:1859
-#: src/display.c:2462
+#: src/display.c:1873
+#: src/display.c:2476
 #, c-format
 msgid "%s - Damage %d%% - Experience %d, %s"
 msgstr "%s - 損傷 %d%% - 經驗值 %d, %s"
 
-#: src/display.c:1875
+#: src/display.c:1889
 #, fuzzy, c-format
 msgid "%s - Allied - Damage %d%% - Experience %d, %s"
 msgstr "%s - 損傷 %d%% - 經驗值 %d, %s"
 
-#: src/display.c:2077
+#: src/display.c:2091
 msgid "Truck ordered to build Oil Derrick"
 msgstr "命令工程車建造鑽油井"
 
-#: src/display.c:2078
+#: src/display.c:2092
 #, fuzzy
 msgid "2 trucks ordered to build Oil Derrick"
 msgstr "命令工程車建造鑽油井"
 
-#: src/display.c:2079
+#: src/display.c:2093
 #, fuzzy, c-format
 msgid "%d trucks ordered to build Oil Derrick"
 msgstr "命令工程車建造鑽油井"
 
-#: src/droid.c:210
+#: src/droid.c:213
 msgid "Unit Lost!"
 msgstr "損失單位！"
 
-#: src/droid.c:1347
+#: src/droid.c:1351
 msgid "Structure Restored"
 msgstr "建築物重建"
 
-#: src/droid.c:2959
+#: src/droid.c:3005
 #, c-format
 msgid "Group %u selected - %u Unit"
 msgid_plural "Group %u selected - %u Units"
 msgstr[0] "第 %u 隊聽令 - 共 %u  單位"
 
-#: src/droid.c:2972
+#: src/droid.c:3018
 #, c-format
 msgid "%u unit assigned to Group %u"
 msgid_plural "%u units assigned to Group %u"
 msgstr[0] "共 %u 單位 被指派為 第 %u 隊"
 
-#: src/droid.c:2985
+#: src/droid.c:3031
 #, c-format
 msgid "Centered on Group %u - %u Unit"
 msgid_plural "Centered on Group %u - %u Units"
 msgstr[0] "視角移動至第 %u  隊 - 共 %u 單位"
 
-#: src/droid.c:2989
+#: src/droid.c:3035
 #, c-format
 msgid "Aligning with Group %u - %u Unit"
 msgid_plural "Aligning with Group %u - %u Units"
 msgstr[0] "Aligning with Group %u - %u 單位"
 
-#: src/droid.c:3273
+#: src/droid.c:3319
 msgid "Rookie"
 msgstr "菜鳥"
 
-#: src/droid.c:3274
+#: src/droid.c:3320
 msgctxt "rank"
 msgid "Green"
 msgstr "青澀"
 
-#: src/droid.c:3275
+#: src/droid.c:3321
 msgid "Trained"
 msgstr "訓練有素的"
 
-#: src/droid.c:3276
+#: src/droid.c:3322
 msgid "Regular"
 msgstr "好樣的"
 
-#: src/droid.c:3277
+#: src/droid.c:3323
 msgid "Professional"
 msgstr "專家"
 
-#: src/droid.c:3278
+#: src/droid.c:3324
 msgid "Veteran"
 msgstr "老手"
 
-#: src/droid.c:3279
+#: src/droid.c:3325
 msgid "Elite"
 msgstr "菁英"
 
-#: src/droid.c:3280
+#: src/droid.c:3326
 msgid "Special"
 msgstr "特務"
 
-#: src/droid.c:3281
+#: src/droid.c:3327
 msgid "Hero"
 msgstr "英雄"
 
@@ -13548,7 +13360,7 @@ msgid "Power Accrued"
 msgstr "能量增加"
 
 #: src/intelmap.c:247
-#: src/keybind.c:1397
+#: src/keybind.c:1406
 msgid "PAUSED"
 msgstr "暫停"
 
@@ -13569,32 +13381,32 @@ msgid "New Intelligence Report"
 msgstr "新的智能情報"
 
 #: src/intorder.c:161
-#: src/keymap.c:390
+#: src/keymap.c:398
 msgid "Short Range"
 msgstr "短距離"
 
 #: src/intorder.c:162
-#: src/keymap.c:397
+#: src/keymap.c:405
 msgid "Long Range"
 msgstr "長距離"
 
 #: src/intorder.c:163
-#: src/keymap.c:389
+#: src/keymap.c:397
 msgid "Optimum Range"
 msgstr "最適距離"
 
 #: src/intorder.c:164
-#: src/keymap.c:409
+#: src/keymap.c:417
 msgid "Retreat at Medium Damage"
 msgstr "中度損傷時撤退"
 
 #: src/intorder.c:165
-#: src/keymap.c:410
+#: src/keymap.c:418
 msgid "Retreat at Heavy Damage"
 msgstr "重度損傷時撤退"
 
 #: src/intorder.c:166
-#: src/keymap.c:411
+#: src/keymap.c:419
 msgid "Do or Die!"
 msgstr "奮戰到底！"
 
@@ -13603,37 +13415,37 @@ msgid "Fire-At-Will"
 msgstr "接觸時開火"
 
 #: src/intorder.c:168
-#: src/keymap.c:385
+#: src/keymap.c:393
 msgid "Return Fire"
 msgstr "遭受攻擊時還擊"
 
 #: src/intorder.c:169
-#: src/keymap.c:383
+#: src/keymap.c:391
 msgid "Hold Fire"
 msgstr "停火"
 
 #: src/intorder.c:170
-#: src/keymap.c:392
+#: src/keymap.c:400
 msgid "Patrol"
 msgstr "巡邏模式"
 
 #: src/intorder.c:171
-#: src/keymap.c:391
+#: src/keymap.c:399
 msgid "Pursue"
 msgstr "追蹤模式"
 
 #: src/intorder.c:172
-#: src/keymap.c:387
+#: src/keymap.c:395
 msgid "Guard Position"
 msgstr "保持戒備"
 
 #: src/intorder.c:173
-#: src/keymap.c:394
+#: src/keymap.c:402
 msgid "Hold Position"
 msgstr "保持原位"
 
 #: src/intorder.c:174
-#: src/keymap.c:393
+#: src/keymap.c:401
 msgid "Return For Repair"
 msgstr "返回修理"
 
@@ -13642,12 +13454,12 @@ msgid "Return To HQ"
 msgstr "回到主基地"
 
 #: src/intorder.c:176
-#: src/keymap.c:395
+#: src/keymap.c:403
 msgid "Go to Transport"
 msgstr "前往運輸艦位置"
 
 #: src/intorder.c:177
-#: src/keymap.c:420
+#: src/keymap.c:428
 msgid "Return for Recycling"
 msgstr "返回回收"
 
@@ -13675,293 +13487,289 @@ msgstr "指定VTOL工廠生產"
 msgid "Circle"
 msgstr "圓（循環）"
 
-#: src/keybind.c:136
+#: src/keybind.c:137
 msgid "Sorry, that cheat is disabled in multiplayer games."
 msgstr "抱歉，多人遊戲中無法使用此作弊碼"
 
-#: src/keybind.c:142
+#: src/keybind.c:143
 msgid "Warning! This cheat is buggy.  We recommend to NOT use it."
 msgstr ""
 
-#: src/keybind.c:226
+#: src/keybind.c:227
 msgid "Lets us see what you see!"
 msgstr "讓我看看你看到了什麼！"
 
-#: src/keybind.c:228
+#: src/keybind.c:229
 msgid "Fine, weapon & sensor display is off!"
 msgstr "關閉細節、武器及雷達顯示"
 
-#: src/keybind.c:359
+#: src/keybind.c:360
 #, fuzzy, c-format
 msgid "Player %u is cheating him/herself a new droid army of %s(s)."
 msgstr "玩家 %u 利用作弊（除錯）模式建立了一個新droid: %s."
 
-#: src/keybind.c:399
-#: src/keybind.c:429
-#: src/keybind.c:446
-#: src/keybind.c:490
-#: src/keybind.c:598
-#: src/keybind.c:638
-#: src/keybind.c:744
-#: src/keybind.c:1287
-#: src/keybind.c:1344
-#: src/keybind.c:1446
-#: src/keybind.c:1567
-#: src/keybind.c:1918
-#: src/keybind.c:1959
+#: src/keybind.c:400
+#: src/keybind.c:430
+#: src/keybind.c:447
+#: src/keybind.c:491
+#: src/keybind.c:599
+#: src/keybind.c:647
+#: src/keybind.c:753
+#: src/keybind.c:1296
+#: src/keybind.c:1353
+#: src/keybind.c:1455
+#: src/keybind.c:1576
+#: src/keybind.c:1927
+#: src/keybind.c:1968
 #, c-format
 msgid "(Player %u) is using cheat :%s"
 msgstr ""
 
-#: src/keybind.c:400
+#: src/keybind.c:401
 msgid "Hard as nails!!!"
 msgstr "像爪子一樣硬！！"
 
-#: src/keybind.c:414
+#: src/keybind.c:415
 msgid "Takings thing easy!"
 msgstr "讓事情變簡單！"
 
-#: src/keybind.c:430
+#: src/keybind.c:431
 msgid "1000 big ones!!!"
 msgstr "1000 big ones!!!"
 
-#: src/keybind.c:447
+#: src/keybind.c:448
 msgid "Power overwhelming"
 msgstr "巨大的能量"
 
-#: src/keybind.c:462
+#: src/keybind.c:463
 msgid "Back to normality!"
 msgstr "回到正常狀態"
 
-#: src/keybind.c:475
+#: src/keybind.c:476
 msgid "Getting tricky!"
 msgstr "得到技巧！"
 
-#: src/keybind.c:491
+#: src/keybind.c:492
 msgid "Twice as nice!"
 msgstr "給我兩倍的力量！！"
 
-#: src/keybind.c:502
+#: src/keybind.c:503
 msgid "FPS display is enabled."
 msgstr "FPS顯示開啟"
 
-#: src/keybind.c:506
+#: src/keybind.c:507
 msgid "FPS display is disabled."
 msgstr "FPS顯示關閉"
 
-#: src/keybind.c:530
+#: src/keybind.c:531
 #, c-format
 msgid "FPS %d; FPS-Limit: %d; PIEs %d; polys %d; Terr. polys %d; States %d"
 msgstr "FPS %d; FPS限制: %d; PIEs %d; polys %d; Terr. polys %d; 狀態 %d"
 
-#: src/keybind.c:562
+#: src/keybind.c:563
 #, c-format
 msgid "(Player %u) is using a cheat :Num Droids: %d  Num Structures: %d  Num Features: %d"
 msgstr ""
 
-#: src/keybind.c:599
+#: src/keybind.c:600
 msgid "Infinite power disabled"
 msgstr "無限制能源：關"
 
-#: src/keybind.c:599
+#: src/keybind.c:600
 msgid "Infinite power enabled"
 msgstr "無限制能源：開"
 
-#: src/keybind.c:639
+#: src/keybind.c:648
 msgid "All items made available"
 msgstr "可使用所有的項目"
 
-#: src/keybind.c:745
+#: src/keybind.c:754
 msgid "Fog on"
 msgstr "戰爭迷霧開啟"
 
-#: src/keybind.c:745
+#: src/keybind.c:754
 msgid "Fog off"
 msgstr "戰爭迷霧關閉"
 
-#: src/keybind.c:1176
+#: src/keybind.c:1185
 #, c-format
 msgid "Warning!  This cheat can cause dire problems later on! [%s]"
 msgstr ""
 
-#: src/keybind.c:1176
+#: src/keybind.c:1185
 #, fuzzy
 msgid "Ending Mission."
 msgstr "傳來訊息..."
 
-#: src/keybind.c:1288
+#: src/keybind.c:1297
 msgid "CHEATS ARE NOW ENABLED!"
 msgstr ""
 
-#: src/keybind.c:1288
+#: src/keybind.c:1297
 msgid "CHEATS ARE NOW DISABLED!"
 msgstr ""
 
-#: src/keybind.c:1345
+#: src/keybind.c:1354
 msgid "God Mode ON"
 msgstr ""
 
-#: src/keybind.c:1345
+#: src/keybind.c:1354
 msgid "God Mode OFF"
 msgstr ""
 
-#: src/keybind.c:1357
+#: src/keybind.c:1366
 msgid "View Aligned to North"
 msgstr "View Aligned to North"
 
-#: src/keybind.c:1366
+#: src/keybind.c:1375
 #, fuzzy, c-format
 msgid "Trap cursor %s"
 msgstr "捕捉滑鼠"
 
-#: src/keybind.c:1447
+#: src/keybind.c:1456
 msgid "Researched EVERYTHING for you!"
 msgstr "替你研發所有科技！"
 
-#: src/keybind.c:1503
+#: src/keybind.c:1512
 #, c-format
 msgid "(Player %u) is using cheat :%s %s"
 msgstr ""
 
-#: src/keybind.c:1504
+#: src/keybind.c:1513
 #, fuzzy
 msgid "Researched"
 msgstr "研發新科技"
 
-#: src/keybind.c:1525
+#: src/keybind.c:1534
 msgid "Only displaying energy bars when selected"
 msgstr ""
 
-#: src/keybind.c:1528
+#: src/keybind.c:1537
 msgid "Always displaying energy bars for units"
 msgstr ""
 
-#: src/keybind.c:1531
+#: src/keybind.c:1540
 msgid "Always displaying energy bars for units and structures"
 msgstr ""
 
-#: src/keybind.c:1553
+#: src/keybind.c:1562
 msgid "Demo mode off - Returning to normal game mode"
 msgstr "關閉展示模式—回到正常遊戲模式"
 
-#: src/keybind.c:1568
+#: src/keybind.c:1577
 #, fuzzy
 msgid "Debug menu is Open"
 msgstr "建築選單將重新開啟"
 
-#: src/keybind.c:1599
+#: src/keybind.c:1608
 msgid "Unable to locate any resource extractors!"
 msgstr "無法找到任何資源（resource extractors）"
 
-#: src/keybind.c:1820
+#: src/keybind.c:1829
 msgid "Oh, the weather outside is frightful... SNOW"
 msgstr "喔，外面的天氣真糟...下雪"
 
-#: src/keybind.c:1826
+#: src/keybind.c:1835
 msgid "Singing in the rain, I'm singing in the rain... RAIN"
 msgstr "下雨啦～下雨啦～"
 
-#: src/keybind.c:1832
+#: src/keybind.c:1841
 msgid "Forecast : Clear skies for all areas... NO WEATHER"
 msgstr "天氣預報：一整片晴朗的天空。"
 
-#: src/keybind.c:1917
+#: src/keybind.c:1926
 msgid "Warning! This can have drastic consequences if used incorrectly in missions."
 msgstr ""
 
-#: src/keybind.c:1919
+#: src/keybind.c:1928
 #, fuzzy
 msgid "All enemies destroyed by cheating!"
 msgstr "敵軍已經死了...由於你作弊的關係.."
 
-#: src/keybind.c:1960
+#: src/keybind.c:1969
 msgid "Destroying selected droids and structures!"
 msgstr ""
 
-#: src/keybind.c:2482
+#: src/keybind.c:2491
 msgid "Centered on player HQ, direction NORTH"
 msgstr "視角移至主基地，面向北方"
 
-#: src/keybind.c:2494
+#: src/keybind.c:2503
 msgid "Unable to locate HQ!"
 msgstr "無法定位至主基地"
 
-#: src/keybind.c:2501
-msgid "Formation speed limiting has been removed from the game due to bugs."
-msgstr ""
-
-#: src/keybind.c:2550
+#: src/keybind.c:2554
 msgid "Vertical rotation direction: Normal"
 msgstr ""
 
-#: src/keybind.c:2555
+#: src/keybind.c:2559
 msgid "Vertical rotation direction: Flipped"
 msgstr ""
 
-#: src/keybind.c:2564
+#: src/keybind.c:2568
 msgid "Screen shake when things die: Off"
 msgstr ""
 
-#: src/keybind.c:2569
+#: src/keybind.c:2573
 msgid "Screen shake when things die: On"
 msgstr ""
 
-#: src/keybind.c:2614
-#: src/keybind.c:2657
+#: src/keybind.c:2618
+#: src/keybind.c:2661
 #, fuzzy
 msgid "Sorry, but game speed cannot be changed in multiplayer."
 msgstr "抱歉，多人遊戲中無法使用此作弊碼"
 
-#: src/keybind.c:2635
-#: src/keybind.c:2678
-#: src/keybind.c:2700
+#: src/keybind.c:2639
+#: src/keybind.c:2682
+#: src/keybind.c:2704
 msgid "Game Speed Reset"
 msgstr "重設遊戲速度"
 
-#: src/keybind.c:2639
+#: src/keybind.c:2643
 #, c-format
 msgid "Game Speed Increased to %3.1f"
 msgstr "遊戲速度增加至 %3.1f"
 
-#: src/keybind.c:2682
+#: src/keybind.c:2686
 #, c-format
 msgid "Game Speed Reduced to %3.1f"
 msgstr "遊戲速度減少至 %3.1f"
 
-#: src/keybind.c:2712
+#: src/keybind.c:2716
 msgid "Build menu will reopen"
 msgstr "建築選單將重新開啟"
 
-#: src/keybind.c:2716
+#: src/keybind.c:2720
 msgid "Build menu will not reopen"
 msgstr "建造選單將不會開啟"
 
-#: src/keybind.c:2728
+#: src/keybind.c:2732
 msgid "Radar showing friend-foe colors"
 msgstr "雷達顯示友軍顏色"
 
-#: src/keybind.c:2732
+#: src/keybind.c:2736
 msgid "Radar showing player colors"
 msgstr "雷達顯示玩家顏色"
 
-#: src/keybind.c:2753
+#: src/keybind.c:2757
 msgid "Radar showing only objects"
 msgstr "雷達僅顯示物件"
 
-#: src/keybind.c:2756
+#: src/keybind.c:2760
 msgid "Radar blending terrain and height"
 msgstr "雷達描繪地形及高度"
 
-#: src/keybind.c:2759
+#: src/keybind.c:2763
 msgid "Radar showing terrain"
 msgstr "雷達顯示地形"
 
-#: src/keybind.c:2762
+#: src/keybind.c:2766
 #, fuzzy
 msgid "Radar showing revealed terrain"
 msgstr "雷達顯示地形"
 
-#: src/keybind.c:2765
+#: src/keybind.c:2769
 msgid "Radar showing height"
 msgstr "雷達顯示高度"
 
@@ -13980,365 +13788,369 @@ msgstr "回到前一個畫面"
 msgid "Select Default"
 msgstr "選擇預設"
 
-#: src/keymap.c:295
+#: src/keymap.c:296
 msgid "Manufacture"
 msgstr "生產新單位"
 
-#: src/keymap.c:296
+#: src/keymap.c:297
 msgid "Research"
 msgstr "研發新科技"
 
-#: src/keymap.c:297
+#: src/keymap.c:298
 msgid "Build"
 msgstr "建築新建築物"
 
-#: src/keymap.c:298
+#: src/keymap.c:299
 msgid "Design"
 msgstr "設計新單位"
 
-#: src/keymap.c:299
+#: src/keymap.c:300
 msgid "Intelligence Display"
 msgstr "檢視情報及任務目標"
 
-#: src/keymap.c:300
+#: src/keymap.c:301
 msgid "Commanders"
 msgstr "指揮官"
 
-#: src/keymap.c:301
+#: src/keymap.c:302
 msgid "Toggle Radar"
 msgstr "開啟或關閉雷達"
 
-#: src/keymap.c:302
+#: src/keymap.c:303
 msgid "Toggle Console Display"
 msgstr "開啟或關閉主控台"
 
-#: src/keymap.c:303
+#: src/keymap.c:304
 msgid "Toggle Damage Bars On/Off"
 msgstr "開啟或關閉損傷顯示"
 
-#: src/keymap.c:304
+#: src/keymap.c:306
 msgid "Take Screen Shot"
 msgstr "抓取螢幕截圖"
 
-#: src/keymap.c:305
+#: src/keymap.c:309
+msgid "Dump Vido Sequence"
+msgstr ""
+
+#: src/keymap.c:312
 msgid "Toggle Formation Speed Limiting"
 msgstr "開啟或關閉成型速度限制"
 
-#: src/keymap.c:306
+#: src/keymap.c:314
 msgid "View Location of Previous Message"
 msgstr "檢視前一訊息發生位置"
 
-#: src/keymap.c:311
+#: src/keymap.c:319
 msgid "Assign Group 0"
 msgstr "指定為第0隊"
 
-#: src/keymap.c:312
+#: src/keymap.c:320
 msgid "Assign Group 1"
 msgstr "指定為第1隊"
 
-#: src/keymap.c:313
+#: src/keymap.c:321
 msgid "Assign Group 2"
 msgstr "指定為第2隊"
 
-#: src/keymap.c:314
+#: src/keymap.c:322
 msgid "Assign Group 3"
 msgstr "指定為第3隊"
 
-#: src/keymap.c:315
+#: src/keymap.c:323
 msgid "Assign Group 4"
 msgstr "指定為第4隊"
 
-#: src/keymap.c:316
+#: src/keymap.c:324
 msgid "Assign Group 5"
 msgstr "指定為第5隊"
 
-#: src/keymap.c:317
+#: src/keymap.c:325
 msgid "Assign Group 6"
 msgstr "指定為第6隊"
 
-#: src/keymap.c:318
+#: src/keymap.c:326
 msgid "Assign Group 7"
 msgstr "指定為第7隊"
 
-#: src/keymap.c:319
+#: src/keymap.c:327
 msgid "Assign Group 8"
 msgstr "指定為第8隊"
 
-#: src/keymap.c:320
+#: src/keymap.c:328
 msgid "Assign Group 9"
 msgstr "指定為第隊"
 
-#: src/keymap.c:324
+#: src/keymap.c:332
 msgid "Select Group 0"
 msgstr "選擇第0隊"
 
-#: src/keymap.c:325
+#: src/keymap.c:333
 msgid "Select Group 1"
 msgstr "選擇第1隊"
 
-#: src/keymap.c:326
+#: src/keymap.c:334
 msgid "Select Group 2"
 msgstr "選擇第2隊"
 
-#: src/keymap.c:327
+#: src/keymap.c:335
 msgid "Select Group 3"
 msgstr "選擇第3隊"
 
-#: src/keymap.c:328
+#: src/keymap.c:336
 msgid "Select Group 4"
 msgstr "選擇第4隊"
 
-#: src/keymap.c:329
+#: src/keymap.c:337
 msgid "Select Group 5"
 msgstr "選擇第5隊"
 
-#: src/keymap.c:330
+#: src/keymap.c:338
 msgid "Select Group 6"
 msgstr "選擇第6隊"
 
-#: src/keymap.c:331
+#: src/keymap.c:339
 msgid "Select Group 7"
 msgstr "選擇第7隊"
 
-#: src/keymap.c:332
+#: src/keymap.c:340
 msgid "Select Group 8"
 msgstr "選擇第8隊"
 
-#: src/keymap.c:333
+#: src/keymap.c:341
 msgid "Select Group 9"
 msgstr "選擇第9隊"
 
-#: src/keymap.c:337
+#: src/keymap.c:345
 msgid "Select Commander 0"
 msgstr "選擇命令0"
 
-#: src/keymap.c:338
+#: src/keymap.c:346
 msgid "Select Commander 1"
 msgstr "選擇命令1"
 
-#: src/keymap.c:339
+#: src/keymap.c:347
 msgid "Select Commander 2"
 msgstr "選擇命令2"
 
-#: src/keymap.c:340
+#: src/keymap.c:348
 msgid "Select Commander 3"
 msgstr "選擇命令3"
 
-#: src/keymap.c:341
+#: src/keymap.c:349
 msgid "Select Commander 4"
 msgstr "選擇命令4"
 
-#: src/keymap.c:342
+#: src/keymap.c:350
 msgid "Select Commander 5"
 msgstr "選擇命令5"
 
-#: src/keymap.c:343
+#: src/keymap.c:351
 msgid "Select Commander 6"
 msgstr "選擇命令6"
 
-#: src/keymap.c:344
+#: src/keymap.c:352
 msgid "Select Commander 7"
 msgstr "選擇命令7"
 
-#: src/keymap.c:345
+#: src/keymap.c:353
 msgid "Select Commander 8"
 msgstr "選擇命令8"
 
-#: src/keymap.c:346
+#: src/keymap.c:354
 msgid "Select Commander 9"
 msgstr "選擇命令9"
 
-#: src/keymap.c:350
+#: src/keymap.c:358
 #, fuzzy
 msgid "Multiplayer Options / Alliance dialog"
 msgstr "多人遊戲選項"
 
-#: src/keymap.c:353
+#: src/keymap.c:361
 msgid "Snap View to North"
 msgstr "Snap View to North"
 
-#: src/keymap.c:354
+#: src/keymap.c:362
 msgid "Toggle Tracking Camera"
 msgstr "開啟或關閉追蹤視角"
 
-#: src/keymap.c:355
+#: src/keymap.c:363
 msgid "Display In-Game Options"
 msgstr "顯示遊戲中選項"
 
-#: src/keymap.c:356
+#: src/keymap.c:364
 msgid "Zoom Radar Out"
 msgstr "縮小雷達視野"
 
-#: src/keymap.c:357
+#: src/keymap.c:365
 msgid "Zoom Radar In"
 msgstr "放大雷達視野"
 
-#: src/keymap.c:358
+#: src/keymap.c:366
 msgid "Zoom In"
 msgstr "視角拉近"
 
-#: src/keymap.c:359
+#: src/keymap.c:367
 msgid "Zoom Out"
 msgstr "視角拉遠"
 
-#: src/keymap.c:360
+#: src/keymap.c:368
 msgid "Pitch Forward"
 msgstr "視角前進"
 
-#: src/keymap.c:361
+#: src/keymap.c:369
 msgid "Rotate Left"
 msgstr "向左旋轉"
 
-#: src/keymap.c:362
+#: src/keymap.c:370
 msgid "Reset Pitch"
 msgstr "重設視角"
 
-#: src/keymap.c:363
+#: src/keymap.c:371
 msgid "Rotate Right"
 msgstr "向右旋轉"
 
-#: src/keymap.c:364
+#: src/keymap.c:372
 msgid "Pitch Back"
 msgstr "視角後退"
 
-#: src/keymap.c:365
+#: src/keymap.c:373
 msgid "Orders Menu"
 msgstr "命令選單"
 
-#: src/keymap.c:366
+#: src/keymap.c:374
 msgid "Decrease Game Speed"
 msgstr "降低遊戲速度"
 
-#: src/keymap.c:367
+#: src/keymap.c:375
 msgid "Increase Game Speed"
 msgstr "增加遊戲速度"
 
-#: src/keymap.c:368
+#: src/keymap.c:376
 msgid "Reset Game Speed"
 msgstr "重設遊戲速度"
 
-#: src/keymap.c:369
+#: src/keymap.c:377
 msgid "View North"
 msgstr "面向北方"
 
-#: src/keymap.c:370
+#: src/keymap.c:378
 msgid "View South"
 msgstr "面向南方"
 
-#: src/keymap.c:371
+#: src/keymap.c:379
 msgid "View East"
 msgstr "面向東方"
 
-#: src/keymap.c:372
+#: src/keymap.c:380
 msgid "View West"
 msgstr "面向西方"
 
-#: src/keymap.c:373
+#: src/keymap.c:381
 msgid "View next Oil Derrick"
 msgstr "檢視下一座鑽油井"
 
-#: src/keymap.c:374
+#: src/keymap.c:382
 msgid "View next Repair Unit"
 msgstr "檢視下一座修理單位"
 
-#: src/keymap.c:375
+#: src/keymap.c:383
 msgid "View next Truck"
 msgstr "檢視下一部工程車"
 
-#: src/keymap.c:376
+#: src/keymap.c:384
 msgid "View next Sensor Unit"
 msgstr "檢視下一座雷達單位"
 
-#: src/keymap.c:377
+#: src/keymap.c:385
 msgid "View next Commander"
 msgstr "檢視下一部指揮車"
 
-#: src/keymap.c:378
+#: src/keymap.c:386
 msgid "Toggle Overlays"
 msgstr "開啟或關閉疊層顯示"
 
-#: src/keymap.c:379
+#: src/keymap.c:387
 msgid "Console On/Off"
 msgstr "開啟或關閉主控台"
 
-#: src/keymap.c:382
+#: src/keymap.c:390
 msgid "Center View on HQ"
 msgstr "視角移至主基地"
 
-#: src/keymap.c:384
+#: src/keymap.c:392
 msgid "View Unassigned Units"
 msgstr "檢視未指定的單位"
 
-#: src/keymap.c:386
+#: src/keymap.c:394
 msgid "Fire at Will"
 msgstr "接觸時開火"
 
-#: src/keymap.c:388
+#: src/keymap.c:396
 msgid "Return to HQ"
 msgstr "回到主基地"
 
-#: src/keymap.c:396
+#: src/keymap.c:404
 msgid "Send Text Message"
 msgstr "送出文字訊息"
 
-#: src/keymap.c:415
+#: src/keymap.c:423
 msgid "Select all Combat Units"
 msgstr "選擇所有戰鬥單位"
 
-#: src/keymap.c:416
+#: src/keymap.c:424
 msgid "Select all Heavily Damaged Units"
 msgstr "選擇所有重度損傷單位"
 
-#: src/keymap.c:418
+#: src/keymap.c:426
 msgid "Select all Half-tracks"
 msgstr "選擇所有半履帶單位"
 
-#: src/keymap.c:419
+#: src/keymap.c:427
 msgid "Select all Hovers"
 msgstr "選擇所有氣墊船單位"
 
-#: src/keymap.c:421
+#: src/keymap.c:429
 msgid "Select all Units on Screen"
 msgstr "選擇所有螢幕上單位"
 
-#: src/keymap.c:422
+#: src/keymap.c:430
 msgid "Select all Tracks"
 msgstr "選擇所有履帶單位"
 
-#: src/keymap.c:423
+#: src/keymap.c:431
 msgid "Select EVERY unit"
 msgstr "選擇所有單位"
 
-#: src/keymap.c:424
+#: src/keymap.c:432
 msgid "Select all VTOLs"
 msgstr "選擇所有VTOL 單位"
 
-#: src/keymap.c:425
+#: src/keymap.c:433
 msgid "Select all Wheels"
 msgstr "選擇所有輪系單位"
 
-#: src/keymap.c:427
+#: src/keymap.c:435
 #, fuzzy
 msgid "Select all Similar Units"
 msgstr "選擇所有類似單位"
 
-#: src/keymap.c:431
+#: src/keymap.c:439
 msgid "Select next Factory"
 msgstr "選擇下一個工廠"
 
-#: src/keymap.c:432
+#: src/keymap.c:440
 msgid "Select next Research Facility"
 msgstr "選擇下一個研發中心"
 
-#: src/keymap.c:433
+#: src/keymap.c:441
 msgid "Select next Power Generator"
 msgstr "選擇下一個發電廠"
 
-#: src/keymap.c:434
+#: src/keymap.c:442
 msgid "Select next Cyborg Factory"
 msgstr "選擇下一個生化人工廠"
 
-#: src/keymap.c:435
+#: src/keymap.c:443
 msgid "Toggle reopening the build menu"
 msgstr "開啟或關閉建築選單"
 
@@ -15141,6 +14953,132 @@ msgstr " - Built %s"
 #, c-format
 msgid "Version %s%s%s%s"
 msgstr "版本 %s%s%s%s"
+
+#~ msgid "Cobra Hover Heavy-Repair"
+#~ msgstr "眼鏡蛇重型修理氣墊船"
+
+#~ msgid "Viper HMG Wheels"
+#~ msgstr "輪式響尾蛇坦克（重機槍）"
+
+#~ msgid "TK Mantis Hover"
+#~ msgstr "螳螂氣墊船（坦克殺手）"
+
+#~ msgid "Cobra HMG Tracks"
+#~ msgstr "履帶式眼鏡蛇坦克（重機槍）"
+
+#~ msgid "Cobra Hover HC"
+#~ msgstr "眼鏡蛇氣墊船（重型加農砲）"
+
+#~ msgid "Scorpion Lancer Tracks"
+#~ msgstr "履帶式毒蠍坦克（槍騎兵火箭）"
+
+#~ msgid "Scorpion Heavy Cannon Tracks"
+#~ msgstr "履帶式毒蠍坦克（重型加農砲）"
+
+#~ msgid "Scorpion Lancer VTOL"
+#~ msgstr "毒蠍VTOL（槍騎兵火箭）"
+
+#~ msgid "Scorpion BB VTOL"
+#~ msgstr "毒蠍 BB VTOL"
+
+#~ msgid "Viper Command Turret Tracks"
+#~ msgstr "響尾蛇指揮車"
+
+#~ msgid "Cobra Command Turret Tracks"
+#~ msgstr "眼鏡蛇指揮車"
+
+#~ msgid "Scorpion Command Turret Tracks"
+#~ msgstr "毒蠍指揮車"
+
+#~ msgid "mantis Command Turret Tracks"
+#~ msgstr "螳螂指揮車"
+
+#~ msgid "Cobra Lancer Tracks"
+#~ msgstr "履帶式眼鏡蛇坦克（槍騎兵火箭）"
+
+#~ msgid "Mantis Heavy Cannon Tracks"
+#~ msgstr "履帶式螳螂坦克（重型加農砲）"
+
+#~ msgid "Mantis Tank Killer Tracks"
+#~ msgstr "履帶式螳螂坦克（坦克殺手）"
+
+#~ msgid "Mantis Scourge Tracks"
+#~ msgstr "履帶式螳螂坦克（天譴飛彈）"
+
+#~ msgid "Scorpion Heavy Machinegun Tracks"
+#~ msgstr "履帶式毒蠍坦克（重機槍）"
+
+#~ msgid "Scorpion Repair Tracks"
+#~ msgstr "毒蠍修理車"
+
+#~ msgid "Scorpion Heavy Repair Hover"
+#~ msgstr "毒蠍重型修理車"
+
+#~ msgid "Cobra Hover Truck"
+#~ msgstr "眼鏡蛇工程氣墊船"
+
+#~ msgid "Scorpion Hover Truck"
+#~ msgstr "毒蠍工程氣墊船"
+
+#~ msgid "Mantis Hover Truck"
+#~ msgstr "螳螂工程氣墊船"
+
+#~ msgid "Cobra Bunker Buster Tracks"
+#~ msgstr "履帶式眼鏡蛇坦克（碉堡終結者）"
+
+#~ msgid "Scorpion Bunker Buster Tracks"
+#~ msgstr "履帶式毒蠍坦克（碉堡終結者）"
+
+#~ msgid "Mantis Bunker Buster Tracks"
+#~ msgstr "履帶式螳螂坦克（碉堡終結者）"
+
+#~ msgid "Viper Tracks Lancer"
+#~ msgstr "履帶式響尾蛇坦克（槍騎兵火箭）"
+
+#~ msgid "Cobra Half-Tracks Mini-Pod"
+#~ msgstr "半履帶式眼鏡蛇坦克（迷你火箭）"
+
+#~ msgid "Cobra Tracks Mini-Pod"
+#~ msgstr "履帶式眼鏡蛇坦克（迷你火箭）"
+
+#~ msgid "Cobra Tracks Mini-Rocket Artillery"
+#~ msgstr "履帶式眼鏡蛇坦克（迷你火箭砲）"
+
+#~ msgid "Cobra Inferno Half-track"
+#~ msgstr "半履帶式眼鏡蛇坦克（火焰噴射）"
+
+#~ msgid "Python HVC Hover"
+#~ msgstr "蟒蛇氣墊船（高速加農砲）"
+
+#~ msgid "Python Scourge Tracks"
+#~ msgstr "履帶式蟒蛇坦克（天譴飛彈）"
+
+#~ msgid "Python Gauss Cannon Tracks"
+#~ msgstr "履帶式蟒蛇坦克（高斯加農砲）"
+
+#~ msgid "Python Pulse Laser Tracks"
+#~ msgstr "履帶式蟒蛇坦克（脈衝雷射）"
+
+#~ msgid "Tiger Pulse Laser Tracks"
+#~ msgstr "履帶式虎式坦克（脈衝雷射）"
+
+#~ msgid "Tiger Heavy Laser Tracks"
+#~ msgstr "履帶式虎式坦克（高能雷射）"
+
+#~ msgid "Wyvern Gauss Cannon Tracks"
+#~ msgstr "履帶式雙足飛龍坦克（高斯加農砲）"
+
+#~ msgid "Wyvern Pulse Laser Tracks"
+#~ msgstr "履帶式雙足飛龍坦克（脈衝雷射）"
+
+#~ msgid "Wyvern Heavy Laser Tracks"
+#~ msgstr "履帶式雙足飛龍坦克（重機槍）"
+
+#~ msgid "Viper Machinegun Half-Track"
+#~ msgstr "半履帶式響尾蛇坦克（雙管機槍）"
+
+#~ msgid "Viper Flamer Half-Track"
+#~ msgstr "半履帶式響尾蛇坦克（火焰噴射）"
 
 #, fuzzy
 #~ msgid "Strategy Game"

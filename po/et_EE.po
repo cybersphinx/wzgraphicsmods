@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: warzone2100\n"
 "Report-Msgid-Bugs-To: warzone-dev@gna.org\n"
-"POT-Creation-Date: 2010-07-12 13:52+1000\n"
+"POT-Creation-Date: 2010-09-30 22:17-0400\n"
 "PO-Revision-Date: 2010-05-10 16:59+0200\n"
 "Last-Translator: erlando <erlando112@hotmail.com>\n"
 "Language-Team: Estonian <ee@li.org>\n"
@@ -5664,84 +5664,67 @@ msgid "Incoming intelligence report... Team Gamma"
 msgstr "Sissetulev luureraport... Rühm Gamma"
 
 #: data/base/messages/strings/genstrings.txt:4
-#: data/mods/multiplay/ntw/messages/strings/genstrings.txt:4
 msgid "Briefing Commences:"
 msgstr "Algab Briifing:"
 
 #: data/base/messages/strings/genstrings.txt:7
-#: data/mods/multiplay/ntw/messages/strings/genstrings.txt:7
 msgid "Scavenger Outpost"
 msgstr "Mässajate Laager"
 
 #: data/base/messages/strings/genstrings.txt:8
-#: data/mods/multiplay/ntw/messages/strings/genstrings.txt:8
 msgid "Power Resource"
 msgstr "Energia Resurss"
 
 #: data/base/messages/strings/genstrings.txt:9
-#: data/mods/multiplay/ntw/messages/strings/genstrings.txt:9
 msgid "Unknown Artifact"
 msgstr "Tundmatu Artefakt"
 
 #: data/base/messages/strings/genstrings.txt:10
-#: data/mods/multiplay/ntw/messages/strings/genstrings.txt:10
 msgid "Source of Power Surge"
 msgstr "Energiapurske Allikas"
 
 #: data/base/messages/strings/genstrings.txt:13
-#: data/mods/multiplay/ntw/messages/strings/genstrings.txt:13
 msgid "Landing Zone"
 msgstr "Maandumis Tsoon"
 
 #: data/base/messages/strings/genstrings.txt:14
 #: data/base/messages/strings/genstrings.txt:24
-#: data/mods/multiplay/ntw/messages/strings/genstrings.txt:14
-#: data/mods/multiplay/ntw/messages/strings/genstrings.txt:24
 msgid "Mission Target"
 msgstr "Missiooni Eesmärk"
 
 #: data/base/messages/strings/genstrings.txt:15
-#: data/mods/multiplay/ntw/messages/strings/genstrings.txt:15
 msgid "Pre-Collapse Research Center"
 msgstr "Kollapsieelne Uurimiskeskus"
 
 #: data/base/messages/strings/genstrings.txt:17
-#: data/mods/multiplay/ntw/messages/strings/genstrings.txt:17
 msgid "En-route To Mission Site"
 msgstr "Suundu Missiooni Paika"
 
 #: data/base/messages/strings/genstrings.txt:18
-#: data/mods/multiplay/ntw/messages/strings/genstrings.txt:18
 msgid "Mission Failed"
 msgstr "Missioon Ebaõnnestus"
 
 #: data/base/messages/strings/genstrings.txt:19
-#: data/mods/multiplay/ntw/messages/strings/genstrings.txt:19
 msgid "Mission Successful"
 msgstr "Missioon Õnnestunud"
 
 #: data/base/messages/strings/genstrings.txt:22
-#: data/mods/multiplay/ntw/messages/strings/genstrings.txt:22
 msgid "Enemy Landing Zone"
 msgstr "Vaenlase Maandumis Tsoon"
 
 #: data/base/messages/strings/genstrings.txt:23
-#: data/mods/multiplay/ntw/messages/strings/genstrings.txt:23
 msgid "Enemy Base"
 msgstr "Vaenlase Baas"
 
 #: data/base/messages/strings/genstrings.txt:27
-#: data/mods/multiplay/ntw/messages/strings/genstrings.txt:27
 msgid "Incoming transmission"
 msgstr "Sissetulev Ülekanne"
 
 #: data/base/messages/strings/genstrings.txt:30
-#: data/mods/multiplay/ntw/messages/strings/genstrings.txt:30
 msgid "Incoming intelligence report."
 msgstr "Sissetulev luureraport."
 
 #: data/base/messages/strings/genstrings.txt:33
-#: data/mods/multiplay/ntw/messages/strings/genstrings.txt:33
 msgid "Nuclear Reactor"
 msgstr "Tuumareaktor"
 
@@ -5922,7 +5905,6 @@ msgid "Light Cannon Python Tracks"
 msgstr "Roomikutega Python Kergekahur"
 
 #: data/base/messages/strings/names.txt:194
-#: data/mods/multiplay/ntw/messages/strings/names.txt:1357
 #: data/mods/multiplay/old-1.10-balance/messages/strings/names.txt:1923
 #: data/mp/messages/strings/names.txt:197
 #: data/mp/messages/strings/names.txt:1926
@@ -9166,7 +9148,6 @@ msgid "Downed Transport"
 msgstr "Maandunud Transport"
 
 #: data/base/messages/strings/names.txt:1458
-#: data/mods/multiplay/ntw/messages/strings/names.txt:1356
 #: data/mods/multiplay/old-1.10-balance/messages/strings/names.txt:1922
 #: data/mp/messages/strings/names.txt:1477
 #: data/mp/messages/strings/names.txt:1925
@@ -10327,180 +10308,6 @@ msgstr "Nüüd on aeg neid kasutada, et maailm üles ehitada."
 msgid "Slowly, out of the ashes we will rise again..."
 msgstr "Aeglasti, tuhast välja, me tõuseme taas..."
 
-#: data/mods/multiplay/ntw/messages/strings/names.txt:1313
-msgid "Cobra Hover Heavy-Repair"
-msgstr "Hõljuk Cobra Raske-Remont"
-
-#: data/mods/multiplay/ntw/messages/strings/names.txt:1314
-msgid "Viper HMG Wheels"
-msgstr "Ratastega Viper Raskekuulipilduja"
-
-#: data/mods/multiplay/ntw/messages/strings/names.txt:1315
-#: data/mods/multiplay/old-1.10-balance/messages/strings/names.txt:1824
-#: data/mp/messages/strings/names.txt:1827
-msgid "Scourge Mantis Hover"
-msgstr "Hõljukiga Mantis Scourge"
-
-#: data/mods/multiplay/ntw/messages/strings/names.txt:1316
-msgid "TK Mantis Hover"
-msgstr "Hõljukiga Mantis TK"
-
-#: data/mods/multiplay/ntw/messages/strings/names.txt:1317
-msgid "Cobra HMG Tracks"
-msgstr "Roomikutega Cobra Raskekuulipilduja"
-
-#: data/mods/multiplay/ntw/messages/strings/names.txt:1318
-msgid "Cobra Hover HC"
-msgstr "Hõljukiga Cobra HC"
-
-#: data/mods/multiplay/ntw/messages/strings/names.txt:1319
-msgid "Scorpion Lancer Tracks"
-msgstr "Roomikutega Scorpion Lancer"
-
-#: data/mods/multiplay/ntw/messages/strings/names.txt:1320
-msgid "Scorpion Heavy Cannon Tracks"
-msgstr "Roomikutega Scorpion Raskekahuriga"
-
-#: data/mods/multiplay/ntw/messages/strings/names.txt:1321
-msgid "Scorpion Lancer VTOL"
-msgstr "VTOL Scorpion Lancer"
-
-#: data/mods/multiplay/ntw/messages/strings/names.txt:1322
-msgid "Scorpion BB VTOL"
-msgstr "VTOL Scorpion BB"
-
-#: data/mods/multiplay/ntw/messages/strings/names.txt:1323
-msgid "Viper Command Turret Tracks"
-msgstr "Roomikutega Viper Komandör"
-
-#: data/mods/multiplay/ntw/messages/strings/names.txt:1324
-msgid "Cobra Command Turret Tracks"
-msgstr "Roomikutega Cobra Komandör"
-
-#: data/mods/multiplay/ntw/messages/strings/names.txt:1325
-msgid "Scorpion Command Turret Tracks"
-msgstr "Roomikutega Scorpion Komandör"
-
-#: data/mods/multiplay/ntw/messages/strings/names.txt:1326
-msgid "mantis Command Turret Tracks"
-msgstr "Roomikutega Mantis Komandör"
-
-#: data/mods/multiplay/ntw/messages/strings/names.txt:1327
-msgid "Cobra Lancer Tracks"
-msgstr "Roomikutega Cobra Lancer"
-
-#: data/mods/multiplay/ntw/messages/strings/names.txt:1328
-msgid "Mantis Heavy Cannon Tracks"
-msgstr "Roomikutega Mantis Raskekahur"
-
-#: data/mods/multiplay/ntw/messages/strings/names.txt:1329
-msgid "Mantis Tank Killer Tracks"
-msgstr "Roomikutega Mantis Tanki Tapja"
-
-#: data/mods/multiplay/ntw/messages/strings/names.txt:1330
-msgid "Mantis Scourge Tracks"
-msgstr "Roomikutega Mantis Scourge"
-
-#: data/mods/multiplay/ntw/messages/strings/names.txt:1331
-msgid "Scorpion Heavy Machinegun Tracks"
-msgstr "Roomikutega Scorpion Raskekuulipilduja"
-
-#: data/mods/multiplay/ntw/messages/strings/names.txt:1332
-msgid "Scorpion Repair Tracks"
-msgstr "Roomikutega Scorpion Remont"
-
-#: data/mods/multiplay/ntw/messages/strings/names.txt:1333
-msgid "Scorpion Heavy Repair Hover"
-msgstr "Hõljukiga Scorpion Raskeremont"
-
-#: data/mods/multiplay/ntw/messages/strings/names.txt:1334
-msgid "Cobra Hover Truck"
-msgstr "Hõljukiga Cobra Veoauto"
-
-#: data/mods/multiplay/ntw/messages/strings/names.txt:1335
-msgid "Scorpion Hover Truck"
-msgstr "Hõljukiga Scorpion Veoauto"
-
-#: data/mods/multiplay/ntw/messages/strings/names.txt:1336
-msgid "Mantis Hover Truck"
-msgstr "Hõljukiga Mantis Veoauto"
-
-#: data/mods/multiplay/ntw/messages/strings/names.txt:1337
-msgid "Cobra Bunker Buster Tracks"
-msgstr "Roomikutega Cobra Punkripurustaja"
-
-#: data/mods/multiplay/ntw/messages/strings/names.txt:1338
-msgid "Scorpion Bunker Buster Tracks"
-msgstr "Roomikutega Scorpion Punkripurustaja"
-
-#: data/mods/multiplay/ntw/messages/strings/names.txt:1339
-msgid "Mantis Bunker Buster Tracks"
-msgstr "Roomikutega Mantis Punkripurustaja"
-
-#: data/mods/multiplay/ntw/messages/strings/names.txt:1340
-msgid "Viper Tracks Lancer"
-msgstr "Roomikutega Viper Lancer"
-
-#: data/mods/multiplay/ntw/messages/strings/names.txt:1341
-msgid "Cobra Half-Tracks Mini-Pod"
-msgstr "Pool-Roomikutega Cobra Mini-Raketid"
-
-#: data/mods/multiplay/ntw/messages/strings/names.txt:1342
-msgid "Cobra Tracks Mini-Pod"
-msgstr "Roomikutega Cobra Mini-Raketid"
-
-#: data/mods/multiplay/ntw/messages/strings/names.txt:1343
-msgid "Cobra Tracks Mini-Rocket Artillery"
-msgstr "Roomikutega Cobra Mini-Rakettide Suurtükk"
-
-#: data/mods/multiplay/ntw/messages/strings/names.txt:1344
-msgid "Cobra Inferno Half-track"
-msgstr "Pool-Roomikutega Cobra Põrgutuli"
-
-#: data/mods/multiplay/ntw/messages/strings/names.txt:1345
-msgid "Python HVC Hover"
-msgstr "Hõljukiga Python HVC"
-
-#: data/mods/multiplay/ntw/messages/strings/names.txt:1346
-msgid "Python Scourge Tracks"
-msgstr "Roomikutega Python Scourge"
-
-#: data/mods/multiplay/ntw/messages/strings/names.txt:1347
-msgid "Python Gauss Cannon Tracks"
-msgstr "Roomikutega Python Gausskahur"
-
-#: data/mods/multiplay/ntw/messages/strings/names.txt:1348
-msgid "Python Pulse Laser Tracks"
-msgstr "Roomikutega Python Impulsslaser"
-
-#: data/mods/multiplay/ntw/messages/strings/names.txt:1349
-msgid "Tiger Pulse Laser Tracks"
-msgstr "Roomikutega Tiger Impulsslaser"
-
-#: data/mods/multiplay/ntw/messages/strings/names.txt:1350
-msgid "Tiger Heavy Laser Tracks"
-msgstr "Roomikutega Tiger Raskelaser"
-
-#: data/mods/multiplay/ntw/messages/strings/names.txt:1351
-msgid "Wyvern Gauss Cannon Tracks"
-msgstr "Roomikutega Wyvern Gausskahur"
-
-#: data/mods/multiplay/ntw/messages/strings/names.txt:1352
-msgid "Wyvern Pulse Laser Tracks"
-msgstr "Roomikutega Wyvern Impulsslaser"
-
-#: data/mods/multiplay/ntw/messages/strings/names.txt:1353
-msgid "Wyvern Heavy Laser Tracks"
-msgstr "Roomikutega Wyvern Raskelaser"
-
-#: data/mods/multiplay/ntw/messages/strings/names.txt:1354
-msgid "Viper Machinegun Half-Track"
-msgstr "Pool-Roomikutega Viper Kuulipilduja"
-
-#: data/mods/multiplay/ntw/messages/strings/names.txt:1355
-msgid "Viper Flamer Half-Track"
-msgstr "Pool-Roomikutega Viper Leegiheitja"
-
 #: data/mods/multiplay/old-1.10-balance/messages/strings/names.txt:1822
 #: data/mp/messages/strings/names.txt:1825
 msgid "Heavy Repair Turret Cobra Hover"
@@ -10512,6 +10319,11 @@ msgstr "Hõljuk Cobra Raskeremonditorn"
 #: data/mp/messages/strings/names.txt:1837
 msgid "Heavy Machinegun Viper Wheels"
 msgstr "Ratastega Viper Raskekuulipilduja"
+
+#: data/mods/multiplay/old-1.10-balance/messages/strings/names.txt:1824
+#: data/mp/messages/strings/names.txt:1827
+msgid "Scourge Mantis Hover"
+msgstr "Hõljukiga Mantis Scourge"
 
 #: data/mods/multiplay/old-1.10-balance/messages/strings/names.txt:1825
 #: data/mp/messages/strings/names.txt:1828
@@ -12563,8 +12375,8 @@ msgstr "võõrustaja"
 msgid "go directly to host screen"
 msgstr "mine otse võõrustaja aknasse"
 
-#: src/configuration.c:443
-#: src/configuration.c:444
+#: src/configuration.c:439
+#: src/configuration.c:440
 #: src/multistat.c:120
 msgid "Player"
 msgstr "Mägija"
@@ -12710,113 +12522,113 @@ msgstr "Relvad"
 msgid "Systems"
 msgstr "Süsteemid"
 
-#: src/display3d.c:565
+#: src/display3d.c:564
 msgid "Player left"
 msgstr "Mängija lahkus"
 
-#: src/display3d.c:565
+#: src/display3d.c:564
 msgid "Player dropped"
 msgstr "Mängija Väjavisatud"
 
-#: src/display.c:1679
+#: src/display.c:1693
 msgid "Cannot Build. Oil Resource Burning."
 msgstr "EI Saa Ehitada. Naftaresurss Põleb."
 
-#: src/display.c:1859
-#: src/display.c:2462
+#: src/display.c:1873
+#: src/display.c:2476
 #, c-format
 msgid "%s - Damage %d%% - Experience %d, %s"
 msgstr "%s - Kahju %d%% - Kogemus %d, %s"
 
-#: src/display.c:1875
+#: src/display.c:1889
 #, c-format
 msgid "%s - Allied - Damage %d%% - Experience %d, %s"
 msgstr "%s -Liitlane - Kahju %d%% - Kogemus %d, %s"
 
-#: src/display.c:2077
+#: src/display.c:2091
 msgid "Truck ordered to build Oil Derrick"
 msgstr "Veoautol kästi Naftapuurtorn ehitada"
 
-#: src/display.c:2078
+#: src/display.c:2092
 #, fuzzy
 msgid "2 trucks ordered to build Oil Derrick"
 msgstr "Veoautol kästi Naftapuurtorn ehitada"
 
-#: src/display.c:2079
+#: src/display.c:2093
 #, fuzzy, c-format
 msgid "%d trucks ordered to build Oil Derrick"
 msgstr "Veoautol kästi Naftapuurtorn ehitada"
 
-#: src/droid.c:210
+#: src/droid.c:213
 msgid "Unit Lost!"
 msgstr "Üksus Kaotatud!"
 
-#: src/droid.c:1347
+#: src/droid.c:1351
 msgid "Structure Restored"
 msgstr "Ehitis taastatud"
 
-#: src/droid.c:2959
+#: src/droid.c:3005
 #, c-format
 msgid "Group %u selected - %u Unit"
 msgid_plural "Group %u selected - %u Units"
 msgstr[0] "Grupp %u valitud - %u Üksus"
 msgstr[1] "Grupp %u valitud - %u Üksust"
 
-#: src/droid.c:2972
+#: src/droid.c:3018
 #, c-format
 msgid "%u unit assigned to Group %u"
 msgid_plural "%u units assigned to Group %u"
 msgstr[0] "%u üksus määratud gruppi %u"
 msgstr[1] "%u Üksust määratud Gruppi %u"
 
-#: src/droid.c:2985
+#: src/droid.c:3031
 #, c-format
 msgid "Centered on Group %u - %u Unit"
 msgid_plural "Centered on Group %u - %u Units"
 msgstr[0] "Grupi %u Vaade - %u Üksus"
 msgstr[1] "Grupi %u Vaade - %u Üksust"
 
-#: src/droid.c:2989
+#: src/droid.c:3035
 #, c-format
 msgid "Aligning with Group %u - %u Unit"
 msgid_plural "Aligning with Group %u - %u Units"
 msgstr[0] "Aligning with Group %u - %u Unit"
 msgstr[1] "Aligning with Group %u - %u Units"
 
-#: src/droid.c:3273
+#: src/droid.c:3319
 msgid "Rookie"
 msgstr "Uustulnuk"
 
-#: src/droid.c:3274
+#: src/droid.c:3320
 msgctxt "rank"
 msgid "Green"
 msgstr "Algaja"
 
-#: src/droid.c:3275
+#: src/droid.c:3321
 msgid "Trained"
 msgstr "Treenitud"
 
-#: src/droid.c:3276
+#: src/droid.c:3322
 msgid "Regular"
 msgstr "Regulaar"
 
-#: src/droid.c:3277
+#: src/droid.c:3323
 msgid "Professional"
 msgstr "Professionaal"
 
-#: src/droid.c:3278
+#: src/droid.c:3324
 msgid "Veteran"
 msgstr "Veteran"
 
-#: src/droid.c:3279
+#: src/droid.c:3325
 msgid "Elite"
 msgstr "Eliit"
 
-#: src/droid.c:3280
+#: src/droid.c:3326
 msgid "Special"
 msgstr "Eriline"
 
-#: src/droid.c:3281
+#: src/droid.c:3327
 msgid "Hero"
 msgstr "Kangelane"
 
@@ -13348,7 +13160,7 @@ msgid "Power Accrued"
 msgstr "Energia Kogunenud"
 
 #: src/intelmap.c:247
-#: src/keybind.c:1397
+#: src/keybind.c:1406
 msgid "PAUSED"
 msgstr "PAUSED"
 
@@ -13369,32 +13181,32 @@ msgid "New Intelligence Report"
 msgstr "Uus Intelligentsus Raport."
 
 #: src/intorder.c:161
-#: src/keymap.c:390
+#: src/keymap.c:398
 msgid "Short Range"
 msgstr "Lühike Ulatus"
 
 #: src/intorder.c:162
-#: src/keymap.c:397
+#: src/keymap.c:405
 msgid "Long Range"
 msgstr "Kauge Ulatus"
 
 #: src/intorder.c:163
-#: src/keymap.c:389
+#: src/keymap.c:397
 msgid "Optimum Range"
 msgstr "Optimaalne Ulatus"
 
 #: src/intorder.c:164
-#: src/keymap.c:409
+#: src/keymap.c:417
 msgid "Retreat at Medium Damage"
 msgstr "Tagane Keskmise Kahjuga"
 
 #: src/intorder.c:165
-#: src/keymap.c:410
+#: src/keymap.c:418
 msgid "Retreat at Heavy Damage"
 msgstr "Tagane Raske Kahjuga"
 
 #: src/intorder.c:166
-#: src/keymap.c:411
+#: src/keymap.c:419
 msgid "Do or Die!"
 msgstr "Tee või Sure!"
 
@@ -13403,37 +13215,37 @@ msgid "Fire-At-Will"
 msgstr "Vaba Tuli"
 
 #: src/intorder.c:168
-#: src/keymap.c:385
+#: src/keymap.c:393
 msgid "Return Fire"
 msgstr "Vastu Tuli"
 
 #: src/intorder.c:169
-#: src/keymap.c:383
+#: src/keymap.c:391
 msgid "Hold Fire"
 msgstr "Hoidke Tuld"
 
 #: src/intorder.c:170
-#: src/keymap.c:392
+#: src/keymap.c:400
 msgid "Patrol"
 msgstr "Patrull"
 
 #: src/intorder.c:171
-#: src/keymap.c:391
+#: src/keymap.c:399
 msgid "Pursue"
 msgstr "Jälita"
 
 #: src/intorder.c:172
-#: src/keymap.c:387
+#: src/keymap.c:395
 msgid "Guard Position"
 msgstr "Kaitse Positsiooni"
 
 #: src/intorder.c:173
-#: src/keymap.c:394
+#: src/keymap.c:402
 msgid "Hold Position"
 msgstr "Hoia Positsiooni"
 
 #: src/intorder.c:174
-#: src/keymap.c:393
+#: src/keymap.c:401
 msgid "Return For Repair"
 msgstr "Tagane Remontimisele"
 
@@ -13442,12 +13254,12 @@ msgid "Return To HQ"
 msgstr "Tagane HQ Juurde"
 
 #: src/intorder.c:176
-#: src/keymap.c:395
+#: src/keymap.c:403
 msgid "Go to Transport"
 msgstr "Mine Transporti"
 
 #: src/intorder.c:177
-#: src/keymap.c:420
+#: src/keymap.c:428
 msgid "Return for Recycling"
 msgstr "Tagane Taaskäitluseks"
 
@@ -13475,287 +13287,283 @@ msgstr "Määra VTOL Tehase Tootmine"
 msgid "Circle"
 msgstr "Ring"
 
-#: src/keybind.c:136
+#: src/keybind.c:137
 msgid "Sorry, that cheat is disabled in multiplayer games."
 msgstr "Sorry, see sohk on mitmikmängust eemaltatud."
 
-#: src/keybind.c:142
+#: src/keybind.c:143
 msgid "Warning! This cheat is buggy.  We recommend to NOT use it."
 msgstr "Hoiatus! See sohk on vigane. Me soovitame seda mitte kasutada."
 
-#: src/keybind.c:226
+#: src/keybind.c:227
 msgid "Lets us see what you see!"
 msgstr "Lase meil näha mida saa näed!"
 
-#: src/keybind.c:228
+#: src/keybind.c:229
 msgid "Fine, weapon & sensor display is off!"
 msgstr "Suurepärane, relva & sensori kuvar on väljas!"
 
-#: src/keybind.c:359
+#: src/keybind.c:360
 #, c-format
 msgid "Player %u is cheating him/herself a new droid army of %s(s)."
 msgstr "Mängija %u teeb sohki, tehes endale uue %s(de) armee."
 
-#: src/keybind.c:399
-#: src/keybind.c:429
-#: src/keybind.c:446
-#: src/keybind.c:490
-#: src/keybind.c:598
-#: src/keybind.c:638
-#: src/keybind.c:744
-#: src/keybind.c:1287
-#: src/keybind.c:1344
-#: src/keybind.c:1446
-#: src/keybind.c:1567
-#: src/keybind.c:1918
-#: src/keybind.c:1959
+#: src/keybind.c:400
+#: src/keybind.c:430
+#: src/keybind.c:447
+#: src/keybind.c:491
+#: src/keybind.c:599
+#: src/keybind.c:647
+#: src/keybind.c:753
+#: src/keybind.c:1296
+#: src/keybind.c:1353
+#: src/keybind.c:1455
+#: src/keybind.c:1576
+#: src/keybind.c:1927
+#: src/keybind.c:1968
 #, c-format
 msgid "(Player %u) is using cheat :%s"
 msgstr "(Mängija %u) teeb sohki:%s"
 
-#: src/keybind.c:400
+#: src/keybind.c:401
 msgid "Hard as nails!!!"
 msgstr "Hard as nails!!!"
 
-#: src/keybind.c:414
+#: src/keybind.c:415
 msgid "Takings thing easy!"
 msgstr "Takings thing easy!"
 
-#: src/keybind.c:430
+#: src/keybind.c:431
 msgid "1000 big ones!!!"
 msgstr "1000 big ones!!!"
 
-#: src/keybind.c:447
+#: src/keybind.c:448
 msgid "Power overwhelming"
 msgstr "Power overwhelming"
 
-#: src/keybind.c:462
+#: src/keybind.c:463
 msgid "Back to normality!"
 msgstr "Back to normality!"
 
-#: src/keybind.c:475
+#: src/keybind.c:476
 msgid "Getting tricky!"
 msgstr "Getting tricky!"
 
-#: src/keybind.c:491
+#: src/keybind.c:492
 msgid "Twice as nice!"
 msgstr "Twice as nice!"
 
-#: src/keybind.c:502
+#: src/keybind.c:503
 msgid "FPS display is enabled."
 msgstr "FPS display is enabled."
 
-#: src/keybind.c:506
+#: src/keybind.c:507
 msgid "FPS display is disabled."
 msgstr "FPS display is disabled."
 
-#: src/keybind.c:530
+#: src/keybind.c:531
 #, c-format
 msgid "FPS %d; FPS-Limit: %d; PIEs %d; polys %d; Terr. polys %d; States %d"
 msgstr "FPS %d; FPS-Limit: %d; PIEs %d; polys %d; Terr. polys %d; States %d"
 
-#: src/keybind.c:562
+#: src/keybind.c:563
 #, c-format
 msgid "(Player %u) is using a cheat :Num Droids: %d  Num Structures: %d  Num Features: %d"
 msgstr "(Player %u) kasutab pettust :Num Droids: %d  Num Structures: %d  Num Features: %d"
 
-#: src/keybind.c:599
+#: src/keybind.c:600
 msgid "Infinite power disabled"
 msgstr "Infinite power disabled"
 
-#: src/keybind.c:599
+#: src/keybind.c:600
 msgid "Infinite power enabled"
 msgstr "Infinite power enabled"
 
-#: src/keybind.c:639
+#: src/keybind.c:648
 msgid "All items made available"
 msgstr "All items made available"
 
-#: src/keybind.c:745
+#: src/keybind.c:754
 msgid "Fog on"
 msgstr "Fog on"
 
-#: src/keybind.c:745
+#: src/keybind.c:754
 msgid "Fog off"
 msgstr "Fog off"
 
-#: src/keybind.c:1176
+#: src/keybind.c:1185
 #, c-format
 msgid "Warning!  This cheat can cause dire problems later on! [%s]"
 msgstr "Warning!  This cheat can cause dire problems later on! [%s]"
 
-#: src/keybind.c:1176
+#: src/keybind.c:1185
 msgid "Ending Mission."
 msgstr "Missiooni Lõpp"
 
-#: src/keybind.c:1288
+#: src/keybind.c:1297
 msgid "CHEATS ARE NOW ENABLED!"
 msgstr "PETTUSED ON NÜÜD LUBATUD!"
 
-#: src/keybind.c:1288
+#: src/keybind.c:1297
 msgid "CHEATS ARE NOW DISABLED!"
 msgstr "PETTUSED ON NÜÜD KEELATUD!"
 
-#: src/keybind.c:1345
+#: src/keybind.c:1354
 msgid "God Mode ON"
 msgstr "Jumala mode sees"
 
-#: src/keybind.c:1345
+#: src/keybind.c:1354
 msgid "God Mode OFF"
 msgstr "Jumala mode väljas"
 
-#: src/keybind.c:1357
+#: src/keybind.c:1366
 msgid "View Aligned to North"
 msgstr "View Aligned to North"
 
-#: src/keybind.c:1366
+#: src/keybind.c:1375
 #, c-format
 msgid "Trap cursor %s"
 msgstr "Püüniskursor %s"
 
-#: src/keybind.c:1447
+#: src/keybind.c:1456
 msgid "Researched EVERYTHING for you!"
 msgstr "Researched EVERYTHING for you!"
 
-#: src/keybind.c:1503
+#: src/keybind.c:1512
 #, c-format
 msgid "(Player %u) is using cheat :%s %s"
 msgstr "(Mängija %u) kasutab pettust :%s %s"
 
-#: src/keybind.c:1504
+#: src/keybind.c:1513
 msgid "Researched"
 msgstr "Uuritud"
 
-#: src/keybind.c:1525
+#: src/keybind.c:1534
 msgid "Only displaying energy bars when selected"
 msgstr "Näitab energjaribasid kui valitud"
 
-#: src/keybind.c:1528
+#: src/keybind.c:1537
 msgid "Always displaying energy bars for units"
 msgstr "Näitab alati üksuste energiaribasid"
 
-#: src/keybind.c:1531
+#: src/keybind.c:1540
 msgid "Always displaying energy bars for units and structures"
 msgstr "Näitab alati üksuste ja ehitiste energiaribasid"
 
-#: src/keybind.c:1553
+#: src/keybind.c:1562
 msgid "Demo mode off - Returning to normal game mode"
 msgstr "Demo mode off - Returning to normal game mode"
 
-#: src/keybind.c:1568
+#: src/keybind.c:1577
 msgid "Debug menu is Open"
 msgstr "Debug menüü on avatud"
 
-#: src/keybind.c:1599
+#: src/keybind.c:1608
 msgid "Unable to locate any resource extractors!"
 msgstr "Unable to locate any resource extractors!"
 
-#: src/keybind.c:1820
+#: src/keybind.c:1829
 msgid "Oh, the weather outside is frightful... SNOW"
 msgstr "Oh, the weather outside is frightful... SNOW"
 
-#: src/keybind.c:1826
+#: src/keybind.c:1835
 msgid "Singing in the rain, I'm singing in the rain... RAIN"
 msgstr "Singing in the rain, I'm singing in the rain... RAIN"
 
-#: src/keybind.c:1832
+#: src/keybind.c:1841
 msgid "Forecast : Clear skies for all areas... NO WEATHER"
 msgstr "Forecast : Clear skies for all areas... NO WEATHER"
 
-#: src/keybind.c:1917
+#: src/keybind.c:1926
 msgid "Warning! This can have drastic consequences if used incorrectly in missions."
 msgstr "Warning! This can have drastic consequences if used incorrectly in missions."
 
-#: src/keybind.c:1919
+#: src/keybind.c:1928
 msgid "All enemies destroyed by cheating!"
 msgstr "Kõik vaenlased pettusega hävitatud"
 
-#: src/keybind.c:1960
+#: src/keybind.c:1969
 msgid "Destroying selected droids and structures!"
 msgstr "Hävitab valitud  üksused ja ehitised"
 
-#: src/keybind.c:2482
+#: src/keybind.c:2491
 msgid "Centered on player HQ, direction NORTH"
 msgstr "Mängija HQ Keskel, Suund PÕHI"
 
-#: src/keybind.c:2494
+#: src/keybind.c:2503
 msgid "Unable to locate HQ!"
 msgstr "Võimetu HQ leidma!"
 
-#: src/keybind.c:2501
-msgid "Formation speed limiting has been removed from the game due to bugs."
-msgstr "Formatsiooni kiiruse limiit eemaldati mängust vea tõttu"
-
-#: src/keybind.c:2550
+#: src/keybind.c:2554
 msgid "Vertical rotation direction: Normal"
 msgstr "Vertikaalse pöörlemise suund: Normaalne"
 
-#: src/keybind.c:2555
+#: src/keybind.c:2559
 msgid "Vertical rotation direction: Flipped"
 msgstr "Vertikaalse pöörlemise suund: Flipped"
 
-#: src/keybind.c:2564
+#: src/keybind.c:2568
 msgid "Screen shake when things die: Off"
 msgstr "Ekraani värin, kui miski sureb: Väljas"
 
-#: src/keybind.c:2569
+#: src/keybind.c:2573
 msgid "Screen shake when things die: On"
 msgstr "Ekraani värin, kui miski sureb: Sees"
 
-#: src/keybind.c:2614
-#: src/keybind.c:2657
+#: src/keybind.c:2618
+#: src/keybind.c:2661
 msgid "Sorry, but game speed cannot be changed in multiplayer."
 msgstr "Sorry, aga mängu kiirust ei saa mitmikmängus muuta."
 
-#: src/keybind.c:2635
-#: src/keybind.c:2678
-#: src/keybind.c:2700
+#: src/keybind.c:2639
+#: src/keybind.c:2682
+#: src/keybind.c:2704
 msgid "Game Speed Reset"
 msgstr "Mängu Kiirus Taastatud"
 
-#: src/keybind.c:2639
+#: src/keybind.c:2643
 #, c-format
 msgid "Game Speed Increased to %3.1f"
 msgstr "Mängu Kiirus Suurendatud %3.1f"
 
-#: src/keybind.c:2682
+#: src/keybind.c:2686
 #, c-format
 msgid "Game Speed Reduced to %3.1f"
 msgstr "Mängu Kiirus Vähendatud %3.1f"
 
-#: src/keybind.c:2712
+#: src/keybind.c:2716
 msgid "Build menu will reopen"
 msgstr "Build menu will reopen"
 
-#: src/keybind.c:2716
+#: src/keybind.c:2720
 msgid "Build menu will not reopen"
 msgstr "Build menu will not reopen"
 
-#: src/keybind.c:2728
+#: src/keybind.c:2732
 msgid "Radar showing friend-foe colors"
 msgstr "Radar showing friend-foe colours"
 
-#: src/keybind.c:2732
+#: src/keybind.c:2736
 msgid "Radar showing player colors"
 msgstr "Radar showing player colours"
 
-#: src/keybind.c:2753
+#: src/keybind.c:2757
 msgid "Radar showing only objects"
 msgstr "Radar näitab ainult objekte"
 
-#: src/keybind.c:2756
+#: src/keybind.c:2760
 msgid "Radar blending terrain and height"
 msgstr "Radar blending terrain and height"
 
-#: src/keybind.c:2759
+#: src/keybind.c:2763
 msgid "Radar showing terrain"
 msgstr "Radar näitab terraini"
 
-#: src/keybind.c:2762
+#: src/keybind.c:2766
 msgid "Radar showing revealed terrain"
 msgstr "Radar näitab paljastatud terraini"
 
-#: src/keybind.c:2765
+#: src/keybind.c:2769
 msgid "Radar showing height"
 msgstr "Radar näitab kõrgust"
 
@@ -13774,363 +13582,367 @@ msgstr "Naase Eelmisele Ekraanile"
 msgid "Select Default"
 msgstr "Vali Algne"
 
-#: src/keymap.c:295
+#: src/keymap.c:296
 msgid "Manufacture"
 msgstr "Tootmine"
 
-#: src/keymap.c:296
+#: src/keymap.c:297
 msgid "Research"
 msgstr "Uurimine"
 
-#: src/keymap.c:297
+#: src/keymap.c:298
 msgid "Build"
 msgstr "Ehita"
 
-#: src/keymap.c:298
+#: src/keymap.c:299
 msgid "Design"
 msgstr "Konstrueerimine"
 
-#: src/keymap.c:299
+#: src/keymap.c:300
 msgid "Intelligence Display"
 msgstr "Intelligentsus Ekraan"
 
-#: src/keymap.c:300
+#: src/keymap.c:301
 msgid "Commanders"
 msgstr "Komandörid"
 
-#: src/keymap.c:301
+#: src/keymap.c:302
 msgid "Toggle Radar"
 msgstr "Vaheta Radar"
 
-#: src/keymap.c:302
+#: src/keymap.c:303
 msgid "Toggle Console Display"
 msgstr "Vaheta Konsooli Näitamist"
 
-#: src/keymap.c:303
+#: src/keymap.c:304
 msgid "Toggle Damage Bars On/Off"
 msgstr "Vaheta Kahju Ribad Sisse/Välja"
 
-#: src/keymap.c:304
+#: src/keymap.c:306
 msgid "Take Screen Shot"
 msgstr "Tee Screen Shot"
 
-#: src/keymap.c:305
+#: src/keymap.c:309
+msgid "Dump Vido Sequence"
+msgstr ""
+
+#: src/keymap.c:312
 msgid "Toggle Formation Speed Limiting"
 msgstr "Toggle Formation Speed Limiting"
 
-#: src/keymap.c:306
+#: src/keymap.c:314
 msgid "View Location of Previous Message"
 msgstr "Näita Eelmise Sõnumi Asukohta"
 
-#: src/keymap.c:311
+#: src/keymap.c:319
 msgid "Assign Group 0"
 msgstr "Määra Grupp 0"
 
-#: src/keymap.c:312
+#: src/keymap.c:320
 msgid "Assign Group 1"
 msgstr "Määra Grupp 1"
 
-#: src/keymap.c:313
+#: src/keymap.c:321
 msgid "Assign Group 2"
 msgstr "Määra Grupp 2"
 
-#: src/keymap.c:314
+#: src/keymap.c:322
 msgid "Assign Group 3"
 msgstr "Määra Grupp 3"
 
-#: src/keymap.c:315
+#: src/keymap.c:323
 msgid "Assign Group 4"
 msgstr "Määra Grupp 4"
 
-#: src/keymap.c:316
+#: src/keymap.c:324
 msgid "Assign Group 5"
 msgstr "Määra Grupp 5"
 
-#: src/keymap.c:317
+#: src/keymap.c:325
 msgid "Assign Group 6"
 msgstr "Määra Grupp 6"
 
-#: src/keymap.c:318
+#: src/keymap.c:326
 msgid "Assign Group 7"
 msgstr "Määra Grupp 7"
 
-#: src/keymap.c:319
+#: src/keymap.c:327
 msgid "Assign Group 8"
 msgstr "Määra Grupp 8"
 
-#: src/keymap.c:320
+#: src/keymap.c:328
 msgid "Assign Group 9"
 msgstr "Määra Grupp 9"
 
-#: src/keymap.c:324
+#: src/keymap.c:332
 msgid "Select Group 0"
 msgstr "Vali Grupp 0"
 
-#: src/keymap.c:325
+#: src/keymap.c:333
 msgid "Select Group 1"
 msgstr "Vali Grupp 1"
 
-#: src/keymap.c:326
+#: src/keymap.c:334
 msgid "Select Group 2"
 msgstr "Vali Grupp 2"
 
-#: src/keymap.c:327
+#: src/keymap.c:335
 msgid "Select Group 3"
 msgstr "Vali Grupp 3"
 
-#: src/keymap.c:328
+#: src/keymap.c:336
 msgid "Select Group 4"
 msgstr "Vali Grupp 4"
 
-#: src/keymap.c:329
+#: src/keymap.c:337
 msgid "Select Group 5"
 msgstr "Vali Grupp 5"
 
-#: src/keymap.c:330
+#: src/keymap.c:338
 msgid "Select Group 6"
 msgstr "Vali Grupp 6"
 
-#: src/keymap.c:331
+#: src/keymap.c:339
 msgid "Select Group 7"
 msgstr "Vali Grupp 7"
 
-#: src/keymap.c:332
+#: src/keymap.c:340
 msgid "Select Group 8"
 msgstr "Vali Grupp 8"
 
-#: src/keymap.c:333
+#: src/keymap.c:341
 msgid "Select Group 9"
 msgstr "Vali Grupp 9"
 
-#: src/keymap.c:337
+#: src/keymap.c:345
 msgid "Select Commander 0"
 msgstr "Vali Komandör 0"
 
-#: src/keymap.c:338
+#: src/keymap.c:346
 msgid "Select Commander 1"
 msgstr "Vali Komandör 1"
 
-#: src/keymap.c:339
+#: src/keymap.c:347
 msgid "Select Commander 2"
 msgstr "Vali Komandör 2"
 
-#: src/keymap.c:340
+#: src/keymap.c:348
 msgid "Select Commander 3"
 msgstr "Vali Komandör 3"
 
-#: src/keymap.c:341
+#: src/keymap.c:349
 msgid "Select Commander 4"
 msgstr "Vali Komandör 4"
 
-#: src/keymap.c:342
+#: src/keymap.c:350
 msgid "Select Commander 5"
 msgstr "Vali Komandör 5"
 
-#: src/keymap.c:343
+#: src/keymap.c:351
 msgid "Select Commander 6"
 msgstr "Vali Komandör 6"
 
-#: src/keymap.c:344
+#: src/keymap.c:352
 msgid "Select Commander 7"
 msgstr "Vali Komandör 7"
 
-#: src/keymap.c:345
+#: src/keymap.c:353
 msgid "Select Commander 8"
 msgstr "Vali Komandör 8"
 
-#: src/keymap.c:346
+#: src/keymap.c:354
 msgid "Select Commander 9"
 msgstr "Vali Komandör 9"
 
-#: src/keymap.c:350
+#: src/keymap.c:358
 msgid "Multiplayer Options / Alliance dialog"
 msgstr "Mitmikmängu Seaded / Liitlus kõnelus"
 
-#: src/keymap.c:353
+#: src/keymap.c:361
 msgid "Snap View to North"
 msgstr "Kiir Vaade Põhjapoole"
 
-#: src/keymap.c:354
+#: src/keymap.c:362
 msgid "Toggle Tracking Camera"
 msgstr "Toggle Tracking Camera"
 
-#: src/keymap.c:355
+#: src/keymap.c:363
 msgid "Display In-Game Options"
 msgstr "Näita Mängusiseseid Seadeid"
 
-#: src/keymap.c:356
+#: src/keymap.c:364
 msgid "Zoom Radar Out"
 msgstr "Zoomi Radar Välja"
 
-#: src/keymap.c:357
+#: src/keymap.c:365
 msgid "Zoom Radar In"
 msgstr "Zoomi Radar Sisse"
 
-#: src/keymap.c:358
+#: src/keymap.c:366
 msgid "Zoom In"
 msgstr "Zoomi Välja"
 
-#: src/keymap.c:359
+#: src/keymap.c:367
 msgid "Zoom Out"
 msgstr "Zoomi Sisse"
 
-#: src/keymap.c:360
+#: src/keymap.c:368
 msgid "Pitch Forward"
 msgstr "Liigu Edasi"
 
-#: src/keymap.c:361
+#: src/keymap.c:369
 msgid "Rotate Left"
 msgstr "Keera Vasakule"
 
-#: src/keymap.c:362
+#: src/keymap.c:370
 msgid "Reset Pitch"
 msgstr "Tühista Liikumine"
 
-#: src/keymap.c:363
+#: src/keymap.c:371
 msgid "Rotate Right"
 msgstr "Keera Paremale"
 
-#: src/keymap.c:364
+#: src/keymap.c:372
 msgid "Pitch Back"
 msgstr "Liigu Tagasi"
 
-#: src/keymap.c:365
+#: src/keymap.c:373
 msgid "Orders Menu"
 msgstr "Käskude Menüü"
 
-#: src/keymap.c:366
+#: src/keymap.c:374
 msgid "Decrease Game Speed"
 msgstr "Vähenda Mängu Kiirust"
 
-#: src/keymap.c:367
+#: src/keymap.c:375
 msgid "Increase Game Speed"
 msgstr "Suurenda Mängukiirust"
 
-#: src/keymap.c:368
+#: src/keymap.c:376
 msgid "Reset Game Speed"
 msgstr "Taasta Mängukiirus"
 
-#: src/keymap.c:369
+#: src/keymap.c:377
 msgid "View North"
 msgstr "Vaata Põhja"
 
-#: src/keymap.c:370
+#: src/keymap.c:378
 msgid "View South"
 msgstr "Vaat Lõunasse"
 
-#: src/keymap.c:371
+#: src/keymap.c:379
 msgid "View East"
 msgstr "Vaata Itta"
 
-#: src/keymap.c:372
+#: src/keymap.c:380
 msgid "View West"
 msgstr "Vaata Läände"
 
-#: src/keymap.c:373
+#: src/keymap.c:381
 msgid "View next Oil Derrick"
 msgstr "Näita Järgmist Naftapuurtorni"
 
-#: src/keymap.c:374
+#: src/keymap.c:382
 msgid "View next Repair Unit"
 msgstr "Näita järgmist Remondi Üksust"
 
-#: src/keymap.c:375
+#: src/keymap.c:383
 msgid "View next Truck"
 msgstr "Näita järgmist Veoautot"
 
-#: src/keymap.c:376
+#: src/keymap.c:384
 msgid "View next Sensor Unit"
 msgstr "Näita järgmist Sensorüksust"
 
-#: src/keymap.c:377
+#: src/keymap.c:385
 msgid "View next Commander"
 msgstr "Näita järgmist Komandöri"
 
-#: src/keymap.c:378
+#: src/keymap.c:386
 msgid "Toggle Overlays"
 msgstr "Toggle Overlays"
 
-#: src/keymap.c:379
+#: src/keymap.c:387
 msgid "Console On/Off"
 msgstr "Konsool Sisse/Välja"
 
-#: src/keymap.c:382
+#: src/keymap.c:390
 msgid "Center View on HQ"
 msgstr "Kesk vaade Juhtimiskeskusele"
 
-#: src/keymap.c:384
+#: src/keymap.c:392
 msgid "View Unassigned Units"
 msgstr "Näita määramata üksusi"
 
-#: src/keymap.c:386
+#: src/keymap.c:394
 msgid "Fire at Will"
 msgstr "Vaba Tuli"
 
-#: src/keymap.c:388
+#: src/keymap.c:396
 msgid "Return to HQ"
 msgstr "Naase Juhtimiskeskuse Juurde"
 
-#: src/keymap.c:396
+#: src/keymap.c:404
 msgid "Send Text Message"
 msgstr "Saada Teksti Sõnum"
 
-#: src/keymap.c:415
+#: src/keymap.c:423
 msgid "Select all Combat Units"
 msgstr "Vali Kõik Lahinguüksused"
 
-#: src/keymap.c:416
+#: src/keymap.c:424
 msgid "Select all Heavily Damaged Units"
 msgstr "Vali kõok raskesti kahjustatud üksused"
 
-#: src/keymap.c:418
+#: src/keymap.c:426
 msgid "Select all Half-tracks"
 msgstr "Vali kõik pool-roomikud"
 
-#: src/keymap.c:419
+#: src/keymap.c:427
 msgid "Select all Hovers"
 msgstr "Vali kõik hõljukid"
 
-#: src/keymap.c:421
+#: src/keymap.c:429
 msgid "Select all Units on Screen"
 msgstr "Vali kõik üksused Ekraanil"
 
-#: src/keymap.c:422
+#: src/keymap.c:430
 msgid "Select all Tracks"
 msgstr "Vali kõik Roomikud"
 
-#: src/keymap.c:423
+#: src/keymap.c:431
 msgid "Select EVERY unit"
 msgstr "Vali KÕIK üksused"
 
-#: src/keymap.c:424
+#: src/keymap.c:432
 msgid "Select all VTOLs"
 msgstr "Vali kõik VTOLid"
 
-#: src/keymap.c:425
+#: src/keymap.c:433
 msgid "Select all Wheels"
 msgstr "Vali kõik Rattad"
 
-#: src/keymap.c:427
+#: src/keymap.c:435
 msgid "Select all Similar Units"
 msgstr "Vali kõik sarnased üksused"
 
-#: src/keymap.c:431
+#: src/keymap.c:439
 msgid "Select next Factory"
 msgstr "Vali järgmine tehas"
 
-#: src/keymap.c:432
+#: src/keymap.c:440
 msgid "Select next Research Facility"
 msgstr "Vali järgmine uurimiskeskus"
 
-#: src/keymap.c:433
+#: src/keymap.c:441
 msgid "Select next Power Generator"
 msgstr "Vali järgmine energiageneraator"
 
-#: src/keymap.c:434
+#: src/keymap.c:442
 msgid "Select next Cyborg Factory"
 msgstr "Vali järgmine küborgi tehas"
 
-#: src/keymap.c:435
+#: src/keymap.c:443
 msgid "Toggle reopening the build menu"
 msgstr "Toggle reopening the build menu"
 
@@ -14918,6 +14730,135 @@ msgstr " - Built %s"
 #, c-format
 msgid "Version %s%s%s%s"
 msgstr "Versioon %s%s%s%s"
+
+#~ msgid "Cobra Hover Heavy-Repair"
+#~ msgstr "Hõljuk Cobra Raske-Remont"
+
+#~ msgid "Viper HMG Wheels"
+#~ msgstr "Ratastega Viper Raskekuulipilduja"
+
+#~ msgid "TK Mantis Hover"
+#~ msgstr "Hõljukiga Mantis TK"
+
+#~ msgid "Cobra HMG Tracks"
+#~ msgstr "Roomikutega Cobra Raskekuulipilduja"
+
+#~ msgid "Cobra Hover HC"
+#~ msgstr "Hõljukiga Cobra HC"
+
+#~ msgid "Scorpion Lancer Tracks"
+#~ msgstr "Roomikutega Scorpion Lancer"
+
+#~ msgid "Scorpion Heavy Cannon Tracks"
+#~ msgstr "Roomikutega Scorpion Raskekahuriga"
+
+#~ msgid "Scorpion Lancer VTOL"
+#~ msgstr "VTOL Scorpion Lancer"
+
+#~ msgid "Scorpion BB VTOL"
+#~ msgstr "VTOL Scorpion BB"
+
+#~ msgid "Viper Command Turret Tracks"
+#~ msgstr "Roomikutega Viper Komandör"
+
+#~ msgid "Cobra Command Turret Tracks"
+#~ msgstr "Roomikutega Cobra Komandör"
+
+#~ msgid "Scorpion Command Turret Tracks"
+#~ msgstr "Roomikutega Scorpion Komandör"
+
+#~ msgid "mantis Command Turret Tracks"
+#~ msgstr "Roomikutega Mantis Komandör"
+
+#~ msgid "Cobra Lancer Tracks"
+#~ msgstr "Roomikutega Cobra Lancer"
+
+#~ msgid "Mantis Heavy Cannon Tracks"
+#~ msgstr "Roomikutega Mantis Raskekahur"
+
+#~ msgid "Mantis Tank Killer Tracks"
+#~ msgstr "Roomikutega Mantis Tanki Tapja"
+
+#~ msgid "Mantis Scourge Tracks"
+#~ msgstr "Roomikutega Mantis Scourge"
+
+#~ msgid "Scorpion Heavy Machinegun Tracks"
+#~ msgstr "Roomikutega Scorpion Raskekuulipilduja"
+
+#~ msgid "Scorpion Repair Tracks"
+#~ msgstr "Roomikutega Scorpion Remont"
+
+#~ msgid "Scorpion Heavy Repair Hover"
+#~ msgstr "Hõljukiga Scorpion Raskeremont"
+
+#~ msgid "Cobra Hover Truck"
+#~ msgstr "Hõljukiga Cobra Veoauto"
+
+#~ msgid "Scorpion Hover Truck"
+#~ msgstr "Hõljukiga Scorpion Veoauto"
+
+#~ msgid "Mantis Hover Truck"
+#~ msgstr "Hõljukiga Mantis Veoauto"
+
+#~ msgid "Cobra Bunker Buster Tracks"
+#~ msgstr "Roomikutega Cobra Punkripurustaja"
+
+#~ msgid "Scorpion Bunker Buster Tracks"
+#~ msgstr "Roomikutega Scorpion Punkripurustaja"
+
+#~ msgid "Mantis Bunker Buster Tracks"
+#~ msgstr "Roomikutega Mantis Punkripurustaja"
+
+#~ msgid "Viper Tracks Lancer"
+#~ msgstr "Roomikutega Viper Lancer"
+
+#~ msgid "Cobra Half-Tracks Mini-Pod"
+#~ msgstr "Pool-Roomikutega Cobra Mini-Raketid"
+
+#~ msgid "Cobra Tracks Mini-Pod"
+#~ msgstr "Roomikutega Cobra Mini-Raketid"
+
+#~ msgid "Cobra Tracks Mini-Rocket Artillery"
+#~ msgstr "Roomikutega Cobra Mini-Rakettide Suurtükk"
+
+#~ msgid "Cobra Inferno Half-track"
+#~ msgstr "Pool-Roomikutega Cobra Põrgutuli"
+
+#~ msgid "Python HVC Hover"
+#~ msgstr "Hõljukiga Python HVC"
+
+#~ msgid "Python Scourge Tracks"
+#~ msgstr "Roomikutega Python Scourge"
+
+#~ msgid "Python Gauss Cannon Tracks"
+#~ msgstr "Roomikutega Python Gausskahur"
+
+#~ msgid "Python Pulse Laser Tracks"
+#~ msgstr "Roomikutega Python Impulsslaser"
+
+#~ msgid "Tiger Pulse Laser Tracks"
+#~ msgstr "Roomikutega Tiger Impulsslaser"
+
+#~ msgid "Tiger Heavy Laser Tracks"
+#~ msgstr "Roomikutega Tiger Raskelaser"
+
+#~ msgid "Wyvern Gauss Cannon Tracks"
+#~ msgstr "Roomikutega Wyvern Gausskahur"
+
+#~ msgid "Wyvern Pulse Laser Tracks"
+#~ msgstr "Roomikutega Wyvern Impulsslaser"
+
+#~ msgid "Wyvern Heavy Laser Tracks"
+#~ msgstr "Roomikutega Wyvern Raskelaser"
+
+#~ msgid "Viper Machinegun Half-Track"
+#~ msgstr "Pool-Roomikutega Viper Kuulipilduja"
+
+#~ msgid "Viper Flamer Half-Track"
+#~ msgstr "Pool-Roomikutega Viper Leegiheitja"
+
+#~ msgid "Formation speed limiting has been removed from the game due to bugs."
+#~ msgstr "Formatsiooni kiiruse limiit eemaldati mängust vea tõttu"
 
 #~ msgid ": Unknown cheat code."
 #~ msgstr ": Tundmatu sohikood"

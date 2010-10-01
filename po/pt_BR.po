@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: warzone2100\n"
 "Report-Msgid-Bugs-To: warzone-dev@gna.org\n"
-"POT-Creation-Date: 2010-07-12 13:52+1000\n"
+"POT-Creation-Date: 2010-09-30 22:17-0400\n"
 "PO-Revision-Date: 2010-05-08 00:46-0300\n"
 "Last-Translator: Artur Filipe <tucalipe@gmail.com>\n"
 "Language-Team: Brazilian Portugese <warzone-dev@gna.org>\n"
@@ -5662,84 +5662,67 @@ msgid "Incoming intelligence report... Team Gamma"
 msgstr "Recebendo Relatório de Inteligência... Time Gama."
 
 #: data/base/messages/strings/genstrings.txt:4
-#: data/mods/multiplay/ntw/messages/strings/genstrings.txt:4
 msgid "Briefing Commences:"
 msgstr "Avaliação Começando:"
 
 #: data/base/messages/strings/genstrings.txt:7
-#: data/mods/multiplay/ntw/messages/strings/genstrings.txt:7
 msgid "Scavenger Outpost"
 msgstr "Base de Catadores"
 
 #: data/base/messages/strings/genstrings.txt:8
-#: data/mods/multiplay/ntw/messages/strings/genstrings.txt:8
 msgid "Power Resource"
 msgstr "Poço de Petróleo"
 
 #: data/base/messages/strings/genstrings.txt:9
-#: data/mods/multiplay/ntw/messages/strings/genstrings.txt:9
 msgid "Unknown Artifact"
 msgstr "Artefato Desconhecido"
 
 #: data/base/messages/strings/genstrings.txt:10
-#: data/mods/multiplay/ntw/messages/strings/genstrings.txt:10
 msgid "Source of Power Surge"
 msgstr "Origem do Foco de Energia"
 
 #: data/base/messages/strings/genstrings.txt:13
-#: data/mods/multiplay/ntw/messages/strings/genstrings.txt:13
 msgid "Landing Zone"
 msgstr "Área de Pouso"
 
 #: data/base/messages/strings/genstrings.txt:14
 #: data/base/messages/strings/genstrings.txt:24
-#: data/mods/multiplay/ntw/messages/strings/genstrings.txt:14
-#: data/mods/multiplay/ntw/messages/strings/genstrings.txt:24
 msgid "Mission Target"
 msgstr "Alvo da Missão"
 
 #: data/base/messages/strings/genstrings.txt:15
-#: data/mods/multiplay/ntw/messages/strings/genstrings.txt:15
 msgid "Pre-Collapse Research Center"
 msgstr "Centro de Pesquisas Pré-Colapso"
 
 #: data/base/messages/strings/genstrings.txt:17
-#: data/mods/multiplay/ntw/messages/strings/genstrings.txt:17
 msgid "En-route To Mission Site"
 msgstr "Encaminhado-se Para o Local da Missão"
 
 #: data/base/messages/strings/genstrings.txt:18
-#: data/mods/multiplay/ntw/messages/strings/genstrings.txt:18
 msgid "Mission Failed"
 msgstr "Missão Não Cumprida"
 
 #: data/base/messages/strings/genstrings.txt:19
-#: data/mods/multiplay/ntw/messages/strings/genstrings.txt:19
 msgid "Mission Successful"
 msgstr "Missão Cumprida"
 
 #: data/base/messages/strings/genstrings.txt:22
-#: data/mods/multiplay/ntw/messages/strings/genstrings.txt:22
 msgid "Enemy Landing Zone"
 msgstr "Área de Pouso Inimiga"
 
 #: data/base/messages/strings/genstrings.txt:23
-#: data/mods/multiplay/ntw/messages/strings/genstrings.txt:23
 msgid "Enemy Base"
 msgstr "Base Inimiga"
 
 #: data/base/messages/strings/genstrings.txt:27
-#: data/mods/multiplay/ntw/messages/strings/genstrings.txt:27
 msgid "Incoming transmission"
 msgstr "Transimssão chegando"
 
 #: data/base/messages/strings/genstrings.txt:30
-#: data/mods/multiplay/ntw/messages/strings/genstrings.txt:30
 msgid "Incoming intelligence report."
 msgstr "Chegando relatório de inteligência."
 
 #: data/base/messages/strings/genstrings.txt:33
-#: data/mods/multiplay/ntw/messages/strings/genstrings.txt:33
 msgid "Nuclear Reactor"
 msgstr "Reator Nuclear"
 
@@ -5920,7 +5903,6 @@ msgid "Light Cannon Python Tracks"
 msgstr "Tanque Canhão Leve Píton"
 
 #: data/base/messages/strings/names.txt:194
-#: data/mods/multiplay/ntw/messages/strings/names.txt:1357
 #: data/mods/multiplay/old-1.10-balance/messages/strings/names.txt:1923
 #: data/mp/messages/strings/names.txt:197
 #: data/mp/messages/strings/names.txt:1926
@@ -9164,7 +9146,6 @@ msgid "Downed Transport"
 msgstr "Transporte Abatido"
 
 #: data/base/messages/strings/names.txt:1458
-#: data/mods/multiplay/ntw/messages/strings/names.txt:1356
 #: data/mods/multiplay/old-1.10-balance/messages/strings/names.txt:1922
 #: data/mp/messages/strings/names.txt:1477
 #: data/mp/messages/strings/names.txt:1925
@@ -10324,180 +10305,6 @@ msgstr "Agora é hora de usá-las para reconstruir o mundo."
 msgid "Slowly, out of the ashes we will rise again..."
 msgstr "Lentamente, das cinzas, nos ergueremos novamente..."
 
-#: data/mods/multiplay/ntw/messages/strings/names.txt:1313
-msgid "Cobra Hover Heavy-Repair"
-msgstr "Hovercraft Reparo Pesado Cobra"
-
-#: data/mods/multiplay/ntw/messages/strings/names.txt:1314
-msgid "Viper HMG Wheels"
-msgstr "4x4 Metralhadora Pesada Víbora"
-
-#: data/mods/multiplay/ntw/messages/strings/names.txt:1315
-#: data/mods/multiplay/old-1.10-balance/messages/strings/names.txt:1824
-#: data/mp/messages/strings/names.txt:1827
-msgid "Scourge Mantis Hover"
-msgstr "Hovercraft Scourge Mantis"
-
-#: data/mods/multiplay/ntw/messages/strings/names.txt:1316
-msgid "TK Mantis Hover"
-msgstr "Hovercraft Destruidor de Tanques Mantis"
-
-#: data/mods/multiplay/ntw/messages/strings/names.txt:1317
-msgid "Cobra HMG Tracks"
-msgstr "Tanque Metralhadora Pesada Cobra"
-
-#: data/mods/multiplay/ntw/messages/strings/names.txt:1318
-msgid "Cobra Hover HC"
-msgstr "Hovercraft Canhão Pesado Cobra"
-
-#: data/mods/multiplay/ntw/messages/strings/names.txt:1319
-msgid "Scorpion Lancer Tracks"
-msgstr "Tanque Lançadeiro Escorpião"
-
-#: data/mods/multiplay/ntw/messages/strings/names.txt:1320
-msgid "Scorpion Heavy Cannon Tracks"
-msgstr "Tanque Canhão Pesado Escorpião"
-
-#: data/mods/multiplay/ntw/messages/strings/names.txt:1321
-msgid "Scorpion Lancer VTOL"
-msgstr "VTOL Lançadeiro Escorpião"
-
-#: data/mods/multiplay/ntw/messages/strings/names.txt:1322
-msgid "Scorpion BB VTOL"
-msgstr "VTOL Arrasa-Defesas Escorpião"
-
-#: data/mods/multiplay/ntw/messages/strings/names.txt:1323
-msgid "Viper Command Turret Tracks"
-msgstr "Tanque Comandante Víbora"
-
-#: data/mods/multiplay/ntw/messages/strings/names.txt:1324
-msgid "Cobra Command Turret Tracks"
-msgstr "Tanque Comandante Cobra"
-
-#: data/mods/multiplay/ntw/messages/strings/names.txt:1325
-msgid "Scorpion Command Turret Tracks"
-msgstr "Tanque Comandante Escorpião"
-
-#: data/mods/multiplay/ntw/messages/strings/names.txt:1326
-msgid "mantis Command Turret Tracks"
-msgstr "Tanque Comandante Mantis"
-
-#: data/mods/multiplay/ntw/messages/strings/names.txt:1327
-msgid "Cobra Lancer Tracks"
-msgstr "Tanque Lançadeiro Cobra"
-
-#: data/mods/multiplay/ntw/messages/strings/names.txt:1328
-msgid "Mantis Heavy Cannon Tracks"
-msgstr "Tanque Canhão Pesado Mantis"
-
-#: data/mods/multiplay/ntw/messages/strings/names.txt:1329
-msgid "Mantis Tank Killer Tracks"
-msgstr "Tanque Destruidor de Tanques Mantis"
-
-#: data/mods/multiplay/ntw/messages/strings/names.txt:1330
-msgid "Mantis Scourge Tracks"
-msgstr "Tanque Scourge Mantis"
-
-#: data/mods/multiplay/ntw/messages/strings/names.txt:1331
-msgid "Scorpion Heavy Machinegun Tracks"
-msgstr "Tanque Metralhadora Pesada Escorpião"
-
-#: data/mods/multiplay/ntw/messages/strings/names.txt:1332
-msgid "Scorpion Repair Tracks"
-msgstr "Tanque Reparo Escorpião"
-
-#: data/mods/multiplay/ntw/messages/strings/names.txt:1333
-msgid "Scorpion Heavy Repair Hover"
-msgstr "Hovercraft Reparos Pesado Escorpião"
-
-#: data/mods/multiplay/ntw/messages/strings/names.txt:1334
-msgid "Cobra Hover Truck"
-msgstr "Hovercraft Caminhão CObra"
-
-#: data/mods/multiplay/ntw/messages/strings/names.txt:1335
-msgid "Scorpion Hover Truck"
-msgstr "Hovercraft Caminhão Escorpião"
-
-#: data/mods/multiplay/ntw/messages/strings/names.txt:1336
-msgid "Mantis Hover Truck"
-msgstr "Hovercraft Caminhão Mantis"
-
-#: data/mods/multiplay/ntw/messages/strings/names.txt:1337
-msgid "Cobra Bunker Buster Tracks"
-msgstr "Tanque Arrasa-Defesas Cobra"
-
-#: data/mods/multiplay/ntw/messages/strings/names.txt:1338
-msgid "Scorpion Bunker Buster Tracks"
-msgstr "Tanque Arrasa-Defesas Escorpião"
-
-#: data/mods/multiplay/ntw/messages/strings/names.txt:1339
-msgid "Mantis Bunker Buster Tracks"
-msgstr "Tanque Arrasa-Defesas Mantis"
-
-#: data/mods/multiplay/ntw/messages/strings/names.txt:1340
-msgid "Viper Tracks Lancer"
-msgstr "Tanque Lançadeiro Víbora"
-
-#: data/mods/multiplay/ntw/messages/strings/names.txt:1341
-msgid "Cobra Half-Tracks Mini-Pod"
-msgstr "Híbrido Mini-Foguetes Cobra"
-
-#: data/mods/multiplay/ntw/messages/strings/names.txt:1342
-msgid "Cobra Tracks Mini-Pod"
-msgstr "Tanque Mini-Foguetes Cobra"
-
-#: data/mods/multiplay/ntw/messages/strings/names.txt:1343
-msgid "Cobra Tracks Mini-Rocket Artillery"
-msgstr "Tanque Mini-Artilharia Cobra"
-
-#: data/mods/multiplay/ntw/messages/strings/names.txt:1344
-msgid "Cobra Inferno Half-track"
-msgstr "Híbrido Inferno Cobra"
-
-#: data/mods/multiplay/ntw/messages/strings/names.txt:1345
-msgid "Python HVC Hover"
-msgstr "Hovercraft Canhão de Velocidade Píton"
-
-#: data/mods/multiplay/ntw/messages/strings/names.txt:1346
-msgid "Python Scourge Tracks"
-msgstr "Tanque Scourge Píton"
-
-#: data/mods/multiplay/ntw/messages/strings/names.txt:1347
-msgid "Python Gauss Cannon Tracks"
-msgstr "Tanque Canhão Gauss Píton"
-
-#: data/mods/multiplay/ntw/messages/strings/names.txt:1348
-msgid "Python Pulse Laser Tracks"
-msgstr "Tanque Pulso Laser Píton"
-
-#: data/mods/multiplay/ntw/messages/strings/names.txt:1349
-msgid "Tiger Pulse Laser Tracks"
-msgstr "Tanque Pulso Laser Tigre"
-
-#: data/mods/multiplay/ntw/messages/strings/names.txt:1350
-msgid "Tiger Heavy Laser Tracks"
-msgstr "Tanque Laser Pesado Tigre"
-
-#: data/mods/multiplay/ntw/messages/strings/names.txt:1351
-msgid "Wyvern Gauss Cannon Tracks"
-msgstr "Tanque Canhão Gauss Dragonete"
-
-#: data/mods/multiplay/ntw/messages/strings/names.txt:1352
-msgid "Wyvern Pulse Laser Tracks"
-msgstr "Tanque Pulso Laser Dragonete"
-
-#: data/mods/multiplay/ntw/messages/strings/names.txt:1353
-msgid "Wyvern Heavy Laser Tracks"
-msgstr "Tanque Laser Pesado Dragonete"
-
-#: data/mods/multiplay/ntw/messages/strings/names.txt:1354
-msgid "Viper Machinegun Half-Track"
-msgstr "Híbrido Metralhadora Víbora"
-
-#: data/mods/multiplay/ntw/messages/strings/names.txt:1355
-msgid "Viper Flamer Half-Track"
-msgstr "Híbrido Incendiário Víbora"
-
 #: data/mods/multiplay/old-1.10-balance/messages/strings/names.txt:1822
 #: data/mp/messages/strings/names.txt:1825
 msgid "Heavy Repair Turret Cobra Hover"
@@ -10509,6 +10316,11 @@ msgstr "Hovercraft Torrete de Reparos Pesado Cobra"
 #: data/mp/messages/strings/names.txt:1837
 msgid "Heavy Machinegun Viper Wheels"
 msgstr "4x4 Metralhadora Pesada Víbora"
+
+#: data/mods/multiplay/old-1.10-balance/messages/strings/names.txt:1824
+#: data/mp/messages/strings/names.txt:1827
+msgid "Scourge Mantis Hover"
+msgstr "Hovercraft Scourge Mantis"
 
 #: data/mods/multiplay/old-1.10-balance/messages/strings/names.txt:1825
 #: data/mp/messages/strings/names.txt:1828
@@ -12557,8 +12369,8 @@ msgstr "hospedeiro"
 msgid "go directly to host screen"
 msgstr "ir diretamente à tela de hospedeiro"
 
-#: src/configuration.c:443
-#: src/configuration.c:444
+#: src/configuration.c:439
+#: src/configuration.c:440
 #: src/multistat.c:120
 msgid "Player"
 msgstr "Jogador"
@@ -12704,112 +12516,112 @@ msgstr "Armas"
 msgid "Systems"
 msgstr "Sistemas"
 
-#: src/display3d.c:565
+#: src/display3d.c:564
 msgid "Player left"
 msgstr "Jogador saiu"
 
-#: src/display3d.c:565
+#: src/display3d.c:564
 msgid "Player dropped"
 msgstr "Jogador desconectou-se"
 
-#: src/display.c:1679
+#: src/display.c:1693
 msgid "Cannot Build. Oil Resource Burning."
 msgstr "Não pode construir. Recursos petrolíferos queimados."
 
-#: src/display.c:1859
-#: src/display.c:2462
+#: src/display.c:1873
+#: src/display.c:2476
 #, c-format
 msgid "%s - Damage %d%% - Experience %d, %s"
 msgstr "%s - Danos %d%% - Experiência %d, %s"
 
-#: src/display.c:1875
+#: src/display.c:1889
 #, c-format
 msgid "%s - Allied - Damage %d%% - Experience %d, %s"
 msgstr "%s - Aliado - Danos %d%% - Experiência %d, %s"
 
-#: src/display.c:2077
+#: src/display.c:2091
 msgid "Truck ordered to build Oil Derrick"
 msgstr "O Caminhão ordenou a construção Oil Derrick"
 
-#: src/display.c:2078
+#: src/display.c:2092
 msgid "2 trucks ordered to build Oil Derrick"
 msgstr "2 caminhões designados para a construção do Extrator de Petróleo"
 
-#: src/display.c:2079
+#: src/display.c:2093
 #, c-format
 msgid "%d trucks ordered to build Oil Derrick"
 msgstr "%d caminhões designados para a construção do Extrator de Petróleo"
 
-#: src/droid.c:210
+#: src/droid.c:213
 msgid "Unit Lost!"
 msgstr "Unidades Perdidas!"
 
-#: src/droid.c:1347
+#: src/droid.c:1351
 msgid "Structure Restored"
 msgstr "Estrutura Restaurada"
 
-#: src/droid.c:2959
+#: src/droid.c:3005
 #, c-format
 msgid "Group %u selected - %u Unit"
 msgid_plural "Group %u selected - %u Units"
 msgstr[0] "Grupo %u selecionado - %u Unidade"
 msgstr[1] "Grupo %u selecionado - %u Unidades"
 
-#: src/droid.c:2972
+#: src/droid.c:3018
 #, c-format
 msgid "%u unit assigned to Group %u"
 msgid_plural "%u units assigned to Group %u"
 msgstr[0] "%u unidade atribuída ao Grupo %u"
 msgstr[1] "%u unidades atribuídas ao Grupo %u"
 
-#: src/droid.c:2985
+#: src/droid.c:3031
 #, c-format
 msgid "Centered on Group %u - %u Unit"
 msgid_plural "Centered on Group %u - %u Units"
 msgstr[0] "Centrado no Grupo %u - %u Unidade"
 msgstr[1] "Centrado no Grupo %u - %u Unidades"
 
-#: src/droid.c:2989
+#: src/droid.c:3035
 #, c-format
 msgid "Aligning with Group %u - %u Unit"
 msgid_plural "Aligning with Group %u - %u Units"
 msgstr[0] "Alinhamento com o grupo %u - %u Unidade"
 msgstr[1] "Alinhamento com o grupo %u - %u Unidades"
 
-#: src/droid.c:3273
+#: src/droid.c:3319
 msgid "Rookie"
 msgstr "Recruta"
 
-#: src/droid.c:3274
+#: src/droid.c:3320
 msgctxt "rank"
 msgid "Green"
 msgstr "Soldado"
 
-#: src/droid.c:3275
+#: src/droid.c:3321
 msgid "Trained"
 msgstr "Treinado"
 
-#: src/droid.c:3276
+#: src/droid.c:3322
 msgid "Regular"
 msgstr "Regular"
 
-#: src/droid.c:3277
+#: src/droid.c:3323
 msgid "Professional"
 msgstr "Tenente"
 
-#: src/droid.c:3278
+#: src/droid.c:3324
 msgid "Veteran"
 msgstr "Veterano"
 
-#: src/droid.c:3279
+#: src/droid.c:3325
 msgid "Elite"
 msgstr "Elite"
 
-#: src/droid.c:3280
+#: src/droid.c:3326
 msgid "Special"
 msgstr "Força Especial"
 
-#: src/droid.c:3281
+#: src/droid.c:3327
 msgid "Hero"
 msgstr "Herói"
 
@@ -13341,7 +13153,7 @@ msgid "Power Accrued"
 msgstr "Energia Coletada"
 
 #: src/intelmap.c:247
-#: src/keybind.c:1397
+#: src/keybind.c:1406
 msgid "PAUSED"
 msgstr "PAUSA"
 
@@ -13362,32 +13174,32 @@ msgid "New Intelligence Report"
 msgstr "Chegando relatório de inteligência."
 
 #: src/intorder.c:161
-#: src/keymap.c:390
+#: src/keymap.c:398
 msgid "Short Range"
 msgstr "Curto Alcance"
 
 #: src/intorder.c:162
-#: src/keymap.c:397
+#: src/keymap.c:405
 msgid "Long Range"
 msgstr "Longo Alcance"
 
 #: src/intorder.c:163
-#: src/keymap.c:389
+#: src/keymap.c:397
 msgid "Optimum Range"
 msgstr "Medio Alcance"
 
 #: src/intorder.c:164
-#: src/keymap.c:409
+#: src/keymap.c:417
 msgid "Retreat at Medium Damage"
 msgstr "Recuar Com Danos Médios"
 
 #: src/intorder.c:165
-#: src/keymap.c:410
+#: src/keymap.c:418
 msgid "Retreat at Heavy Damage"
 msgstr "Recuar Com Danos Pesados"
 
 #: src/intorder.c:166
-#: src/keymap.c:411
+#: src/keymap.c:419
 msgid "Do or Die!"
 msgstr "Não Recuar!"
 
@@ -13396,37 +13208,37 @@ msgid "Fire-At-Will"
 msgstr "Atire A Vontade"
 
 #: src/intorder.c:168
-#: src/keymap.c:385
+#: src/keymap.c:393
 msgid "Return Fire"
 msgstr "Retornar Fogo"
 
 #: src/intorder.c:169
-#: src/keymap.c:383
+#: src/keymap.c:391
 msgid "Hold Fire"
 msgstr "Não Atirar"
 
 #: src/intorder.c:170
-#: src/keymap.c:392
+#: src/keymap.c:400
 msgid "Patrol"
 msgstr "Patrulhar"
 
 #: src/intorder.c:171
-#: src/keymap.c:391
+#: src/keymap.c:399
 msgid "Pursue"
 msgstr "Seguir"
 
 #: src/intorder.c:172
-#: src/keymap.c:387
+#: src/keymap.c:395
 msgid "Guard Position"
 msgstr "Defender Posição"
 
 #: src/intorder.c:173
-#: src/keymap.c:394
+#: src/keymap.c:402
 msgid "Hold Position"
 msgstr "Manter Posição"
 
 #: src/intorder.c:174
-#: src/keymap.c:393
+#: src/keymap.c:401
 msgid "Return For Repair"
 msgstr "Retornar para Reparos"
 
@@ -13435,12 +13247,12 @@ msgid "Return To HQ"
 msgstr "Retornar para QG"
 
 #: src/intorder.c:176
-#: src/keymap.c:395
+#: src/keymap.c:403
 msgid "Go to Transport"
 msgstr "Ir para Transporte"
 
 #: src/intorder.c:177
-#: src/keymap.c:420
+#: src/keymap.c:428
 msgid "Return for Recycling"
 msgstr "Retornar para Reciclagem"
 
@@ -13468,287 +13280,283 @@ msgstr "Designar Produção de VTOL"
 msgid "Circle"
 msgstr "Circular"
 
-#: src/keybind.c:136
+#: src/keybind.c:137
 msgid "Sorry, that cheat is disabled in multiplayer games."
 msgstr "Desculpe, as trapaças estão desativadas em jogos multiplayer."
 
-#: src/keybind.c:142
+#: src/keybind.c:143
 msgid "Warning! This cheat is buggy.  We recommend to NOT use it."
 msgstr "Atenção! Essa trapaça é instável. Recomendamos contra o seu uso."
 
-#: src/keybind.c:226
+#: src/keybind.c:227
 msgid "Lets us see what you see!"
 msgstr "Permite-nos ver o que você vê!"
 
-#: src/keybind.c:228
+#: src/keybind.c:229
 msgid "Fine, weapon & sensor display is off!"
 msgstr "Está bem! Você não vê mais o alcançe das armas!"
 
-#: src/keybind.c:359
+#: src/keybind.c:360
 #, c-format
 msgid "Player %u is cheating him/herself a new droid army of %s(s)."
 msgstr "Jogador %u está trapaceando, dando a ele/ela mesma uma nova armada dróide de %s(s)."
 
-#: src/keybind.c:399
-#: src/keybind.c:429
-#: src/keybind.c:446
-#: src/keybind.c:490
-#: src/keybind.c:598
-#: src/keybind.c:638
-#: src/keybind.c:744
-#: src/keybind.c:1287
-#: src/keybind.c:1344
-#: src/keybind.c:1446
-#: src/keybind.c:1567
-#: src/keybind.c:1918
-#: src/keybind.c:1959
+#: src/keybind.c:400
+#: src/keybind.c:430
+#: src/keybind.c:447
+#: src/keybind.c:491
+#: src/keybind.c:599
+#: src/keybind.c:647
+#: src/keybind.c:753
+#: src/keybind.c:1296
+#: src/keybind.c:1353
+#: src/keybind.c:1455
+#: src/keybind.c:1576
+#: src/keybind.c:1927
+#: src/keybind.c:1968
 #, c-format
 msgid "(Player %u) is using cheat :%s"
 msgstr "(Jogador %u) está trapaceando: %s"
 
-#: src/keybind.c:400
+#: src/keybind.c:401
 msgid "Hard as nails!!!"
 msgstr "Doer as unhas!!!"
 
-#: src/keybind.c:414
+#: src/keybind.c:415
 msgid "Takings thing easy!"
 msgstr "Rendimento, coisas fácil !"
 
-#: src/keybind.c:430
+#: src/keybind.c:431
 msgid "1000 big ones!!!"
 msgstr "1000 grandes!!!"
 
-#: src/keybind.c:447
+#: src/keybind.c:448
 msgid "Power overwhelming"
 msgstr "Poder esmagador"
 
-#: src/keybind.c:462
+#: src/keybind.c:463
 msgid "Back to normality!"
 msgstr "Voltar a normalidade!"
 
-#: src/keybind.c:475
+#: src/keybind.c:476
 msgid "Getting tricky!"
 msgstr "Obtendo complicado!"
 
-#: src/keybind.c:491
+#: src/keybind.c:492
 msgid "Twice as nice!"
 msgstr "Duas vezes mais agradável!"
 
-#: src/keybind.c:502
+#: src/keybind.c:503
 msgid "FPS display is enabled."
 msgstr "mostrar FPS é ativado."
 
-#: src/keybind.c:506
+#: src/keybind.c:507
 msgid "FPS display is disabled."
 msgstr "mostrar FPS é desativado."
 
-#: src/keybind.c:530
+#: src/keybind.c:531
 #, c-format
 msgid "FPS %d; FPS-Limit: %d; PIEs %d; polys %d; Terr. polys %d; States %d"
 msgstr "FPS %d; Limite de FPS: %d; PIEs %d; polys %d; Terr. polys %d; Membros %d"
 
-#: src/keybind.c:562
+#: src/keybind.c:563
 #, c-format
 msgid "(Player %u) is using a cheat :Num Droids: %d  Num Structures: %d  Num Features: %d"
 msgstr "(Jogador %u) está trapaceando - No. Ciborgues: %d No. Estruturas: %d No. Características: %d"
 
-#: src/keybind.c:599
+#: src/keybind.c:600
 msgid "Infinite power disabled"
 msgstr "Poder infinito desativado"
 
-#: src/keybind.c:599
+#: src/keybind.c:600
 msgid "Infinite power enabled"
 msgstr "Poder infinito ativado"
 
-#: src/keybind.c:639
+#: src/keybind.c:648
 msgid "All items made available"
 msgstr "Todos os itens disponibilizados"
 
-#: src/keybind.c:745
+#: src/keybind.c:754
 msgid "Fog on"
 msgstr "Nevoeiro ligado"
 
-#: src/keybind.c:745
+#: src/keybind.c:754
 msgid "Fog off"
 msgstr "Nevoeiro desligado"
 
-#: src/keybind.c:1176
+#: src/keybind.c:1185
 #, c-format
 msgid "Warning!  This cheat can cause dire problems later on! [%s]"
 msgstr "Atenção! Essa trapaça pode causar problemas no futuro! [%s]"
 
-#: src/keybind.c:1176
+#: src/keybind.c:1185
 msgid "Ending Mission."
 msgstr "Fim da Missão."
 
-#: src/keybind.c:1288
+#: src/keybind.c:1297
 msgid "CHEATS ARE NOW ENABLED!"
 msgstr "TRAPAÇAS ATIVADAS!"
 
-#: src/keybind.c:1288
+#: src/keybind.c:1297
 msgid "CHEATS ARE NOW DISABLED!"
 msgstr "TRAPAÇAS DESATIVADAS"
 
-#: src/keybind.c:1345
+#: src/keybind.c:1354
 msgid "God Mode ON"
 msgstr "Modo Deus LIGADO"
 
-#: src/keybind.c:1345
+#: src/keybind.c:1354
 msgid "God Mode OFF"
 msgstr "Modo Deus DESLIGADO"
 
-#: src/keybind.c:1357
+#: src/keybind.c:1366
 msgid "View Aligned to North"
 msgstr "Ver alinhado com o Norte"
 
-#: src/keybind.c:1366
+#: src/keybind.c:1375
 #, c-format
 msgid "Trap cursor %s"
 msgstr "Travar Cursor %s"
 
-#: src/keybind.c:1447
+#: src/keybind.c:1456
 msgid "Researched EVERYTHING for you!"
 msgstr "Pesquisou TUDO para você!"
 
-#: src/keybind.c:1503
+#: src/keybind.c:1512
 #, c-format
 msgid "(Player %u) is using cheat :%s %s"
 msgstr "(Jogador %u) está trapaceando :%s %s"
 
-#: src/keybind.c:1504
+#: src/keybind.c:1513
 msgid "Researched"
 msgstr "Pesquisado"
 
-#: src/keybind.c:1525
+#: src/keybind.c:1534
 msgid "Only displaying energy bars when selected"
 msgstr "Exibindo barras de energia apenas quando selecionado"
 
-#: src/keybind.c:1528
+#: src/keybind.c:1537
 msgid "Always displaying energy bars for units"
 msgstr "Sempre exibindo barras de energia para unidades"
 
-#: src/keybind.c:1531
+#: src/keybind.c:1540
 msgid "Always displaying energy bars for units and structures"
 msgstr "Sempre exibindo barras de energia para unidades e estruturas"
 
-#: src/keybind.c:1553
+#: src/keybind.c:1562
 msgid "Demo mode off - Returning to normal game mode"
 msgstr "Desligando modo demonstração - Voltando ao normal"
 
-#: src/keybind.c:1568
+#: src/keybind.c:1577
 msgid "Debug menu is Open"
 msgstr "Menu de Debug está Aberto"
 
-#: src/keybind.c:1599
+#: src/keybind.c:1608
 msgid "Unable to locate any resource extractors!"
 msgstr "Impossível localizar extratores de petróleo!"
 
-#: src/keybind.c:1820
+#: src/keybind.c:1829
 msgid "Oh, the weather outside is frightful... SNOW"
 msgstr "Branco como a neve... NEVE"
 
-#: src/keybind.c:1826
+#: src/keybind.c:1835
 msgid "Singing in the rain, I'm singing in the rain... RAIN"
 msgstr "Garoa Paulista... CHUVA"
 
-#: src/keybind.c:1832
+#: src/keybind.c:1841
 msgid "Forecast : Clear skies for all areas... NO WEATHER"
 msgstr "Previsão do tempo : Céu aberto em todas as cidades... TEMPO LIMPO"
 
-#: src/keybind.c:1917
+#: src/keybind.c:1926
 msgid "Warning! This can have drastic consequences if used incorrectly in missions."
 msgstr "Atenção! Isso pode ter consequências drásticas se usado incorretamente em missões."
 
-#: src/keybind.c:1919
+#: src/keybind.c:1928
 msgid "All enemies destroyed by cheating!"
 msgstr "Inimigos destruido por trapaça!"
 
-#: src/keybind.c:1960
+#: src/keybind.c:1969
 msgid "Destroying selected droids and structures!"
 msgstr "Destruindo ciborgues e estruturas selecionadas!"
 
-#: src/keybind.c:2482
+#: src/keybind.c:2491
 msgid "Centered on player HQ, direction NORTH"
 msgstr "Centralizado no QG, alinhado com o NORTE"
 
-#: src/keybind.c:2494
+#: src/keybind.c:2503
 msgid "Unable to locate HQ!"
 msgstr "Impossível localizar QG!"
 
-#: src/keybind.c:2501
-msgid "Formation speed limiting has been removed from the game due to bugs."
-msgstr "Limite de velocidade em formação removido devido a falhas."
-
-#: src/keybind.c:2550
+#: src/keybind.c:2554
 msgid "Vertical rotation direction: Normal"
 msgstr "Direção da rotação vertical: Normal"
 
-#: src/keybind.c:2555
+#: src/keybind.c:2559
 msgid "Vertical rotation direction: Flipped"
 msgstr "Direção da rotação vertical: Invertida"
 
-#: src/keybind.c:2564
+#: src/keybind.c:2568
 msgid "Screen shake when things die: Off"
 msgstr "Tremer a tela quando coisas morrem: Não"
 
-#: src/keybind.c:2569
+#: src/keybind.c:2573
 msgid "Screen shake when things die: On"
 msgstr "Tremer a tela quando coisas morrem: Sim"
 
-#: src/keybind.c:2614
-#: src/keybind.c:2657
+#: src/keybind.c:2618
+#: src/keybind.c:2661
 msgid "Sorry, but game speed cannot be changed in multiplayer."
 msgstr "Desculpe, não se pode mudar a velocidade  em jogos multiplayer."
 
-#: src/keybind.c:2635
-#: src/keybind.c:2678
-#: src/keybind.c:2700
+#: src/keybind.c:2639
+#: src/keybind.c:2682
+#: src/keybind.c:2704
 msgid "Game Speed Reset"
 msgstr "Velocidade do Jogo Restaurada"
 
-#: src/keybind.c:2639
+#: src/keybind.c:2643
 #, c-format
 msgid "Game Speed Increased to %3.1f"
 msgstr "Velocidade do Jogo Aumentada para %3.1f"
 
-#: src/keybind.c:2682
+#: src/keybind.c:2686
 #, c-format
 msgid "Game Speed Reduced to %3.1f"
 msgstr "Velocidade do Jogo Diminuída para %3.1f"
 
-#: src/keybind.c:2712
+#: src/keybind.c:2716
 msgid "Build menu will reopen"
 msgstr "Menu de construção reabrirá"
 
-#: src/keybind.c:2716
+#: src/keybind.c:2720
 msgid "Build menu will not reopen"
 msgstr "Menu de construção não reabrirá"
 
-#: src/keybind.c:2728
+#: src/keybind.c:2732
 msgid "Radar showing friend-foe colors"
 msgstr "Radar exibe cores de aliados-inimigos"
 
-#: src/keybind.c:2732
+#: src/keybind.c:2736
 msgid "Radar showing player colors"
 msgstr "Radar exibe cores dos jogadores"
 
-#: src/keybind.c:2753
+#: src/keybind.c:2757
 msgid "Radar showing only objects"
 msgstr "Radar exibe apenas objetos"
 
-#: src/keybind.c:2756
+#: src/keybind.c:2760
 msgid "Radar blending terrain and height"
 msgstr "Radar exibe terreno e altitudes"
 
-#: src/keybind.c:2759
+#: src/keybind.c:2763
 msgid "Radar showing terrain"
 msgstr "Radar exibe terreno"
 
-#: src/keybind.c:2762
+#: src/keybind.c:2766
 msgid "Radar showing revealed terrain"
 msgstr "Radar exibe terreno revelado"
 
-#: src/keybind.c:2765
+#: src/keybind.c:2769
 msgid "Radar showing height"
 msgstr "Radar exibe altitudes"
 
@@ -13767,363 +13575,367 @@ msgstr "Return a Tela Anterior"
 msgid "Select Default"
 msgstr "Voltar ao Padrão"
 
-#: src/keymap.c:295
+#: src/keymap.c:296
 msgid "Manufacture"
 msgstr "Produção"
 
-#: src/keymap.c:296
+#: src/keymap.c:297
 msgid "Research"
 msgstr "Pesquisa"
 
-#: src/keymap.c:297
+#: src/keymap.c:298
 msgid "Build"
 msgstr "Construção"
 
-#: src/keymap.c:298
+#: src/keymap.c:299
 msgid "Design"
 msgstr "Projeto"
 
-#: src/keymap.c:299
+#: src/keymap.c:300
 msgid "Intelligence Display"
 msgstr "Relatórios de Inteligência"
 
-#: src/keymap.c:300
+#: src/keymap.c:301
 msgid "Commanders"
 msgstr "Comandantes"
 
-#: src/keymap.c:301
+#: src/keymap.c:302
 msgid "Toggle Radar"
 msgstr "Liga/Desliga o Radar"
 
-#: src/keymap.c:302
+#: src/keymap.c:303
 msgid "Toggle Console Display"
 msgstr "Liga/Desliga o Console"
 
-#: src/keymap.c:303
+#: src/keymap.c:304
 msgid "Toggle Damage Bars On/Off"
 msgstr "Liga/Desliga Barras de Dano"
 
-#: src/keymap.c:304
+#: src/keymap.c:306
 msgid "Take Screen Shot"
 msgstr "Capturar Imagem de Tela"
 
-#: src/keymap.c:305
+#: src/keymap.c:309
+msgid "Dump Vido Sequence"
+msgstr ""
+
+#: src/keymap.c:312
 msgid "Toggle Formation Speed Limiting"
 msgstr "Liga/Desliga Limite de Velocidade para o Grupo"
 
-#: src/keymap.c:306
+#: src/keymap.c:314
 msgid "View Location of Previous Message"
 msgstr "Ir Para a Origem da Última Mensagem"
 
-#: src/keymap.c:311
+#: src/keymap.c:319
 msgid "Assign Group 0"
 msgstr "Designar Grupo 0"
 
-#: src/keymap.c:312
+#: src/keymap.c:320
 msgid "Assign Group 1"
 msgstr "Designar Grupo 1"
 
-#: src/keymap.c:313
+#: src/keymap.c:321
 msgid "Assign Group 2"
 msgstr "Designar Grupo 2"
 
-#: src/keymap.c:314
+#: src/keymap.c:322
 msgid "Assign Group 3"
 msgstr "Designar Grupo 3"
 
-#: src/keymap.c:315
+#: src/keymap.c:323
 msgid "Assign Group 4"
 msgstr "Designar Grupo 4"
 
-#: src/keymap.c:316
+#: src/keymap.c:324
 msgid "Assign Group 5"
 msgstr "Designar Grupo 5"
 
-#: src/keymap.c:317
+#: src/keymap.c:325
 msgid "Assign Group 6"
 msgstr "Designar Grupo 6"
 
-#: src/keymap.c:318
+#: src/keymap.c:326
 msgid "Assign Group 7"
 msgstr "Designar Grupo 7"
 
-#: src/keymap.c:319
+#: src/keymap.c:327
 msgid "Assign Group 8"
 msgstr "Designar Grupo 8"
 
-#: src/keymap.c:320
+#: src/keymap.c:328
 msgid "Assign Group 9"
 msgstr "Designar Grupo 9"
 
-#: src/keymap.c:324
+#: src/keymap.c:332
 msgid "Select Group 0"
 msgstr "Selecionar Grupo 0"
 
-#: src/keymap.c:325
+#: src/keymap.c:333
 msgid "Select Group 1"
 msgstr "Selecionar Grupo 1"
 
-#: src/keymap.c:326
+#: src/keymap.c:334
 msgid "Select Group 2"
 msgstr "Selecionar Grupo 2"
 
-#: src/keymap.c:327
+#: src/keymap.c:335
 msgid "Select Group 3"
 msgstr "Selecionar Grupo 3"
 
-#: src/keymap.c:328
+#: src/keymap.c:336
 msgid "Select Group 4"
 msgstr "Selecionar Grupo 4"
 
-#: src/keymap.c:329
+#: src/keymap.c:337
 msgid "Select Group 5"
 msgstr "Selecionar Grupo 5"
 
-#: src/keymap.c:330
+#: src/keymap.c:338
 msgid "Select Group 6"
 msgstr "Selecionar Grupo 6"
 
-#: src/keymap.c:331
+#: src/keymap.c:339
 msgid "Select Group 7"
 msgstr "Selecionar Grupo 7"
 
-#: src/keymap.c:332
+#: src/keymap.c:340
 msgid "Select Group 8"
 msgstr "Selecionar Grupo 8"
 
-#: src/keymap.c:333
+#: src/keymap.c:341
 msgid "Select Group 9"
 msgstr "Selecionar Grupo 9"
 
-#: src/keymap.c:337
+#: src/keymap.c:345
 msgid "Select Commander 0"
 msgstr "Selecionar Comandante 0"
 
-#: src/keymap.c:338
+#: src/keymap.c:346
 msgid "Select Commander 1"
 msgstr "Selecionar Comandante 1"
 
-#: src/keymap.c:339
+#: src/keymap.c:347
 msgid "Select Commander 2"
 msgstr "Selecionar Comandante 2"
 
-#: src/keymap.c:340
+#: src/keymap.c:348
 msgid "Select Commander 3"
 msgstr "Selecionar Comandante 3"
 
-#: src/keymap.c:341
+#: src/keymap.c:349
 msgid "Select Commander 4"
 msgstr "Selecionar Comandante 4"
 
-#: src/keymap.c:342
+#: src/keymap.c:350
 msgid "Select Commander 5"
 msgstr "Selecionar Comandante 5"
 
-#: src/keymap.c:343
+#: src/keymap.c:351
 msgid "Select Commander 6"
 msgstr "Selecionar Comandante 6"
 
-#: src/keymap.c:344
+#: src/keymap.c:352
 msgid "Select Commander 7"
 msgstr "Selecionar Comandante 7"
 
-#: src/keymap.c:345
+#: src/keymap.c:353
 msgid "Select Commander 8"
 msgstr "Selecionar Comandante 8"
 
-#: src/keymap.c:346
+#: src/keymap.c:354
 msgid "Select Commander 9"
 msgstr "Selecionar Comandante 9"
 
-#: src/keymap.c:350
+#: src/keymap.c:358
 msgid "Multiplayer Options / Alliance dialog"
 msgstr "Opções de Multiplayer / Janela de Alianças"
 
-#: src/keymap.c:353
+#: src/keymap.c:361
 msgid "Snap View to North"
 msgstr "Alinhar a visão com o Norte"
 
-#: src/keymap.c:354
+#: src/keymap.c:362
 msgid "Toggle Tracking Camera"
 msgstr "Liga/Desliga Visão Alinhada com Unidade"
 
-#: src/keymap.c:355
+#: src/keymap.c:363
 msgid "Display In-Game Options"
 msgstr "Exibir Opções Em-Jogo"
 
-#: src/keymap.c:356
+#: src/keymap.c:364
 msgid "Zoom Radar Out"
 msgstr "Diminuir o Zoom do Radar"
 
-#: src/keymap.c:357
+#: src/keymap.c:365
 msgid "Zoom Radar In"
 msgstr "Aumentar o Zoom do Radar"
 
-#: src/keymap.c:358
+#: src/keymap.c:366
 msgid "Zoom In"
 msgstr "Aumentar o Zoom"
 
-#: src/keymap.c:359
+#: src/keymap.c:367
 msgid "Zoom Out"
 msgstr "Diminuir o Zoom"
 
-#: src/keymap.c:360
+#: src/keymap.c:368
 msgid "Pitch Forward"
 msgstr "Inclinar a visão para a frente"
 
-#: src/keymap.c:361
+#: src/keymap.c:369
 msgid "Rotate Left"
 msgstr "Girar a visão para a esquerda"
 
-#: src/keymap.c:362
+#: src/keymap.c:370
 msgid "Reset Pitch"
 msgstr "Voltar a inclinação da visão ao normal"
 
-#: src/keymap.c:363
+#: src/keymap.c:371
 msgid "Rotate Right"
 msgstr "Girar a visão para a direita"
 
-#: src/keymap.c:364
+#: src/keymap.c:372
 msgid "Pitch Back"
 msgstr "Inclinar a visão para trás"
 
-#: src/keymap.c:365
+#: src/keymap.c:373
 msgid "Orders Menu"
 msgstr "Menu de Ordens"
 
-#: src/keymap.c:366
+#: src/keymap.c:374
 msgid "Decrease Game Speed"
 msgstr "Diminuir a velocidade do jogo"
 
-#: src/keymap.c:367
+#: src/keymap.c:375
 msgid "Increase Game Speed"
 msgstr "Aumentar a velocidade do jogo"
 
-#: src/keymap.c:368
+#: src/keymap.c:376
 msgid "Reset Game Speed"
 msgstr "Voltar a velocidade do jogo ao normal"
 
-#: src/keymap.c:369
+#: src/keymap.c:377
 msgid "View North"
 msgstr "Alinhar a visão com o Norte"
 
-#: src/keymap.c:370
+#: src/keymap.c:378
 msgid "View South"
 msgstr "Alinhar a visão com o Sul"
 
-#: src/keymap.c:371
+#: src/keymap.c:379
 msgid "View East"
 msgstr "Alinhar a visão com o Leste"
 
-#: src/keymap.c:372
+#: src/keymap.c:380
 msgid "View West"
 msgstr "Alinhar a visão com o Oeste"
 
-#: src/keymap.c:373
+#: src/keymap.c:381
 msgid "View next Oil Derrick"
 msgstr "Localizar Extrator de Petróleo"
 
-#: src/keymap.c:374
+#: src/keymap.c:382
 msgid "View next Repair Unit"
 msgstr "Localizar Unidade de Reparo"
 
-#: src/keymap.c:375
+#: src/keymap.c:383
 msgid "View next Truck"
 msgstr "Localizar Caminhão"
 
-#: src/keymap.c:376
+#: src/keymap.c:384
 msgid "View next Sensor Unit"
 msgstr "Localizar Unidade de Sensor"
 
-#: src/keymap.c:377
+#: src/keymap.c:385
 msgid "View next Commander"
 msgstr "Localizar Comandante"
 
-#: src/keymap.c:378
+#: src/keymap.c:386
 msgid "Toggle Overlays"
 msgstr "Liga/Desliga Barra de Energia"
 
-#: src/keymap.c:379
+#: src/keymap.c:387
 msgid "Console On/Off"
 msgstr "Ligar/Desligar o Console"
 
-#: src/keymap.c:382
+#: src/keymap.c:390
 msgid "Center View on HQ"
 msgstr "Centralizar a visão no QG"
 
-#: src/keymap.c:384
+#: src/keymap.c:392
 msgid "View Unassigned Units"
 msgstr "Localizar Unidades sem Grupo"
 
-#: src/keymap.c:386
+#: src/keymap.c:394
 msgid "Fire at Will"
 msgstr "Atirar à vontade"
 
-#: src/keymap.c:388
+#: src/keymap.c:396
 msgid "Return to HQ"
 msgstr "Retornar ao QH"
 
-#: src/keymap.c:396
+#: src/keymap.c:404
 msgid "Send Text Message"
 msgstr "Enviar mensagem"
 
-#: src/keymap.c:415
+#: src/keymap.c:423
 msgid "Select all Combat Units"
 msgstr "Selecionar todas as unidades de combate"
 
-#: src/keymap.c:416
+#: src/keymap.c:424
 msgid "Select all Heavily Damaged Units"
 msgstr "Selecionar todas as unidades muito danificadas"
 
-#: src/keymap.c:418
+#: src/keymap.c:426
 msgid "Select all Half-tracks"
 msgstr "Selecionar todas as unidades híbridas"
 
-#: src/keymap.c:419
+#: src/keymap.c:427
 msgid "Select all Hovers"
 msgstr "Selecionar todos os hovercrafts"
 
-#: src/keymap.c:421
+#: src/keymap.c:429
 msgid "Select all Units on Screen"
 msgstr "Selecionar todas as unidades na tela"
 
-#: src/keymap.c:422
+#: src/keymap.c:430
 msgid "Select all Tracks"
 msgstr "Selecionar todas as unidades tanques"
 
-#: src/keymap.c:423
+#: src/keymap.c:431
 msgid "Select EVERY unit"
 msgstr "Selecionar TODAS as unidades"
 
-#: src/keymap.c:424
+#: src/keymap.c:432
 msgid "Select all VTOLs"
 msgstr "Selecionar todos os VTOLs"
 
-#: src/keymap.c:425
+#: src/keymap.c:433
 msgid "Select all Wheels"
 msgstr "Selecionar todos os veículos de rodas"
 
-#: src/keymap.c:427
+#: src/keymap.c:435
 msgid "Select all Similar Units"
 msgstr "Selecionar todas as unidades similares"
 
-#: src/keymap.c:431
+#: src/keymap.c:439
 msgid "Select next Factory"
 msgstr "Localizar Fábrica"
 
-#: src/keymap.c:432
+#: src/keymap.c:440
 msgid "Select next Research Facility"
 msgstr "Localizar Centro de Pesquisas"
 
-#: src/keymap.c:433
+#: src/keymap.c:441
 msgid "Select next Power Generator"
 msgstr "Localizar Gerador de Energia"
 
-#: src/keymap.c:434
+#: src/keymap.c:442
 msgid "Select next Cyborg Factory"
 msgstr "Localizar Fábrica de Ciborgues"
 
-#: src/keymap.c:435
+#: src/keymap.c:443
 msgid "Toggle reopening the build menu"
 msgstr "Liga/Desliga a reabertura do menu de construção"
 
@@ -14910,6 +14722,135 @@ msgstr " - Finalizado em %s"
 #, c-format
 msgid "Version %s%s%s%s"
 msgstr "Versão %s%s%s%s"
+
+#~ msgid "Cobra Hover Heavy-Repair"
+#~ msgstr "Hovercraft Reparo Pesado Cobra"
+
+#~ msgid "Viper HMG Wheels"
+#~ msgstr "4x4 Metralhadora Pesada Víbora"
+
+#~ msgid "TK Mantis Hover"
+#~ msgstr "Hovercraft Destruidor de Tanques Mantis"
+
+#~ msgid "Cobra HMG Tracks"
+#~ msgstr "Tanque Metralhadora Pesada Cobra"
+
+#~ msgid "Cobra Hover HC"
+#~ msgstr "Hovercraft Canhão Pesado Cobra"
+
+#~ msgid "Scorpion Lancer Tracks"
+#~ msgstr "Tanque Lançadeiro Escorpião"
+
+#~ msgid "Scorpion Heavy Cannon Tracks"
+#~ msgstr "Tanque Canhão Pesado Escorpião"
+
+#~ msgid "Scorpion Lancer VTOL"
+#~ msgstr "VTOL Lançadeiro Escorpião"
+
+#~ msgid "Scorpion BB VTOL"
+#~ msgstr "VTOL Arrasa-Defesas Escorpião"
+
+#~ msgid "Viper Command Turret Tracks"
+#~ msgstr "Tanque Comandante Víbora"
+
+#~ msgid "Cobra Command Turret Tracks"
+#~ msgstr "Tanque Comandante Cobra"
+
+#~ msgid "Scorpion Command Turret Tracks"
+#~ msgstr "Tanque Comandante Escorpião"
+
+#~ msgid "mantis Command Turret Tracks"
+#~ msgstr "Tanque Comandante Mantis"
+
+#~ msgid "Cobra Lancer Tracks"
+#~ msgstr "Tanque Lançadeiro Cobra"
+
+#~ msgid "Mantis Heavy Cannon Tracks"
+#~ msgstr "Tanque Canhão Pesado Mantis"
+
+#~ msgid "Mantis Tank Killer Tracks"
+#~ msgstr "Tanque Destruidor de Tanques Mantis"
+
+#~ msgid "Mantis Scourge Tracks"
+#~ msgstr "Tanque Scourge Mantis"
+
+#~ msgid "Scorpion Heavy Machinegun Tracks"
+#~ msgstr "Tanque Metralhadora Pesada Escorpião"
+
+#~ msgid "Scorpion Repair Tracks"
+#~ msgstr "Tanque Reparo Escorpião"
+
+#~ msgid "Scorpion Heavy Repair Hover"
+#~ msgstr "Hovercraft Reparos Pesado Escorpião"
+
+#~ msgid "Cobra Hover Truck"
+#~ msgstr "Hovercraft Caminhão CObra"
+
+#~ msgid "Scorpion Hover Truck"
+#~ msgstr "Hovercraft Caminhão Escorpião"
+
+#~ msgid "Mantis Hover Truck"
+#~ msgstr "Hovercraft Caminhão Mantis"
+
+#~ msgid "Cobra Bunker Buster Tracks"
+#~ msgstr "Tanque Arrasa-Defesas Cobra"
+
+#~ msgid "Scorpion Bunker Buster Tracks"
+#~ msgstr "Tanque Arrasa-Defesas Escorpião"
+
+#~ msgid "Mantis Bunker Buster Tracks"
+#~ msgstr "Tanque Arrasa-Defesas Mantis"
+
+#~ msgid "Viper Tracks Lancer"
+#~ msgstr "Tanque Lançadeiro Víbora"
+
+#~ msgid "Cobra Half-Tracks Mini-Pod"
+#~ msgstr "Híbrido Mini-Foguetes Cobra"
+
+#~ msgid "Cobra Tracks Mini-Pod"
+#~ msgstr "Tanque Mini-Foguetes Cobra"
+
+#~ msgid "Cobra Tracks Mini-Rocket Artillery"
+#~ msgstr "Tanque Mini-Artilharia Cobra"
+
+#~ msgid "Cobra Inferno Half-track"
+#~ msgstr "Híbrido Inferno Cobra"
+
+#~ msgid "Python HVC Hover"
+#~ msgstr "Hovercraft Canhão de Velocidade Píton"
+
+#~ msgid "Python Scourge Tracks"
+#~ msgstr "Tanque Scourge Píton"
+
+#~ msgid "Python Gauss Cannon Tracks"
+#~ msgstr "Tanque Canhão Gauss Píton"
+
+#~ msgid "Python Pulse Laser Tracks"
+#~ msgstr "Tanque Pulso Laser Píton"
+
+#~ msgid "Tiger Pulse Laser Tracks"
+#~ msgstr "Tanque Pulso Laser Tigre"
+
+#~ msgid "Tiger Heavy Laser Tracks"
+#~ msgstr "Tanque Laser Pesado Tigre"
+
+#~ msgid "Wyvern Gauss Cannon Tracks"
+#~ msgstr "Tanque Canhão Gauss Dragonete"
+
+#~ msgid "Wyvern Pulse Laser Tracks"
+#~ msgstr "Tanque Pulso Laser Dragonete"
+
+#~ msgid "Wyvern Heavy Laser Tracks"
+#~ msgstr "Tanque Laser Pesado Dragonete"
+
+#~ msgid "Viper Machinegun Half-Track"
+#~ msgstr "Híbrido Metralhadora Víbora"
+
+#~ msgid "Viper Flamer Half-Track"
+#~ msgstr "Híbrido Incendiário Víbora"
+
+#~ msgid "Formation speed limiting has been removed from the game due to bugs."
+#~ msgstr "Limite de velocidade em formação removido devido a falhas."
 
 #~ msgid "Warzone 2100"
 #~ msgstr "Warzone 2100"
