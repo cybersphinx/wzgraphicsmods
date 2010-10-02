@@ -108,6 +108,12 @@ void MainWindow::s_fileOpen()
 {
 	QFileInfo modelFileNfo(importDialog->modelFilePath());
 	std::ifstream f;
+
+	if (!modelFileNfo.exists())
+	{
+		return;
+	}
+
 	if (modelFileNfo.completeSuffix().compare(QString("wzm"), Qt::CaseInsensitive) == 0)
 	{
 		f.open(modelFileNfo.absoluteFilePath().toLocal8Bit(), std::ios::in);
@@ -140,6 +146,7 @@ void MainWindow::s_fileOpen()
 		model.importFromOBJ(f);
 	}
 
+	setWindowTitle(QString("%1 - WMIT").arg(modelFileNfo.baseName()));
 	model.setRenderTexture(importDialog->textureFilePath());
 
 	if (importDialog->tcmaskChecked() && !importDialog->tcmaskFilePath().isEmpty())
