@@ -101,9 +101,10 @@ inline void ImportDialog::lw_autoFoundTextures_clearSelection()
 
 void ImportDialog::on_tb_seekFileName_clicked()
 {
+	static QString lastDir = QDir::currentPath();
 	QFileDialog* fileDialog = new QFileDialog(this,
 								 tr("Select File to open"),
-								 QDir::currentPath(),
+								 lastDir,
 								 tr("All Compatible (*.wzm *.pie *.3ds *.obj);;"
 									"WZM models (*.wzm);;"
 									"PIE models (*.pie);;"
@@ -111,6 +112,7 @@ void ImportDialog::on_tb_seekFileName_clicked()
 									"OBJ files (*.obj)"));
 	fileDialog->setFileMode(QFileDialog::ExistingFile);
 	fileDialog->exec();
+	lastDir = fileDialog->directory().absolutePath();
 	if (fileDialog->result() == QDialog::Accepted)
 	{
 		ui->le_fileName->setText(fileDialog->selectedFiles().first());
@@ -121,13 +123,15 @@ void ImportDialog::on_tb_seekFileName_clicked()
 
 void ImportDialog::on_tb_seekTextureFName_clicked()
 {
+	static QString lastDir = QDir::currentPath();
 	QFileDialog* fileDialog = new QFileDialog(this,
 											  tr("Select texture to use"),
-											  QDir::currentPath(),
+											  lastDir,
 											  tr("WZ Compatible (*.png);;"
 												 "WMIT Compatible (*.bmp *.jpg *.jpeg *.png)"));
 	fileDialog->setFileMode(QFileDialog::ExistingFile);
 	fileDialog->exec();
+	lastDir = fileDialog->directory().absolutePath();
 	if (fileDialog->result() == QDialog::Accepted)
 	{
 		ui->le_textureFName->setText(fileDialog->selectedFiles().first());
@@ -176,12 +180,14 @@ void ImportDialog::on_pb_autoTex_clicked()
 
 void ImportDialog::on_tb_seekTcmFName_clicked()
 {
+	static QString lastDir = QDir::currentPath();
 	QFileDialog* fileDialog = new QFileDialog(this,
 											  tr("Select tcmask to use"),
-											  QDir::currentPath(),
+											  lastDir,
 											  tr("WZ Compatible (*.png);;"));
 	fileDialog->setFileMode(QFileDialog::ExistingFile);
 	fileDialog->exec();
+	lastDir = fileDialog->directory().absolutePath();
 	if (fileDialog->result() == QDialog::Accepted)
 	{
 		ui->le_tcmFName->setText(fileDialog->selectedFiles().first());
