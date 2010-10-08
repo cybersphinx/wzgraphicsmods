@@ -34,11 +34,11 @@ from protocol import *
 
 irc_server          = "irc.freenode.net"
 irc_port            = 6667
-irc_serve_channels  = ['#warzone2100-games']
-irc_silent_channels = ['#warzone2100']
-irc_nick            = "wzlobbybot"
+irc_serve_channels  = ['##wzgm']
+irc_silent_channels = ['']
+irc_nick            = "wzgm_lobby"
 irc_nickpass        = None
-lobby_host          = 'lobby.wz2100.net'
+lobby_host          = 'lobby.wzgm.net'
 lobby_version       = '2.2'
 
 def main():
@@ -126,8 +126,8 @@ class BotCommands:
     # TODO: if message.startswith("show") # join a game and show information about it
 
 class change_notifier(threading.Thread):
-    display_game_updated = False
-    display_game_closed = False
+    display_game_updated = True
+    display_game_closed = True
     timestamps = {}
 
     def __init__(self, irc, lobby):
@@ -209,6 +209,8 @@ class irc_connection:
             self.join(channel)
         if nickpass:
             self.privmsg('NICKSERV', 'IDENTIFY %s' % (nickpass))
+
+            
 
         serve_channel_re = r'(?P<channel>%s)' % ('|'.join([re.escape(channel) for channel in self.serve_channels]))
 
@@ -316,6 +318,9 @@ class line_socket:
                 line = self.buffer[:pos]
                 self.buffer = self.buffer[pos+2:]
                 print "read:", line
+                if line.find( "PING" ) != -1:
+                    self.s.send("PONG \r\n")
+                    print "sent: ", line
                 return  line
             else:
                 self.buffer = self.buffer + self.s.recv(1)
