@@ -42,7 +42,7 @@ from game import *
 from protocol import *
 from protocol import connection
 
-server="lobby.wz2100.net"
+server="lobby.wzgm.net"
 protocol = Protocol()
 logging.basicConfig(level = logging.DEBUG, format = "%(asctime)-15s %(levelname)s %(message)s")
 
