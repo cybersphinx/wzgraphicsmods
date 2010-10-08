@@ -21,7 +21,7 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
 #
 
-__author__  = "The Warzone 2100 Project"
+__author__  = "Chuck Norris Walker Texas Ranger"
 __version__ = "0.0.2"
 __license__ = "GPL"
 
