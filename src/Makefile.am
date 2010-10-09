@@ -38,7 +38,7 @@ EXTRA_DIST = \
 	scriptvals_lexer.l scriptvals_parser.y \
 	level_lexer.l
 
-bin_PROGRAMS = warzone2100
+bin_PROGRAMS = warzone2100_wzgm
 noinst_HEADERS = \
 	action.h \
 	advvis.h \
@@ -174,7 +174,7 @@ noinst_HEADERS = \
 	weapondef.h \
 	wrappers.h
 
-warzone2100_SOURCES = \
+warzone2100_wzgm_SOURCES = \
 	action.c \
 	advvis.c \
 	ai.c \
@@ -291,7 +291,7 @@ warzone2100_SOURCES = \
 	wavecast.cpp \
 	wrappers.c
 
-warzone2100_LDADD = \
+warzone2100_wzgm_LDADD = \
 	$(top_builddir)/lib/widget/libwidget.a \
 	$(top_builddir)/lib/sequence/libsequence.a \
 	$(top_builddir)/lib/sound/libsound.a \
@@ -305,10 +305,10 @@ warzone2100_LDADD = \
 	$(top_builddir)/lib/iniparser/libiniparser.a \
 	$(top_builddir)/lib/exceptionhandler/libexceptionhandler.a
 
-warzone2100_LDADD += $(LTLIBINTL) $(SDL_LIBS) $(PHYSFS_LIBS) $(PNG_LIBS) $(OGGVORBIS_LIBS) $(THEORA_LIBS) $(OPENAL_LIBS) $(OPENGLC_LIBS) $(OPENGL_LIBS) $(X11_LIBS) $(GLee_LIBS)
+warzone2100_wzgm_LDADD += $(LTLIBINTL) $(SDL_LIBS) $(PHYSFS_LIBS) $(PNG_LIBS) $(OGGVORBIS_LIBS) $(THEORA_LIBS) $(OPENAL_LIBS) $(OPENGLC_LIBS) $(OPENGL_LIBS) $(X11_LIBS) $(GLee_LIBS)
 
 if MINGW32
-warzone2100_LDADD += $(top_builddir)/win32/warzone2100.o $(WIN32_LIBS)
+warzone2100_wzgm_LDADD += $(top_builddir)/win32/warzone2100_wzgm.o $(WIN32_LIBS)
 endif
 
 # HACK Don't give make errors when switching between trunk and branches.
