@@ -171,9 +171,9 @@ extern LOBBY_ERROR_TYPES LobbyError;		// from src/multiint.c
  **			   ie ("trunk", "2.1.3", ...)
  ************************************************************************************
 **/
-char VersionString[VersionStringSize] = "trunk, netcode 3.32";
-static int NETCODE_VERSION_MAJOR = 2;
-static int NETCODE_VERSION_MINOR = 35;
+char VersionString[VersionStringSize] = "WZGM 1.0.0";
+static int NETCODE_VERSION_MAJOR = 1;
+static int NETCODE_VERSION_MINOR = 100;
 static int NETCODE_HASH = 0;			// unused for now
 
 bool NETisCorrectVersion(uint32_t game_version_major, uint32_t game_version_minor)

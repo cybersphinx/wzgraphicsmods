@@ -21,13 +21,13 @@ BEGIN
 		BLOCK "040904b0"
 		BEGIN
 			VALUE "CompanyName", "Warzone Resurrection Project"
-			VALUE "FileDescription", "Warzone 2100"
-			VALUE "FileVersion", "TRUNK"
-			VALUE "InternalName", "Warzone 2100"
+			VALUE "FileDescription", "Warzone 2100 WZGM"
+			VALUE "FileVersion", "1.0.0"
+			VALUE "InternalName", "Warzone 2100 WZGM"
 			VALUE "LegalCopyright", "Copyright © 2005-2009 Warzone Resurrection Project"
-			VALUE "OriginalFilename", "warzone2100.exe"
-			VALUE "ProductName", "Warzone 2100"
-			VALUE "ProductVersion", "TRUNK"
+			VALUE "OriginalFilename", "warzone2100_wzgm.exe"
+			VALUE "ProductName", "Warzone 2100 WZGM"
+			VALUE "ProductVersion", "1.0.0"
 		END
 	END
 	BLOCK "VarFileInfo"
