@@ -84,7 +84,7 @@ class BotCommands:
         write("%s: pong" % (nick))
 
     def about(self, nick, write):
-        write("%s: I'm a bot that shows information from the \x02Warzone 2100\x02 lobby server. I was created by %s. For information about commands you can try: \"commands\"" % (nick, __author__))
+        write("%s: I'm a bot that shows information from the *WZGM* lobby server. I was created by %s. For information about commands you can try: \"commands\"" % (nick, __author__))
 
     # Alias 'info' to 'about'
     info = about
