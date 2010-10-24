@@ -47,16 +47,21 @@ WZM::WZM()
 WZM::WZM(const Pie3Model &p3)
 {
 	std::vector<Pie3Level>::const_iterator it;
+	std::stringstream ss;
 	m_texName = p3.m_texture;
 	for (it = p3.m_levels.begin(); it != p3.m_levels.end(); ++it)
 	{
 		m_meshes.push_back(*it);
+		ss << m_meshes.size();
+		m_meshes.back().setName(ss.str());
+		ss.str(std::string());
 	}
 }
 
 WZM::operator Pie3Model() const
 {
 	Pie3Model p3;
+	p3.m_type = 0x10200;
 	p3.m_texture = m_texName;
 	std::transform(m_meshes.begin(), m_meshes.end(),
 				   back_inserter(p3.m_levels), Mesh::backConvert);
