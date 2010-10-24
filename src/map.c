@@ -265,8 +265,8 @@ static BOOL mapLoadGroundTypes(void)
 		psGroundTypes[u_green].textureSize = 2.6;
 		psGroundTypes[u_stone].textureName = "page-47"; // pavement
 		psGroundTypes[u_stone].textureSize = 3.2;
-		psGroundTypes[u_cliff].textureName = "page-49"; // crater walls
-		psGroundTypes[u_cliff].textureSize = 4.7;
+		psGroundTypes[u_cliff].textureName = "page-46"; // crater walls
+		psGroundTypes[u_cliff].textureSize = 5.8;
 		psGroundTypes[u_brown].textureName = "page-49"; // rocks
 		psGroundTypes[u_brown].textureSize = 4.7;
 
