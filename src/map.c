@@ -286,8 +286,8 @@ static BOOL mapLoadGroundTypes(void)
 
 		psGroundTypes[r_grass].textureName = "page-55";
 		psGroundTypes[r_grass].textureSize = 4.6;
-		psGroundTypes[r_rock].textureName = "page-56";
-		psGroundTypes[r_rock].textureSize = 3.9;
+		psGroundTypes[r_rock].textureName = "page-49";
+		psGroundTypes[r_rock].textureSize = 4.6;
 		psGroundTypes[r_cliff].textureName = "page-46";
 		psGroundTypes[r_cliff].textureSize = 5.8;
 		psGroundTypes[r_water].textureName = "page-53";
@@ -300,8 +300,8 @@ static BOOL mapLoadGroundTypes(void)
 		psGroundTypes[r_snow].textureSize = 10.2;
 		psGroundTypes[r_snowrock].textureName = "page-58";
 		psGroundTypes[r_snowrock].textureSize = psGroundTypes[r_rock].textureSize;
-		
-		psGroundTypes[r_brown] = psGroundTypes[r_water];
+
+		psGroundTypes[r_brown] = psGroundTypes[r_rock];
 
 		waterGroundType = r_water;
 		cliffGroundType = r_cliff;
