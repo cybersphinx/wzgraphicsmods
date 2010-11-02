@@ -49,7 +49,7 @@ void QWZM::operator =(const WZM& wzm)
 
 void QWZM::render()
 {
-	const GLfloat tcColour[4] = {160/255.f,32/255.f,240/255.f,255/255.f}; // temporary...
+	const GLfloat tcColour[4] = {0x77/255.f,0x03/255.f,0x02/255.f,255/255.f}; // temporary...
 	const bool tcmask = currentTCMaskMode() != None && m_tcm != 0;
 
 	std::vector<Mesh>::iterator it;
