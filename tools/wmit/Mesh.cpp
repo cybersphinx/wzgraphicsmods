@@ -820,7 +820,7 @@ void Mesh::rmConnector (int index)
 {
 	int i;
 	std::list<WZMConnector>::iterator pos;
-	for(i=0,pos=m_connectors.begin();i<index;i++,pos++);
+	for(i=0,pos=m_connectors.begin();i<index;i++,pos++){};
 	if(pos==m_connectors.end())
 	{
 		return;
