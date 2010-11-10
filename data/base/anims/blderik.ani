@@ -1,6 +1,6 @@
 /* header format: anim3d [filename] [frames][framerate] [num objects]            */
 /* anim line: [frame] [x] [y] [z] [xrot] [yrot] [zrot][xscale] [yscale] [zscale] */
-ANIM3DTRANS "BLDerik.pie" 33 15 3
+ANIM3DTRANS "BLDerik.pie" 33 10 3
 {
 	ANIMOBJECT 0 "DerrickBase"
 	{
